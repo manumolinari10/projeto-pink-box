@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PinkBox | Dashboard</title>
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <link rel="stylesheet" href="../src/css/global.css">
+</head>
+<body>
+    <div class="dashboard-shell">
+        <aside class="sidebar" aria-label="Menu lateral">
+            <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
+                <img class="brand-logo brand-logo-horizontal" src="../src/assets/logo_horizontal.webp" alt="PinkBox Executive Portal">
+                <img class="brand-logo brand-logo-simple" src="../src/assets/logo_simple.webp" alt="PinkBox">
+            </a>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link is-active" href="./index.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" /></svg>
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-link" href="./clientes.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"></path></svg>
+                    </span>
+                    <span>Clientes</span>
+                </a>
+                <a class="nav-link" href="./produtos.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M184,96.8V88a32,32,0,0,0-32-32H136V32h32a8,8,0,0,1,8,8,8,8,0,0,0,16,0,24,24,0,0,0-24-24H104a8,8,0,0,0,0,16h16V56H104A32,32,0,0,0,72,88v8.8A40.07,40.07,0,0,0,40,136v80a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136A40.07,40.07,0,0,0,184,96.8ZM104,72h48a16,16,0,0,1,16,16v8H88V88A16,16,0,0,1,104,72Z"></path></svg>
+                    </span>
+                    <span>Produtos</span>
+                </a>
+                <a class="nav-link" href="./vendas.html" aria-current="page">
+                    <span class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
+                    </span>
+                    <span>Vendas</span>
+                </a>
+                <a class="nav-link" href="./financeiro.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm0 8a1 1 0 0 0 -1 1v.05a2.5 2.5 0 0 0 .5 4.95h1a.5 .5 0 1 1 0 1h-2.5a1 1 0 0 0 0 2h1a1 1 0 0 0 2 0v-.05a2.5 2.5 0 0 0 -.5 -4.95h-1a.5 .5 0 1 1 0 -1h2.5a1 1 0 0 0 0 -2h-1a1 1 0 0 0 -1 -1" /><path d="M19 7h-4l-.001 -4.001z" /></svg>
+                    </span>
+                    <span>Financeiro</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-links">
+                    <a class="nav-link nav-link--subtle" href="./configuracoes.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg>
+                        </span>
+                        <span>Configurações</span>
+                    </a>
+                    <a class="nav-link nav-link--subtle" href="./login.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-12a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h12zm-3 2h-9a1 1 0 0 0 -.993 .883l-.007 .117v12a1 1 0 0 0 .883 .993l.117 .007h9v-14zm-5.387 4.21l.094 .083l2 2a1 1 0 0 1 .083 1.32l-.083 .094l-2 2a1 1 0 0 1 -1.497 -1.32l.083 -.094l1.292 -1.293l-1.292 -1.293a1 1 0 0 1 -.083 -1.32l.083 -.094a1 1 0 0 1 1.32 -.083z" /></svg>
+                        </span>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-panel">
+            <header class="topbar">
+                <div class="topbar-title">
+                    <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <h1>Dashboard</h1>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="notification-wrapper">
+                    <button class="icon-button" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" data-notification-toggle>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22m6-6V11a6 6 0 1 0-12 0v5L4 18v1h16v-1z"></path></svg>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <div class="notification-menu" hidden data-notification-menu>
+                        <button type="button">Novo pedido de Ana Souza</button>
+                        <button type="button">Meta semanal atualizada</button>
+                        <button type="button">Estoque crítico em 2 produtos</button>
+                        <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
+                    </div>
+                    </div>
+
+                    <a class="profile-card" href="./perfil.html">
+                        <div class="profile-copy">
+                            <strong>Beatriz Souza</strong>
+                            <span>CONSULTORA DIAMANTE</span>
+                        </div>
+                        <img class="profile-avatar avatar-image" src="../src/assets/users/default.webp" alt="Foto de perfil de Beatriz Souza">
+                    </a>
+                </div>
+            </header>
+
+            <section class="performance-head">
+                <div class="section-title">
+                    <span class="section-icon">
+                        <svg viewBox="0 0 256 256"><path d="M240,56v64a8,8,0,0,1-13.66,5.66L200,99.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31,29.66,189.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0L136,140.69,188.69,88,162.34,61.66A8,8,0,0,1,168,48h64A8,8,0,0,1,240,56Z"></path></svg>
+                    </span>
+                    <h2>Resumo de Performance</h2>
+                </div>
+                <div class="period-filter">
+                    <div class="month-badge month-badge-button">
+                        <span data-current-month>Mês atual</span>
+                        <button class="month-badge-arrow" type="button" aria-label="Abrir filtro de período" aria-haspopup="true" aria-expanded="false" data-period-toggle>
+                            <svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="period-menu" hidden data-period-menu>
+                        <button type="button" class="is-selected" data-period-option="Este mês">Este mês</button>
+                        <button type="button" data-period-option="Último mês">Último mês</button>
+                        <button type="button" data-period-option="Últimos 3 meses">Últimos 3 meses</button>
+                        <button type="button" data-period-option="Últimos 6 meses">Últimos 6 meses</button>
+                        <button type="button" data-period-option="Últimos 12 meses">Últimos 12 meses</button>
+                        <button type="button" data-period-option="Todo o período">Todo o período</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="hero-grid">
+                <article class="overview-card elevated">
+                    <div class="overview-main">
+                        <div class="sales-panel">
+                            <p class="eyebrow">Visão geral de vendas e metas</p>
+                            <div class="headline-row">
+                                <div>
+                                    <span class="currency">R$</span>
+                                    <strong class="sales-value" data-target="8450.90">8.450,90</strong>
+                                </div>
+                                <span class="trend-badge">+12%</span>
+                            </div>
+                            <p class="comparison">Comparado a R$ 7.545,00 no período anterior</p>
+
+                            <div class="progress-copy">
+                                <div class="progress-label">
+                                    <span class="progress-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                                    </span>
+                                    <strong class="progress-title">Progresso Consultora Estrela</strong>
+                                </div>
+                                <strong class="goal-status"><span data-target="64" data-suffix="%">64%</span> da meta</strong>
+                            </div>
+
+                            <div class="progress-track" aria-hidden="true">
+                                <span class="progress-fill" data-progress-target="64"></span>
+                            </div>
+
+                            <div class="progress-meta">
+                                <div><span>Atual:</span><strong>R$ 3.500,29</strong></div>
+                                <div><span>Faltam:</span><strong>R$ 1.499,71</strong></div>
+                                <div><span>Meta:</span><strong>R$ 5.000,00</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <p class="eyebrow">Histórico de performance Semanal</p>
+                                <button class="chart-more" type="button" aria-label="Mais opções">•••</button>
+                            </div>
+
+                            <div class="bars" aria-label="Gráfico de barras">
+                                <div class="bar-group"><span class="bar" data-bar-height="103"></span><small>QUI</small></div>
+                                <div class="bar-group"><span class="bar" data-bar-height="80"></span><small>SEX</small></div>
+                                <div class="bar-group"><span class="bar" data-bar-height="136"></span><small>SAB</small></div>
+                                <div class="bar-group"><span class="bar" data-bar-height="118"></span><small>DOM</small></div>
+                                <div class="bar-group"><span class="bar" data-bar-height="92"></span><small>SEG</small></div>
+                                <div class="bar-group"><span class="bar" data-bar-height="74"></span><small>TER</small></div>
+                                <div class="bar-group is-today"><span class="bar" data-bar-height="161"></span><small>HOJE</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-row">
+                        <article class="metric-box">
+                            <p class="eyebrow">Clientes ativas</p>
+                            <div class="metric-line"><strong class="metric-value metric-pink" data-target="124">124</strong><span>/168</span></div>
+                        </article>
+                        <article class="metric-box">
+                            <p class="eyebrow">Ticket médio</p>
+                            <div class="metric-line ticket-layout"><strong class="metric-value" data-target="145" data-prefix="R$ ">R$ 145</strong><span>/venda</span></div>
+                        </article>
+                        <article class="metric-box">
+                            <p class="eyebrow">Novas vendas</p>
+                            <div class="metric-line"><strong class="metric-value" data-target="58">58</strong><span class="metric-delta">+8%</span></div>
+                        </article>
+                        <article class="metric-box">
+                            <p class="eyebrow">Conversão</p>
+                            <div class="metric-line"><strong class="metric-value metric-pink" data-target="72" data-suffix="%">72%</strong><span>alta</span></div>
+                        </article>
+                    </div>
+                </article>
+
+                <div class="side-widgets">
+                    <aside class="quick-actions elevated">
+                        <div>
+                            <h3>Atalhos</h3>
+                            <p>Está em atendimento? Agilize o processo com esses atalhos.</p>
+                        </div>
+
+                        <div class="quick-actions-buttons">
+                            <button class="secondary-cta" type="button">
+                                <svg viewBox="0 0 256 256"><path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path></svg>
+                                <span>Novo Cliente</span>
+                            </button>
+                            <button class="ghost-cta" type="button">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l.324 .001l.318 .004l.616 .017l.299 .013l.579 .034l.553 .046c4.785 .464 6.732 2.411 7.196 7.196l.046 .553l.034 .579c.005 .098 .01 .198 .013 .299l.017 .616l.005 .642l-.005 .642l-.017 .616l-.013 .299l-.034 .579l-.046 .553c-.464 4.785 -2.411 6.732 -7.196 7.196l-.553 .046l-.579 .034c-.098 .005 -.198 .01 -.299 .013l-.616 .017l-.642 .005l-.642 -.005l-.616 -.017l-.299 -.013l-.579 -.034l-.553 -.046c-4.785 -.464 -6.732 -2.411 -7.196 -7.196l-.046 -.553l-.034 -.579a28.058 28.058 0 0 1 -.013 -.299l-.017 -.616c-.003 -.21 -.005 -.424 -.005 -.642l.001 -.324l.004 -.318l.017 -.616l.013 -.299l.034 -.579l.046 -.553c.464 -4.785 2.411 -6.732 7.196 -7.196l.553 -.046l.579 -.034c.098 -.005 .198 -.01 .299 -.013l.616 -.017c.21 -.003 .424 -.005 .642 -.005zm0 6a1 1 0 0 0 -1 1v2h-2l-.117 .007a1 1 0 0 0 .117 1.993h2v2l.007 .117a1 1 0 0 0 1.993 -.117v-2h2l.117 -.007a1 1 0 0 0 -.117 -1.993h-2v-2l-.007 -.117a1 1 0 0 0 -.993 -.883z" fill="currentColor" stroke-width="0" /></svg>
+                                <span>Nova Venda</span>
+                            </button>
+                        </div>
+                    </aside>
+
+                    <article class="alert-card alert-card--todo">
+                        <div class="alert-head"><h3>6 Coisas</h3><span class="pill" data-today-pill>Hoje</span></div>
+                        <ul class="todo-checklist">
+                            <li><label><input type="checkbox"> <span>Ligar para Ana (Pedido)</span></label></li>
+                            <li><label><input type="checkbox"> <span>Confirmar entrega da caixa VIP</span></label></li>
+                            <li><label><input type="checkbox"> <span>Conferir estoque perfumes</span></label></li>
+                            <li><label><input type="checkbox"> <span>Enviar follow-up para Juliana</span></label></li>
+                            <li><label><input type="checkbox"> <span>Atualizar meta da semana</span></label></li>
+                            <li><label><input type="checkbox"> <span>Revisar pedidos pendentes</span></label></li>
+                        </ul>
+                        <div class="todo-actions">
+                            <button class="todo-add-button" type="button">
+                                <span class="todo-add-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm40,112H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32a8,8,0,0,1,0,16Z"></path></svg>
+                                </span>
+                                <span>Adicionar Tarefas</span>
+                            </button>
+                            <a class="todo-more-link" href="./6coisas.html">
+                                <span class="todo-more-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l.642 .005l.616 .017l.299 .013l.579 .034l.553 .046c4.687 .455 6.65 2.333 7.166 6.906l.03 .29l.046 .553l.041 .727l.006 .15l.017 .617l.005 .642l-.005 .642l-.017 .616l-.013 .299l-.034 .579l-.046 .553c-.455 4.687 -2.333 6.65 -6.906 7.166l-.29 .03l-.553 .046l-.727 .041l-.15 .006l-.617 .017l-.642 .005l-.642 -.005l-.616 -.017l-.299 -.013l-.579 -.034l-.553 -.046c-4.687 -.455 -6.65 -2.333 -7.166 -6.906l-.03 -.29l-.046 -.553l-.041 -.727l-.006 -.15l-.017 -.617l-.004 -.318v-.648l.004 -.318l.017 -.616l.013 -.299l.034 -.579l.046 -.553c.455 -4.687 2.333 -6.65 6.906 -7.166l.29 -.03l.553 -.046l.727 -.041l.15 -.006l.617 -.017c.21 -.003 .424 -.005 .642 -.005zm0 9h-1l-.117 .007a1 1 0 0 0 0 1.986l.117 .007v3l.007 .117a1 1 0 0 0 .876 .876l.117 .007h1l.117 -.007a1 1 0 0 0 .876 -.876l.007 -.117l-.007 -.117a1 1 0 0 0 -.764 -.857l-.112 -.02l-.117 -.006v-3l-.007 -.117a1 1 0 0 0 -.876 -.876l-.117 -.007zm.01 -3l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z" /></svg>
+                                </span>
+                                <span>Saiba mais</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="alerts-section">
+                <div class="section-title">
+                    <span class="section-icon section-icon--alert">
+                        <svg viewBox="0 0 256 256"><path d="M224,71.1a8,8,0,0,1-10.78-3.42,94.13,94.13,0,0,0-33.46-36.91,8,8,0,1,1,8.54-13.54,111.46,111.46,0,0,1,39.12,43.09A8,8,0,0,1,224,71.1ZM35.71,72a8,8,0,0,0,7.1-4.32A94.13,94.13,0,0,1,76.27,30.77a8,8,0,1,0-8.54-13.54A111.46,111.46,0,0,0,28.61,60.32,8,8,0,0,0,35.71,72Zm186.1,103.94A16,16,0,0,1,208,200H167.2a40,40,0,0,1-78.4,0H48a16,16,0,0,1-13.79-24.06C43.22,160.39,48,138.28,48,112a80,80,0,0,1,160,0C208,138.27,212.78,160.38,221.81,175.94ZM150.62,200H105.38a24,24,0,0,0,45.24,0Z"></path></svg>
+                    </span>
+                    <h2>Alertas</h2>
+                </div>
+
+                <div class="alerts-board">
+                    <article class="alert-card">
+                        <div class="alert-head"><h3>Contatos</h3><span class="pill pill--neutral">4 pendências</span></div>
+                        <div class="contact-list" aria-label="Lista de contatos">
+                            <div class="person-row">
+                                <div class="person-profile">
+                                    <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Ana Souza">
+                                    <div><strong>Ana Souza</strong><span>Pedido em aberto</span></div>
+                                </div>
+                                <button class="mini-action" type="button">Mensagem</button>
+                            </div>
+                            <div class="person-row">
+                                <div class="person-profile">
+                                    <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Marina Oliveira">
+                                    <div><strong>Marina Oliveira</strong><span>Retorno 2 semanas</span></div>
+                                </div>
+                                <button class="mini-action" type="button">Mensagem</button>
+                            </div>
+                            <div class="person-row">
+                                <div class="person-profile">
+                                    <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Julia Santos">
+                                    <div><strong>Julia Santos</strong><span>Retorno 2 dias</span></div>
+                                </div>
+                                <button class="mini-action" type="button">Mensagem</button>
+                            </div>
+                        </div>
+                        <a class="widget-link" href="./pendencias.html">Ver todas pendências</a>
+                    </article>
+                    <article class="alert-card">
+                        <div class="alert-head"><h3>Aniversários</h3><span class="pill pill--warning">hoje</span></div>
+                        <div class="contact-list birthday-list">
+                            <div class="person-row">
+                                <div class="person-profile">
+                                    <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Ana Paula Santos">
+                                    <div><strong>Ana Paula Santos</strong><span>38 anos</span></div>
+                                </div>
+                                <button class="mini-action" type="button">Mandar parabéns</button>
+                            </div>
+                            <div class="person-row">
+                                <div class="person-profile">
+                                    <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Camila Lima">
+                                    <div><strong>Camila Lima</strong><span>21 anos</span></div>
+                                </div>
+                                <button class="mini-action" type="button">Mandar parabéns</button>
+                            </div>
+                            <div class="person-row">
+                                <div class="person-profile">
+                                    <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Renata Freitas">
+                                    <div><strong>Renata Freitas</strong><span>25 anos</span></div>
+                                </div>
+                                <button class="mini-action" type="button">Mandar parabéns</button>
+                            </div>
+                        </div>
+                        <a class="widget-link" href="./aniversariantes.html">Ver todos aniversariantes</a>
+                    </article>
+                    <article class="alert-card">
+                        <div class="alert-head"><h3>Estoque</h3><span class="pill pill--danger">crítico</span></div>
+                        <div class="stock-list">
+                            <div class="stock-item"><div class="stock-copy"><p>Batom Matte Rosa</p><strong>2 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="28"></span></div></div>
+                            <div class="stock-item"><div class="stock-copy"><p>Sérum Facial Glow</p><strong>3 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="35"></span></div></div>
+                            <div class="stock-item"><div class="stock-copy"><p>Perfume Velvet Night</p><strong>1 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="18"></span></div></div>
+                            <div class="stock-item"><div class="stock-copy"><p>Base Soft Matte</p><strong>4 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="42"></span></div></div>
+                            <div class="stock-item"><div class="stock-copy"><p>Máscara Volume Max</p><strong>2 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="25"></span></div></div>
+                        </div>
+                        <a class="widget-link" href="./produtos.html">Ver todos os produtos</a>
+                    </article>
+                </div>
+            </section>
+
+            <footer class="page-footer">
+                <p>&copy; <span data-current-year>YEAR</span> PinkBox Sistema de Gestão de Vendas.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../src/js/main.js"></script>
+</body>
+</html>
