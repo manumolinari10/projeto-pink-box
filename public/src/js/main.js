@@ -203,6 +203,30 @@ function animateStockBars() {
         }, 180 + (index * 90));
     });
 }
+
+function animateProfileRings() {
+    document.querySelectorAll("[data-profile-progress]").forEach((ring, index) => {
+        const progressCircle = ring.querySelector(".clients-profile-ring-progress");
+        const target = Number(ring.dataset.profileProgress || 0);
+
+        if (!progressCircle) {
+            return;
+        }
+
+        const radius = 40;
+        const circumference = 2 * Math.PI * radius;
+        const clampedTarget = Math.max(0, Math.min(100, target));
+        const offset = circumference - ((clampedTarget / 100) * circumference);
+
+        progressCircle.style.strokeDasharray = `${circumference}`;
+        progressCircle.style.strokeDashoffset = `${circumference}`;
+
+        setTimeout(() => {
+            progressCircle.style.strokeDashoffset = `${offset}`;
+        }, 140 + (index * 120));
+    });
+}
+
 function setupSidebarToggle() {
     const toggle = document.querySelector(".menu-toggle");
 
@@ -228,12 +252,12 @@ window.addEventListener("load", () => {
     animateProgressBar();
     animatePerformanceBars();
     animateStockBars();
+    animateProfileRings();
 
     document.querySelectorAll("[data-target]").forEach((element) => {
         animateValue(element);
     });
 });
-
 
 
 

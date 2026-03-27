@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PinkBox | Clientes</title>
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <link rel="stylesheet" href="../src/css/global.css">
+</head>
+<body class="clients-page">
+    <div class="dashboard-shell">
+        <aside class="sidebar" aria-label="Menu lateral">
+            <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
+                <img class="brand-logo brand-logo-horizontal" src="../src/assets/logo_horizontal.webp" alt="PinkBox Executive Portal">
+                <img class="brand-logo brand-logo-simple" src="../src/assets/logo_simple.webp" alt="PinkBox">
+            </a>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="./index.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" /></svg>
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-link is-active" href="./clientes.html" aria-current="page">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"></path></svg>
+                    </span>
+                    <span>Clientes</span>
+                </a>
+                <a class="nav-link" href="./produtos.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M184,96.8V88a32,32,0,0,0-32-32H136V32h32a8,8,0,0,1,8,8,8,8,0,0,0,16,0,24,24,0,0,0-24-24H104a8,8,0,0,0,0,16h16V56H104A32,32,0,0,0,72,88v8.8A40.07,40.07,0,0,0,40,136v80a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136A40.07,40.07,0,0,0,184,96.8ZM104,72h48a16,16,0,0,1,16,16v8H88V88A16,16,0,0,1,104,72Z"></path></svg>
+                    </span>
+                    <span>Produtos</span>
+                </a>
+                <a class="nav-link" href="./vendas.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
+                    </span>
+                    <span>Vendas</span>
+                </a>
+                <a class="nav-link" href="./financeiro.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm0 8a1 1 0 0 0 -1 1v.05a2.5 2.5 0 0 0 .5 4.95h1a.5 .5 0 1 1 0 1h-2.5a1 1 0 0 0 0 2h1a1 1 0 0 0 2 0v-.05a2.5 2.5 0 0 0 -.5 -4.95h-1a.5 .5 0 1 1 0 -1h2.5a1 1 0 0 0 0 -2h-1a1 1 0 0 0 -1 -1" /><path d="M19 7h-4l-.001 -4.001z" /></svg>
+                    </span>
+                    <span>Financeiro</span>
+                </a>
+                <a class="nav-link" href="./insights.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" /><path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M4.893 4.893a1 1 0 0 1 1.32 -.083l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 0 -1.414z" /><path d="M17.693 4.893a1 1 0 0 1 1.497 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7z" /><path d="M14 18a1 1 0 0 1 1 1a3 3 0 0 1 -6 0a1 1 0 0 1 .883 -.993l.117 -.007h4z" /><path d="M12 6a6 6 0 0 1 3.6 10.8a1 1 0 0 1 -.471 .192l-.129 .008h-6a1 1 0 0 1 -.6 -.2a6 6 0 0 1 3.6 -10.8z" /></svg>
+                    </span>
+                    <span>Insights</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-links">
+                    <a class="nav-link nav-link--subtle" href="./configuracoes.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg>
+                        </span>
+                        <span>Configurações</span>
+                    </a>
+                    <a class="nav-link nav-link--subtle" href="./login.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-12a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h12zm-3 2h-9a1 1 0 0 0 -.993 .883l-.007 .117v12a1 1 0 0 0 .883 .993l.117 .007h9v-14zm-5.387 4.21l.094 .083l2 2a1 1 0 0 1 .083 1.32l-.083 .094l-2 2a1 1 0 0 1 -1.497 -1.32l.083 -.094l1.292 -1.293l-1.292 -1.293a1 1 0 0 1 -.083 -1.32l.083 -.094a1 1 0 0 1 1.32 -.083z" /></svg>
+                        </span>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-panel clients-main-panel">
+            <header class="topbar clients-topbar">
+                <div class="clients-topbar-left">
+                    <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="notification-wrapper">
+                    <button class="icon-button" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" data-notification-toggle>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22m6-6V11a6 6 0 1 0-12 0v5L4 18v1h16v-1z"></path></svg>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <div class="notification-menu" hidden data-notification-menu>
+                        <button type="button">Novo pedido de Ana Souza</button>
+                        <button type="button">Meta semanal atualizada</button>
+                        <button type="button">Estoque crítico em 2 produtos</button>
+                        <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
+                    </div>
+                    </div>
+
+                    <a class="profile-card" href="./perfil.html">
+                        <div class="profile-copy">
+                            <strong>Beatriz Souza</strong>
+                            <span>CONSULTORA DIAMANTE</span>
+                        </div>
+                        <img class="profile-avatar avatar-image" src="../src/assets/users/default.webp" alt="Foto de perfil de Beatriz Souza">
+                    </a>
+                </div>
+            </header>
+
+            <section class="client-detail-layout">
+                <div class="client-detail-main">
+                    <article class="client-hero-card elevated">
+                        <div class="client-hero-content">
+                            <span class="client-day-pill">EM DIA</span>
+
+                            <div class="client-hero-copy">
+                                <h1>Henrique Almeida</h1>
+                                <p>ID: 4446 <span aria-hidden="true">•</span> Cliente desde Março 2021</p>
+                            </div>
+
+                            <div class="client-hero-actions">
+                                <a class="clients-primary-button" href="./mensagens.html">
+                                    <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M230.47,187.07,182.58,42.42a15.9,15.9,0,0,0-15.17-10.91h-.12a15.89,15.89,0,0,0-15.06,11.14L104.32,188a15.9,15.9,0,0,0,22,19.11l35.4-21.25L197,207.05a15.74,15.74,0,0,0,8.18,2.29,15.91,15.91,0,0,0,15.3-22.27ZM163,168.52a8,8,0,0,0-8.24,0l-39.11,23.47L163.32,48l47.75,144.2Z"></path></svg>
+                                    <span>Enviar Mensagem</span>
+                                </a>
+                                <a class="client-secondary-button" href="./editar-cliente.html">Editar Cliente</a>
+                            </div>
+                        </div>
+
+                        <div class="client-hero-side">
+                            <div class="clients-profile-ring client-hero-ring" data-profile-progress="85" aria-hidden="true">
+                                <svg class="clients-profile-ring-svg" viewBox="0 0 100 100">
+                                    <circle class="clients-profile-ring-track" cx="50" cy="50" r="40"></circle>
+                                    <circle class="clients-profile-ring-progress" cx="50" cy="50" r="40"></circle>
+                                </svg>
+                                <div class="clients-profile-ring-inner"><strong data-target="85" data-suffix="%">85%</strong></div>
+                            </div>
+                            <div class="client-score-copy">
+                                <span>Score Financeiro</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <section class="client-stats-grid">
+                        <article class="client-stat-card elevated">
+                            <p>Vendas Totais</p>
+                            <strong class="client-money-stat">
+                                <span class="currency">R$</span>
+                                <span class="sales-value" data-target="12450">12.450,00</span>
+                            </strong>
+                        </article>
+                        <article class="client-stat-card elevated">
+                            <p>Pedidos</p>
+                            <strong data-target="42">42</strong>
+                        </article>
+                        <article class="client-stat-card elevated">
+                            <p>Ranking</p>
+                            <strong>#4</strong>
+                        </article>
+                        <article class="client-stat-card elevated">
+                            <p>Última Compra</p>
+                            <strong>12/10/2023</strong>
+                        </article>
+                    </section>
+
+                    <article class="client-profile-card elevated">
+                        <div class="client-profile-card-header">
+                            <span class="client-profile-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 256 256"><path d="M224,48H176V40a24,24,0,0,0-48,0v8H80V40a24,24,0,0,0-48,0v8H24A16,16,0,0,0,8,64V216a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48ZM144,40a8,8,0,0,1,16,0v8H144ZM48,40a8,8,0,0,1,16,0v8H48ZM224,216H24V64H32v8a8,8,0,0,0,16,0V64h96v8a8,8,0,0,0,16,0V64h48V216ZM96,116a12,12,0,1,1,12,12A12,12,0,0,1,96,116Zm60,0a12,12,0,1,1,12,12A12,12,0,0,1,156,116ZM96,164a12,12,0,1,1,12,12A12,12,0,0,1,96,164Zm60,0a12,12,0,1,1,12,12A12,12,0,0,1,156,164Z"></path></svg>
+                            </span>
+                            <h2>Dados Cadastrais</h2>
+                        </div>
+
+                        <div class="client-profile-grid">
+                            <div class="client-profile-row">
+                                <span>CPF</span>
+                                <strong>123.456.789-00</strong>
+                            </div>
+                            <div class="client-profile-row">
+                                <span>Nascimento</span>
+                                <strong>15/05/1992</strong>
+                            </div>
+                            <div class="client-profile-row">
+                                <span>Idade</span>
+                                <strong>31 anos</strong>
+                            </div>
+                            <div class="client-profile-row">
+                                <span>Sexo</span>
+                                <strong>Masculino</strong>
+                            </div>
+                            <div class="client-profile-row">
+                                <span>Estado Civil</span>
+                                <strong>Casado</strong>
+                            </div>
+                            <div class="client-profile-row">
+                                <span>Filhos</span>
+                                <strong>Sim</strong>
+                            </div>
+                            <div class="client-profile-row">
+                                <span>Origem</span>
+                                <strong class="client-profile-highlight">Redes Sociais</strong>
+                            </div>
+                            <div class="client-profile-row">
+                                <span>Data de Cadastro</span>
+                                <strong>08/03/2021</strong>
+                            </div>
+                        </div>
+                    </article>
+
+                    <section class="client-extra-sections">
+                        <button type="button" class="client-toggle-card elevated">
+                            <span class="client-toggle-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 256 256"><path d="M216,40H72A16,16,0,0,0,56,56V88H40A16,16,0,0,0,24,104V216a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM184,216H40V104H184V216Zm32-48H200V104a16,16,0,0,0-16-16H72V56H216V168Zm-60-68a12,12,0,1,1-12,12A12,12,0,0,1,156,100Z"></path></svg>
+                            </span>
+                            <span class="client-toggle-card-label">Contatos</span>
+                            <span class="client-toggle-card-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M6 9l6 6l6-6"></path></svg>
+                            </span>
+                        </button>
+
+                        <button type="button" class="client-toggle-card elevated">
+                            <span class="client-toggle-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112A88.1,88.1,0,0,0,40,104c0,87.38,78.71,135.4,82.06,137.4a8,8,0,0,0,11.88,0C137.29,239.4,216,191.38,216,104A88.1,88.1,0,0,0,128,16Z"></path></svg>
+                            </span>
+                            <span class="client-toggle-card-label">Endereço</span>
+                            <span class="client-toggle-card-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M6 9l6 6l6-6"></path></svg>
+                            </span>
+                        </button>
+
+                        <button type="button" class="client-toggle-card elevated">
+                            <span class="client-toggle-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,32a24,24,0,1,1-24,24A24,24,0,0,1,128,56Zm0,152a79.65,79.65,0,0,1-55.86-22.82,64.08,64.08,0,0,1,111.72,0A79.65,79.65,0,0,1,128,208Z"></path></svg>
+                            </span>
+                            <span class="client-toggle-card-label">Perfil de Beleza</span>
+                            <span class="client-toggle-card-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M6 9l6 6l6-6"></path></svg>
+                            </span>
+                        </button>
+
+                        <article class="client-journey-card elevated">
+                            <button type="button" class="client-toggle-card client-toggle-card--open">
+                                <span class="client-toggle-card-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm48,112a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V144H88a8,8,0,0,1,0-16h32V96a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,136Z"></path></svg>
+                                </span>
+                                <span class="client-toggle-card-label">Jornada do Cliente</span>
+                                <span class="client-toggle-card-arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M6 15l6-6l6 6"></path></svg>
+                                </span>
+                            </button>
+
+                            <div class="client-journey-content">
+                                <div class="client-journey-header">
+                                    <div>
+                                        <h2>Jornada do Cliente</h2>
+                                        <p>Histórico visual de interações e compras</p>
+                                    </div>
+
+                                    <div class="client-journey-filters">
+                                        <button type="button" class="client-journey-filter is-active">Todos Eventos</button>
+                                        <button type="button" class="client-journey-filter">Somente Compras</button>
+                                    </div>
+                                </div>
+
+                                <div class="client-journey-timeline">
+                                    <article class="client-journey-event">
+                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true">
+                                            <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
+                                        </span>
+                                        <div class="client-journey-card-item">
+                                            <div class="client-journey-card-head">
+                                                <div>
+                                                    <h3>Compra Concluída</h3>
+                                                    <p>Pedido #9842 • 12 de Out, 2023</p>
+                                                </div>
+                                                <strong>R$ 489,00</strong>
+                                            </div>
+
+                                            <a href="./pedido.html" class="client-journey-product">
+                                                <span class="client-history-product-thumb client-history-product-thumb--one"></span>
+                                                <span>Perfume Rose Exclusive 50ml</span>
+                                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6l-6 6"></path></svg>
+                                            </a>
+                                        </div>
+                                    </article>
+
+                                    <article class="client-journey-event">
+                                        <span class="client-journey-marker client-journey-marker--blue" aria-hidden="true">
+                                            <svg viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H84.69L128,248l43.31-32H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Z"></path></svg>
+                                        </span>
+                                        <div class="client-journey-card-item">
+                                            <div class="client-journey-card-head client-journey-card-head--inline">
+                                                <div>
+                                                    <h3>Atendimento via WhatsApp</h3>
+                                                    <p>Dúvida sobre base matte • 05 de Out, 2023</p>
+                                                </div>
+                                                <a href="./conversa.html">Ver conversa</a>
+                                            </div>
+
+                                            <blockquote class="client-journey-quote">“Gostaria de saber se a base Bege Médio 2 oxida muito após a aplicação?”</blockquote>
+                                        </div>
+                                    </article>
+
+                                    <article class="client-journey-event">
+                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true">
+                                            <svg viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                                        </span>
+                                        <div class="client-journey-card-item">
+                                            <div class="client-journey-card-head">
+                                                <div>
+                                                    <h3>Avaliação 5 Estrelas</h3>
+                                                    <p>Batom Velvet Red • 18 de Set, 2023</p>
+                                                </div>
+                                                <strong class="client-journey-stars">★★★★★</strong>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+
+                                <a class="client-journey-link" href="./historico.html">Ver Histórico Completo (42 interações)</a>
+                            </div>
+                        </article>
+
+                        <article class="client-wishlist-card elevated">
+                            <div class="client-wishlist-header">
+                                <h2>Wishlist</h2>
+                                <a href="./wishlist.html">Ver Tudo</a>
+                            </div>
+
+                            <div class="client-wishlist-grid">
+                                <div class="client-wishlist-item"></div>
+                                <div class="client-wishlist-item"></div>
+                                <div class="client-wishlist-item"></div>
+                                <div class="client-wishlist-item"></div>
+                                <button type="button" class="client-wishlist-add" aria-label="Adicionar item na wishlist">
+                                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="client-purchase-history elevated">
+                            <div class="client-purchase-history-header">
+                                <div class="client-purchase-history-copy">
+                                    <h2>Histórico de Compras Inteligente</h2>
+                                    <p>Analise o comportamento de compra detalhado</p>
+                                </div>
+
+                                <div class="client-purchase-history-tools">
+                                    <label class="client-purchase-search">
+                                        <span aria-hidden="true">
+                                            <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                                        </span>
+                                        <input type="search" placeholder="Filtrar por produto...">
+                                    </label>
+
+                                    <button type="button" class="client-history-period">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm3 5h10v2H7zm3 5h4v2h-4z"></path></svg>
+                                        <span>Período</span>
+                                    </button>
+
+                                    <button type="button" class="client-history-export">
+                                        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34Zm-56,83.32-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35a8,8,0,0,1,11.32,11.32ZM152,88V44l44,44Z"></path></svg>
+                                        <span>Exportar</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="client-purchase-history-table-wrap">
+                                <table class="client-purchase-history-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Produto</th>
+                                            <th>Categoria</th>
+                                            <th>Data</th>
+                                            <th>Valor Bruto</th>
+                                            <th>Status</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="client-history-product">
+                                                    <span class="client-history-product-thumb client-history-product-thumb--one"></span>
+                                                    <strong>Perfume Rose Exclusive 50ml</strong>
+                                                </div>
+                                            </td>
+                                            <td>Perfumaria</td>
+                                            <td>12/10/2023</td>
+                                            <td>R$ 489,00</td>
+                                            <td><span class="clients-status clients-status--active">Concluído</span></td>
+                                            <td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="client-history-product">
+                                                    <span class="client-history-product-thumb client-history-product-thumb--two"></span>
+                                                    <strong>Base Matte Alta Cobertura</strong>
+                                                </div>
+                                            </td>
+                                            <td>Maquiagem</td>
+                                            <td>28/09/2023</td>
+                                            <td>R$ 159,90</td>
+                                            <td><span class="clients-status clients-status--active">Concluído</span></td>
+                                            <td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="client-history-product">
+                                                    <span class="client-history-product-thumb client-history-product-thumb--three"></span>
+                                                    <strong>Batom Velvet Red</strong>
+                                                </div>
+                                            </td>
+                                            <td>Maquiagem</td>
+                                            <td>15/08/2023</td>
+                                            <td>R$ 89,00</td>
+                                            <td><span class="clients-status clients-status--cancelled">Cancelado</span></td>
+                                            <td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <a class="client-purchase-history-link" href="./compras.html">Carregar mais registros (42 totais)</a>
+                        </article>
+                    </section>
+                </div>
+
+                <aside class="client-insights-card elevated">
+                    <div class="client-insights-header">
+                        <span class="client-insights-icon" aria-hidden="true">
+                            <svg viewBox="0 0 256 256"><path d="M229.66,109.66l-83.32-83.32a16,16,0,0,0-22.63,0L26.34,123.71a16,16,0,0,0,0,22.63l83.32,83.32a16,16,0,0,0,22.63,0l97.37-97.37A16,16,0,0,0,229.66,109.66ZM84,88a20,20,0,1,1,20,20A20,20,0,0,1,84,88Zm87.31,84.69a8,8,0,0,1-11.32,0L128,140.69l-31.31,31.32a8,8,0,0,1-11.32-11.32L116.69,129,85.37,97.69A8,8,0,0,1,96.69,86.37L128,117.69l31.31-31.32a8,8,0,0,1,11.32,11.32L139.31,129l31.32,31.31A8,8,0,0,1,171.31,172.69Z"></path></svg>
+                        </span>
+                        <h2>Quick Insights</h2>
+                    </div>
+
+                    <form class="client-insights-form">
+                        <textarea rows="5" placeholder="Anote algo importante sobre o Henrique..."></textarea>
+
+                        <div class="client-insights-tags">
+                            <button type="button" class="client-insight-tag client-insight-tag--behavior">#Comportamento</button>
+                            <button type="button" class="client-insight-tag client-insight-tag--product">#Produto</button>
+                            <button type="button" class="client-insight-tag client-insight-tag--critical">#Crítico</button>
+                        </div>
+
+                        <button type="button" class="clients-primary-button client-insights-save">Salvar Insight</button>
+                    </form>
+
+                    <div class="client-insights-list">
+                        <article class="client-insight-item">
+                            <span class="client-insight-badge client-insight-badge--blue">Comportamento</span>
+                            <p>Prefere ser contatado apenas via WhatsApp durante a tarde. Não gosta de ligações.</p>
+                            <small>HOJE, 27 MAR 2026</small>
+                        </article>
+                        <article class="client-insight-item">
+                            <span class="client-insight-badge client-insight-badge--purple">Produto</span>
+                            <p>Interesse em lançamentos de perfumaria masculina cítrica. Mencionou querer algo refrescante para o verão.</p>
+                            <small>ONTEM, 26 MAR 2026</small>
+                        </article>
+                        <article class="client-insight-item">
+                            <span class="client-insight-badge client-insight-badge--red">Preferência</span>
+                            <p>Cliente muito educado, valoriza embalagem premium e mimos personalizados.</p>
+                            <small>QUA, 22 MAR 2026</small>
+                        </article>
+                    </div>
+
+                    <a class="client-insights-link" href="./insights.html">Ver todos os insights arquivados</a>
+                </aside>
+            </section>
+
+
+            <footer class="page-footer">
+                <p>&copy; <span data-current-year>YEAR</span> PinkBox Sistema de Gestão de Vendas.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../src/js/main.js"></script>
+</body>
+</html>
