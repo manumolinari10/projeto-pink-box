@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PinkBox | Clientes</title>
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <link rel="stylesheet" href="../src/css/global.css">
+</head>
+<body class="clients-page">
+    <div class="dashboard-shell">
+        <aside class="sidebar" aria-label="Menu lateral">
+            <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
+                <img class="brand-logo brand-logo-horizontal" src="../src/assets/logo_horizontal.webp" alt="PinkBox Executive Portal">
+                <img class="brand-logo brand-logo-simple" src="../src/assets/logo_simple.webp" alt="PinkBox">
+            </a>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="./index.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" /></svg>
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-link is-active" href="./clientes.html" aria-current="page">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"></path></svg>
+                    </span>
+                    <span>Clientes</span>
+                </a>
+                <a class="nav-link" href="./produtos.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M184,96.8V88a32,32,0,0,0-32-32H136V32h32a8,8,0,0,1,8,8,8,8,0,0,0,16,0,24,24,0,0,0-24-24H104a8,8,0,0,0,0,16h16V56H104A32,32,0,0,0,72,88v8.8A40.07,40.07,0,0,0,40,136v80a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136A40.07,40.07,0,0,0,184,96.8ZM104,72h48a16,16,0,0,1,16,16v8H88V88A16,16,0,0,1,104,72Z"></path></svg>
+                    </span>
+                    <span>Produtos</span>
+                </a>
+                <a class="nav-link" href="./vendas.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
+                    </span>
+                    <span>Vendas</span>
+                </a>
+                <a class="nav-link" href="./financeiro.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm0 8a1 1 0 0 0 -1 1v.05a2.5 2.5 0 0 0 .5 4.95h1a.5 .5 0 1 1 0 1h-2.5a1 1 0 0 0 0 2h1a1 1 0 0 0 2 0v-.05a2.5 2.5 0 0 0 -.5 -4.95h-1a.5 .5 0 1 1 0 -1h2.5a1 1 0 0 0 0 -2h-1a1 1 0 0 0 -1 -1" /><path d="M19 7h-4l-.001 -4.001z" /></svg>
+                    </span>
+                    <span>Financeiro</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-links">
+                    <a class="nav-link nav-link--subtle" href="./configuracoes.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg>
+                        </span>
+                        <span>Configurações</span>
+                    </a>
+                    <a class="nav-link nav-link--subtle" href="./login.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-12a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h12zm-3 2h-9a1 1 0 0 0 -.993 .883l-.007 .117v12a1 1 0 0 0 .883 .993l.117 .007h9v-14zm-5.387 4.21l.094 .083l2 2a1 1 0 0 1 .083 1.32l-.083 .094l-2 2a1 1 0 0 1 -1.497 -1.32l.083 -.094l1.292 -1.293l-1.292 -1.293a1 1 0 0 1 -.083 -1.32l.083 -.094a1 1 0 0 1 1.32 -.083z" /></svg>
+                        </span>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-panel clients-main-panel">
+            <header class="topbar clients-topbar">
+                <div class="clients-topbar-left">
+                    <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div class="clients-search">
+                        <span class="clients-search-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M10 3a7 7 0 1 1 0 14a7 7 0 0 1 0 -14m9.707 15.293l-3.4 -3.4A9 9 0 1 0 19 10a8.96 8.96 0 0 0 -1.107 4.307l3.4 3.4a1 1 0 0 0 1.414 -1.414"></path></svg>
+                        </span>
+                        <input type="search" placeholder="Buscar clientes por nome, CPF ou email...">
+                    </div>
+
+                    <button class="clients-filter-button" type="button" aria-label="Filtrar clientes">
+                        <svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm3 5h10v2H7zm3 5h4v2h-4z"></path></svg>
+                    </button>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="notification-wrapper">
+                        <button class="icon-button" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" data-notification-toggle>
+                            <svg viewBox="0 0 24 24"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22m6-6V11a6 6 0 1 0-12 0v5L4 18v1h16v-1z"></path></svg>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <div class="notification-menu" hidden data-notification-menu>
+                            <button type="button">Novo cadastro aguardando aprovação</button>
+                            <button type="button">2 clientes inativos há 30 dias</button>
+                            <button type="button">Mensagem da equipe comercial</button>
+                            <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
+                        </div>
+                    </div>
+
+                    <a class="profile-card" href="./perfil.html">
+                        <div class="profile-copy">
+                            <strong>Admin PinkBox</strong>
+                            <span>Gerente Geral</span>
+                        </div>
+                        <img class="profile-avatar avatar-image" src="../src/assets/users/default.webp" alt="Foto de perfil de Admin PinkBox">
+                    </a>
+                </div>
+            </header>
+
+            <section class="clients-hero">
+                <div class="clients-hero-copy">
+                    <h1>Gestão de Clientes</h1>
+                    <p>Monitore e gerencie sua base de consumidoras Elysian.</p>
+                </div>
+            </section>
+
+            <section class="clients-cta-card elevated">
+                <div>
+                    <h2>Novo Cadastro</h2>
+                    <p>Adicione rapidamente uma nova cliente ao sistema PinkBox para iniciar o acompanhamento personalizado, histórico de compras e preferências exclusivas.</p>
+                </div>
+                <button class="clients-primary-button" type="button">
+                    <svg viewBox="0 0 256 256"><path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path></svg>
+                    <span>Cadastrar Nova Cliente</span>
+                </button>
+            </section>
+
+            <section class="clients-stats-grid">
+                <article class="clients-stat-card elevated">
+                    <div class="clients-stat-top">
+                        <span class="clients-stat-icon">
+                            <svg viewBox="0 0 256 256"><path d="M144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Zm-16-77.68a52,52,0,1,1-52,52A52.06,52.06,0,0,1,128,80Z"></path></svg>
+                        </span>
+                        <span class="clients-stat-pill clients-stat-pill--positive">+12%</span>
+                    </div>
+                    <p>Total de Clientes</p>
+                    <strong data-target="1240">1.240</strong>
+                </article>
+
+                <article class="clients-stat-card elevated">
+                    <div class="clients-stat-top">
+                        <span class="clients-stat-icon clients-stat-icon--neutral">
+                            <svg viewBox="0 0 256 256"><path d="M117.25,157.92a60,60,0,1,1,21.5,0A95.83,95.83,0,0,1,186,195.63,8,8,0,0,1,179.3,208H76.7A8,8,0,0,1,70,195.63,95.83,95.83,0,0,1,117.25,157.92ZM128,144a44,44,0,1,0-44-44A44.05,44.05,0,0,0,128,144Z"></path></svg>
+                        </span>
+                        <span class="clients-stat-pill">Base estável</span>
+                    </div>
+                    <p>Clientes Ativas</p>
+                    <strong data-target="850">850</strong>
+                </article>
+
+                <article class="clients-stat-card clients-stat-card--profile elevated">
+                    <div class="clients-profile-ring">
+                        <div class="clients-profile-ring-inner"><strong data-target="78" data-suffix="%">78%</strong></div>
+                    </div>
+                    <div class="clients-profile-copy">
+                        <h3>Completude de Perfil</h3>
+                        <p>390 perfis requerem atualização manual.</p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="clients-table-card elevated">
+                <div class="clients-table-header">
+                    <h2>Base de Clientes</h2>
+                    <div class="clients-table-actions">
+                        <button type="button">Exportar CSV</button>
+                        <a href="#">Ver Inativas</a>
+                    </div>
+                </div>
+
+                <div class="clients-table-wrap">
+                    <table class="clients-table">
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Status</th>
+                                <th>Última Compra</th>
+                                <th>Gasto Total</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="clients-table-person">
+                                        <img src="../src/assets/customers/default.webp" alt="Foto de Mariana Silva" class="clients-table-avatar avatar-image">
+                                        <div>
+                                            <strong>Mariana Silva</strong>
+                                            <span>mariana.silva@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="clients-status clients-status--active">Ativa</span></td>
+                                <td>12 Out, 2023</td>
+                                <td>R$ 2.450,00</td>
+                                <td><a href="#" class="clients-table-link">Editar</a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="clients-table-person">
+                                        <img src="../src/assets/customers/default.webp" alt="Foto de Beatriz Oliveira" class="clients-table-avatar avatar-image">
+                                        <div>
+                                            <strong>Beatriz Oliveira</strong>
+                                            <span>b.oliveira@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="clients-status clients-status--inactive">Inativa</span></td>
+                                <td>05 Set, 2023</td>
+                                <td>R$ 890,00</td>
+                                <td><a href="#" class="clients-table-link">Editar</a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="clients-table-person">
+                                        <img src="../src/assets/customers/default.webp" alt="Foto de Camila Costa" class="clients-table-avatar avatar-image">
+                                        <div>
+                                            <strong>Camila Costa</strong>
+                                            <span>camila.c@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="clients-status clients-status--active">Ativa</span></td>
+                                <td>22 Out, 2023</td>
+                                <td>R$ 12.100,00</td>
+                                <td><a href="#" class="clients-table-link">Editar</a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="clients-table-person">
+                                        <img src="../src/assets/customers/default.webp" alt="Foto de Fernanda Lima" class="clients-table-avatar avatar-image">
+                                        <div>
+                                            <strong>Fernanda Lima</strong>
+                                            <span>fe.lima@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="clients-status clients-status--active">Ativa</span></td>
+                                <td>19 Out, 2023</td>
+                                <td>R$ 4.300,00</td>
+                                <td><a href="#" class="clients-table-link">Editar</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="clients-table-footer">
+                    <p>Mostrando 20 de 1.240 clientes</p>
+                    <div class="clients-pagination">
+                        <button type="button" aria-label="Página anterior">&lsaquo;</button>
+                        <button type="button" class="is-active">1</button>
+                        <button type="button">2</button>
+                        <button type="button">3</button>
+                        <span>...</span>
+                        <button type="button">10</button>
+                        <button type="button" aria-label="Próxima página">&rsaquo;</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="page-footer">
+                <p>PinkBox Premium Experience &copy; <span data-current-year>2026</span></p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../src/js/main.js"></script>
+</body>
+</html>
