@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PinkBox | Clientes</title>
+    <title>PinkBox | Produtos</title>
     <link rel="icon" type="image/png" href="../favicon.ico">
     <link rel="stylesheet" href="../src/css/global.css">
 </head>
-<body class="clients-page">
+<body class="products-page">
     <div class="dashboard-shell">
         <aside class="sidebar" aria-label="Menu lateral">
             <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
@@ -22,13 +22,13 @@
                     </span>
                     <span>Dashboard</span>
                 </a>
-                <a class="nav-link is-active" href="./clientes.html" aria-current="page">
+                <a class="nav-link" href="./clientes.html">
                     <span class="nav-icon">
                         <svg viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"></path></svg>
                     </span>
                     <span>Clientes</span>
                 </a>
-                <a class="nav-link" href="./produtos.html">
+                <a class="nav-link is-active" href="./produtos.html" aria-current="page">
                     <span class="nav-icon">
                         <svg viewBox="0 0 256 256"><path d="M184,96.8V88a32,32,0,0,0-32-32H136V32h32a8,8,0,0,1,8,8,8,8,0,0,0,16,0,24,24,0,0,0-24-24H104a8,8,0,0,0,0,16h16V56H104A32,32,0,0,0,72,88v8.8A40.07,40.07,0,0,0,40,136v80a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136A40.07,40.07,0,0,0,184,96.8ZM104,72h48a16,16,0,0,1,16,16v8H88V88A16,16,0,0,1,104,72Z"></path></svg>
                     </span>
@@ -72,7 +72,7 @@
             </div>
         </aside>
 
-        <main class="main-panel clients-main-panel">
+        <main class="main-panel products-main-panel">
             <header class="topbar clients-topbar">
                 <div class="clients-topbar-left">
                     <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
@@ -84,16 +84,16 @@
 
                 <div class="topbar-right">
                     <div class="notification-wrapper">
-                    <button class="icon-button" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" data-notification-toggle>
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22m6-6V11a6 6 0 1 0-12 0v5L4 18v1h16v-1z"></path></svg>
-                        <span class="notification-dot"></span>
-                    </button>
-                    <div class="notification-menu" hidden data-notification-menu>
-                        <button type="button">Novo pedido de Ana Souza</button>
-                        <button type="button">Meta semanal atualizada</button>
-                        <button type="button">Estoque crítico em 2 produtos</button>
-                        <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
-                    </div>
+                        <button class="icon-button" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" data-notification-toggle>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22m6-6V11a6 6 0 1 0-12 0v5L4 18v1h16v-1z"></path></svg>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <div class="notification-menu" hidden data-notification-menu>
+                            <button type="button">Produto com estoque crítico</button>
+                            <button type="button">Nova entrada no estoque</button>
+                            <button type="button">SKU sem imagem cadastrada</button>
+                            <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
+                        </div>
                     </div>
 
                     <a class="profile-card" href="./perfil.html">
@@ -106,68 +106,53 @@
                 </div>
             </header>
 
-            <section class="clients-hero">
-                <div class="clients-hero-copy">
-                    <h1>Gestão de Clientes</h1>
-                    <p>Monitore e gerencie sua base de clientes.</p>
-                </div>
+            <section class="products-header">
+                <div class="products-breadcrumb">Home / Produtos</div>
+                <h1>Gestão de Produtos</h1>
             </section>
 
-            <section class="clients-cta-card elevated">
-                <div>
-                    <h2>Novo Cadastro</h2>
-                    <p>Adicione rapidamente uma nova cliente para iniciar o acompanhamento personalizado, histórico de compras e preferências exclusivas.</p>
-                </div>
-                <button class="clients-primary-button" type="button">
-                    <svg viewBox="0 0 256 256"><path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path></svg>
-                    <span>Cadastrar Nova Cliente</span>
-                </button>
-            </section>
-
-            <section class="clients-stats-grid">
-                <article class="clients-stat-card elevated">
-                    <div class="clients-stat-top">
-                        <span class="clients-stat-icon">
-                            <svg viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"></path></svg>
+            <section class="products-stats-grid">
+                <article class="products-stat-card elevated">
+                    <div class="products-stat-top">
+                        <span class="products-stat-icon">
+                            <svg viewBox="0 0 256 256"><path d="M200,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32ZM96,72h64a8,8,0,0,1,0,16H96a8,8,0,0,1,0-16Zm64,112H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm16-48H80a8,8,0,0,1,0-16h96a8,8,0,0,1,0,16Z"></path></svg>
                         </span>
-                        <span class="clients-stat-pill clients-stat-pill--positive">+12 este mês</span>
+                        <span class="clients-stat-pill clients-stat-pill--positive">+4% este mês</span>
                     </div>
-                    <p>Total de Clientes</p>
-                    <strong data-target="1240">1.240</strong>
+                    <p>Total de Produtos</p>
+                    <strong data-target="1250">1.250</strong>
+                    <span class="products-stat-note">itens</span>
                 </article>
 
-                <article class="clients-stat-card elevated">
-                    <div class="clients-stat-top">
-                        <span class="clients-stat-icon">
-                            <svg viewBox="0 0 256 256"><path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"></path></svg>
+                <article class="products-stat-card elevated">
+                    <div class="products-stat-top">
+                        <span class="products-stat-icon products-stat-icon--soft">
+                            <svg viewBox="0 0 256 256"><path d="M184,64H72A16,16,0,0,0,56,80v96a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V80A16,16,0,0,0,184,64Zm0,112H72V80H184v96Zm-88-56a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,120Z"></path></svg>
                         </span>
-                        <span class="clients-stat-pill clients-stat-pill--positive">+2 este mês</span>
                     </div>
-                    <p>Clientes Ativas</p>
-                    <strong data-target="850">850</strong>
+                    <p>Valor em Estoque</p>
+                    <strong class="products-stat-money">R$ 145.800,00</strong>
                 </article>
 
-                <article class="clients-stat-card clients-stat-card--profile elevated">
-                    <div class="clients-profile-ring" data-profile-progress="78" aria-hidden="true">
-                        <svg class="clients-profile-ring-svg" viewBox="0 0 100 100">
-                            <circle class="clients-profile-ring-track" cx="50" cy="50" r="40"></circle>
-                            <circle class="clients-profile-ring-progress" cx="50" cy="50" r="40"></circle>
-                        </svg>
-                        <div class="clients-profile-ring-inner"><strong data-target="78" data-suffix="%">78%</strong></div>
+                <article class="products-stat-card elevated">
+                    <div class="products-stat-top">
+                        <span class="products-stat-icon products-stat-icon--danger">
+                            <svg viewBox="0 0 256 256"><path d="M236.8,188.09,149.35,36.07a24,24,0,0,0-42.7,0L19.2,188.09A24,24,0,0,0,40,224H216a24,24,0,0,0,20.8-35.91ZM120,108a8,8,0,0,1,16,0v36a8,8,0,0,1-16,0Zm8,76a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path></svg>
+                        </span>
+                        <span class="products-attention-pill">Atenção</span>
                     </div>
-                    <div class="clients-profile-copy">
-                        <h3>Dados de Cadastros</h3>
-                        <p>39 cadastros incompletos.</p>
-                    </div>
+                    <p>Estoque Baixo</p>
+                    <strong class="products-danger-number" data-target="12">12</strong>
+                    <span class="products-stat-note">críticos</span>
                 </article>
             </section>
 
-            <section class="products-toolbar clients-toolbar elevated">
+            <section class="products-toolbar elevated">
                 <label class="products-toolbar-search">
                     <span aria-hidden="true">
                         <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                     </span>
-                    <input type="search" placeholder="Buscar clientes por nome, CPF ou email...">
+                    <input type="search" placeholder="Buscar por nome ou SKU...">
                 </label>
 
                 <div class="products-toolbar-actions">
@@ -177,94 +162,106 @@
                     </button>
                     <button type="button" class="products-toolbar-button">
                         <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34Zm-56,83.32-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35a8,8,0,0,1,11.32,11.32ZM152,88V44l44,44Z"></path></svg>
-                        <span>Exportar CSV</span>
+                        <span>Exportar</span>
+                    </button>
+                    <button type="button" class="clients-primary-button products-add-button">
+                        <svg viewBox="0 0 256 256"><path d="M136,56v64h64a8,8,0,0,1,0,16H136v64a8,8,0,0,1-16,0V136H56a8,8,0,0,1,0-16h64V56a8,8,0,0,1,16,0Z"></path></svg>
+                        <span>Adicionar Produto</span>
                     </button>
                 </div>
             </section>
 
-            <section class="clients-table-card elevated">
-                <div class="clients-table-header">
-                    <h2>Base de Clientes</h2>
-                </div>
-
-                <div class="clients-table-wrap">
-                    <table class="clients-table">
+            <section class="products-table-card elevated">
+                <div class="products-table-wrap">
+                    <table class="products-table">
                         <thead>
                             <tr>
-                                <th>Cliente</th>
-                                <th>Status</th>
-                                <th>Última Compra</th>
-                                <th>Gasto Total</th>
+                                <th>Miniatura</th>
+                                <th>Nome do Produto</th>
+                                <th>SKU</th>
+                                <th>Qtd</th>
+                                <th>Vlr Unitário</th>
+                                <th>Vlr. Total</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td><a href="./produto.html" class="products-thumb-link"><span class="products-thumb products-thumb--rose"></span></a></td>
                                 <td>
-                                    <a class="clients-table-person" href="./cliente.html">
-                                        <img src="../src/assets/customers/default.webp" alt="Foto de Mariana Silva" class="clients-table-avatar avatar-image">
-                                        <div>
-                                            <strong>Mariana Silva</strong>
-                                            <span>mariana.silva@email.com</span>
-                                        </div>
+                                    <a href="./produto.html" class="products-table-product products-table-product-link">
+                                        <strong>Batom Matte Velvet - Rose Pink</strong>
+                                        <span>Maquiagem &gt; Lábios</span>
                                     </a>
                                 </td>
-                                <td><span class="clients-status clients-status--active">Ativa</span></td>
-                                <td>12 Out, 2023</td>
-                                <td>R$ 2.450,00</td>
-                                <td><a href="#" class="clients-table-link">Editar</a></td>
+                                <td><span class="products-sku">PBX-992381</span></td>
+                                <td>142</td>
+                                <td>R$ 89,90</td>
+                                <td class="products-total">R$ 12.765,80</td>
+                                <td><a href="./produto.html" class="products-action-link" aria-label="Editar produto"><svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg></a></td>
                             </tr>
                             <tr>
+                                <td><a href="./produto.html" class="products-thumb-link"><span class="products-thumb products-thumb--serum"></span></a></td>
                                 <td>
-                                    <a class="clients-table-person" href="./cliente.html">
-                                        <img src="../src/assets/customers/default.webp" alt="Foto de Beatriz Oliveira" class="clients-table-avatar avatar-image">
-                                        <div>
-                                            <strong>Beatriz Oliveira</strong>
-                                            <span>b.oliveira@email.com</span>
-                                        </div>
+                                    <a href="./produto.html" class="products-table-product products-table-product-link">
+                                        <strong>Sérum Facial Glow Booster 30ml</strong>
+                                        <span>Skincare &gt; Rostos</span>
                                     </a>
                                 </td>
-                                <td><span class="clients-status clients-status--inactive">Inativa</span></td>
-                                <td>05 Set, 2023</td>
-                                <td>R$ 890,00</td>
-                                <td><a href="#" class="clients-table-link">Editar</a></td>
+                                <td><span class="products-sku">PBX-442110</span></td>
+                                <td class="products-qty-low">8</td>
+                                <td>R$ 159,00</td>
+                                <td class="products-total">R$ 1.272,00</td>
+                                <td><a href="./produto.html" class="products-action-link" aria-label="Editar produto"><svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg></a></td>
                             </tr>
                             <tr>
+                                <td><a href="./produto.html" class="products-thumb-link"><span class="products-thumb products-thumb--palette"></span></a></td>
                                 <td>
-                                    <a class="clients-table-person" href="./cliente.html">
-                                        <img src="../src/assets/customers/default.webp" alt="Foto de Camila Costa" class="clients-table-avatar avatar-image">
-                                        <div>
-                                            <strong>Camila Costa</strong>
-                                            <span>camila.c@email.com</span>
-                                        </div>
+                                    <a href="./produto.html" class="products-table-product products-table-product-link">
+                                        <strong>Paleta de Sombras 'Midnight Bloom'</strong>
+                                        <span>Maquiagem &gt; Olhos</span>
                                     </a>
                                 </td>
-                                <td><span class="clients-status clients-status--active">Ativa</span></td>
-                                <td>22 Out, 2023</td>
-                                <td>R$ 12.100,00</td>
-                                <td><a href="#" class="clients-table-link">Editar</a></td>
+                                <td><span class="products-sku">PBX-883344</span></td>
+                                <td>45</td>
+                                <td>R$ 124,90</td>
+                                <td class="products-total">R$ 5.620,50</td>
+                                <td><a href="./produto.html" class="products-action-link" aria-label="Editar produto"><svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg></a></td>
                             </tr>
                             <tr>
+                                <td><a href="./produto.html" class="products-thumb-link"><span class="products-thumb products-thumb--perfume"></span></a></td>
                                 <td>
-                                    <a class="clients-table-person" href="./cliente.html">
-                                        <img src="../src/assets/customers/default.webp" alt="Foto de Fernanda Lima" class="clients-table-avatar avatar-image">
-                                        <div>
-                                            <strong>Fernanda Lima</strong>
-                                            <span>fe.lima@email.com</span>
-                                        </div>
+                                    <a href="./produto.html" class="products-table-product products-table-product-link">
+                                        <strong>Eau de Parfum 'Pink Seduction' 50ml</strong>
+                                        <span>Fragrâncias &gt; Feminino</span>
                                     </a>
                                 </td>
-                                <td><span class="clients-status clients-status--active">Ativa</span></td>
-                                <td>19 Out, 2023</td>
-                                <td>R$ 4.300,00</td>
-                                <td><a href="#" class="clients-table-link">Editar</a></td>
+                                <td><span class="products-sku">PBX-112233</span></td>
+                                <td>31</td>
+                                <td>R$ 299,00</td>
+                                <td class="products-total">R$ 9.269,00</td>
+                                <td><a href="./produto.html" class="products-action-link" aria-label="Editar produto"><svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg></a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="./produto.html" class="products-thumb-link"><span class="products-thumb products-thumb--base"></span></a></td>
+                                <td>
+                                    <a href="./produto.html" class="products-table-product products-table-product-link">
+                                        <strong>Base Fluida Matte Skin - Tom 20</strong>
+                                        <span>Maquiagem &gt; Rosto</span>
+                                    </a>
+                                </td>
+                                <td><span class="products-sku">PBX-556677</span></td>
+                                <td>88</td>
+                                <td>R$ 75,00</td>
+                                <td class="products-total">R$ 6.600,00</td>
+                                <td><a href="./produto.html" class="products-action-link" aria-label="Editar produto"><svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg></a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="clients-table-footer">
-                    <p>Mostrando 20 de 1.240 clientes</p>
+                    <p>Mostrando 5 de 1.250 itens</p>
                     <div class="clients-pagination">
                         <button type="button" aria-label="Página anterior">&lsaquo;</button>
                         <button type="button" class="is-active">1</button>
@@ -278,7 +275,7 @@
             </section>
 
             <footer class="page-footer">
-                <p>&copy; <span data-current-year>YEAR</span> PinkBox Sistema de Gestão de Vendas.</p>
+                <p>&copy; <span data-current-year>YEAR</span> PinkBox Sistema de Gestão de Produtos.</p>
             </footer>
         </main>
     </div>
