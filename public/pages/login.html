@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PinkBox | Login</title>
-    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <style>
         :root {
             --pink: #d80a77;
@@ -13,7 +13,7 @@
             --muted: #8a8a8a;
             --line: rgba(74, 74, 74, 0.28);
             --white: #ffffff;
-            --font-main: "Poppins", "Trebuchet MS", sans-serif;
+            --font-main: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
         }
 
         * {
@@ -60,11 +60,15 @@
         .title {
             margin-bottom: 18px;
             font-size: clamp(2rem, 2.6vw, 3rem);
-            font-weight: 400;
+            font-weight: 300;
             line-height: 1.1;
             letter-spacing: 0.01em;
             text-transform: uppercase;
             color: var(--pink);
+        }
+
+        .title span {
+            font-weight: 300;
         }
 
         .title strong {
@@ -288,7 +292,7 @@
             <div class="login-content">
                 <img class="brand" src="../src/assets/logo_horizontal.webp" alt="PinkBox">
 
-                <h1 class="title">Acesse <strong>sua conta</strong></h1>
+                <h1 class="title"><span>Acesse</span> <strong>sua conta</strong></h1>
                 <p class="subtitle">Entre com seus dados para continuar.</p>
 
                 <form class="form" action="#" method="post">
@@ -325,3 +329,4 @@
     </script>
 </body>
 </html>
+

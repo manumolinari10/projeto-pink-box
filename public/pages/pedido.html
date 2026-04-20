@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PinkBox | Pedido</title>
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <link rel="stylesheet" href="../src/css/global.css">
+</head>
+<body class="order-page">
+    <div class="dashboard-shell">
+        <aside class="sidebar" aria-label="Menu lateral">
+            <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
+                <img class="brand-logo brand-logo-horizontal" src="../src/assets/logo_horizontal.webp" alt="PinkBox Executive Portal">
+                <img class="brand-logo brand-logo-simple" src="../src/assets/logo_simple.webp" alt="PinkBox">
+            </a>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="./index.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" /></svg>
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-link" href="./clientes.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"></path></svg>
+                    </span>
+                    <span>Clientes</span>
+                </a>
+                <a class="nav-link" href="./produtos.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M184,96.8V88a32,32,0,0,0-32-32H136V32h32a8,8,0,0,1,8,8,8,8,0,0,0,16,0,24,24,0,0,0-24-24H104a8,8,0,0,0,0,16h16V56H104A32,32,0,0,0,72,88v8.8A40.07,40.07,0,0,0,40,136v80a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136A40.07,40.07,0,0,0,184,96.8ZM104,72h48a16,16,0,0,1,16,16v8H88V88A16,16,0,0,1,104,72Z"></path></svg>
+                    </span>
+                    <span>Produtos</span>
+                </a>
+                <a class="nav-link is-active" href="./vendas.html" aria-current="page">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
+                    </span>
+                    <span>Vendas</span>
+                </a>
+                <a class="nav-link" href="./financeiro.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm0 8a1 1 0 0 0 -1 1v.05a2.5 2.5 0 0 0 .5 4.95h1a.5 .5 0 1 1 0 1h-2.5a1 1 0 0 0 0 2h1a1 1 0 0 0 2 0v-.05a2.5 2.5 0 0 0 -.5 -4.95h-1a.5 .5 0 1 1 0 -1h2.5a1 1 0 0 0 0 -2h-1a1 1 0 0 0 -1 -1" /><path d="M19 7h-4l-.001 -4.001z" /></svg>
+                    </span>
+                    <span>Financeiro</span>
+                </a>
+                <a class="nav-link" href="./insights.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" /><path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M4.893 4.893a1 1 0 0 1 1.32 -.083l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 0 -1.414z" /><path d="M17.693 4.893a1 1 0 0 1 1.497 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7z" /><path d="M14 18a1 1 0 0 1 1 1a3 3 0 0 1 -6 0a1 1 0 0 1 .883 -.993l.117 -.007h4z" /><path d="M12 6a6 6 0 0 1 3.6 10.8a1 1 0 0 1 -.471 .192l-.129 .008h-6a1 1 0 0 1 -.6 -.2a6 6 0 0 1 3.6 -10.8z" /></svg>
+                    </span>
+                    <span>Insights</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-links">
+                    <a class="nav-link nav-link--subtle" href="./configuracoes.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg>
+                        </span>
+                        <span>Configurações</span>
+                    </a>
+                    <a class="nav-link nav-link--subtle" href="./login.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-12a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h12zm-3 2h-9a1 1 0 0 0 -.993 .883l-.007 .117v12a1 1 0 0 0 .883 .993l.117 .007h9v-14zm-5.387 4.21l.094 .083l2 2a1 1 0 0 1 .083 1.32l-.083 .094l-2 2a1 1 0 0 1 -1.497 -1.32l.083 -.094l1.292 -1.293l-1.292 -1.293a1 1 0 0 1 -.083 -1.32l.083 -.094a1 1 0 0 1 1.32 -.083z" /></svg>
+                        </span>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-panel order-main-panel">
+            <header class="topbar clients-topbar">
+                <div class="clients-topbar-left">
+                    <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="notification-wrapper">
+                        <button class="icon-button" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" data-notification-toggle>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22m6-6V11a6 6 0 1 0-12 0v5L4 18v1h16v-1z"></path></svg>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <div class="notification-menu" hidden data-notification-menu>
+                            <button type="button">Pagamento aprovado para o pedido #8821</button>
+                            <button type="button">Entrega prevista para amanhã</button>
+                            <button type="button">Novo comentário interno registrado</button>
+                            <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
+                        </div>
+                    </div>
+
+                    <a class="profile-card" href="./perfil.html">
+                        <div class="profile-copy">
+                            <strong>Beatriz Souza</strong>
+                            <span>CONSULTORA DIAMANTE</span>
+                        </div>
+                        <img class="profile-avatar avatar-image" src="../src/assets/users/default.webp" alt="Foto de perfil de Beatriz Souza">
+                    </a>
+                </div>
+            </header>
+
+            <section class="product-detail-header order-page-header">
+                <div>
+                    <div class="products-breadcrumb">Vendas / Pedido / Resumo</div>
+                    <div class="order-header-copy">
+                        <h1>Resumo da Venda</h1>
+                        <span class="order-badge">Pedido #8821</span>
+                    </div>
+                </div>
+                <div class="order-header-actions">
+                    <button class="product-action-button product-action-button--secondary" type="button" data-modal-target="order-receipt-modal">
+                        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,72V184a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V72A16,16,0,0,1,56,56H200A16,16,0,0,1,216,72ZM72,96v64H184V96Z"></path></svg>
+                        <span>Comprovante</span>
+                    </button>
+                    <button class="product-action-button product-action-button--primary" type="button">
+                        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg>
+                        <span>Editar Pedido</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="order-summary-grid">
+                <article class="order-overview-card elevated">
+                    <div class="order-overview-head">
+                        <div>
+                            <span class="order-eyebrow">Cliente</span>
+                            <h2>Mariana Silveira</h2>
+                            <p class="order-customer-document">CPF 123.456.789-00</p>
+                        </div>
+                        <div class="order-date">
+                            <span>Data do Pedido</span>
+                            <strong>15 Out 2023</strong>
+                        </div>
+                    </div>
+
+                    <div class="order-overview-metrics">
+                        <div>
+                            <span>Pagamento</span>
+                            <strong class="order-payment-methods">
+                                <span>Cartão de Crédito</span>
+                                <span>Pix</span>
+                            </strong>
+                        </div>
+                        <div>
+                            <span>Status</span>
+                            <strong class="order-status-cell"><span class="clients-status clients-status--active">Concluído</span></strong>
+                        </div>
+                        <div>
+                            <span>Tipo de Venda</span>
+                            <strong>Venda Direta</strong>
+                        </div>
+                    </div>
+
+                    <div class="order-notes">
+                        <span>Notas Internas</span>
+                        <p>"Cliente solicitou entrega para o período da tarde"</p>
+                    </div>
+                </article>
+
+                <div class="order-profit-column">
+                    <article class="order-profit-card elevated">
+                        <div class="order-profit-top">
+                            <span class="order-profit-label">Valor do Pedido</span>
+                            <span class="order-profit-icon">
+                                <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
+                            </span>
+                        </div>
+                        <strong class="order-profit-total"><span class="product-money-currency">R$</span><span class="sales-value" data-target="1250">1.250,00</span></strong>
+                        <div class="order-profit-divider"></div>
+                        <div class="order-profit-metrics">
+                            <div class="order-profit-metric">
+                                <span>Lucro (Bruto)</span>
+                                <strong><span class="product-money-currency">R$</span><span class="sales-value" data-target="450">450,00</span></strong>
+                            </div>
+                            <div class="order-profit-metric">
+                                <span>Margem Final</span>
+                                <strong class="order-profit-chip">36%</strong>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="order-balance-grid">
+                        <article class="order-balance-card elevated">
+                            <span>Recebido</span>
+                            <strong class="order-balance-card--positive"><span class="product-money-currency">R$</span><span class="sales-value" data-target="625">625,00</span></strong>
+                        </article>
+                        <article class="order-balance-card elevated">
+                            <span>Pendente</span>
+                            <strong class="order-balance-card--warning"><span class="product-money-currency">R$</span><span class="sales-value" data-target="625">625,00</span></strong>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="products-table-card order-products-card elevated">
+                <div class="order-products-head">
+                    <h2>Produtos no Pedido</h2>
+                    <span>3 itens totais</span>
+                </div>
+
+                <div class="products-table-wrap">
+                    <table class="products-table order-products-table">
+                        <thead>
+                            <tr>
+                                <th>Miniatura</th>
+                                <th>Nome do Produto</th>
+                                <th>Quantidade</th>
+                                <th>Preço Unit.</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="products-thumb products-thumb--perfume"></span></td>
+                                <td>
+                                    <div class="products-table-product">
+                                        <strong>Perfume Rose Exclusive 50ml</strong>
+                                        <span>SKU: PB-ROS-050</span>
+                                    </div>
+                                </td>
+                                <td><span class="order-qty-pill">1</span></td>
+                                <td>R$ 489,00</td>
+                                <td class="products-total">R$ 489,00</td>
+                            </tr>
+                            <tr>
+                                <td><span class="products-thumb products-thumb--rose"></span></td>
+                                <td>
+                                    <div class="products-table-product">
+                                        <strong>Batom Velvet Red</strong>
+                                        <span>SKU: PB-BAT-RED</span>
+                                    </div>
+                                </td>
+                                <td><span class="order-qty-pill">2</span></td>
+                                <td>R$ 89,00</td>
+                                <td class="products-total">R$ 178,00</td>
+                            </tr>
+                            <tr>
+                                <td><span class="products-thumb products-thumb--base"></span></td>
+                                <td>
+                                    <div class="products-table-product">
+                                        <strong>Sérum Glow Booster Mini</strong>
+                                        <span>SKU: PB-SRM-GLOW</span>
+                                    </div>
+                                </td>
+                                <td><span class="order-qty-pill">3</span></td>
+                                <td>R$ 194,33</td>
+                                <td class="products-total">R$ 583,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="order-bottom-grid">
+                <article class="order-bottom-card elevated">
+                    <div class="order-bottom-head">
+                        <h2>Parcelas</h2>
+                    </div>
+
+                    <div class="order-installment-list">
+                        <div class="order-installment-item order-installment-item--received">
+                            <span class="order-installment-icon">
+                                <svg viewBox="0 0 256 256"><path d="M173.66,85.66l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,124.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                            </span>
+                            <div class="order-installment-copy">
+                                <strong>Parcela 1</strong>
+                                <span>Vencimento: 15/10/2023</span>
+                                <small>Forma de pagamento: Cartão de Crédito</small>
+                            </div>
+                            <div class="order-installment-value">
+                                <strong>R$ 625,00</strong>
+                                <span class="order-installment-status status-received">Recebido</span>
+                            </div>
+                        </div>
+
+                        <div class="order-installment-item">
+                            <span class="order-installment-icon order-installment-icon--warning">
+                                <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,104v32a8,8,0,0,1-16,0V128a8,8,0,0,1,16,0Zm-8-40a12,12,0,1,1-12,12A12,12,0,0,1,128,88Z"></path></svg>
+                            </span>
+                            <div class="order-installment-copy">
+                                <strong>Parcela 2</strong>
+                                <span>Vencimento: 15/11/2023</span>
+                                <small>Forma de pagamento: Pix</small>
+                            </div>
+                            <div class="order-installment-value">
+                                <strong>R$ 625,00</strong>
+                                <span class="order-installment-status status-pending">Pendente</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="order-bottom-card elevated">
+                    <div class="order-bottom-head">
+                        <h2>Custos e Envio</h2>
+                    </div>
+
+                    <div class="order-cost-grid">
+                        <div>
+                            <span>Tipo de Envio</span>
+                            <strong>Sedex</strong>
+                        </div>
+                        <div>
+                            <span>Envio (Frete)</span>
+                            <strong>R$ 25,00</strong>
+                        </div>
+                        <div>
+                            <span>Seguro</span>
+                            <strong>R$ 10,00</strong>
+                        </div>
+                        <div>
+                            <span>Impostos</span>
+                            <strong>R$ 45,00</strong>
+                        </div>
+                        <div>
+                            <span>Desconto</span>
+                            <strong class="order-cost-highlight">R$ 0,00</strong>
+                        </div>
+                        <div>
+                            <span>Outras Despesas</span>
+                            <strong>R$ 5,00</strong>
+                        </div>
+                    </div>
+
+                    <div class="order-observation">
+                        <span>Observações Gerais</span>
+                        <p>Nenhuma observação adicional registrada para esta operação comercial.</p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="order-timeline-card elevated">
+                <div class="order-bottom-head">
+                    <h2>Timeline</h2>
+                </div>
+
+                <div class="order-timeline-list">
+                    <article class="order-timeline-item">
+                        <div class="order-timeline-marker"></div>
+                        <div class="order-timeline-content">
+                            <strong>Pedido realizado</strong>
+                            <p>Pedido registrado com 3 itens e pagamento dividido entre cartão e Pix.</p>
+                            <span>15 Out 2023, 09:12</span>
+                        </div>
+                    </article>
+                    <article class="order-timeline-item">
+                        <div class="order-timeline-marker"></div>
+                        <div class="order-timeline-content">
+                            <strong>Produtos entregues</strong>
+                            <p>Entrega confirmada no endereço principal da cliente com recebimento assinado.</p>
+                            <span>16 Out 2023, 14:36</span>
+                        </div>
+                    </article>
+                    <article class="order-timeline-item">
+                        <div class="order-timeline-marker"></div>
+                        <div class="order-timeline-content">
+                            <strong>Primeira parcela paga</strong>
+                            <p>Recebimento da primeira parcela identificado e conciliado automaticamente.</p>
+                            <span>15 Out 2023, 17:48</span>
+                        </div>
+                    </article>
+                    <article class="order-timeline-item">
+                        <div class="order-timeline-marker"></div>
+                        <div class="order-timeline-content">
+                            <strong>Cobrança enviada</strong>
+                            <p>Lembrete amigável encaminhado por WhatsApp com link para pagamento da segunda parcela.</p>
+                            <span>10 Nov 2023, 10:05</span>
+                        </div>
+                    </article>
+                    <article class="order-timeline-item">
+                        <div class="order-timeline-marker"></div>
+                        <div class="order-timeline-content">
+                            <strong>Atualização de parcela</strong>
+                            <p>Segunda parcela marcada como em acompanhamento após novo contato comercial.</p>
+                            <span>12 Nov 2023, 08:22</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <div class="client-modal order-receipt-modal" id="order-receipt-modal" hidden>
+                <div class="client-modal-backdrop" data-modal-close></div>
+                <div class="client-modal-dialog elevated order-receipt-dialog">
+                    <button class="client-modal-close" type="button" aria-label="Fechar comprovante" data-modal-close>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+                    </button>
+                    <h2>Comprovante do Pedido</h2>
+                    <p class="client-modal-subtitle">Visualização da mensagem pronta para compartilhar ou imprimir.</p>
+
+                    <div class="order-receipt-message" data-receipt-content>
+                        <p><strong>Olá, Mariana Silveira!</strong></p>
+                        <p><strong>Seu pedido foi cadastrado em nosso sistema</strong></p>
+
+                        <p><strong>Produtos</strong></p>
+
+                        <p><strong>1. Perfume Rose Exclusive 50ml</strong><br>Quantidade: 1</p>
+                        <p><strong>2. Batom Velvet Red</strong><br>Quantidade: 2</p>
+                        <p><strong>3. Sérum Glow Booster Mini</strong><br>Quantidade: 3</p>
+
+                        <p><strong>Total do Pedido: R$ 1.250,00</strong></p>
+
+                        <p><strong>Forma de Pagamento:</strong> Cartão de Crédito e Pix - 2 parcelas.</p>
+
+                        <p><strong>Pagamentos:</strong><br>R$ 625,00 - 15/10/2023<br>R$ 625,00 - 15/11/2023</p>
+
+                        <p><strong>Observações:</strong> <em>Atrasos e alterações nas datas e/ou valor das parcelas estão sujeitas a juros e multa.</em></p>
+                    </div>
+
+                    <div class="order-receipt-actions">
+                        <button class="product-action-button product-action-button--primary" type="button" data-receipt-whatsapp>
+                            <span>Enviar no Whatsapp</span>
+                        </button>
+                        <button class="product-action-button product-action-button--secondary" type="button" data-receipt-print>
+                            <span>Imprimir</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="page-footer">
+                <p>&copy; <span data-current-year>YEAR</span> PinkBox Sistema de Gestão de Vendas.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../src/js/main.js"></script>
+</body>
+</html>
