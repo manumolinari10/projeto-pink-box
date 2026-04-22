@@ -407,6 +407,119 @@ body {
     }
 }
 
+function setupActionMenus() {
+    document.querySelectorAll("[data-actions-toggle]").forEach((toggle) => {
+        const wrapper = toggle.closest(".finance-actions-menu");
+        const menu = wrapper ? wrapper.querySelector("[data-actions-menu]") : null;
+
+        if (!wrapper || !menu) {
+            return;
+        }
+
+        menu.hidden = true;
+        toggle.setAttribute("aria-expanded", "false");
+
+        toggle.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const shouldOpen = menu.hidden;
+
+            document.querySelectorAll("[data-actions-menu]").forEach((openMenu) => {
+                openMenu.hidden = true;
+            });
+            document.querySelectorAll("[data-actions-toggle]").forEach((openToggle) => {
+                openToggle.setAttribute("aria-expanded", "false");
+            });
+
+            menu.hidden = !shouldOpen;
+            toggle.setAttribute("aria-expanded", String(shouldOpen));
+        });
+
+        menu.addEventListener("click", (event) => {
+            if (event.target.closest("[data-modal-target]")) {
+                menu.hidden = true;
+                toggle.setAttribute("aria-expanded", "false");
+            }
+        });
+    });
+
+    document.addEventListener("click", (event) => {
+        if (event.target.closest(".finance-actions-menu")) {
+            return;
+        }
+
+        document.querySelectorAll("[data-actions-menu]").forEach((menu) => {
+            menu.hidden = true;
+        });
+        document.querySelectorAll("[data-actions-toggle]").forEach((toggle) => {
+            toggle.setAttribute("aria-expanded", "false");
+        });
+    });
+}
+
+function setupFinanceMonthNav() {
+    const monthNav = document.querySelector("[data-finance-month-nav]");
+
+    if (!monthNav) {
+        return;
+    }
+
+    const label = monthNav.querySelector("[data-finance-month-label]");
+    const previous = monthNav.querySelector("[data-finance-month-prev]");
+    const next = monthNav.querySelector("[data-finance-month-next]");
+    const months = [
+        "JANEIRO",
+        "FEVEREIRO",
+        "MARÇO",
+        "ABRIL",
+        "MAIO",
+        "JUNHO",
+        "JULHO",
+        "AGOSTO",
+        "SETEMBRO",
+        "OUTUBRO",
+        "NOVEMBRO",
+        "DEZEMBRO"
+    ];
+    let currentDate = new Date(2026, 3, 1);
+
+    function formatWeekday(date) {
+        return date
+            .toLocaleDateString("pt-BR", { weekday: "long" })
+            .split("-")
+            .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+            .join("-");
+    }
+
+    function updateLabel() {
+        const month = months[currentDate.getMonth()];
+        const year = String(currentDate.getFullYear()).slice(-2);
+        label.textContent = `${month} ${year}`;
+
+        document.querySelectorAll(".finance-day-row").forEach((row) => {
+            const day = row.querySelector("span");
+            const date = row.querySelector("strong");
+
+            if (day && date) {
+                const dayNumber = Number(day.textContent);
+                const rowDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), dayNumber);
+                date.textContent = formatWeekday(rowDate);
+            }
+        });
+    }
+
+    previous.addEventListener("click", () => {
+        currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+        updateLabel();
+    });
+
+    next.addEventListener("click", () => {
+        currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+        updateLabel();
+    });
+
+    updateLabel();
+}
+
 window.addEventListener("load", () => {
     window.scrollTo(0, 0);
     document.body.classList.add("is-ready");
@@ -421,6 +534,8 @@ window.addEventListener("load", () => {
     setupJourneyFilters();
     setupRowLinks();
     setupReceiptActions();
+    setupActionMenus();
+    setupFinanceMonthNav();
     animateProgressBar();
     animatePerformanceBars();
     animateStockBars();
