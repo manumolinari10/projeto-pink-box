@@ -11,6 +11,22 @@ function h(?string $value): string
     return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 }
 
+function rating_icon_svg(string $questionKey, string $optionValue): string
+{
+    if ($questionKey === 'difficulty_level') {
+        return match ($optionValue) {
+            '1 - Nenhuma dificuldade' => '<svg class="rating-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" stroke="currentColor" stroke-width="1.8"/><path d="M9 9l.01 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M15 9l.01 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M8 13a4 4 0 1 0 8 0h-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            '2 - Pouca dificuldade' => '<svg class="rating-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" stroke="currentColor" stroke-width="1.8"/><path d="M9 10l.01 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M15 10l.01 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M9.5 15a3.5 3.5 0 0 0 5 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            '3 - Dificuldade moderada' => '<svg class="rating-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" stroke="currentColor" stroke-width="1.8"/><path d="M9 10l.01 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M15 10l.01 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M9 15l6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+            '4 - Grande dificuldade' => '<svg class="rating-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" stroke="currentColor" stroke-width="1.8"/><path d="M9 10l.01 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M15 10l.01 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M9.5 16a10 10 0 0 1 6 -1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            '5 - Dificuldade extrema' => '<svg class="rating-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" stroke="currentColor" stroke-width="1.8"/><path d="M9 10l.01 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M15 10l.01 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            default => '',
+        };
+    }
+
+    return '<svg class="rating-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M9 9h.01M15 9h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M8 14.5c1.2 1.3 2.53 1.95 4 1.95s2.8-.65 4-1.95" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+}
+
 function supabase_get(string $path): array
 {
     global $config;
@@ -121,6 +137,15 @@ try {
 }
 
 $totalSections = count($sections);
+$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$basePath = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/');
+$baseUrl = $scheme . '://' . $host . ($basePath !== '' ? $basePath : '');
+$pageUrl = $baseUrl . '/index.php';
+$faviconUrl = $baseUrl . '/favicon.ico';
+$shareImageUrl = $baseUrl . '/image-link.webp';
+$shareTitle = $survey['public_title'] ?? 'Pesquisa PinkBox';
+$shareDescription = $survey['description'] ?? 'Participe da pesquisa PinkBox e compartilhe sua experiência.';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -128,6 +153,22 @@ $totalSections = count($sections);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= h($survey['public_title'] ?? 'Pesquisa 2026'); ?></title>
+    <link rel="icon" type="image/x-icon" href="<?= h($faviconUrl); ?>">
+    <link rel="shortcut icon" href="<?= h($faviconUrl); ?>">
+    <meta name="description" content="<?= h($shareDescription); ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="<?= h($shareTitle); ?>">
+    <meta property="og:description" content="<?= h($shareDescription); ?>">
+    <meta property="og:url" content="<?= h($pageUrl); ?>">
+    <meta property="og:image" content="<?= h($shareImageUrl); ?>">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?= h($shareTitle); ?>">
+    <meta name="twitter:description" content="<?= h($shareDescription); ?>">
+    <meta name="twitter:image" content="<?= h($shareImageUrl); ?>">
     <style>
         :root {
             --text: #171517;
@@ -902,11 +943,7 @@ $totalSections = count($sections);
                                     <?php foreach ($options as $optionIndex => $option): ?>
                                         <label class="rating-card">
                                             <input type="radio" name="<?= h($questionKey); ?>" value="<?= h($option['option_value']); ?>" <?= $isRequired && $optionIndex === 0 ? 'required' : ''; ?>>
-                                            <svg class="rating-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
-                                                <path d="M9 9h.01M15 9h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-                                                <path d="M8 14.5c1.2 1.3 2.53 1.95 4 1.95s2.8-.65 4-1.95" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                                            </svg>
+                                            <?= rating_icon_svg($questionKey, (string) $option['option_value']); ?>
                                             <span class="rating-label"><?= h($option['option_label']); ?></span>
                                         </label>
                                     <?php endforeach; ?>
