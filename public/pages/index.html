@@ -46,6 +46,12 @@
                     </span>
                     <span>Financeiro</span>
                 </a>
+                <a class="nav-link" href="./calendario.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM84,184a12,12,0,1,1,12-12A12,12,0,0,1,84,184Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,128,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,128,144Zm44,40a12,12,0,1,1,12-12A12,12,0,0,1,172,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,172,144Zm36-64H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24Z"></path></svg>
+                    </span>
+                    <span>Calendário</span>
+                </a>
                 <a class="nav-link" href="./insights.html">
                     <span class="nav-icon">
                         <svg viewBox="0 0 24 24"><path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" /><path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M4.893 4.893a1 1 0 0 1 1.32 -.083l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 0 -1.414z" /><path d="M17.693 4.893a1 1 0 0 1 1.497 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7z" /><path d="M14 18a1 1 0 0 1 1 1a3 3 0 0 1 -6 0a1 1 0 0 1 .883 -.993l.117 -.007h4z" /><path d="M12 6a6 6 0 0 1 3.6 10.8a1 1 0 0 1 -.471 .192l-.129 .008h-6a1 1 0 0 1 -.6 -.2a6 6 0 0 1 3.6 -10.8z" /></svg>
@@ -116,7 +122,7 @@
                 </div>
                 <div class="period-filter">
                     <div class="month-badge month-badge-button">
-                        <span data-current-month>Mês atual</span>
+                        <span data-current-month data-month-label-fixed="Este mês">Este mês</span>
                         <button class="month-badge-arrow" type="button" aria-label="Abrir filtro de período" aria-haspopup="true" aria-expanded="false" data-period-toggle>
                             <svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5z"></path></svg>
                         </button>
@@ -149,9 +155,9 @@
                             <div class="progress-copy">
                                 <div class="progress-label">
                                     <span class="progress-icon" aria-hidden="true">
-                                        <svg viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                                        <svg viewBox="0 0 256 256"><path d="M240,56v64a8,8,0,0,1-13.66,5.66L200,99.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31,29.66,189.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0L136,140.69,188.69,88,162.34,61.66A8,8,0,0,1,168,48h64A8,8,0,0,1,240,56Z"></path></svg>
                                     </span>
-                                    <strong class="progress-title">Progresso Consultora Estrela</strong>
+                                    <strong class="progress-title">Progresso de Vendas</strong>
                                 </div>
                                 <strong class="goal-status"><span data-target="64" data-suffix="%">64%</span> da meta</strong>
                             </div>
@@ -170,7 +176,6 @@
                         <div class="chart-card">
                             <div class="chart-header">
                                 <p class="eyebrow">Histórico de performance Semanal</p>
-                                <button class="chart-more" type="button" aria-label="Mais opções">•••</button>
                             </div>
 
                             <div class="bars" aria-label="Gráfico de barras">
@@ -213,10 +218,10 @@
                         </div>
 
                         <div class="quick-actions-buttons">
-                            <button class="secondary-cta" type="button">
+                            <a class="secondary-cta" href="./novo-cliente.html">
                                 <svg viewBox="0 0 256 256"><path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path></svg>
                                 <span>Novo Cliente</span>
-                            </button>
+                            </a>
                             <button class="ghost-cta" type="button">
                                 <svg viewBox="0 0 24 24"><path d="M12 2l.324 .001l.318 .004l.616 .017l.299 .013l.579 .034l.553 .046c4.785 .464 6.732 2.411 7.196 7.196l.046 .553l.034 .579c.005 .098 .01 .198 .013 .299l.017 .616l.005 .642l-.005 .642l-.017 .616l-.013 .299l-.034 .579l-.046 .553c-.464 4.785 -2.411 6.732 -7.196 7.196l-.553 .046l-.579 .034c-.098 .005 -.198 .01 -.299 .013l-.616 .017l-.642 .005l-.642 -.005l-.616 -.017l-.299 -.013l-.579 -.034l-.553 -.046c-4.785 -.464 -6.732 -2.411 -7.196 -7.196l-.046 -.553l-.034 -.579a28.058 28.058 0 0 1 -.013 -.299l-.017 -.616c-.003 -.21 -.005 -.424 -.005 -.642l.001 -.324l.004 -.318l.017 -.616l.013 -.299l.034 -.579l.046 -.553c.464 -4.785 2.411 -6.732 7.196 -7.196l.553 -.046l.579 -.034c.098 -.005 .198 -.01 .299 -.013l.616 -.017c.21 -.003 .424 -.005 .642 -.005zm0 6a1 1 0 0 0 -1 1v2h-2l-.117 .007a1 1 0 0 0 .117 1.993h2v2l.007 .117a1 1 0 0 0 1.993 -.117v-2h2l.117 -.007a1 1 0 0 0 -.117 -1.993h-2v-2l-.007 -.117a1 1 0 0 0 -.993 -.883z" fill="currentColor" stroke-width="0" /></svg>
                                 <span>Nova Venda</span>
@@ -235,13 +240,13 @@
                             <li><label><input type="checkbox"> <span>Revisar pedidos pendentes</span></label></li>
                         </ul>
                         <div class="todo-actions">
-                            <button class="todo-add-button" type="button">
+                            <button class="todo-add-button" type="button" data-dashboard-open="todo-add">
                                 <span class="todo-add-icon" aria-hidden="true">
                                     <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm40,112H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32a8,8,0,0,1,0,16Z"></path></svg>
                                 </span>
                                 <span>Adicionar Tarefas</span>
                             </button>
-                            <a class="todo-more-link" href="./6coisas.html">
+                            <a class="todo-more-link" href="#" data-dashboard-open="todo-info">
                                 <span class="todo-more-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24"><path d="M12 2l.642 .005l.616 .017l.299 .013l.579 .034l.553 .046c4.687 .455 6.65 2.333 7.166 6.906l.03 .29l.046 .553l.041 .727l.006 .15l.017 .617l.005 .642l-.005 .642l-.017 .616l-.013 .299l-.034 .579l-.046 .553c-.455 4.687 -2.333 6.65 -6.906 7.166l-.29 .03l-.553 .046l-.727 .041l-.15 .006l-.617 .017l-.642 .005l-.642 -.005l-.616 -.017l-.299 -.013l-.579 -.034l-.553 -.046c-4.687 -.455 -6.65 -2.333 -7.166 -6.906l-.03 -.29l-.046 -.553l-.041 -.727l-.006 -.15l-.017 -.617l-.004 -.318v-.648l.004 -.318l.017 -.616l.013 -.299l.034 -.579l.046 -.553c.455 -4.687 2.333 -6.65 6.906 -7.166l.29 -.03l.553 -.046l.727 -.041l.15 -.006l.617 -.017c.21 -.003 .424 -.005 .642 -.005zm0 9h-1l-.117 .007a1 1 0 0 0 0 1.986l.117 .007v3l.007 .117a1 1 0 0 0 .876 .876l.117 .007h1l.117 -.007a1 1 0 0 0 .876 -.876l.007 -.117l-.007 -.117a1 1 0 0 0 -.764 -.857l-.112 -.02l-.117 -.006v-3l-.007 -.117a1 1 0 0 0 -.876 -.876l-.117 -.007zm.01 -3l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z" /></svg>
                                 </span>
@@ -269,24 +274,24 @@
                                     <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Ana Souza">
                                     <div><strong>Ana Souza</strong><span>Pedido em aberto</span></div>
                                 </div>
-                                <button class="mini-action" type="button">Mensagem</button>
+                                <button class="mini-action" type="button" data-dashboard-message="contact" data-person-name="Ana Souza" data-person-subtitle="Pedido em aberto" data-person-avatar="../src/assets/customers/default.webp">Mensagem</button>
                             </div>
                             <div class="person-row">
                                 <div class="person-profile">
                                     <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Marina Oliveira">
                                     <div><strong>Marina Oliveira</strong><span>Retorno 2 semanas</span></div>
                                 </div>
-                                <button class="mini-action" type="button">Mensagem</button>
+                                <button class="mini-action" type="button" data-dashboard-message="contact" data-person-name="Marina Oliveira" data-person-subtitle="Retorno 2 semanas" data-person-avatar="../src/assets/customers/default.webp">Mensagem</button>
                             </div>
                             <div class="person-row">
                                 <div class="person-profile">
                                     <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Julia Santos">
                                     <div><strong>Julia Santos</strong><span>Retorno 2 dias</span></div>
                                 </div>
-                                <button class="mini-action" type="button">Mensagem</button>
+                                <button class="mini-action" type="button" data-dashboard-message="contact" data-person-name="Julia Santos" data-person-subtitle="Retorno 2 dias" data-person-avatar="../src/assets/customers/default.webp">Mensagem</button>
                             </div>
                         </div>
-                        <a class="widget-link" href="./pendencias.html">Ver todas pendências</a>
+                        <a class="widget-link" href="#" data-dashboard-open="alert-contacts">Ver todas pendências</a>
                     </article>
                     <article class="alert-card">
                         <div class="alert-head"><h3>Aniversários</h3><span class="pill pill--warning">hoje</span></div>
@@ -296,38 +301,119 @@
                                     <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Ana Paula Santos">
                                     <div><strong>Ana Paula Santos</strong><span>38 anos</span></div>
                                 </div>
-                                <button class="mini-action" type="button">Mandar parabéns</button>
+                                <button class="mini-action" type="button" data-dashboard-message="birthday" data-person-name="Ana Paula Santos" data-person-subtitle="38 anos" data-person-avatar="../src/assets/customers/default.webp">Mandar parabéns</button>
                             </div>
                             <div class="person-row">
                                 <div class="person-profile">
                                     <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Camila Lima">
                                     <div><strong>Camila Lima</strong><span>21 anos</span></div>
                                 </div>
-                                <button class="mini-action" type="button">Mandar parabéns</button>
+                                <button class="mini-action" type="button" data-dashboard-message="birthday" data-person-name="Camila Lima" data-person-subtitle="21 anos" data-person-avatar="../src/assets/customers/default.webp">Mandar parabéns</button>
                             </div>
                             <div class="person-row">
                                 <div class="person-profile">
                                     <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Renata Freitas">
                                     <div><strong>Renata Freitas</strong><span>25 anos</span></div>
                                 </div>
-                                <button class="mini-action" type="button">Mandar parabéns</button>
+                                <button class="mini-action" type="button" data-dashboard-message="birthday" data-person-name="Renata Freitas" data-person-subtitle="25 anos" data-person-avatar="../src/assets/customers/default.webp">Mandar parabéns</button>
                             </div>
                         </div>
-                        <a class="widget-link" href="./aniversariantes.html">Ver todos aniversariantes</a>
+                        <a class="widget-link" href="#" data-dashboard-open="alert-birthdays">Ver todos aniversariantes</a>
                     </article>
                     <article class="alert-card">
                         <div class="alert-head"><h3>Estoque</h3><span class="pill pill--danger">crítico</span></div>
                         <div class="stock-list">
-                            <div class="stock-item"><div class="stock-copy"><p>Batom Matte Rosa</p><strong>2 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="28"></span></div></div>
-                            <div class="stock-item"><div class="stock-copy"><p>Sérum Facial Glow</p><strong>3 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="35"></span></div></div>
-                            <div class="stock-item"><div class="stock-copy"><p>Perfume Velvet Night</p><strong>1 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="18"></span></div></div>
-                            <div class="stock-item"><div class="stock-copy"><p>Base Soft Matte</p><strong>4 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="42"></span></div></div>
-                            <div class="stock-item"><div class="stock-copy"><p>Máscara Volume Max</p><strong>2 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="25"></span></div></div>
+                            <div class="stock-item"><div class="stock-row"><div class="stock-main"><div class="stock-copy"><p>Batom Matte Rosa</p><strong>2 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="28"></span></div></div><button class="mini-action mini-action--stock" type="button">+ Lista de Pedidos</button></div></div>
+                            <div class="stock-item"><div class="stock-row"><div class="stock-main"><div class="stock-copy"><p>Sérum Facial Glow</p><strong>3 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="35"></span></div></div><button class="mini-action mini-action--stock" type="button">+ Lista de Pedidos</button></div></div>
+                            <div class="stock-item"><div class="stock-row"><div class="stock-main"><div class="stock-copy"><p>Perfume Velvet Night</p><strong>1 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="18"></span></div></div><button class="mini-action mini-action--stock" type="button">+ Lista de Pedidos</button></div></div>
+                            <div class="stock-item"><div class="stock-row"><div class="stock-main"><div class="stock-copy"><p>Base Soft Matte</p><strong>4 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="42"></span></div></div><button class="mini-action mini-action--stock" type="button">+ Lista de Pedidos</button></div></div>
+                            <div class="stock-item"><div class="stock-row"><div class="stock-main"><div class="stock-copy"><p>Máscara Volume Max</p><strong>2 un</strong></div><div class="mini-progress" aria-hidden="true"><span data-stock-width="25"></span></div></div><button class="mini-action mini-action--stock" type="button">+ Lista de Pedidos</button></div></div>
                         </div>
-                        <a class="widget-link" href="./produtos.html">Ver todos os produtos</a>
+                        <a class="widget-link" href="#" data-dashboard-open="alert-stock">Ver todos os produtos</a>
                     </article>
                 </div>
             </section>
+
+            <div class="client-modal dashboard-modal" id="dashboard-todo-info-modal" hidden>
+                <div class="client-modal-backdrop" data-dashboard-modal-close></div>
+                <div class="client-modal-dialog elevated dashboard-modal-dialog">
+                    <button class="client-modal-close" type="button" aria-label="Fechar janela" data-dashboard-modal-close>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                    </button>
+                    <span class="calendar-modal-pill calendar-modal-pill--soft">6 coisas</span>
+                    <h2>Metodologia das 6 coisas mais importantes</h2>
+                    <p class="client-modal-subtitle">Uma prática ensinada por Mary Kay Ash para organizar o foco diário com prioridade clara.</p>
+                    <div class="dashboard-modal-body">
+                        <p>No fim de cada dia, você define as 6 tarefas mais importantes do dia seguinte e as executa em ordem de prioridade, sem pular para a próxima antes de concluir a atual.</p>
+                        <ul class="dashboard-modal-list">
+                            <li>Liste apenas 6 tarefas realmente prioritárias.</li>
+                            <li>Organize da mais importante para a menos importante.</li>
+                            <li>Comece pela primeira e siga a sequência.</li>
+                            <li>Se não concluir todas, transfira o restante para amanhã.</li>
+                            <li>Evite encher o dia com tarefas secundárias.</li>
+                            <li>Use a lista para manter foco, disciplina e constância.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-modal dashboard-modal" id="dashboard-todo-add-modal" hidden>
+                <div class="client-modal-backdrop" data-dashboard-modal-close></div>
+                <div class="client-modal-dialog elevated dashboard-modal-dialog">
+                    <button class="client-modal-close" type="button" aria-label="Fechar janela" data-dashboard-modal-close>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                    </button>
+                    <span class="calendar-modal-pill calendar-modal-pill--soft">Planejamento</span>
+                    <h2>Tarefas das 6 coisas de amanhã</h2>
+                    <div class="dashboard-task-counter" data-dashboard-task-counter>0/6 adicionadas</div>
+                    <div class="dashboard-modal-note">
+                        <p>As tarefas adicionadas aqui são referentes às <strong>6 coisas mais importantes de amanhã</strong>, seguindo a metodologia de Mary Kay Ash.</p>
+                        <a href="#" data-dashboard-open="todo-info">Saiba mais sobre a metodologia</a>
+                    </div>
+                    <div class="dashboard-task-builder" data-dashboard-task-builder>
+                        <div class="dashboard-task-slot" data-task-slot="1"></div>
+                        <div class="dashboard-task-slot" data-task-slot="2"></div>
+                        <div class="dashboard-task-slot" data-task-slot="3"></div>
+                        <div class="dashboard-task-slot" data-task-slot="4"></div>
+                        <div class="dashboard-task-slot" data-task-slot="5"></div>
+                        <div class="dashboard-task-slot" data-task-slot="6"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-modal dashboard-modal" id="dashboard-alert-modal" hidden>
+                <div class="client-modal-backdrop" data-dashboard-modal-close></div>
+                <div class="client-modal-dialog elevated dashboard-modal-dialog">
+                    <button class="client-modal-close" type="button" aria-label="Fechar janela" data-dashboard-modal-close>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                    </button>
+                    <span class="calendar-modal-pill calendar-modal-pill--soft" data-dashboard-alert-pill>Detalhes</span>
+                    <h2 data-dashboard-alert-title>Lista completa</h2>
+                    <p class="client-modal-subtitle" data-dashboard-alert-subtitle>Até 10 itens relacionados.</p>
+                    <div class="dashboard-alert-list" data-dashboard-alert-list></div>
+                </div>
+            </div>
+
+            <div class="client-modal dashboard-modal" id="dashboard-message-modal" hidden>
+                <div class="client-modal-backdrop" data-dashboard-modal-close></div>
+                <div class="client-modal-dialog elevated dashboard-modal-dialog">
+                    <button class="client-modal-close" type="button" aria-label="Fechar janela" data-dashboard-modal-close>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                    </button>
+                    <span class="calendar-modal-pill calendar-modal-pill--soft">Mensagem</span>
+                    <div class="dashboard-message-person">
+                        <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="" data-dashboard-message-avatar>
+                        <div>
+                            <strong data-dashboard-message-name>Cliente</strong>
+                            <span data-dashboard-message-subtitle>Resumo</span>
+                        </div>
+                    </div>
+                    <div class="dashboard-message-box">
+                        <textarea rows="6" maxlength="500" data-dashboard-message-text></textarea>
+                    </div>
+                    <button class="clients-primary-button dashboard-send-button" type="button">Enviar mensagem</button>
+                </div>
+            </div>
 
             <footer class="page-footer">
                 <p>&copy; <span data-current-year>YEAR</span> PinkBox Sistema de Gestão de Vendas.</p>

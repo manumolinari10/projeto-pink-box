@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PinkBox | Insights</title>
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <link rel="stylesheet" href="../src/css/global.css">
+</head>
+<body class="insights-page">
+    <div class="dashboard-shell">
+        <aside class="sidebar" aria-label="Menu lateral">
+            <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
+                <img class="brand-logo brand-logo-horizontal" src="../src/assets/logo_horizontal.webp" alt="PinkBox Executive Portal">
+                <img class="brand-logo brand-logo-simple" src="../src/assets/logo_simple.webp" alt="PinkBox">
+            </a>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="./index.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" /></svg>
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-link" href="./clientes.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"></path></svg>
+                    </span>
+                    <span>Clientes</span>
+                </a>
+                <a class="nav-link" href="./produtos.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M184,96.8V88a32,32,0,0,0-32-32H136V32h32a8,8,0,0,1,8,8,8,8,0,0,0,16,0,24,24,0,0,0-24-24H104a8,8,0,0,0,0,16h16V56H104A32,32,0,0,0,72,88v8.8A40.07,40.07,0,0,0,40,136v80a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136A40.07,40.07,0,0,0,184,96.8ZM104,72h48a16,16,0,0,1,16,16v8H88V88A16,16,0,0,1,104,72Z"></path></svg>
+                    </span>
+                    <span>Produtos</span>
+                </a>
+                <a class="nav-link" href="./vendas.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
+                    </span>
+                    <span>Vendas</span>
+                </a>
+                <a class="nav-link" href="./financeiro.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm0 8a1 1 0 0 0 -1 1v.05a2.5 2.5 0 0 0 .5 4.95h1a.5 .5 0 1 1 0 1h-2.5a1 1 0 0 0 0 2h1a1 1 0 0 0 2 0v-.05a2.5 2.5 0 0 0 -.5 -4.95h-1a.5 .5 0 1 1 0 -1h2.5a1 1 0 0 0 0 -2h-1a1 1 0 0 0 -1 -1" /><path d="M19 7h-4l-.001 -4.001z" /></svg>
+                    </span>
+                    <span>Financeiro</span>
+                </a>
+                <a class="nav-link" href="./calendario.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM84,184a12,12,0,1,1,12-12A12,12,0,0,1,84,184Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,128,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,128,144Zm44,40a12,12,0,1,1,12-12A12,12,0,0,1,172,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,172,144Zm36-64H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24Z"></path></svg>
+                    </span>
+                    <span>Calendário</span>
+                </a>
+                <a class="nav-link is-active" href="./insights.html" aria-current="page">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" /><path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M4.893 4.893a1 1 0 0 1 1.32 -.083l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 0 -1.414z" /><path d="M17.693 4.893a1 1 0 0 1 1.497 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7z" /><path d="M14 18a1 1 0 0 1 1 1a3 3 0 0 1 -6 0a1 1 0 0 1 .883 -.993l.117 -.007h4z" /><path d="M12 6a6 6 0 0 1 3.6 10.8a1 1 0 0 1 -.471 .192l-.129 .008h-6a1 1 0 0 1 -.6 -.2a6 6 0 0 1 3.6 -10.8z" /></svg>
+                    </span>
+                    <span>Insights</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-links">
+                    <a class="nav-link nav-link--subtle" href="./configuracoes.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg>
+                        </span>
+                        <span>Configurações</span>
+                    </a>
+                    <a class="nav-link nav-link--subtle" href="./login.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-12a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h12zm-3 2h-9a1 1 0 0 0 -.993 .883l-.007 .117v12a1 1 0 0 0 .883 .993l.117 .007h9v-14zm-5.387 4.21l.094 .083l2 2a1 1 0 0 1 .083 1.32l-.083 .094l-2 2a1 1 0 0 1 -1.497 -1.32l.083 -.094l1.292 -1.293l-1.292 -1.293a1 1 0 0 1 -.083 -1.32l.083 -.094a1 1 0 0 1 1.32 -.083z" /></svg>
+                        </span>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-panel insights-main-panel">
+            <header class="topbar clients-topbar">
+                <div class="clients-topbar-left">
+                    <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="notification-wrapper">
+                        <button class="icon-button" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" data-notification-toggle>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22m6-6V11a6 6 0 1 0-12 0v5L4 18v1h16v-1z"></path></svg>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <div class="notification-menu" hidden data-notification-menu>
+                            <button type="button">Novo insight de recuperação de clientes</button>
+                            <button type="button">Produto X abaixo do estoque ideal</button>
+                            <button type="button">Terça-feira à noite com pico de conversão</button>
+                            <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
+                        </div>
+                    </div>
+
+                    <a class="profile-card" href="./perfil.html">
+                        <div class="profile-copy">
+                            <strong>Beatriz Souza</strong>
+                            <span>CONSULTORA DIAMANTE</span>
+                        </div>
+                        <img class="profile-avatar avatar-image" src="../src/assets/users/default.webp" alt="Foto de perfil de Beatriz Souza">
+                    </a>
+                </div>
+            </header>
+
+            <section class="product-detail-header insights-header page-intro-wrap">
+                <div class="page-intro-copy">
+                    <div class="products-breadcrumb">Dashboard / Insights</div>
+                    <h1>Insights Inteligentes</h1>
+                    <p>Leituras rápidas para vender melhor, agir no momento certo e transformar comportamento em campanha.</p>
+                </div>
+            </section>
+
+            <section class="insights-summary-card elevated">
+                <div class="insights-summary-copy">
+                    <span class="finance-eyebrow">Resumo do Dia</span>
+                    <h2>Seu cenário de hoje pede ação rápida, comunicação inteligente e reposição preventiva.</h2>
+                    <p>O sistema identificou foco forte em terça-feira à noite, clientes VIP para recuperar, oportunidade de upsell e estoque de Produto X abaixo do ideal.</p>
+                    <div class="insights-hero-pills">
+                        <span class="insights-pill insights-pill--pink">Radar do dia</span>
+                        <span class="insights-pill insights-pill--green">Última semana em alta</span>
+                        <span class="insights-pill insights-pill--soft">Campanhas sazonais ativas</span>
+                    </div>
+                </div>
+                <div class="insights-summary-radar insights-priority-card">
+                    <span class="finance-eyebrow">Radar do Dia</span>
+                    <strong>Hoje é o quinto dia útil</strong>
+                    <p>Aproveite para impulsionar o Produto X e preparar uma campanha temática para o Dia das Mães.</p>
+                    <ul>
+                        <li>Anuncie o Produto X hoje por ser o quinto dia útil.</li>
+                        <li>Prepare uma oferta para 3 clientes VIP sem compra recente.</li>
+                        <li>Inclua Produto X no próximo pedido de estoque.</li>
+                        <li>Evite parcelamentos altos neste mês para reduzir risco de inadimplência.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="insights-layout">
+                <div class="insights-primary-column">
+                    <article class="insights-personal-card elevated">
+                        <div class="insights-card-head">
+                            <div>
+                                <span class="finance-eyebrow">Ações Individuais</span>
+                                <h2>Mensagens de hoje</h2>
+                            </div>
+                        </div>
+                        <div class="insights-personal-list">
+                            <div class="insights-personal-item">
+                                <img src="../src/assets/customers/default.webp" alt="Cliente Fulano">
+                                <div>
+                                    <strong>Fulano</strong>
+                                    <p>Demonstrou interesse no Produto X. Envie uma oferta com 10% de desconto.</p>
+                                </div>
+                            </div>
+                            <div class="insights-personal-item">
+                                <img src="../src/assets/customers/default.webp" alt="Cliente Fulana">
+                                <div>
+                                    <strong>Fulana</strong>
+                                    <p>Costuma comprar o Produto X e deve precisar de reposição em 5 dias.</p>
+                                </div>
+                            </div>
+                            <div class="insights-personal-item">
+                                <img src="../src/assets/customers/default.webp" alt="Cliente Aniversariante">
+                                <div>
+                                    <strong>Fulano</strong>
+                                    <p>Hoje é aniversário. Vale mandar parabéns com desconto especial.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="insights-feed-card elevated">
+                        <div class="insights-card-head">
+                            <div>
+                                <span class="finance-eyebrow">Feed de Sugestões</span>
+                                <h2>Recomendações práticas para agir agora</h2>
+                            </div>
+                            <span class="insights-inline-tag">Atualizado hoje</span>
+                        </div>
+
+                        <div class="insights-feed-list">
+                            <article class="insight-feed-row">
+                                <span class="client-insight-badge client-insight-badge--purple">Estratégia</span>
+                                <p>Clientes que compram o Produto X tendem a gostar do Produto Y, e o Produto X é o campeão entre clientes +40.</p>
+                            </article>
+                            <article class="insight-feed-row">
+                                <span class="client-insight-badge client-insight-badge--blue">Calendário</span>
+                                <p>Hoje é o quinto dia útil, o Dia das Mães está chegando e março segue como o melhor mês para maquiagem.</p>
+                            </article>
+                            <article class="insight-feed-row">
+                                <span class="client-insight-badge client-insight-badge--red">Financeiro</span>
+                                <p>Janeiro apresenta maior inadimplência. Evite vendas com parcelas muito altas nesse período.</p>
+                            </article>
+                            <article class="insight-feed-row">
+                                <span class="client-insight-badge client-insight-badge--purple">Cross-sell</span>
+                                <p>Clientes que compram o Produto X têm tendência de gostar do Produto Y.</p>
+                            </article>
+                            <article class="insight-feed-row">
+                                <span class="client-insight-badge client-insight-badge--blue">Performance</span>
+                                <p>Terça-feira à noite é o seu melhor período de vendas. Foque suas divulgações nesse intervalo.</p>
+                            </article>
+                            <article class="insight-feed-row">
+                                <span class="client-insight-badge client-insight-badge--red">Recuperação</span>
+                                <p>3 das suas top 10 clientes não compraram no último mês. Experimente uma oferta com desconto ou condição especial.</p>
+                            </article>
+                            <article class="insight-feed-row">
+                                <span class="client-insight-badge client-insight-badge--purple">Segmentação</span>
+                                <p>O Produto X é o campeão de saída entre clientes +40. Direcione sua comunicação para esse perfil.</p>
+                            </article>
+                            <article class="insight-feed-row">
+                                <span class="client-insight-badge client-insight-badge--blue">Upsell</span>
+                                <p>5 clientes compraram o kit básico. Ofereça o kit completo com desconto especial.</p>
+                            </article>
+                        </div>
+
+                        <div class="insights-feed-list insights-feed-list--more" hidden data-insights-more-list>
+                                <article class="insight-feed-row">
+                                    <span class="client-insight-badge client-insight-badge--blue">Campanha</span>
+                                    <p>Está chegando o Dia das Mães. Aproveite para montar uma mensagem afetiva oferecendo o Produto X.</p>
+                                </article>
+                                <article class="insight-feed-row">
+                                    <span class="client-insight-badge client-insight-badge--red">Financeiro</span>
+                                    <p>Janeiro costuma apresentar mais inadimplência. Reduza o risco evitando parcelas muito altas.</p>
+                                </article>
+                                <article class="insight-feed-row">
+                                    <span class="client-insight-badge client-insight-badge--purple">Estoque</span>
+                                    <p>Você está com o estoque do Produto X abaixo do normal. Inclua-o no próximo pedido.</p>
+                                </article>
+                                <article class="insight-feed-row">
+                                    <span class="client-insight-badge client-insight-badge--blue">Celebração</span>
+                                    <p>Você teve um pico de vendas na última semana. Parabéns, esse ritmo pode virar campanha replicável.</p>
+                                </article>
+                        </div>
+                        <div class="insights-more-panel" data-insights-more-wrap>
+                            <button type="button" class="insights-more-button" data-insights-more-button>Ver mais sugestões</button>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="insights-side-column">
+                    <article class="insights-recovery-card elevated">
+                        <div class="insights-card-head">
+                            <div>
+                                <span class="finance-eyebrow">Clientes para Reativar</span>
+                                <h2>Top 10 sem compra no último mês</h2>
+                            </div>
+                        </div>
+                        <div class="insights-client-list">
+                            <div class="insights-client-row">
+                                <img src="../src/assets/customers/default.webp" alt="Cliente Mariana Torres">
+                                <div>
+                                    <strong>Mariana Torres</strong>
+                                    <span>Última compra há 34 dias</span>
+                                </div>
+                                <button type="button">Enviar desconto</button>
+                            </div>
+                            <div class="insights-client-row">
+                                <img src="../src/assets/customers/default.webp" alt="Cliente Juliana Paiva">
+                                <div>
+                                    <strong>Juliana Paiva</strong>
+                                    <span>VIP recorrente em perfumaria</span>
+                                </div>
+                                <button type="button">Condição especial</button>
+                            </div>
+                            <div class="insights-client-row">
+                                <img src="../src/assets/customers/default.webp" alt="Cliente Ana Ribeiro">
+                                <div>
+                                    <strong>Ana Ribeiro</strong>
+                                    <span>Sem compra desde o mês passado</span>
+                                </div>
+                                <button type="button">Mensagem rápida</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="insights-stock-card elevated">
+                        <div class="insights-card-head">
+                            <div>
+                                <span class="finance-eyebrow">Pressão de Estoque</span>
+                                <h2>Itens para monitorar</h2>
+                            </div>
+                        </div>
+                        <div class="insights-stock-list">
+                            <div>
+                                <span>Produto X</span>
+                                <strong>24% do ideal</strong>
+                                <div class="finance-track insights-stock-track" style="--stock-fill:24%"></div>
+                            </div>
+                            <div>
+                                <span>Kit X</span>
+                                <strong>41% do ideal</strong>
+                                <div class="finance-track insights-stock-track" style="--stock-fill:41%"></div>
+                            </div>
+                            <div>
+                                <span>Produto Y</span>
+                                <strong>67% do ideal</strong>
+                                <div class="finance-track insights-stock-track" style="--stock-fill:67%"></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="insights-calendar-card elevated">
+                        <div class="insights-card-head">
+                            <div>
+                                <span class="finance-eyebrow">Calendário Comercial</span>
+                                <h2>Próximas oportunidades</h2>
+                            </div>
+                        </div>
+                        <div class="insights-timeline">
+                            <div class="insights-timeline-item">
+                                <span class="insights-timeline-dot"></span>
+                                <div>
+                                    <strong>Hoje: quinto dia útil</strong>
+                                    <p>Vale impulsionar o Produto X com campanha curta.</p>
+                                </div>
+                            </div>
+                            <div class="insights-timeline-item">
+                                <span class="insights-timeline-dot"></span>
+                                <div>
+                                    <strong>Janeiro exige mais cautela</strong>
+                                    <p>Mês com maior índice de inadimplência. Evite parcelas muito altas.</p>
+                                </div>
+                            </div>
+                            <div class="insights-timeline-item">
+                                <span class="insights-timeline-dot"></span>
+                                <div>
+                                    <strong>Dia das Mães chegando</strong>
+                                    <p>Prepare uma mensagem temática oferecendo o Produto X.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </aside>
+            </section>
+
+            <footer class="page-footer">© 2026 PinkBox Sistema de Gestão de Vendas.</footer>
+        </main>
+    </div>
+
+    <script src="../src/js/main.js"></script>
+</body>
+</html>
