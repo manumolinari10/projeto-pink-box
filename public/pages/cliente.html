@@ -46,6 +46,12 @@
                     </span>
                     <span>Financeiro</span>
                 </a>
+                <a class="nav-link" href="./calendario.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM84,184a12,12,0,1,1,12-12A12,12,0,0,1,84,184Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,128,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,128,144Zm44,40a12,12,0,1,1,12-12A12,12,0,0,1,172,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,172,144Zm36-64H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24Z"></path></svg>
+                    </span>
+                    <span>Calendário</span>
+                </a>
                 <a class="nav-link" href="./insights.html">
                     <span class="nav-icon">
                         <svg viewBox="0 0 24 24"><path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" /><path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M4.893 4.893a1 1 0 0 1 1.32 -.083l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 0 -1.414z" /><path d="M17.693 4.893a1 1 0 0 1 1.497 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7z" /><path d="M14 18a1 1 0 0 1 1 1a3 3 0 0 1 -6 0a1 1 0 0 1 .883 -.993l.117 -.007h4z" /><path d="M12 6a6 6 0 0 1 3.6 10.8a1 1 0 0 1 -.471 .192l-.129 .008h-6a1 1 0 0 1 -.6 -.2a6 6 0 0 1 3.6 -10.8z" /></svg>
@@ -124,11 +130,10 @@
                             </div>
 
                             <div class="client-hero-actions">
-                                <a class="clients-primary-button" href="./mensagens.html">
-                                    <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M230.47,187.07,182.58,42.42a15.9,15.9,0,0,0-15.17-10.91h-.12a15.89,15.89,0,0,0-15.06,11.14L104.32,188a15.9,15.9,0,0,0,22,19.11l35.4-21.25L197,207.05a15.74,15.74,0,0,0,8.18,2.29,15.91,15.91,0,0,0,15.3-22.27ZM163,168.52a8,8,0,0,0-8.24,0l-39.11,23.47L163.32,48l47.75,144.2Z"></path></svg>
+                                <button type="button" class="clients-primary-button" data-client-compose-trigger>
+                                    <svg viewBox="0 0 256 256"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.84,15.84,0,0,0,9.25,14.5A16.05,16.05,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM160,152H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z"></path></svg>
                                     <span>Enviar Mensagem</span>
-                                </a>
-                                <a class="client-secondary-button" href="./editar-cliente.html">Editar Cliente</a>
+                                </button>
                             </div>
                         </div>
 
@@ -168,62 +173,95 @@
                         </a>
                     </section>
 
-                    <article class="client-profile-card elevated">
+                    <article class="client-profile-card elevated" data-client-profile-editor>
                         <div class="client-profile-card-header">
-                            <span class="client-profile-card-icon" aria-hidden="true">
-                                <svg viewBox="0 0 256 256"><path d="M224,48H176V40a24,24,0,0,0-48,0v8H80V40a24,24,0,0,0-48,0v8H24A16,16,0,0,0,8,64V216a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48ZM144,40a8,8,0,0,1,16,0v8H144ZM48,40a8,8,0,0,1,16,0v8H48ZM224,216H24V64H32v8a8,8,0,0,0,16,0V64h96v8a8,8,0,0,0,16,0V64h48V216ZM96,116a12,12,0,1,1,12,12A12,12,0,0,1,96,116Zm60,0a12,12,0,1,1,12,12A12,12,0,0,1,156,116ZM96,164a12,12,0,1,1,12,12A12,12,0,0,1,96,164Zm60,0a12,12,0,1,1,12,12A12,12,0,0,1,156,164Z"></path></svg>
-                            </span>
-                            <h2>Dados Cadastrais</h2>
+                            <div class="client-profile-card-title">
+                                <span class="client-profile-card-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 256 256"><path d="M152,80a8,8,0,0,1,8-8h88a8,8,0,0,1,0,16H160A8,8,0,0,1,152,80Zm96,40H160a8,8,0,0,0,0,16h88a8,8,0,0,0,0-16Zm0,48H184a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16ZM109.29,142a48,48,0,1,0-58.58,0c-20.62,8.73-36.87,26.3-42.46,48A8,8,0,0,0,16,200H144a8,8,0,0,0,7.75-10C146.16,168.29,129.91,150.72,109.29,142Z"></path></svg>
+                                </span>
+                                <h2>Dados Cadastrais</h2>
+                            </div>
+                            <div class="client-profile-card-actions">
+                                <button type="button" class="client-profile-edit-button" data-client-profile-edit aria-label="Editar cadastro">
+                                    <svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path></svg>
+                                    <span>Editar cadastro</span>
+                                </button>
+                                <div class="client-profile-edit-actions" hidden data-client-profile-edit-actions>
+                                    <button type="button" class="client-profile-inline-button" data-client-profile-cancel>Cancelar</button>
+                                    <button type="button" class="clients-primary-button client-profile-save-button" data-client-profile-save>Salvar alterações</button>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="client-profile-grid">
                             <div class="client-profile-row">
                                 <span>CPF</span>
-                                <strong>123.456.789-00</strong>
+                                <strong data-client-profile-view="cpf">123.456.789-00</strong>
+                                <input class="client-profile-input" type="text" value="123.456.789-00" readonly hidden data-client-profile-input="cpf">
                             </div>
                             <div class="client-profile-row">
                                 <span>Nascimento</span>
-                                <strong>15/05/1992</strong>
+                                <strong data-client-profile-view="birth">15/05/1992</strong>
+                                <input class="client-profile-input" type="text" value="15/05/1992" readonly hidden data-client-profile-input="birth">
                             </div>
                             <div class="client-profile-row">
                                 <span>Idade</span>
-                                <strong>31 anos</strong>
+                                <strong data-client-profile-view="age">31 anos</strong>
+                                <input class="client-profile-input" type="text" value="31 anos" readonly hidden data-client-profile-input="age">
                             </div>
                             <div class="client-profile-row">
                                 <span>Sexo</span>
-                                <strong>Masculino</strong>
+                                <strong data-client-profile-view="gender">Masculino</strong>
+                                <input class="client-profile-input" type="text" value="Masculino" readonly hidden data-client-profile-input="gender">
                             </div>
                             <div class="client-profile-row">
                                 <span>Estado Civil</span>
-                                <strong>Casado</strong>
+                                <strong data-client-profile-view="marital">Casado</strong>
+                                <select class="client-profile-select" hidden data-client-profile-input="marital">
+                                    <option value="Solteiro">Solteiro</option>
+                                    <option value="Casado" selected>Casado</option>
+                                    <option value="União estável">União estável</option>
+                                    <option value="Divorciado">Divorciado</option>
+                                    <option value="Viúvo">Viúvo</option>
+                                </select>
                             </div>
                             <div class="client-profile-row">
                                 <span>Filhos</span>
-                                <strong>Sim</strong>
+                                <strong data-client-profile-view="children">Sim</strong>
+                                <select class="client-profile-select" hidden data-client-profile-input="children">
+                                    <option value="Sim" selected>Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
                             </div>
                             <div class="client-profile-row">
                                 <span>Origem</span>
-                                <strong class="client-profile-highlight">Redes Sociais</strong>
+                                <strong class="client-profile-highlight" data-client-profile-view="origin">Redes Sociais</strong>
+                                <input class="client-profile-input" type="text" value="Redes Sociais" readonly hidden data-client-profile-input="origin">
                             </div>
                             <div class="client-profile-row">
                                 <span>Data de Cadastro</span>
-                                <strong>08/03/2021</strong>
+                                <strong data-client-profile-view="created">08/03/2021</strong>
+                                <input class="client-profile-input" type="text" value="08/03/2021" readonly hidden data-client-profile-input="created">
                             </div>
                             <div class="client-profile-row">
                                 <span>Conferência dos Dados</span>
-                                <strong class="client-profile-status">
+                                <strong class="client-profile-status" data-client-profile-view="verified">
                                     <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
                                     <span>Sim</span>
                                 </strong>
+                                <select class="client-profile-select" hidden data-client-profile-input="verified">
+                                    <option value="Sim" selected>Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
                             </div>
                         </div>
                     </article>
 
                     <section class="client-extra-sections">
-                        <article class="client-accordion elevated" data-accordion>
+                        <article class="client-accordion elevated" data-accordion data-client-section-editor="contacts">
                             <button type="button" class="client-toggle-card" aria-expanded="false" data-accordion-toggle>
                                 <span class="client-toggle-card-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 256 256"><path d="M216,40H72A16,16,0,0,0,56,56V88H40A16,16,0,0,0,24,104V216a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM184,216H40V104H184V216Zm32-48H200V104a16,16,0,0,0-16-16H72V56H216V168Zm-60-68a12,12,0,1,1-12,12A12,12,0,0,1,156,100Z"></path></svg>
+                                    <svg viewBox="0 0 256 256"><path d="M160,112a24,24,0,1,1-24-24A24,24,0,0,1,160,112Zm64-72V216a16,16,0,0,1-16,16H64a16,16,0,0,1-16-16V192H32a8,8,0,0,1,0-16H48V136H32a8,8,0,0,1,0-16H48V80H32a8,8,0,0,1,0-16H48V40A16,16,0,0,1,64,24H208A16,16,0,0,1,224,40ZM190.4,163.2A67.88,67.88,0,0,0,163,141.51a40,40,0,1,0-53.94,0A67.88,67.88,0,0,0,81.6,163.2a8,8,0,1,0,12.8,9.6,52,52,0,0,1,83.2,0,8,8,0,1,0,12.8-9.6Z"></path></svg>
                                 </span>
                                 <span class="client-toggle-card-label">Contatos</span>
                                 <span class="client-toggle-card-arrow" aria-hidden="true">
@@ -231,20 +269,50 @@
                                 </span>
                             </button>
                             <div class="client-accordion-content" hidden data-accordion-content>
+                                <div class="client-accordion-content-head">
+                                    <button type="button" class="client-card-edit-link" data-client-section-edit="contacts">
+                                        <svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path></svg>
+                                        <span>Editar contatos</span>
+                                    </button>
+                                    <div class="client-section-edit-actions" hidden data-client-section-actions="contacts">
+                                        <button type="button" class="client-profile-inline-button" data-client-section-cancel="contacts">Cancelar</button>
+                                        <button type="button" class="clients-primary-button client-profile-save-button" data-client-section-save="contacts">Salvar alterações</button>
+                                    </div>
+                                </div>
                                 <div class="client-accordion-grid">
-                                    <div class="client-accordion-row"><span>WhatsApp</span><strong>(11) 98765-4321</strong></div>
-                                    <div class="client-accordion-row"><span>Telefone</span><strong>(11) 3344-5566</strong></div>
-                                    <div class="client-accordion-row"><span>E-mail</span><strong>mariana@email.com</strong></div>
-                                    <div class="client-accordion-row"><span>Instagram</span><strong>@marianasilva</strong></div>
-                                    <div class="client-accordion-row"><span>Facebook</span><strong>/mariana.silva</strong></div>
+                                    <div class="client-accordion-row">
+                                        <span>WhatsApp</span>
+                                        <strong data-client-section-view="contacts-whatsapp">(11) 98765-4321</strong>
+                                        <input class="client-accordion-input" type="text" value="(11) 98765-4321" hidden data-client-section-input="contacts-whatsapp" data-contact-whatsapp-input inputmode="numeric" maxlength="15">
+                                    </div>
+                                    <div class="client-accordion-row">
+                                        <span>Telefone</span>
+                                        <strong data-client-section-view="contacts-phone">(11) 3344-5566</strong>
+                                        <input class="client-accordion-input" type="text" value="(11) 3344-5566" hidden data-client-section-input="contacts-phone" data-contact-phone-input inputmode="numeric" maxlength="14">
+                                    </div>
+                                    <div class="client-accordion-row">
+                                        <span>E-mail</span>
+                                        <strong data-client-section-view="contacts-email">mariana@email.com</strong>
+                                        <input class="client-accordion-input" type="email" value="mariana@email.com" hidden data-client-section-input="contacts-email" data-contact-email-input>
+                                    </div>
+                                    <div class="client-accordion-row">
+                                        <span>Instagram</span>
+                                        <strong data-client-section-view="contacts-instagram">@marianasilva</strong>
+                                        <input class="client-accordion-input" type="text" value="@marianasilva" hidden data-client-section-input="contacts-instagram">
+                                    </div>
+                                    <div class="client-accordion-row">
+                                        <span>Facebook</span>
+                                        <strong data-client-section-view="contacts-facebook">/mariana.silva</strong>
+                                        <input class="client-accordion-input" type="text" value="/mariana.silva" hidden data-client-section-input="contacts-facebook">
+                                    </div>
                                 </div>
                             </div>
                         </article>
 
-                        <article class="client-accordion elevated" data-accordion>
+                        <article class="client-accordion elevated" data-accordion data-client-section-editor="address">
                             <button type="button" class="client-toggle-card" aria-expanded="false" data-accordion-toggle>
                                 <span class="client-toggle-card-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112A88.1,88.1,0,0,0,40,104c0,87.38,78.71,135.4,82.06,137.4a8,8,0,0,0,11.88,0C137.29,239.4,216,191.38,216,104A88.1,88.1,0,0,0,128,16Z"></path></svg>
+                                    <svg viewBox="0 0 256 256"><path d="M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.55a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z"></path></svg>
                                 </span>
                                 <span class="client-toggle-card-label">Endereço</span>
                                 <span class="client-toggle-card-arrow" aria-hidden="true">
@@ -252,20 +320,55 @@
                                 </span>
                             </button>
                             <div class="client-accordion-content" hidden data-accordion-content>
+                                <div class="client-accordion-content-head">
+                                    <button type="button" class="client-card-edit-link" data-client-section-edit="address">
+                                        <svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path></svg>
+                                        <span>Editar endereço</span>
+                                    </button>
+                                    <div class="client-section-edit-actions" hidden data-client-section-actions="address">
+                                        <button type="button" class="client-profile-inline-button" data-client-section-cancel="address">Cancelar</button>
+                                        <button type="button" class="clients-primary-button client-profile-save-button" data-client-section-save="address">Salvar alterações</button>
+                                    </div>
+                                </div>
                                 <div class="client-accordion-grid">
-                                    <div class="client-accordion-row"><span>CEP</span><strong>04567-120</strong></div>
-                                    <div class="client-accordion-row"><span>Rua</span><strong>Rua das Acácias</strong></div>
-                                    <div class="client-accordion-row"><span>Número</span><strong>245</strong></div>
-                                    <div class="client-accordion-row"><span>Bairro</span><strong>Jardins</strong></div>
-                                    <div class="client-accordion-row"><span>Cidade/Estado</span><strong>São Paulo/SP</strong></div>
+                                    <div class="client-accordion-row">
+                                        <span>CEP</span>
+                                        <strong data-client-section-view="address-cep">04567-120</strong>
+                                        <input class="client-accordion-input" type="text" value="04567-120" hidden data-client-section-input="address-cep" data-address-cep-input inputmode="numeric" maxlength="9">
+                                    </div>
+                                    <div class="client-accordion-row">
+                                        <span>Rua</span>
+                                        <strong data-client-section-view="address-street">Rua das Acácias</strong>
+                                        <input class="client-accordion-input" type="text" value="Rua das Acácias" hidden data-client-section-input="address-street" data-address-street-input>
+                                    </div>
+                                    <div class="client-accordion-row">
+                                        <span>Número</span>
+                                        <strong data-client-section-view="address-number">245</strong>
+                                        <input class="client-accordion-input" type="text" value="245" hidden data-client-section-input="address-number">
+                                    </div>
+                                    <div class="client-accordion-row">
+                                        <span>Bairro</span>
+                                        <strong data-client-section-view="address-district">Jardins</strong>
+                                        <input class="client-accordion-input" type="text" value="Jardins" hidden data-client-section-input="address-district" data-address-district-input>
+                                    </div>
+                                    <div class="client-accordion-row">
+                                        <span>Cidade</span>
+                                        <strong data-client-section-view="address-city">São Paulo</strong>
+                                        <input class="client-accordion-input" type="text" value="São Paulo" hidden data-client-section-input="address-city" data-address-city-input>
+                                    </div>
+                                    <div class="client-accordion-row">
+                                        <span>Estado</span>
+                                        <strong data-client-section-view="address-state">SP</strong>
+                                        <input class="client-accordion-input" type="text" value="SP" hidden data-client-section-input="address-state" data-address-state-input>
+                                    </div>
                                 </div>
                             </div>
                         </article>
 
-                        <article class="client-accordion elevated" data-accordion>
+                        <article class="client-accordion elevated" data-accordion data-client-section-editor="beauty">
                             <button type="button" class="client-toggle-card" aria-expanded="false" data-accordion-toggle>
                                 <span class="client-toggle-card-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,32a24,24,0,1,1-24,24A24,24,0,0,1,128,56Zm0,152a79.65,79.65,0,0,1-55.86-22.82,64.08,64.08,0,0,1,111.72,0A79.65,79.65,0,0,1,128,208Z"></path></svg>
+                                    <svg viewBox="0 0 256 256"><path d="M224,40V76a8,8,0,0,1-16,0V48H180a8,8,0,0,1,0-16h36A8,8,0,0,1,224,40Zm-8,132a8,8,0,0,0-8,8v28H180a8,8,0,0,0,0,16h36a8,8,0,0,0,8-8V180A8,8,0,0,0,216,172ZM76,208H48V180a8,8,0,0,0-16,0v36a8,8,0,0,0,8,8H76a8,8,0,0,0,0-16ZM40,84a8,8,0,0,0,8-8V48H76a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8V76A8,8,0,0,0,40,84Zm61,57.51A67.94,67.94,0,0,0,73.6,163.19,8,8,0,0,0,80,176h96a8,8,0,0,0,6.4-12.81A67.94,67.94,0,0,0,155,141.51a40,40,0,1,0-53.94,0Z"></path></svg>
                                 </span>
                                 <span class="client-toggle-card-label">Perfil de Beleza</span>
                                 <span class="client-toggle-card-arrow" aria-hidden="true">
@@ -273,35 +376,72 @@
                                 </span>
                             </button>
                             <div class="client-accordion-content" hidden data-accordion-content>
+                                <div class="client-accordion-content-head">
+                                    <button type="button" class="client-card-edit-link" data-client-section-edit="beauty">
+                                        <svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path></svg>
+                                        <span>Editar perfil</span>
+                                    </button>
+                                    <div class="client-section-edit-actions" hidden data-client-section-actions="beauty">
+                                        <button type="button" class="client-profile-inline-button" data-client-section-cancel="beauty">Cancelar</button>
+                                        <button type="button" class="clients-primary-button client-profile-save-button" data-client-section-save="beauty">Salvar alterações</button>
+                                    </div>
+                                </div>
                                 <div class="client-accordion-grid">
                                     <div class="client-accordion-row">
                                         <span>Cor da Base</span>
-                                        <div class="client-accordion-tags">
+                                        <div class="client-accordion-tags" data-client-section-view="beauty-base">
                                             <span class="client-accordion-tag">Bege Médio 2</span>
+                                        </div>
+                                        <div class="client-tag-editor" hidden data-client-section-input="beauty-base">
+                                            <label class="client-tag-option"><input type="checkbox" value="Bege Médio 1"><span class="client-accordion-tag">Bege Médio 1</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Bege Médio 2" checked><span class="client-accordion-tag">Bege Médio 2</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Bege Claro"><span class="client-accordion-tag">Bege Claro</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Bronze 1"><span class="client-accordion-tag">Bronze 1</span></label>
                                         </div>
                                     </div>
                                     <div class="client-accordion-row">
                                         <span>Tipo de Pele</span>
-                                        <div class="client-accordion-tags">
+                                        <div class="client-accordion-tags" data-client-section-view="beauty-skin">
                                             <span class="client-accordion-tag">Mista</span>
+                                        </div>
+                                        <div class="client-tag-editor" hidden data-client-section-input="beauty-skin">
+                                            <label class="client-tag-option"><input type="checkbox" value="Mista" checked><span class="client-accordion-tag">Mista</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Oleosa"><span class="client-accordion-tag">Oleosa</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Normal"><span class="client-accordion-tag">Normal</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Seca"><span class="client-accordion-tag">Seca</span></label>
                                         </div>
                                     </div>
                                     <div class="client-accordion-row">
                                         <span>Cor de Batom</span>
-                                        <div class="client-accordion-tags">
+                                        <div class="client-accordion-tags" data-client-section-view="beauty-lipstick">
                                             <span class="client-accordion-tag">Vermelho Queimado</span>
                                             <span class="client-accordion-tag">Rosado Nude</span>
                                             <span class="client-accordion-tag">Marsala</span>
                                         </div>
+                                        <div class="client-tag-editor" hidden data-client-section-input="beauty-lipstick">
+                                            <label class="client-tag-option"><input type="checkbox" value="Vermelho Queimado" checked><span class="client-accordion-tag">Vermelho Queimado</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Rosado Nude" checked><span class="client-accordion-tag">Rosado Nude</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Marsala" checked><span class="client-accordion-tag">Marsala</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Coral"><span class="client-accordion-tag">Coral</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Rosa Antigo"><span class="client-accordion-tag">Rosa Antigo</span></label>
+                                        </div>
                                     </div>
                                     <div class="client-accordion-row">
                                         <span>Perfume</span>
-                                        <div class="client-accordion-tags">
+                                        <div class="client-accordion-tags" data-client-section-view="beauty-perfume">
                                             <span class="client-accordion-tag">Cítrico</span>
                                             <span class="client-accordion-tag">Amadeirado</span>
                                             <span class="client-accordion-tag">Floral</span>
                                             <span class="client-accordion-tag">Doce</span>
                                             <span class="client-accordion-tag">Frutado</span>
+                                        </div>
+                                        <div class="client-tag-editor" hidden data-client-section-input="beauty-perfume">
+                                            <label class="client-tag-option"><input type="checkbox" value="Cítrico" checked><span class="client-accordion-tag">Cítrico</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Amadeirado" checked><span class="client-accordion-tag">Amadeirado</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Floral" checked><span class="client-accordion-tag">Floral</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Doce" checked><span class="client-accordion-tag">Doce</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Frutado" checked><span class="client-accordion-tag">Frutado</span></label>
+                                            <label class="client-tag-option"><input type="checkbox" value="Aquático"><span class="client-accordion-tag">Aquático</span></label>
                                         </div>
                                     </div>
                                 </div>
@@ -311,7 +451,7 @@
                         <article class="client-journey-card elevated client-accordion" data-accordion>
                             <button type="button" class="client-toggle-card" aria-expanded="false" data-accordion-toggle>
                                 <span class="client-toggle-card-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm48,112a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V144H88a8,8,0,0,1,0-16h32V96a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,136Z"></path></svg>
+                                    <svg viewBox="0 0 256 256"><path d="M220.8,169.6A8,8,0,0,0,216,168h-8V64a32,32,0,0,0-32-32H40A32,32,0,0,0,8,64C8,77.61,18.05,85.54,19.2,86.4h0A7.89,7.89,0,0,0,24,88a8,8,0,0,0,4.87-14.33h0C28.83,73.62,24,69.74,24,64a16,16,0,0,1,32,0V192a32,32,0,0,0,32,32H200a32,32,0,0,0,32-32C232,178.39,222,170.46,220.8,169.6ZM104,96h64a8,8,0,0,1,0,16H104a8,8,0,0,1,0-16Zm-8,40a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H104A8,8,0,0,1,96,136Zm104,72H107.71A31.82,31.82,0,0,0,112,192a26.92,26.92,0,0,0-1.21-8h102a12.58,12.58,0,0,1,3.23,8A16,16,0,0,1,200,208Z"></path></svg>
                                 </span>
                                 <span class="client-toggle-card-label">Registro de Atividades</span>
                                 <span class="client-toggle-card-arrow" aria-hidden="true">
@@ -332,91 +472,94 @@
                                 </div>
                                 <div class="client-journey-timeline">
                                     <article class="client-journey-event" data-journey-type="purchase">
-                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M230.14,58.87A8,8,0,0,0,224,56H62.68L56.6,22.57A8,8,0,0,0,48.73,16H24a8,8,0,0,0,0,16h18L67.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,160,204a28,28,0,1,0,28-28H91.17a8,8,0,0,1-7.87-6.57L80.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,230.14,58.87ZM104,204a12,12,0,1,1-12-12A12,12,0,0,1,104,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,200,204Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Compra Finalizada</h3><p>12 Out, 2023</p></div><strong>R$ 489,00</strong></div><a href="./pedido.html" class="client-journey-product"><strong>#9842</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6l-6 6"></path></svg></a></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="event">
-                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M173.66,82.34l-56-56A8,8,0,0,0,112,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,173.66,82.34Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M112,120a16,16,0,1,1-16-16A16,16,0,0,1,112,120ZM232,56V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM135.75,166a39.76,39.76,0,0,0-17.19-23.34,32,32,0,1,0-45.12,0A39.84,39.84,0,0,0,56.25,166a8,8,0,0,0,15.5,4c2.64-10.25,13.06-18,24.25-18s21.62,7.73,24.25,18a8,8,0,1,0,15.5-4ZM200,144a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,144Zm0-32a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,112Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Cadastro Realizado</h3><p>08 Mar, 2021</p></div><strong>Origem Web</strong></div></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="event">
-                                        <span class="client-journey-marker client-journey-marker--blue" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H84.69L128,248l43.31-32H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Z"></path></svg></span>
-                                        <div class="client-journey-card-item"><div class="client-journey-card-head client-journey-card-head--inline"><div><h3>Mensagem Enviada</h3><p>05 Out, 2023</p></div><a href="./conversa.html">Ver conversa</a></div></div>
+                                        <span class="client-journey-marker client-journey-marker--blue" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.84,15.84,0,0,0,9.25,14.5A16.05,16.05,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM160,152H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z"></path></svg></span>
+                                        <div class="client-journey-card-item"><div class="client-journey-card-head client-journey-card-head--inline"><div><h3>Mensagem Enviada</h3><p>05 Out, 2023</p></div><button type="button" class="client-journey-message-link" data-client-message-trigger data-message-date="05 Out, 2023" data-message-body="Oi, Mariana! Passando para reforcar nosso retorno combinado. Separei algumas opcoes alinhadas ao que voce comentou e fico a disposicao para te atender nos proximos 2 dias. Se quiser, posso montar uma sugestao personalizada ainda hoje.">Ver mensagem</button></div></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="purchase">
-                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M230.14,58.87A8,8,0,0,0,224,56H62.68L56.6,22.57A8,8,0,0,0,48.73,16H24a8,8,0,0,0,0,16h18L67.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,160,204a28,28,0,1,0,28-28H91.17a8,8,0,0,1-7.87-6.57L80.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,230.14,58.87ZM104,204a12,12,0,1,1-12-12A12,12,0,0,1,104,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,200,204Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Pagamento Realizado</h3><p>28 Set, 2023</p></div><strong>R$ 159,90</strong></div><a href="./pedido.html" class="client-journey-product"><strong>#9721</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6l-6 6"></path></svg></a></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="purchase">
-                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M230.14,58.87A8,8,0,0,0,224,56H62.68L56.6,22.57A8,8,0,0,0,48.73,16H24a8,8,0,0,0,0,16h18L67.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,160,204a28,28,0,1,0,28-28H91.17a8,8,0,0,1-7.87-6.57L80.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,230.14,58.87ZM104,204a12,12,0,1,1-12-12A12,12,0,0,1,104,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,200,204Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Pedido Realizado</h3><p>12 Set, 2023</p></div><strong>R$ 329,00</strong></div><a href="./pedido.html" class="client-journey-product"><strong>#9605</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6l-6 6"></path></svg></a></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="event">
-                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M173.66,82.34l-56-56A8,8,0,0,0,112,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,173.66,82.34Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M112,120a16,16,0,1,1-16-16A16,16,0,0,1,112,120ZM232,56V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM135.75,166a39.76,39.76,0,0,0-17.19-23.34,32,32,0,1,0-45.12,0A39.84,39.84,0,0,0,56.25,166a8,8,0,0,0,15.5,4c2.64-10.25,13.06-18,24.25-18s21.62,7.73,24.25,18a8,8,0,1,0,15.5-4ZM200,144a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,144Zm0-32a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,112Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Cadastro Atualizado</h3><p>30 Ago, 2023</p></div><strong>Endereço</strong></div></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="event">
-                                        <span class="client-journey-marker client-journey-marker--blue" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H84.69L128,248l43.31-32H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Z"></path></svg></span>
-                                        <div class="client-journey-card-item"><div class="client-journey-card-head client-journey-card-head--inline"><div><h3>Mensagem Enviada</h3><p>24 Ago, 2023</p></div><a href="./conversa.html">Ver conversa</a></div></div>
+                                        <span class="client-journey-marker client-journey-marker--blue" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.84,15.84,0,0,0,9.25,14.5A16.05,16.05,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM160,152H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z"></path></svg></span>
+                                        <div class="client-journey-card-item"><div class="client-journey-card-head client-journey-card-head--inline"><div><h3>Mensagem Enviada</h3><p>24 Ago, 2023</p></div><button type="button" class="client-journey-message-link" data-client-message-trigger data-message-date="24 Ago, 2023" data-message-body="Oi, Mariana! Te enviei uma atualizacao sobre os produtos que chegaram e deixei uma selecao pensada para o seu perfil. Se quiser, consigo reservar os itens por mais 2 dias para voce avaliar com calma.">Ver mensagem</button></div></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="purchase">
-                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M230.14,58.87A8,8,0,0,0,224,56H62.68L56.6,22.57A8,8,0,0,0,48.73,16H24a8,8,0,0,0,0,16h18L67.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,160,204a28,28,0,1,0,28-28H91.17a8,8,0,0,1-7.87-6.57L80.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,230.14,58.87ZM104,204a12,12,0,1,1-12-12A12,12,0,0,1,104,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,200,204Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Produto Entregue</h3><p>18 Ago, 2023</p></div><strong>R$ 214,00</strong></div><a href="./pedido.html" class="client-journey-product"><strong>#9408</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6l-6 6"></path></svg></a></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="event">
-                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M173.66,82.34l-56-56A8,8,0,0,0,112,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,173.66,82.34Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M112,120a16,16,0,1,1-16-16A16,16,0,0,1,112,120ZM232,56V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM135.75,166a39.76,39.76,0,0,0-17.19-23.34,32,32,0,1,0-45.12,0A39.84,39.84,0,0,0,56.25,166a8,8,0,0,0,15.5,4c2.64-10.25,13.06-18,24.25-18s21.62,7.73,24.25,18a8,8,0,1,0,15.5-4ZM200,144a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,144Zm0-32a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,112Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Produto de Interesse Adicionado</h3><p>06 Ago, 2023</p></div><strong>Wishlist</strong></div></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="purchase">
-                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M230.14,58.87A8,8,0,0,0,224,56H62.68L56.6,22.57A8,8,0,0,0,48.73,16H24a8,8,0,0,0,0,16h18L67.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,160,204a28,28,0,1,0,28-28H91.17a8,8,0,0,1-7.87-6.57L80.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,230.14,58.87ZM104,204a12,12,0,1,1-12-12A12,12,0,0,1,104,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,200,204Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Compra Realizada</h3><p>31 Jul, 2023</p></div><strong>R$ 420,00</strong></div><a href="./pedido.html" class="client-journey-product"><strong>#9284</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6l-6 6"></path></svg></a></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="event">
-                                        <span class="client-journey-marker client-journey-marker--blue" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H84.69L128,248l43.31-32H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Z"></path></svg></span>
-                                        <div class="client-journey-card-item"><div class="client-journey-card-head client-journey-card-head--inline"><div><h3>Mensagem Enviada</h3><p>27 Jul, 2023</p></div><a href="./conversa.html">Ver conversa</a></div></div>
+                                        <span class="client-journey-marker client-journey-marker--blue" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.84,15.84,0,0,0,9.25,14.5A16.05,16.05,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM160,152H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z"></path></svg></span>
+                                        <div class="client-journey-card-item"><div class="client-journey-card-head client-journey-card-head--inline"><div><h3>Mensagem Enviada</h3><p>27 Jul, 2023</p></div><button type="button" class="client-journey-message-link" data-client-message-trigger data-message-date="27 Jul, 2023" data-message-body="Oi, Mariana! Estou passando para saber se voce conseguiu testar as ultimas sugestoes. Se quiser, posso te orientar com novas combinacoes e manter essa consultoria ativa pelos proximos 2 dias.">Ver mensagem</button></div></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="event">
-                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M173.66,82.34l-56-56A8,8,0,0,0,112,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,173.66,82.34Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M112,120a16,16,0,1,1-16-16A16,16,0,0,1,112,120ZM232,56V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM135.75,166a39.76,39.76,0,0,0-17.19-23.34,32,32,0,1,0-45.12,0A39.84,39.84,0,0,0,56.25,166a8,8,0,0,0,15.5,4c2.64-10.25,13.06-18,24.25-18s21.62,7.73,24.25,18a8,8,0,1,0,15.5-4ZM200,144a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,144Zm0-32a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,112Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Cadastro Atualizado</h3><p>22 Jul, 2023</p></div><strong>Telefone</strong></div></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="purchase">
-                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M230.14,58.87A8,8,0,0,0,224,56H62.68L56.6,22.57A8,8,0,0,0,48.73,16H24a8,8,0,0,0,0,16h18L67.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,160,204a28,28,0,1,0,28-28H91.17a8,8,0,0,1-7.87-6.57L80.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,230.14,58.87ZM104,204a12,12,0,1,1-12-12A12,12,0,0,1,104,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,200,204Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Pagamento Realizado</h3><p>18 Jul, 2023</p></div><strong>R$ 278,00</strong></div><a href="./pedido.html" class="client-journey-product"><strong>#9170</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6l-6 6"></path></svg></a></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="purchase">
-                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M230.14,58.87A8,8,0,0,0,224,56H62.68L56.6,22.57A8,8,0,0,0,48.73,16H24a8,8,0,0,0,0,16h18L67.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,160,204a28,28,0,1,0,28-28H91.17a8,8,0,0,1-7.87-6.57L80.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,230.14,58.87ZM104,204a12,12,0,1,1-12-12A12,12,0,0,1,104,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,200,204Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Pedido Realizado</h3><p>11 Jul, 2023</p></div><strong>R$ 129,90</strong></div><a href="./pedido.html" class="client-journey-product"><strong>#9059</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6l-6 6"></path></svg></a></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="event">
-                                        <span class="client-journey-marker client-journey-marker--blue" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H84.69L128,248l43.31-32H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Z"></path></svg></span>
-                                        <div class="client-journey-card-item"><div class="client-journey-card-head client-journey-card-head--inline"><div><h3>Mensagem Enviada</h3><p>20 Jun, 2023</p></div><a href="./conversa.html">Ver conversa</a></div></div>
+                                        <span class="client-journey-marker client-journey-marker--blue" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.84,15.84,0,0,0,9.25,14.5A16.05,16.05,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM160,152H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Z"></path></svg></span>
+                                        <div class="client-journey-card-item"><div class="client-journey-card-head client-journey-card-head--inline"><div><h3>Mensagem Enviada</h3><p>20 Jun, 2023</p></div><button type="button" class="client-journey-message-link" data-client-message-trigger data-message-date="20 Jun, 2023" data-message-body="Oi, Mariana! Separei algumas novidades que combinam com suas preferencias e posso te ajudar na escolha. Se fizer sentido, consigo te acompanhar com prioridade nos proximos 2 dias.">Ver mensagem</button></div></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="event">
-                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M173.66,82.34l-56-56A8,8,0,0,0,112,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,173.66,82.34Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M112,120a16,16,0,1,1-16-16A16,16,0,0,1,112,120ZM232,56V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM135.75,166a39.76,39.76,0,0,0-17.19-23.34,32,32,0,1,0-45.12,0A39.84,39.84,0,0,0,56.25,166a8,8,0,0,0,15.5,4c2.64-10.25,13.06-18,24.25-18s21.62,7.73,24.25,18a8,8,0,1,0,15.5-4ZM200,144a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,144Zm0-32a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,112Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Cadastro Atualizado</h3><p>12 Jun, 2023</p></div><strong>Preferências</strong></div></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="purchase">
-                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M230.14,58.87A8,8,0,0,0,224,56H62.68L56.6,22.57A8,8,0,0,0,48.73,16H24a8,8,0,0,0,0,16h18L67.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,160,204a28,28,0,1,0,28-28H91.17a8,8,0,0,1-7.87-6.57L80.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,230.14,58.87ZM104,204a12,12,0,1,1-12-12A12,12,0,0,1,104,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,200,204Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Produto Entregue</h3><p>28 Mai, 2023</p></div><strong>R$ 198,00</strong></div><a href="./pedido.html" class="client-journey-product"><strong>#8441</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6l-6 6"></path></svg></a></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="event">
-                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M173.66,82.34l-56-56A8,8,0,0,0,112,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,173.66,82.34Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--gold" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M112,120a16,16,0,1,1-16-16A16,16,0,0,1,112,120ZM232,56V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM135.75,166a39.76,39.76,0,0,0-17.19-23.34,32,32,0,1,0-45.12,0A39.84,39.84,0,0,0,56.25,166a8,8,0,0,0,15.5,4c2.64-10.25,13.06-18,24.25-18s21.62,7.73,24.25,18a8,8,0,1,0,15.5-4ZM200,144a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,144Zm0-32a8,8,0,0,0-8-8H152a8,8,0,0,0,0,16h40A8,8,0,0,0,200,112Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Produto de Interesse Adicionado</h3><p>14 Abr, 2023</p></div><strong>Perfume</strong></div></div>
                                     </article>
                                     <article class="client-journey-event" data-journey-type="purchase">
-                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg></span>
+                                        <span class="client-journey-marker client-journey-marker--pink" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M230.14,58.87A8,8,0,0,0,224,56H62.68L56.6,22.57A8,8,0,0,0,48.73,16H24a8,8,0,0,0,0,16h18L67.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,160,204a28,28,0,1,0,28-28H91.17a8,8,0,0,1-7.87-6.57L80.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,230.14,58.87ZM104,204a12,12,0,1,1-12-12A12,12,0,0,1,104,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,200,204Z"></path></svg></span>
                                         <div class="client-journey-card-item"><div class="client-journey-card-head"><div><h3>Compra Finalizada</h3><p>03 Mar, 2023</p></div><strong>R$ 198,00</strong></div><a href="./pedido.html" class="client-journey-product"><strong>#8001</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6l-6 6"></path></svg></a></div>
                                     </article>
                                 </div>
 
-                                <a class="client-journey-link" href="./historico.html">Ver Histórico Completo (20 atividades)</a>
+                                <button type="button" class="client-journey-link" data-journey-load-more>Ver Mais</button>
                             </div>
                         </article>
 
                         <article class="client-wishlist-card elevated">
                             <div class="client-wishlist-header">
-                                <h2>Wishlist</h2>
-                                <a href="./wishlist.html">Ver Tudo</a>
+                                <div class="client-wishlist-copy">
+                                    <h2>Lista de Desejos</h2>
+                                    <p>Produtos salvos com potencial para a proxima compra</p>
+                                </div>
+                                <button type="button" class="client-wishlist-link" data-modal-target="wishlist-gallery-modal">Ver Tudo</button>
                             </div>
 
                             <div class="client-wishlist-grid">
@@ -424,7 +567,7 @@
                                 <div class="client-wishlist-item"></div>
                                 <div class="client-wishlist-item"></div>
                                 <div class="client-wishlist-item"></div>
-                                <button type="button" class="client-wishlist-add" aria-label="Adicionar item na wishlist">
+                                <button type="button" class="client-wishlist-add" aria-label="Adicionar item na wishlist" data-modal-target="wishlist-add-modal">
                                     <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
                                 </button>
                             </div>
@@ -433,7 +576,7 @@
                         <article class="client-purchase-history elevated" id="historico-compras">
                             <div class="client-purchase-history-header">
                                 <div class="client-purchase-history-copy">
-                                    <h2>Histórico de Compras Inteligente</h2>
+                                    <h2>Histórico de Compras</h2>
                                     <p>Analise o comportamento de compra detalhado</p>
                                 </div>
 
@@ -442,13 +585,23 @@
                                         <span aria-hidden="true">
                                             <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                                         </span>
-                                        <input type="search" placeholder="Filtrar por produto...">
+                                        <input type="search" placeholder="Pesquisar...">
                                     </label>
 
-                                    <button type="button" class="client-history-period">
-                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm3 5h10v2H7zm3 5h4v2h-4z"></path></svg>
-                                        <span>Período</span>
-                                    </button>
+                                    <div class="client-history-sort" data-client-history-sort>
+                                        <button type="button" class="client-history-period" data-client-history-sort-toggle aria-expanded="false">
+                                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm3 5h10v2H7zm3 5h4v2h-4z"></path></svg>
+                                            <span>Classificar</span>
+                                        </button>
+                                        <div class="client-history-sort-menu elevated" hidden data-client-history-sort-menu>
+                                            <button type="button" class="client-history-sort-option">Por data (recentes)</button>
+                                            <button type="button" class="client-history-sort-option">Por data (antigos)</button>
+                                            <button type="button" class="client-history-sort-option">Por quantidade (maior)</button>
+                                            <button type="button" class="client-history-sort-option">Por quantidade (menor)</button>
+                                            <button type="button" class="client-history-sort-option">Por valor (maior)</button>
+                                            <button type="button" class="client-history-sort-option">Por valor (menor)</button>
+                                        </div>
+                                    </div>
 
                                     <button type="button" class="client-history-export">
                                         <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34Zm-56,83.32-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35a8,8,0,0,1,11.32,11.32ZM152,88V44l44,44Z"></path></svg>
@@ -461,9 +614,9 @@
                                 <table class="client-purchase-history-table">
                                     <thead>
                                         <tr>
-                                            <th>Produto</th>
-                                            <th>Categoria</th>
+                                            <th>Pedido</th>
                                             <th>Data</th>
+                                            <th>Total de Itens</th>
                                             <th>Valor Bruto</th>
                                             <th>Status</th>
                                             <th>Ações</th>
@@ -471,49 +624,47 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <div class="client-history-product">
-                                                    <span class="client-history-product-thumb client-history-product-thumb--one"></span>
-                                                    <strong>Perfume Rose Exclusive 50ml</strong>
-                                                </div>
-                                            </td>
-                                            <td>Perfumaria</td>
+                                            <td><strong class="client-history-order">#9842</strong></td>
                                             <td>12/10/2023</td>
+                                            <td>3 itens</td>
                                             <td>R$ 489,00</td>
                                             <td><span class="clients-status clients-status--active">Concluído</span></td>
                                             <td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td>
                                         </tr>
                                         <tr>
-                                            <td>
-                                                <div class="client-history-product">
-                                                    <span class="client-history-product-thumb client-history-product-thumb--two"></span>
-                                                    <strong>Base Matte Alta Cobertura</strong>
-                                                </div>
-                                            </td>
-                                            <td>Maquiagem</td>
+                                            <td><strong class="client-history-order">#9721</strong></td>
                                             <td>28/09/2023</td>
+                                            <td>2 itens</td>
                                             <td>R$ 159,90</td>
                                             <td><span class="clients-status clients-status--active">Concluído</span></td>
                                             <td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td>
                                         </tr>
                                         <tr>
-                                            <td>
-                                                <div class="client-history-product">
-                                                    <span class="client-history-product-thumb client-history-product-thumb--three"></span>
-                                                    <strong>Batom Velvet Red</strong>
-                                                </div>
-                                            </td>
-                                            <td>Maquiagem</td>
+                                            <td><strong class="client-history-order">#9605</strong></td>
                                             <td>15/08/2023</td>
+                                            <td>1 item</td>
                                             <td>R$ 89,00</td>
                                             <td><span class="clients-status clients-status--cancelled">Cancelado</span></td>
                                             <td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td>
                                         </tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#9408</strong></td><td>18/08/2023</td><td>4 itens</td><td>R$ 214,00</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#9284</strong></td><td>31/07/2023</td><td>5 itens</td><td>R$ 420,00</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#9170</strong></td><td>18/07/2023</td><td>2 itens</td><td>R$ 278,00</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#9059</strong></td><td>11/07/2023</td><td>1 item</td><td>R$ 129,90</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#8441</strong></td><td>28/05/2023</td><td>3 itens</td><td>R$ 198,00</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#8001</strong></td><td>03/03/2023</td><td>2 itens</td><td>R$ 198,00</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#7892</strong></td><td>14/02/2023</td><td>6 itens</td><td>R$ 512,00</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#7754</strong></td><td>29/01/2023</td><td>4 itens</td><td>R$ 356,90</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#7603</strong></td><td>08/01/2023</td><td>2 itens</td><td>R$ 142,50</td><td><span class="clients-status clients-status--cancelled">Cancelado</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#7440</strong></td><td>19/12/2022</td><td>7 itens</td><td>R$ 680,00</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#7308</strong></td><td>02/12/2022</td><td>3 itens</td><td>R$ 249,90</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#7216</strong></td><td>11/11/2022</td><td>5 itens</td><td>R$ 458,40</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
+                                        <tr hidden data-client-history-row><td><strong class="client-history-order">#7091</strong></td><td>22/10/2022</td><td>2 itens</td><td>R$ 167,80</td><td><span class="clients-status clients-status--active">Concluído</span></td><td><a href="./pedido.html" class="client-history-action" aria-label="Ver pedido"><svg viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.67-38.42C194.92,61.62,161.59,48,128,48S61.08,61.62,36.36,86.34C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.48c.35.79,8.82,19.58,27.67,38.42C61.08,194.38,94.41,208,128,208s66.92-13.62,91.64-38.34c18.85-18.84,27.32-37.63,27.67-38.42A8,8,0,0,0,247.31,124.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg></a></td></tr>
                                     </tbody>
                                 </table>
                             </div>
 
-                            <a class="client-purchase-history-link" href="./compras.html">Carregar mais registros (42 totais)</a>
+                            <button type="button" class="client-purchase-history-link" data-client-history-load-more>Carregar mais registros (42 totais)</button>
                         </article>
                     </section>
                 </div>
@@ -521,9 +672,12 @@
                 <aside class="client-insights-card elevated">
                     <div class="client-insights-header">
                         <span class="client-insights-icon" aria-hidden="true">
-                            <svg viewBox="0 0 256 256"><path d="M229.66,109.66l-83.32-83.32a16,16,0,0,0-22.63,0L26.34,123.71a16,16,0,0,0,0,22.63l83.32,83.32a16,16,0,0,0,22.63,0l97.37-97.37A16,16,0,0,0,229.66,109.66ZM84,88a20,20,0,1,1,20,20A20,20,0,0,1,84,88Zm87.31,84.69a8,8,0,0,1-11.32,0L128,140.69l-31.31,31.32a8,8,0,0,1-11.32-11.32L116.69,129,85.37,97.69A8,8,0,0,1,96.69,86.37L128,117.69l31.31-31.32a8,8,0,0,1,11.32,11.32L139.31,129l31.32,31.31A8,8,0,0,1,171.31,172.69Z"></path></svg>
+                            <svg viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H136V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48a8,8,0,0,0-8,8V200a32,32,0,0,0,32,32H184a32,32,0,0,0,32-32V40A8,8,0,0,0,208,32ZM120,56a8,8,0,0,1,16,0v8a8,8,0,0,1-16,0ZM80,72a8,8,0,0,1-8-8V56a8,8,0,0,1,16,0v8A8,8,0,0,1,80,72Zm80,96H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm24-72a8,8,0,0,1-16,0V56a8,8,0,0,1,16,0Z"></path></svg>
                         </span>
-                        <h2>Anotações</h2>
+                        <div class="client-insights-header-copy">
+                            <h2>Anotações</h2>
+                            <p>Limite de 50 registros por cliente.</p>
+                        </div>
                     </div>
 
                     <form class="client-insights-form">
@@ -554,10 +708,101 @@
                             <p>Cliente muito educado, valoriza embalagem premium e mimos personalizados.</p>
                             <small>QUA, 22 MAR 2026</small>
                         </article>
+                        <article class="client-insight-item">
+                            <span class="client-insight-badge client-insight-badge--blue">Comportamento</span>
+                            <p>Costuma responder melhor a mensagens objetivas com sugestão pronta de compra.</p>
+                            <small>SEG, 18 MAR 2026</small>
+                        </article>
+                        <article class="client-insight-item">
+                            <span class="client-insight-badge client-insight-badge--purple">Produto</span>
+                            <p>Demonstrou interesse em kits de presente com perfumaria e maquiagem combinadas.</p>
+                            <small>SEX, 15 MAR 2026</small>
+                        </article>
                     </div>
 
-                    <a class="client-insights-link" href="./insights.html">Ver todos os insights arquivados</a>
+                    <a class="client-insights-link" href="./anotacoes.html">Ver todas anotacoes</a>
                 </aside>
+
+                <div class="client-modal" id="client-message-modal" hidden>
+                    <div class="client-modal-backdrop" data-modal-close></div>
+                    <div class="client-modal-dialog elevated client-message-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="client-message-modal-title">
+                        <button type="button" class="client-modal-close" aria-label="Fechar mensagem" data-modal-close>
+                            <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6l-12 12"></path></svg>
+                        </button>
+                        <h2 id="client-message-modal-title">Mensagem enviada</h2>
+                        <p class="client-modal-subtitle" data-client-message-date>05 Out, 2023</p>
+                        <div class="client-message-modal-card">
+                            <div class="client-message-modal-person">
+                                <img src="../src/assets/customers/default.webp" alt="Foto da cliente Mariana Almeida" class="client-message-modal-avatar avatar-image">
+                                <div>
+                                    <strong>Mariana Almeida</strong>
+                                    <span>Cliente VIP</span>
+                                </div>
+                            </div>
+                            <div class="client-message-modal-body" data-client-message-body></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="client-modal dashboard-modal" id="client-compose-modal" hidden>
+                    <div class="client-modal-backdrop" data-client-compose-close></div>
+                    <div class="client-modal-dialog elevated dashboard-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="client-compose-modal-title">
+                        <button class="client-modal-close" type="button" aria-label="Fechar janela" data-client-compose-close>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                        </button>
+                        <span class="calendar-modal-pill calendar-modal-pill--soft">Mensagem</span>
+                        <div class="dashboard-message-person">
+                            <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Mariana Silva" data-client-compose-avatar>
+                            <div>
+                                <strong data-client-compose-name>Mariana Silva</strong>
+                                <span data-client-compose-subtitle>ID: 4446 • Cliente desde Março 2021</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-message-box">
+                            <textarea rows="6" maxlength="500" placeholder="Digite sua mensagem..." data-client-compose-text></textarea>
+                        </div>
+                        <button class="clients-primary-button dashboard-send-button" type="button">Enviar mensagem</button>
+                    </div>
+                </div>
+
+                <div class="client-modal" id="wishlist-gallery-modal" hidden>
+                    <div class="client-modal-backdrop" data-modal-close></div>
+                    <div class="client-modal-dialog elevated client-wishlist-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="wishlist-gallery-modal-title">
+                        <button type="button" class="client-modal-close" aria-label="Fechar lista de desejos" data-modal-close>
+                            <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6l-12 12"></path></svg>
+                        </button>
+                        <h2 id="wishlist-gallery-modal-title">Lista de Desejos</h2>
+                        <p class="client-modal-subtitle">Produtos salvos com potencial para a proxima compra.</p>
+                        <div class="client-wishlist-modal-grid">
+                            <div class="client-wishlist-item"></div>
+                            <div class="client-wishlist-item"></div>
+                            <div class="client-wishlist-item"></div>
+                            <div class="client-wishlist-item"></div>
+                            <div class="client-wishlist-item"></div>
+                            <div class="client-wishlist-item"></div>
+                            <div class="client-wishlist-item"></div>
+                            <div class="client-wishlist-item"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="client-modal" id="wishlist-add-modal" hidden>
+                    <div class="client-modal-backdrop" data-modal-close></div>
+                    <div class="client-modal-dialog elevated client-wishlist-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="wishlist-add-modal-title">
+                        <button type="button" class="client-modal-close" aria-label="Fechar adicionar produto" data-modal-close>
+                            <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6l-12 12"></path></svg>
+                        </button>
+                        <h2 id="wishlist-add-modal-title">Adicionar produto</h2>
+                        <p class="client-modal-subtitle">Pesquise um item e envie para a lista de desejos da cliente.</p>
+                        <form class="client-wishlist-form">
+                            <label class="client-wishlist-form-field">
+                                <span>Pesquisar produto</span>
+                                <input type="search" placeholder="Ex.: Kit Glow, Base Matte, Perfume..." />
+                            </label>
+                            <button type="button" class="clients-primary-button">Adicionar a lista de desejos</button>
+                        </form>
+                    </div>
+                </div>
 
                 <div class="client-modal" id="ranking-modal" hidden>
                     <div class="client-modal-backdrop" data-modal-close></div>
@@ -607,4 +852,3 @@
     <script src="../src/js/main.js"></script>
 </body>
 </html>
-

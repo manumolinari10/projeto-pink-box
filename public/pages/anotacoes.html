@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PinkBox | Anotações</title>
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <link rel="stylesheet" href="../src/css/global.css">
+</head>
+<body class="clients-page">
+    <div class="dashboard-shell">
+        <aside class="sidebar" aria-label="Menu lateral">
+            <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
+                <img class="brand-logo brand-logo-horizontal" src="../src/assets/logo_horizontal.webp" alt="PinkBox Executive Portal">
+                <img class="brand-logo brand-logo-simple" src="../src/assets/logo_simple.webp" alt="PinkBox">
+            </a>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="./index.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" /></svg>
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-link is-active" href="./clientes.html" aria-current="page">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"></path></svg>
+                    </span>
+                    <span>Clientes</span>
+                </a>
+                <a class="nav-link" href="./produtos.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M184,96.8V88a32,32,0,0,0-32-32H136V32h32a8,8,0,0,1,8,8,8,8,0,0,0,16,0,24,24,0,0,0-24-24H104a8,8,0,0,0,0,16h16V56H104A32,32,0,0,0,72,88v8.8A40.07,40.07,0,0,0,40,136v80a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136A40.07,40.07,0,0,0,184,96.8ZM104,72h48a16,16,0,0,1,16,16v8H88V88A16,16,0,0,1,104,72Z"></path></svg>
+                    </span>
+                    <span>Produtos</span>
+                </a>
+                <a class="nav-link" href="./vendas.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
+                    </span>
+                    <span>Vendas</span>
+                </a>
+                <a class="nav-link" href="./financeiro.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm0 8a1 1 0 0 0 -1 1v.05a2.5 2.5 0 0 0 .5 4.95h1a.5 .5 0 1 1 0 1h-2.5a1 1 0 0 0 0 2h1a1 1 0 0 0 2 0v-.05a2.5 2.5 0 0 0 -.5 -4.95h-1a.5 .5 0 1 1 0 -1h2.5a1 1 0 0 0 0 -2h-1a1 1 0 0 0 -1 -1" /><path d="M19 7h-4l-.001 -4.001z" /></svg>
+                    </span>
+                    <span>Financeiro</span>
+                </a>
+                <a class="nav-link" href="./calendario.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM84,184a12,12,0,1,1,12-12A12,12,0,0,1,84,184Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,128,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,128,144Zm44,40a12,12,0,1,1,12-12A12,12,0,0,1,172,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,172,144Zm36-64H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24Z"></path></svg>
+                    </span>
+                    <span>Calendário</span>
+                </a>
+                <a class="nav-link" href="./insights.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" /><path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M4.893 4.893a1 1 0 0 1 1.32 -.083l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 0 -1.414z" /><path d="M17.693 4.893a1 1 0 0 1 1.497 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7z" /><path d="M14 18a1 1 0 0 1 1 1a3 3 0 0 1 -6 0a1 1 0 0 1 .883 -.993l.117 -.007h4z" /><path d="M12 6a6 6 0 0 1 3.6 10.8a1 1 0 0 1 -.471 .192l-.129 .008h-6a1 1 0 0 1 -.6 -.2a6 6 0 0 1 3.6 -10.8z" /></svg>
+                    </span>
+                    <span>Insights</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-links">
+                    <a class="nav-link nav-link--subtle" href="./configuracoes.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg>
+                        </span>
+                        <span>Configurações</span>
+                    </a>
+                    <a class="nav-link nav-link--subtle" href="./login.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-12a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h12zm-3 2h-9a1 1 0 0 0 -.993 .883l-.007 .117v12a1 1 0 0 0 .883 .993l.117 .007h9v-14zm-5.387 4.21l.094 .083l2 2a1 1 0 0 1 .083 1.32l-.083 .094l-2 2a1 1 0 0 1 -1.497 -1.32l.083 -.094l1.292 -1.293l-1.292 -1.293a1 1 0 0 1 -.083 -1.32l.083 -.094a1 1 0 0 1 1.32 -.083z" /></svg>
+                        </span>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-panel clients-main-panel">
+            <header class="topbar clients-topbar">
+                <div class="clients-topbar-left">
+                    <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="notification-wrapper">
+                        <button class="icon-button" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" data-notification-toggle>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22m6-6V11a6 6 0 1 0-12 0v5L4 18v1h16v-1z"></path></svg>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <div class="notification-menu" hidden data-notification-menu>
+                            <button type="button">Novo pedido de Ana Souza</button>
+                            <button type="button">Meta semanal atualizada</button>
+                            <button type="button">Estoque crítico em 2 produtos</button>
+                            <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
+                        </div>
+                    </div>
+
+                    <a class="profile-card" href="./perfil.html">
+                        <div class="profile-copy">
+                            <strong>Beatriz Souza</strong>
+                            <span>CONSULTORA DIAMANTE</span>
+                        </div>
+                        <img class="profile-avatar avatar-image" src="../src/assets/users/default.webp" alt="Foto de perfil de Beatriz Souza">
+                    </a>
+                </div>
+            </header>
+
+            <section class="product-detail-header page-intro-wrap">
+                <div class="page-intro-copy">
+                    <div class="products-breadcrumb">Clientes / Mariana Silva / Anotações</div>
+                    <h1>Histórico de Anotações</h1>
+                    <p>Centralize observações, contexto de relacionamento e registros de acompanhamento da cliente.</p>
+                </div>
+            </section>
+
+            <section class="notes-page-layout">
+                <div class="notes-main-column">
+                    <article class="notes-client-card elevated">
+                        <span class="finance-eyebrow">Cliente</span>
+                        <div class="notes-client-header">
+                            <img src="../src/assets/customers/default.webp" alt="Foto de Mariana Silva" class="notes-client-avatar avatar-image">
+                            <h2><a class="notes-client-link" href="./cliente.html">Mariana Silva</a></h2>
+                        </div>
+                        <div class="notes-client-meta">
+                            <div>
+                                <span>Última atualização</span>
+                                <strong>27/03/2026 às 14:20</strong>
+                            </div>
+                            <div>
+                                <span>Total de anotações</span>
+                                <strong>18 registros</strong>
+                            </div>
+                            <div>
+                                <span>Restantes</span>
+                                <strong>32 disponíveis</strong>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="client-insights-card elevated">
+                        <div class="client-insights-header">
+                            <span class="client-insights-icon" aria-hidden="true">
+                                <svg viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H136V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48a8,8,0,0,0-8,8V200a32,32,0,0,0,32,32H184a32,32,0,0,0,32-32V40A8,8,0,0,0,208,32ZM120,56a8,8,0,0,1,16,0v8a8,8,0,0,1-16,0ZM80,72a8,8,0,0,1-8-8V56a8,8,0,0,1,16,0v8A8,8,0,0,1,80,72Zm80,96H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm24-72a8,8,0,0,1-16,0V56a8,8,0,0,1,16,0Z"></path></svg>
+                            </span>
+                            <div class="client-insights-header-copy">
+                                <h2>Nova Anotação</h2>
+                            </div>
+                        </div>
+
+                        <form class="client-insights-form">
+                            <textarea rows="5" placeholder="Anote algo importante sobre a Mariana..."></textarea>
+
+                            <div class="client-insights-tags">
+                                <button type="button" class="client-insight-tag client-insight-tag--behavior">#Comportamento</button>
+                                <button type="button" class="client-insight-tag client-insight-tag--product">#Produto</button>
+                                <button type="button" class="client-insight-tag client-insight-tag--critical">#Crítico</button>
+                            </div>
+
+                            <button type="button" class="clients-primary-button client-insights-save">Salvar Anotação</button>
+                        </form>
+                    </article>
+
+                    <div class="notes-feed-card elevated">
+                        <div class="notes-feed-header">
+                            <div>
+                                <h2>Todas as Anotações</h2>
+                                <p>Lista cronológica com os registros mais recentes e observações estratégicas.</p>
+                            </div>
+                            <div class="notes-feed-tools">
+                                <label class="client-purchase-search">
+                                    <span aria-hidden="true">
+                                        <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                                    </span>
+                                    <input type="search" placeholder="Pesquisar anotação...">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calendar-filter-bar notes-filter-bar" data-note-filters>
+                            <span>Filtrar:</span>
+                            <button type="button" class="calendar-filter calendar-filter--all is-active" data-note-filter="all">Todos</button>
+                            <button type="button" class="calendar-filter calendar-filter--behavior is-active" data-note-filter="behavior">Comportamento</button>
+                            <button type="button" class="calendar-filter calendar-filter--product is-active" data-note-filter="product">Produto</button>
+                            <button type="button" class="calendar-filter calendar-filter--preference is-active" data-note-filter="preference">Preferência</button>
+                        </div>
+
+                        <div class="notes-feed-list">
+                            <article class="client-insight-item notes-feed-item" data-note-item data-note-type="behavior">
+                                <div class="notes-feed-item-head">
+                                    <span class="client-insight-badge client-insight-badge--blue">Comportamento</span>
+                                    <div class="notes-feed-item-actions">
+                                        <button type="button" class="notes-delete-button" aria-label="Excluir anotação" data-note-delete data-note-tag="Comportamento" data-note-date="HOJE, 27 MAR 2026" data-note-text="Prefere ser contatada apenas via WhatsApp durante a tarde. Não gosta de ligações.">
+                                            <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p>Prefere ser contatada apenas via WhatsApp durante a tarde. Não gosta de ligações.</p>
+                                <small class="notes-feed-date">HOJE, 27 MAR 2026</small>
+                            </article>
+                            <article class="client-insight-item notes-feed-item" data-note-item data-note-type="product">
+                                <div class="notes-feed-item-head">
+                                    <span class="client-insight-badge client-insight-badge--purple">Produto</span>
+                                    <div class="notes-feed-item-actions">
+                                        <button type="button" class="notes-delete-button" aria-label="Excluir anotação" data-note-delete data-note-tag="Produto" data-note-date="ONTEM, 26 MAR 2026" data-note-text="Interesse em lançamentos de perfumaria masculina cítrica. Mencionou querer algo refrescante para o verão.">
+                                            <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p>Interesse em lançamentos de perfumaria masculina cítrica. Mencionou querer algo refrescante para o verão.</p>
+                                <small class="notes-feed-date">ONTEM, 26 MAR 2026</small>
+                            </article>
+                            <article class="client-insight-item notes-feed-item" data-note-item data-note-type="preference">
+                                <div class="notes-feed-item-head">
+                                    <span class="client-insight-badge client-insight-badge--red">Preferência</span>
+                                    <div class="notes-feed-item-actions">
+                                        <button type="button" class="notes-delete-button" aria-label="Excluir anotação" data-note-delete data-note-tag="Preferência" data-note-date="QUA, 22 MAR 2026" data-note-text="Cliente muito educado, valoriza embalagem premium e mimos personalizados.">
+                                            <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p>Cliente muito educado, valoriza embalagem premium e mimos personalizados.</p>
+                                <small class="notes-feed-date">QUA, 22 MAR 2026</small>
+                            </article>
+                            <article class="client-insight-item notes-feed-item" data-note-item data-note-type="behavior">
+                                <div class="notes-feed-item-head">
+                                    <span class="client-insight-badge client-insight-badge--blue">Comportamento</span>
+                                    <div class="notes-feed-item-actions">
+                                        <button type="button" class="notes-delete-button" aria-label="Excluir anotação" data-note-delete data-note-tag="Comportamento" data-note-date="SEG, 18 MAR 2026" data-note-text="Costuma responder melhor a mensagens objetivas com sugestão pronta de compra.">
+                                            <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p>Costuma responder melhor a mensagens objetivas com sugestão pronta de compra.</p>
+                                <small class="notes-feed-date">SEG, 18 MAR 2026</small>
+                            </article>
+                            <article class="client-insight-item notes-feed-item" data-note-item data-note-type="product">
+                                <div class="notes-feed-item-head">
+                                    <span class="client-insight-badge client-insight-badge--purple">Produto</span>
+                                    <div class="notes-feed-item-actions">
+                                        <button type="button" class="notes-delete-button" aria-label="Excluir anotação" data-note-delete data-note-tag="Produto" data-note-date="SEX, 15 MAR 2026" data-note-text="Demonstrou interesse em kits de presente com perfumaria e maquiagem combinadas.">
+                                            <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p>Demonstrou interesse em kits de presente com perfumaria e maquiagem combinadas.</p>
+                                <small class="notes-feed-date">SEX, 15 MAR 2026</small>
+                            </article>
+                            <article class="client-insight-item notes-feed-item" data-note-item data-note-type="preference">
+                                <div class="notes-feed-item-head">
+                                    <span class="client-insight-badge client-insight-badge--red">Preferência</span>
+                                    <div class="notes-feed-item-actions">
+                                        <button type="button" class="notes-delete-button" aria-label="Excluir anotação" data-note-delete data-note-tag="Preferência" data-note-date="TER, 11 MAR 2026" data-note-text="Valoriza agilidade no atendimento e prefere receber opções já separadas por faixa de preço.">
+                                            <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p>Valoriza agilidade no atendimento e prefere receber opções já separadas por faixa de preço.</p>
+                                <small class="notes-feed-date">TER, 11 MAR 2026</small>
+                            </article>
+                            <article class="client-insight-item notes-feed-item" data-note-item data-note-type="behavior">
+                                <div class="notes-feed-item-head">
+                                    <span class="client-insight-badge client-insight-badge--blue">Comportamento</span>
+                                    <div class="notes-feed-item-actions">
+                                        <button type="button" class="notes-delete-button" aria-label="Excluir anotação" data-note-delete data-note-tag="Comportamento" data-note-date="QUI, 06 MAR 2026" data-note-text="Retoma contatos com mais facilidade quando a mensagem traz contexto do histórico de compras anteriores.">
+                                            <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p>Retoma contatos com mais facilidade quando a mensagem traz contexto do histórico de compras anteriores.</p>
+                                <small class="notes-feed-date">QUI, 06 MAR 2026</small>
+                            </article>
+                            <article class="client-insight-item notes-feed-item" data-note-item data-note-type="product">
+                                <div class="notes-feed-item-head">
+                                    <span class="client-insight-badge client-insight-badge--purple">Produto</span>
+                                    <div class="notes-feed-item-actions">
+                                        <button type="button" class="notes-delete-button" aria-label="Excluir anotação" data-note-delete data-note-tag="Produto" data-note-date="DOM, 02 MAR 2026" data-note-text="Mostrou abertura para conhecer novas bases se houver comparação clara com o tom que já usa atualmente.">
+                                            <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p>Mostrou abertura para conhecer novas bases se houver comparação clara com o tom que já usa atualmente.</p>
+                                <small class="notes-feed-date">DOM, 02 MAR 2026</small>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="notes-side-column">
+                    <article class="notes-summary-card elevated">
+                        <h2>Resumo por Tag</h2>
+                        <div class="notes-tag-summary">
+                            <div class="notes-tag-row">
+                                <span class="client-insight-badge client-insight-badge--blue">Comportamento</span>
+                                <strong>7</strong>
+                            </div>
+                            <div class="notes-tag-row">
+                                <span class="client-insight-badge client-insight-badge--purple">Produto</span>
+                                <strong>6</strong>
+                            </div>
+                            <div class="notes-tag-row">
+                                <span class="client-insight-badge client-insight-badge--red">Crítico</span>
+                                <strong>5</strong>
+                            </div>
+                        </div>
+                        <h2>Boas Práticas</h2>
+                        <ul class="notes-summary-list">
+                            <li>Registre contexto útil e acionável</li>
+                            <li>Evite duplicar informações antigas</li>
+                            <li>Use tags para facilitar buscas futuras</li>
+                            <li>Revise anotações críticas com frequência</li>
+                        </ul>
+                    </article>
+                </aside>
+            </section>
+
+            <footer class="page-footer">
+                <p>&copy; 2026 PinkBox Sistema de Gestão de Vendas.</p>
+            </footer>
+        </main>
+    </div>
+
+    <div class="client-modal" id="note-delete-modal" hidden>
+        <div class="client-modal-backdrop" data-note-delete-close></div>
+        <div class="client-modal-dialog elevated note-delete-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="note-delete-modal-title">
+            <button type="button" class="client-modal-close" aria-label="Fechar confirmação" data-note-delete-close>
+                <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6l-12 12"></path></svg>
+            </button>
+            <h2 id="note-delete-modal-title">Excluir anotação</h2>
+            <p class="client-modal-subtitle">Tem certeza que deseja excluir esta nota?</p>
+            <div class="client-insight-item note-delete-preview">
+                <div class="notes-feed-item-head">
+                    <span class="client-insight-badge client-insight-badge--blue" data-note-delete-tag>Comportamento</span>
+                </div>
+                <p class="note-delete-preview-text" data-note-delete-text>Prefere ser contatada apenas via WhatsApp durante a tarde. Não gosta de ligações.</p>
+                <small class="notes-feed-date" data-note-delete-date>HOJE, 27 MAR 2026</small>
+            </div>
+            <div class="note-delete-actions">
+                <button type="button" class="products-toolbar-button" data-note-delete-close>Cancelar</button>
+                <button type="button" class="clients-primary-button">Excluir anotação</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/js/main.js"></script>
+</body>
+</html>

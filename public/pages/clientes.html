@@ -46,6 +46,12 @@
                     </span>
                     <span>Financeiro</span>
                 </a>
+                <a class="nav-link" href="./calendario.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM84,184a12,12,0,1,1,12-12A12,12,0,0,1,84,184Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,128,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,128,144Zm44,40a12,12,0,1,1,12-12A12,12,0,0,1,172,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,172,144Zm36-64H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24Z"></path></svg>
+                    </span>
+                    <span>Calendário</span>
+                </a>
                 <a class="nav-link" href="./insights.html">
                     <span class="nav-icon">
                         <svg viewBox="0 0 24 24"><path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" /><path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M4.893 4.893a1 1 0 0 1 1.32 -.083l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 0 -1.414z" /><path d="M17.693 4.893a1 1 0 0 1 1.497 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7z" /><path d="M14 18a1 1 0 0 1 1 1a3 3 0 0 1 -6 0a1 1 0 0 1 .883 -.993l.117 -.007h4z" /><path d="M12 6a6 6 0 0 1 3.6 10.8a1 1 0 0 1 -.471 .192l-.129 .008h-6a1 1 0 0 1 -.6 -.2a6 6 0 0 1 3.6 -10.8z" /></svg>
@@ -106,8 +112,9 @@
                 </div>
             </header>
 
-            <section class="clients-hero">
-                <div class="clients-hero-copy">
+            <section class="product-detail-header page-intro-wrap">
+                <div class="page-intro-copy">
+                    <div class="products-breadcrumb">Dashboard / Clientes</div>
                     <h1>Gestão de Clientes</h1>
                     <p>Monitore e gerencie sua base de clientes.</p>
                 </div>
@@ -118,10 +125,10 @@
                     <h2>Novo Cadastro</h2>
                     <p>Adicione rapidamente uma nova cliente para iniciar o acompanhamento personalizado, histórico de compras e preferências exclusivas.</p>
                 </div>
-                <button class="clients-primary-button" type="button">
+                <a class="clients-primary-button" href="./novo-cliente.html">
                     <svg viewBox="0 0 256 256"><path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path></svg>
                     <span>Cadastrar Nova Cliente</span>
-                </button>
+                </a>
             </section>
 
             <section class="clients-stats-grid">
@@ -162,7 +169,7 @@
                 </article>
             </section>
 
-            <section class="products-toolbar clients-toolbar elevated">
+            <section class="products-toolbar clients-toolbar elevated" data-client-filters-wrap>
                 <label class="products-toolbar-search">
                     <span aria-hidden="true">
                         <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
@@ -171,7 +178,7 @@
                 </label>
 
                 <div class="products-toolbar-actions">
-                    <button type="button" class="products-toolbar-button">
+                    <button type="button" class="products-toolbar-button" data-client-filters-toggle aria-expanded="false">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm3 5h10v2H7zm3 5h4v2h-4z"></path></svg>
                         <span>Filtros</span>
                     </button>
@@ -179,6 +186,174 @@
                         <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34Zm-56,83.32-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35a8,8,0,0,1,11.32,11.32ZM152,88V44l44,44Z"></path></svg>
                         <span>Exportar CSV</span>
                     </button>
+                </div>
+
+                <div class="clients-filters-panel" hidden data-client-filters-panel>
+                    <div class="clients-filter-group is-open" data-client-filter-accordion>
+                        <button type="button" class="clients-filter-group-head" data-client-filter-accordion-toggle aria-expanded="true">
+                            <span class="finance-eyebrow">Dados do cadastro</span>
+                            <span class="clients-filter-group-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"></path></svg>
+                            </span>
+                        </button>
+                        <div class="clients-filters-grid" data-client-filter-accordion-content>
+                            <label class="clients-filter-field">
+                                <span>Status</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Ativa</span></label>
+                                    <label><input type="checkbox" checked> <span>Inativa</span></label>
+                                </div>
+                            </label>
+                            <div class="clients-filter-field">
+                                <span>Origem</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Contato direto</span></label>
+                                    <label><input type="checkbox" checked> <span>Redes sociais</span></label>
+                                    <label><input type="checkbox" checked> <span>Whatsapp</span></label>
+                                    <label><input type="checkbox" checked> <span>MaryKay</span></label>
+                                    <label><input type="checkbox" checked> <span>Indicação</span></label>
+                                    <label><input type="checkbox" checked> <span>Outros</span></label>
+                                    <label><input type="checkbox" checked> <span>Não informado</span></label>
+                                </div>
+                            </div>
+                            <div class="clients-filter-field">
+                                <span>Score</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Ruim</span></label>
+                                    <label><input type="checkbox" checked> <span>Médio</span></label>
+                                    <label><input type="checkbox" checked> <span>Bom</span></label>
+                                    <label><input type="checkbox" checked> <span>Excelente</span></label>
+                                    <label><input type="checkbox" checked> <span>Não informado</span></label>
+                                </div>
+                            </div>
+                            <div class="clients-filter-field">
+                                <span>Data da última compra</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Nos últimos 7 dias</span></label>
+                                    <label><input type="checkbox" checked> <span>Nos últimos 30 dias</span></label>
+                                    <label><input type="checkbox" checked> <span>Nos últimos 90 dias</span></label>
+                                    <label><input type="checkbox" checked> <span>Nos últimos 365 dias</span></label>
+                                    <label><input type="checkbox" checked> <span>Mais de 1 ano</span></label>
+                                </div>
+                            </div>
+                            <div class="clients-filter-field clients-filter-field--range">
+                                <span>Data de cadastro</span>
+                                <div class="clients-filter-range">
+                                    <input type="date" aria-label="Data inicial de cadastro">
+                                    <input type="date" aria-label="Data final de cadastro">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clients-filter-group is-open" data-client-filter-accordion>
+                        <button type="button" class="clients-filter-group-head" data-client-filter-accordion-toggle aria-expanded="true">
+                            <span class="finance-eyebrow">Dados pessoais</span>
+                            <span class="clients-filter-group-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"></path></svg>
+                            </span>
+                        </button>
+                        <div class="clients-filters-grid" data-client-filter-accordion-content>
+                            <div class="clients-filter-field">
+                                <span>Idade</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Até 20 anos</span></label>
+                                    <label><input type="checkbox" checked> <span>De 21 a 30 anos</span></label>
+                                    <label><input type="checkbox" checked> <span>De 31 a 40 anos</span></label>
+                                    <label><input type="checkbox" checked> <span>De 41 a 50 anos</span></label>
+                                    <label><input type="checkbox" checked> <span>De 51 a 60 anos</span></label>
+                                    <label><input type="checkbox" checked> <span>Acima de 60 anos</span></label>
+                                    <label><input type="checkbox" checked> <span>Não informado</span></label>
+                                </div>
+                            </div>
+                            <div class="clients-filter-field">
+                                <span>Sexo</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Masculino</span></label>
+                                    <label><input type="checkbox" checked> <span>Feminino</span></label>
+                                    <label><input type="checkbox" checked> <span>Não informado</span></label>
+                                </div>
+                            </div>
+                            <div class="clients-filter-field">
+                                <span>Estado civil</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Solteiro</span></label>
+                                    <label><input type="checkbox" checked> <span>Casado</span></label>
+                                    <label><input type="checkbox" checked> <span>União estável</span></label>
+                                    <label><input type="checkbox" checked> <span>Divorciado</span></label>
+                                    <label><input type="checkbox" checked> <span>Viúvo</span></label>
+                                    <label><input type="checkbox" checked> <span>Não informado</span></label>
+                                </div>
+                            </div>
+                            <div class="clients-filter-field">
+                                <span>Filhos</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Sim</span></label>
+                                    <label><input type="checkbox" checked> <span>Não</span></label>
+                                    <label><input type="checkbox" checked> <span>Não informado</span></label>
+                                </div>
+                            </div>
+                            <div class="clients-filter-field">
+                                <span>Cidade</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>São Paulo</span></label>
+                                    <label><input type="checkbox" checked> <span>Campinas</span></label>
+                                    <label><input type="checkbox" checked> <span>Santos</span></label>
+                                    <label><input type="checkbox" checked> <span>Rio de Janeiro</span></label>
+                                    <label><input type="checkbox" checked> <span>Belo Horizonte</span></label>
+                                    <label><input type="checkbox" checked> <span>Curitiba</span></label>
+                                    <label><input type="checkbox" checked> <span>Porto Alegre</span></label>
+                                    <label><input type="checkbox" checked> <span>Não informada</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clients-filter-group is-open" data-client-filter-accordion>
+                        <button type="button" class="clients-filter-group-head" data-client-filter-accordion-toggle aria-expanded="true">
+                            <span class="finance-eyebrow">Perfil de beleza</span>
+                            <span class="clients-filter-group-arrow" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"></path></svg>
+                            </span>
+                        </button>
+                        <div class="clients-filters-grid" data-client-filter-accordion-content>
+                            <div class="clients-filter-field">
+                                <span>Cor da base</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Lista cadastrada</span></label>
+                                    <label><input type="checkbox" checked> <span>Não informada</span></label>
+                                </div>
+                            </div>
+                            <div class="clients-filter-field">
+                                <span>Tipo de pele</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Mista/oleosa</span></label>
+                                    <label><input type="checkbox" checked> <span>Normal/seca</span></label>
+                                    <label><input type="checkbox" checked> <span>Não informado</span></label>
+                                </div>
+                            </div>
+                            <div class="clients-filter-field">
+                                <span>Cor de batom</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Lista cadastrada</span></label>
+                                    <label><input type="checkbox" checked> <span>Não informada</span></label>
+                                </div>
+                            </div>
+                            <div class="clients-filter-field">
+                                <span>Perfume</span>
+                                <div class="clients-checkbox-group">
+                                    <label><input type="checkbox" checked> <span>Lista cadastrada</span></label>
+                                    <label><input type="checkbox" checked> <span>Não informada</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clients-filters-actions">
+                        <span class="clients-filters-counter" data-client-filters-counter>0/0 filtros aplicados</span>
+                        <button type="button" class="products-toolbar-button" data-client-filters-clear>Limpar todos</button>
+                        <button type="button" class="products-toolbar-button" data-client-filters-check-all>Marcar todos</button>
+                        <button type="button" class="clients-primary-button">Aplicar filtros</button>
+                    </div>
                 </div>
             </section>
 
