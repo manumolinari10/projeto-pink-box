@@ -28,12 +28,19 @@
                     </span>
                     <span>Clientes</span>
                 </a>
-                <a class="nav-link is-active" href="./produtos.html" aria-current="page">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 256 256"><path d="M184,96.8V88a32,32,0,0,0-32-32H136V32h32a8,8,0,0,1,8,8,8,8,0,0,0,16,0,24,24,0,0,0-24-24H104a8,8,0,0,0,0,16h16V56H104A32,32,0,0,0,72,88v8.8A40.07,40.07,0,0,0,40,136v80a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136A40.07,40.07,0,0,0,184,96.8ZM104,72h48a16,16,0,0,1,16,16v8H88V88A16,16,0,0,1,104,72Z"></path></svg>
-                    </span>
-                    <span>Produtos</span>
-                </a>
+                <div class="sidebar-group is-open" data-sidebar-group>
+                    <button class="nav-link nav-link--submenu-toggle is-active" type="button" data-sidebar-submenu-toggle aria-expanded="true">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.35,44L178.57,92.29l-80.35-44Zm0,88L47.65,76,81.56,57.43l80.35,44Zm88,55.85h0l-80,43.79V133.83l32-17.51V152a8,8,0,0,0,16,0V107.56l32-17.51v85.76Z"></path></svg>
+                        </span>
+                        <span class="nav-text">Estoque</span>
+                        <span class="nav-caret" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"></path></svg></span>
+                    </button>
+                    <div class="nav-submenu" data-sidebar-submenu>
+                        <a class="nav-submenu-link is-active" href="./produtos.html" aria-current="page">Produtos</a>
+                        <a class="nav-submenu-link" href="./pedidos-mk.html">Pedidos MK</a>
+                    </div>
+                </div>
                 <a class="nav-link" href="./vendas.html">
                     <span class="nav-icon">
                         <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
@@ -123,7 +130,7 @@
                     <h2>Adicionar Produto</h2>
                     <p>Cadastre rapidamente um novo item no catálogo para acompanhar estoque, preço, validade e desempenho de vendas.</p>
                 </div>
-                <button class="clients-primary-button" type="button">
+                <button class="clients-primary-button" type="button" data-modal-target="product-add-choice-modal">
                     <svg viewBox="0 0 256 256"><path d="M136,56v64h64a8,8,0,0,1,0,16H136v64a8,8,0,0,1-16,0V136H56a8,8,0,0,1,0-16h64V56a8,8,0,0,1,16,0Z"></path></svg>
                     <span>Adicionar Produto</span>
                 </button>
@@ -149,7 +156,10 @@
                         </span>
                     </div>
                     <p>Valor em Estoque</p>
-                    <strong class="products-stat-money">R$ 145.800,00</strong>
+                    <strong class="products-stat-money products-stat-money-inline">
+                        <span class="currency">R$</span>
+                        <span class="products-stat-money-value">145.800,00</span>
+                    </strong>
                 </article>
 
                 <article class="products-stat-card elevated">
@@ -165,16 +175,16 @@
                 </article>
             </section>
 
-            <section class="products-toolbar elevated">
+            <section class="products-toolbar clients-toolbar elevated" data-product-filters-wrap>
                 <label class="products-toolbar-search">
                     <span aria-hidden="true">
                         <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                     </span>
-                    <input type="search" placeholder="Buscar por nome ou SKU...">
+                    <input type="search" placeholder="Buscar por nome, SKU, Pedido, Categoria ou Subcategoria...">
                 </label>
 
                 <div class="products-toolbar-actions">
-                    <button type="button" class="products-toolbar-button">
+                    <button type="button" class="products-toolbar-button" data-product-filters-toggle aria-expanded="false">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm3 5h10v2H7zm3 5h4v2h-4z"></path></svg>
                         <span>Filtros</span>
                     </button>
@@ -182,6 +192,117 @@
                         <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34Zm-56,83.32-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35a8,8,0,0,1,11.32,11.32ZM152,88V44l44,44Z"></path></svg>
                         <span>Exportar</span>
                     </button>
+                </div>
+
+                <div class="clients-filters-panel" hidden data-product-filters-panel>
+                    <div class="clients-filters-grid products-filters-grid">
+                        <div class="clients-filter-field products-stock-field">
+                            <span>Em estoque</span>
+                            <div class="clients-checkbox-group products-radio-group">
+                                <label><input type="radio" name="product-stock" value="all" checked data-product-radio-default> <span>Todos</span></label>
+                                <label><input type="radio" name="product-stock" value="yes"> <span>Sim</span></label>
+                                <label><input type="radio" name="product-stock" value="no"> <span>Não</span></label>
+                            </div>
+                        </div>
+
+                        <div class="clients-filter-field products-category-field">
+                            <span>Categoria com subcategorias</span>
+                            <div class="products-category-grid">
+                                <div class="products-category-node">
+                                    <label class="products-category-parent">
+                                        <input type="checkbox" checked data-product-category-parent="facial">
+                                        <span>Cuidados Faciais</span>
+                                    </label>
+                                    <div class="products-category-children">
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="facial"> <span>Limpeza</span></label>
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="facial"> <span>Tratamento</span></label>
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="facial"> <span>Hidratação</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="products-category-node">
+                                    <label class="products-category-parent">
+                                        <input type="checkbox" checked data-product-category-parent="makeup">
+                                        <span>Maquiagem</span>
+                                    </label>
+                                    <div class="products-category-children">
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="makeup"> <span>Lábios</span></label>
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="makeup"> <span>Rosto</span></label>
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="makeup"> <span>Olhos</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="products-category-node">
+                                    <label class="products-category-parent">
+                                        <input type="checkbox" checked data-product-category-parent="bodycare">
+                                        <span>Cuidados Corporais</span>
+                                    </label>
+                                    <div class="products-category-children">
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="bodycare"> <span>Hidratação</span></label>
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="bodycare"> <span>Banho</span></label>
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="bodycare"> <span>Proteção</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="products-category-node">
+                                    <label class="products-category-parent">
+                                        <input type="checkbox" checked data-product-category-parent="fragrances">
+                                        <span>Fragrâncias</span>
+                                    </label>
+                                    <div class="products-category-children">
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="fragrances"> <span>Feminino</span></label>
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="fragrances"> <span>Masculino</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="products-category-node">
+                                    <label class="products-category-parent">
+                                        <input type="checkbox" checked data-product-category-parent="gifts">
+                                        <span>Presentes</span>
+                                    </label>
+                                    <div class="products-category-children">
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="gifts"> <span>Kits</span></label>
+                                        <label class="products-category-child"><input type="checkbox" checked data-product-category-child="gifts"> <span>Lembranças</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <label class="clients-filter-field clients-filter-field--range products-range-field">
+                            <span>Valor unitário (R$)</span>
+                            <div class="clients-filter-range">
+                                <input type="number" min="0" step="0.01" placeholder="Mínimo">
+                                <input type="number" min="0" step="0.01" placeholder="Máximo">
+                            </div>
+                        </label>
+
+                        <label class="clients-filter-field clients-filter-field--range products-range-field">
+                            <span>Quantidade</span>
+                            <div class="clients-filter-range">
+                                <input type="number" min="0" step="1" placeholder="Mín">
+                                <input type="number" min="0" step="1" placeholder="Máx">
+                            </div>
+                        </label>
+
+                        <div class="clients-filter-field products-expiration-field">
+                            <span>Vencimento</span>
+                            <div class="clients-checkbox-group products-expiration-group">
+                                <label><input type="radio" name="product-expiration" value="all" checked data-product-radio-default> <span>Todos</span></label>
+                                <label><input type="radio" name="product-expiration" value="1m"> <span>Menos de 1 mês</span></label>
+                                <label><input type="radio" name="product-expiration" value="3m"> <span>Em 3 meses</span></label>
+                                <label><input type="radio" name="product-expiration" value="6m"> <span>Em 6 meses</span></label>
+                                <label><input type="radio" name="product-expiration" value="1y"> <span>Em 1 ano</span></label>
+                                <label><input type="radio" name="product-expiration" value="none"> <span>Não informado</span></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clients-filters-actions">
+                        <span class="clients-filters-counter" data-product-filters-counter>0/0 filtros aplicados</span>
+                        <button type="button" class="products-toolbar-button" data-product-filters-clear>Limpar todos</button>
+                        <button type="button" class="products-toolbar-button" data-product-filters-check-all>Marcar todos</button>
+                        <button type="button" class="clients-primary-button products-filter-apply-button" data-product-filters-apply>Aplicar filtros</button>
+                    </div>
                 </div>
             </section>
 
@@ -196,7 +317,6 @@
                                 <th>Qtd</th>
                                 <th>Vlr Unitário</th>
                                 <th>Vlr. Total</th>
-                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -212,7 +332,6 @@
                                 <td>142</td>
                                 <td>R$ 89,90</td>
                                 <td class="products-total">R$ 12.765,80</td>
-                                <td><a href="./produto.html" class="products-action-link" aria-label="Editar produto"><svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg></a></td>
                             </tr>
                             <tr>
                                 <td><a href="./produto.html" class="products-thumb-link"><span class="products-thumb products-thumb--serum"></span></a></td>
@@ -226,7 +345,6 @@
                                 <td class="products-qty-low">8</td>
                                 <td>R$ 159,00</td>
                                 <td class="products-total">R$ 1.272,00</td>
-                                <td><a href="./produto.html" class="products-action-link" aria-label="Editar produto"><svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg></a></td>
                             </tr>
                             <tr>
                                 <td><a href="./produto.html" class="products-thumb-link"><span class="products-thumb products-thumb--palette"></span></a></td>
@@ -240,7 +358,6 @@
                                 <td>45</td>
                                 <td>R$ 124,90</td>
                                 <td class="products-total">R$ 5.620,50</td>
-                                <td><a href="./produto.html" class="products-action-link" aria-label="Editar produto"><svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg></a></td>
                             </tr>
                             <tr>
                                 <td><a href="./produto.html" class="products-thumb-link"><span class="products-thumb products-thumb--perfume"></span></a></td>
@@ -254,7 +371,6 @@
                                 <td>31</td>
                                 <td>R$ 299,00</td>
                                 <td class="products-total">R$ 9.269,00</td>
-                                <td><a href="./produto.html" class="products-action-link" aria-label="Editar produto"><svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg></a></td>
                             </tr>
                             <tr>
                                 <td><a href="./produto.html" class="products-thumb-link"><span class="products-thumb products-thumb--base"></span></a></td>
@@ -268,7 +384,6 @@
                                 <td>88</td>
                                 <td>R$ 75,00</td>
                                 <td class="products-total">R$ 6.600,00</td>
-                                <td><a href="./produto.html" class="products-action-link" aria-label="Editar produto"><svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg></a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -292,6 +407,28 @@
                 <p>&copy; <span data-current-year>YEAR</span> PinkBox Sistema de Gestão de Produtos.</p>
             </footer>
         </main>
+    </div>
+
+    <div class="client-modal" id="product-add-choice-modal" hidden>
+        <div class="client-modal-backdrop" data-modal-close></div>
+        <div class="client-modal-dialog elevated product-stock-modal-dialog">
+            <button class="client-modal-close" type="button" aria-label="Fechar opções de adição de produto" data-modal-close>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </button>
+            <h2>Adicionar Produto</h2>
+            <p class="client-modal-subtitle">Você deseja adicionar...</p>
+
+            <div class="product-stock-confirm-actions product-add-choice-actions">
+                <a class="clients-primary-button product-stock-confirm-trigger product-add-choice-button" href="./adicionar-produto.html">
+                    <svg viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 12h6" /><path d="M12 9v6" /><path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14" /></svg>
+                    <span>Um produto apenas</span>
+                </a>
+                <a class="clients-primary-button product-add-choice-button product-add-choice-button--secondary" href="./novo-pedido-mk.html">
+                    <svg viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667l0 -8.666" /><path d="M4.012 16.737a2 2 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /><path d="M11 14h6" /><path d="M14 11v6" /></svg>
+                    <span>Uma lista de produtos</span>
+                </a>
+            </div>
+        </div>
     </div>
 
     <script src="../src/js/main.js"></script>

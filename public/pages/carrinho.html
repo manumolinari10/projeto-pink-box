@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PinkBox | Carrinho</title>
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <link rel="stylesheet" href="../src/css/global.css">
+</head>
+<body class="products-page">
+    <div class="dashboard-shell">
+        <aside class="sidebar" aria-label="Menu lateral">
+            <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
+                <img class="brand-logo brand-logo-horizontal" src="../src/assets/logo_horizontal.webp" alt="PinkBox Executive Portal">
+                <img class="brand-logo brand-logo-simple" src="../src/assets/logo_simple.webp" alt="PinkBox">
+            </a>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="./index.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" /></svg>
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-link" href="./clientes.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"></path></svg>
+                    </span>
+                    <span>Clientes</span>
+                </a>
+                <div class="sidebar-group is-open" data-sidebar-group>
+                    <button class="nav-link nav-link--submenu-toggle is-active" type="button" data-sidebar-submenu-toggle aria-expanded="true">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.35,44L178.57,92.29l-80.35-44Zm0,88L47.65,76,81.56,57.43l80.35,44Zm88,55.85h0l-80,43.79V133.83l32-17.51V152a8,8,0,0,0,16,0V107.56l32-17.51v85.76Z"></path></svg>
+                        </span>
+                        <span class="nav-text">Estoque</span>
+                        <span class="nav-caret" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"></path></svg></span>
+                    </button>
+                    <div class="nav-submenu" data-sidebar-submenu>
+                        <a class="nav-submenu-link" href="./produtos.html">Produtos</a>
+                        <a class="nav-submenu-link is-active" href="./pedidos-mk.html" aria-current="page">Pedidos MK</a>
+                    </div>
+                </div>
+                <a class="nav-link" href="./vendas.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
+                    </span>
+                    <span>Vendas</span>
+                </a>
+                <a class="nav-link" href="./financeiro.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm0 8a1 1 0 0 0 -1 1v.05a2.5 2.5 0 0 0 .5 4.95h1a.5 .5 0 1 1 0 1h-2.5a1 1 0 0 0 0 2h1a1 1 0 0 0 2 0v-.05a2.5 2.5 0 0 0 -.5 -4.95h-1a.5 .5 0 1 1 0 -1h2.5a1 1 0 0 0 0 -2h-1a1 1 0 0 0 -1 -1" /><path d="M19 7h-4l-.001 -4.001z" /></svg>
+                    </span>
+                    <span>Financeiro</span>
+                </a>
+                <a class="nav-link" href="./calendario.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM84,184a12,12,0,1,1,12-12A12,12,0,0,1,84,184Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,128,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,128,144Zm44,40a12,12,0,1,1,12-12A12,12,0,0,1,172,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,172,144Zm36-64H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24Z"></path></svg>
+                    </span>
+                    <span>Calendário</span>
+                </a>
+                <a class="nav-link" href="./insights.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" /><path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M4.893 4.893a1 1 0 0 1 1.32 -.083l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 0 -1.414z" /><path d="M17.693 4.893a1 1 0 0 1 1.497 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7z" /><path d="M14 18a1 1 0 0 1 1 1a3 3 0 0 1 -6 0a1 1 0 0 1 .883 -.993l.117 -.007h4z" /><path d="M12 6a6 6 0 0 1 3.6 10.8a1 1 0 0 1 -.471 .192l-.129 .008h-6a1 1 0 0 1 -.6 -.2a6 6 0 0 1 3.6 -10.8z" /></svg>
+                    </span>
+                    <span>Insights</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-links">
+                    <a class="nav-link nav-link--subtle" href="./configuracoes.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg>
+                        </span>
+                        <span>Configurações</span>
+                    </a>
+                    <a class="nav-link nav-link--subtle" href="./login.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-12a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h12zm-3 2h-9a1 1 0 0 0 -.993 .883l-.007 .117v12a1 1 0 0 0 .883 .993l.117 .007h9v-14zm-5.387 4.21l.094 .083l2 2a1 1 0 0 1 .083 1.32l-.083 .094l-2 2a1 1 0 0 1 -1.497 -1.32l.083 -.094l1.292 -1.293l-1.292 -1.293a1 1 0 0 1 -.083 -1.32l.083 -.094a1 1 0 0 1 1.32 -.083z" /></svg>
+                        </span>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-panel products-main-panel">
+            <header class="topbar clients-topbar">
+                <div class="clients-topbar-left">
+                    <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="notification-wrapper">
+                        <button class="icon-button" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" data-notification-toggle>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22m6-6V11a6 6 0 1 0-12 0v5L4 18v1h16v-1z"></path></svg>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <div class="notification-menu" hidden data-notification-menu>
+                            <button type="button">Sugestão inteligente atualizada hoje</button>
+                            <button type="button">Novo item adicionado à lista final</button>
+                            <button type="button">Pedido pronto para exportação</button>
+                            <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
+                        </div>
+                    </div>
+
+                    <a class="profile-card" href="./perfil.html">
+                        <div class="profile-copy">
+                            <strong>Beatriz Souza</strong>
+                            <span>CONSULTORA DIAMANTE</span>
+                        </div>
+                        <img class="profile-avatar avatar-image" src="../src/assets/users/default.webp" alt="Foto de perfil de Beatriz Souza">
+                    </a>
+                </div>
+            </header>
+
+            <section class="product-detail-header page-intro-wrap">
+                <div class="page-intro-copy">
+                    <div class="products-breadcrumb">Estoque / Pedidos MK / Carrinho</div>
+                    <h1>Carrinho</h1>
+                    <p>Monte seu próximo pedido combinando os itens adicionados por você com as sugestões inteligentes do sistema.</p>
+                </div>
+            </section>
+
+            <section class="mk-builder-alert-card elevated">
+                <div class="mk-builder-alert-head">
+                    <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm-8,56a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm8,104a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path></svg>
+                    <strong>IMPORTANTE</strong>
+                </div>
+                <p>Este sistema de gestão NÃO é integrado ao sistema de pedidos da Mary Kay. Esta página serve apenas para te dar mais clareza e facilitar a escolha dos pedidos no sistema oficial.</p>
+            </section>
+
+            <section class="mk-builder-layout" data-mk-builder>
+                <div class="mk-builder-main">
+                    <section class="products-table-card elevated">
+                        <div class="mk-builder-section-head">
+                            <div>
+                                <span class="finance-eyebrow">Adicionados por mim</span>
+                            </div>
+                        </div>
+                        <div class="products-table-wrap">
+                            <table class="products-table mk-builder-table">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Produto</th>
+                                        <th>Preço</th>
+                                        <th>Pontos</th>
+                                        <th>Quantidade</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-mk-builder-row data-code="MK-445821" data-name="Kit TimeWise Repair Volu-Firm" data-price="249.90" data-points="48" data-qty="2" data-initial-qty="2" data-added="false">
+                                        <td><span class="products-sku">MK-445821</span></td>
+                                        <td><strong><a href="./produto.html">Kit TimeWise Repair Volu-Firm</a></strong></td>
+                                        <td>R$ 249,90</td>
+                                        <td>48</td>
+                                        <td>
+                                            <div class="mk-builder-qty">
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-minus aria-label="Diminuir quantidade">-</button>
+                                                <span data-mk-qty-value>2</span>
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-plus aria-label="Aumentar quantidade">+</button>
+                                                <button type="button" class="mk-builder-qty-reset" data-mk-qty-reset aria-label="Restaurar quantidade original">
+                                                    <svg viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-28.14-67.86,8,8,0,0,1-11.32,11.32A80,80,0,1,0,208,128V88H168a8,8,0,0,1,0-16h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="mk-builder-actions">
+                                                <button type="button" class="mk-builder-action mk-builder-action--add" data-mk-add-item aria-label="Adicionar à lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm40,112H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32a8,8,0,0,1,0,16Z"></path></svg>
+                                                </button>
+                                                <button type="button" class="mk-builder-action mk-builder-action--remove" data-mk-remove-item aria-label="Remover da lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-mk-builder-row data-code="MK-772145" data-name="Sérum C+E TimeWise" data-price="179.90" data-points="44" data-qty="3" data-initial-qty="3" data-added="false">
+                                        <td><span class="products-sku">MK-772145</span></td>
+                                        <td><strong><a href="./produto.html">Sérum C+E TimeWise</a></strong></td>
+                                        <td>R$ 179,90</td>
+                                        <td>44</td>
+                                        <td>
+                                            <div class="mk-builder-qty">
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-minus aria-label="Diminuir quantidade">-</button>
+                                                <span data-mk-qty-value>3</span>
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-plus aria-label="Aumentar quantidade">+</button>
+                                                <button type="button" class="mk-builder-qty-reset" data-mk-qty-reset aria-label="Restaurar quantidade original">
+                                                    <svg viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-28.14-67.86,8,8,0,0,1-11.32,11.32A80,80,0,1,0,208,128V88H168a8,8,0,0,1,0-16h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="mk-builder-actions">
+                                                <button type="button" class="mk-builder-action mk-builder-action--add" data-mk-add-item aria-label="Adicionar à lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm40,112H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32a8,8,0,0,1,0,16Z"></path></svg>
+                                                </button>
+                                                <button type="button" class="mk-builder-action mk-builder-action--remove" data-mk-remove-item aria-label="Remover da lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-mk-builder-row data-code="MK-390512" data-name="Loção Corporal Satin Body" data-price="23.10" data-points="16" data-qty="2" data-initial-qty="2" data-added="false">
+                                        <td><span class="products-sku">MK-390512</span></td>
+                                        <td><strong><a href="./produto.html">Loção Corporal Satin Body</a></strong></td>
+                                        <td>R$ 23,10</td>
+                                        <td>16</td>
+                                        <td>
+                                            <div class="mk-builder-qty">
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-minus aria-label="Diminuir quantidade">-</button>
+                                                <span data-mk-qty-value>2</span>
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-plus aria-label="Aumentar quantidade">+</button>
+                                                <button type="button" class="mk-builder-qty-reset" data-mk-qty-reset aria-label="Restaurar quantidade original">
+                                                    <svg viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-28.14-67.86,8,8,0,0,1-11.32,11.32A80,80,0,1,0,208,128V88H168a8,8,0,0,1,0-16h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="mk-builder-actions">
+                                                <button type="button" class="mk-builder-action mk-builder-action--add" data-mk-add-item aria-label="Adicionar à lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm40,112H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32a8,8,0,0,1,0,16Z"></path></svg>
+                                                </button>
+                                                <button type="button" class="mk-builder-action mk-builder-action--remove" data-mk-remove-item aria-label="Remover da lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="products-table-card elevated">
+                        <div class="mk-smart-banner">
+                            <span class="mk-smart-banner-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 4.95 11.95c-.7 .7-1.18 1.23-1.45 1.76c-.27 .52-.39 1.01-.47 1.79a1 1 0 0 1 -.88 .88L14 18h-4a1 1 0 0 1 -.995 -.9c-.075 -.73 -.19 -1.2 -.44 -1.69c-.25 -.5 -.69 -1 -1.37 -1.68A7 7 0 0 1 12 2zm2 17a1 1 0 0 1 .117 1.993L14 21h-4a1 1 0 0 1 -.117 -1.993L10 19h4z" /></svg>
+                            </span>
+                            <p>Os itens marcados também foram adicionados manualmente por você ao carrinho. Confira a quantidade ideal antes de finalizar.</p>
+                        </div>
+                        <div class="mk-builder-section-head">
+                            <div>
+                                <span class="finance-eyebrow">Sugestões inteligentes</span>
+                            </div>
+                        </div>
+                        <div class="products-table-wrap">
+                            <table class="products-table mk-builder-table">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Produto</th>
+                                        <th>Preço</th>
+                                        <th>Pontos</th>
+                                        <th>Quantidade</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-mk-builder-row data-code="MK-228940" data-name="Batom Gel Semi-Matte Rosé" data-price="49.80" data-points="13" data-qty="1" data-initial-qty="1" data-added="false">
+                                        <td><span class="products-sku">MK-228940</span></td>
+                                        <td>
+                                            <strong><a href="./produto.html">Batom Gel Semi-Matte Rosé</a></strong>
+                                            <span class="mk-smart-note-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 4.95 11.95c-.7 .7-1.18 1.23-1.45 1.76c-.27 .52-.39 1.01-.47 1.79a1 1 0 0 1 -.88 .88L14 18h-4a1 1 0 0 1 -.995 -.9c-.075 -.73 -.19 -1.2 -.44 -1.69c-.25 -.5 -.69 -1 -1.37 -1.68A7 7 0 0 1 12 2zm2 17a1 1 0 0 1 .117 1.993L14 21h-4a1 1 0 0 1 -.117 -1.993L10 19h4z" /></svg></span>
+                                        </td>
+                                        <td>R$ 49,80</td>
+                                        <td>13</td>
+                                        <td>
+                                            <div class="mk-builder-qty">
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-minus aria-label="Diminuir quantidade">-</button>
+                                                <span data-mk-qty-value>1</span>
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-plus aria-label="Aumentar quantidade">+</button>
+                                                <button type="button" class="mk-builder-qty-reset" data-mk-qty-reset aria-label="Restaurar quantidade original">
+                                                    <svg viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-28.14-67.86,8,8,0,0,1-11.32,11.32A80,80,0,1,0,208,128V88H168a8,8,0,0,1,0-16h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="mk-builder-actions">
+                                                <button type="button" class="mk-builder-action mk-builder-action--add" data-mk-add-item aria-label="Adicionar à lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm40,112H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32a8,8,0,0,1,0,16Z"></path></svg>
+                                                </button>
+                                                <button type="button" class="mk-builder-action mk-builder-action--remove" data-mk-remove-item aria-label="Remover da lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-mk-builder-row data-code="MK-834120" data-name="Sabonete 3 em 1 TimeWise" data-price="72.40" data-points="18" data-qty="1" data-initial-qty="1" data-added="false">
+                                        <td><span class="products-sku">MK-834120</span></td>
+                                        <td>
+                                            <strong><a href="./produto.html">Sabonete 3 em 1 TimeWise</a></strong>
+                                            <span class="mk-smart-note-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 4.95 11.95c-.7 .7-1.18 1.23-1.45 1.76c-.27 .52-.39 1.01-.47 1.79a1 1 0 0 1 -.88 .88L14 18h-4a1 1 0 0 1 -.995 -.9c-.075 -.73 -.19 -1.2 -.44 -1.69c-.25 -.5 -.69 -1 -1.37 -1.68A7 7 0 0 1 12 2zm2 17a1 1 0 0 1 .117 1.993L14 21h-4a1 1 0 0 1 -.117 -1.993L10 19h4z" /></svg></span>
+                                        </td>
+                                        <td>R$ 72,40</td>
+                                        <td>18</td>
+                                        <td>
+                                            <div class="mk-builder-qty">
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-minus aria-label="Diminuir quantidade">-</button>
+                                                <span data-mk-qty-value>1</span>
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-plus aria-label="Aumentar quantidade">+</button>
+                                                <button type="button" class="mk-builder-qty-reset" data-mk-qty-reset aria-label="Restaurar quantidade original">
+                                                    <svg viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-28.14-67.86,8,8,0,0,1-11.32,11.32A80,80,0,1,0,208,128V88H168a8,8,0,0,1,0-16h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="mk-builder-actions">
+                                                <button type="button" class="mk-builder-action mk-builder-action--add" data-mk-add-item aria-label="Adicionar à lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm40,112H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32a8,8,0,0,1,0,16Z"></path></svg>
+                                                </button>
+                                                <button type="button" class="mk-builder-action mk-builder-action--remove" data-mk-remove-item aria-label="Remover da lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-mk-builder-row data-code="MK-681450" data-name="Máscara de Cílios Lash Love" data-price="63.50" data-points="15" data-qty="1" data-initial-qty="1" data-added="false">
+                                        <td><span class="products-sku">MK-681450</span></td>
+                                        <td><strong><a href="./produto.html">Máscara de Cílios Lash Love</a></strong></td>
+                                        <td>R$ 63,50</td>
+                                        <td>15</td>
+                                        <td>
+                                            <div class="mk-builder-qty">
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-minus aria-label="Diminuir quantidade">-</button>
+                                                <span data-mk-qty-value>1</span>
+                                                <button type="button" class="mk-builder-qty-button" data-mk-qty-plus aria-label="Aumentar quantidade">+</button>
+                                                <button type="button" class="mk-builder-qty-reset" data-mk-qty-reset aria-label="Restaurar quantidade original">
+                                                    <svg viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-28.14-67.86,8,8,0,0,1-11.32,11.32A80,80,0,1,0,208,128V88H168a8,8,0,0,1,0-16h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="mk-builder-actions">
+                                                <button type="button" class="mk-builder-action mk-builder-action--add" data-mk-add-item aria-label="Adicionar à lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm40,112H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32a8,8,0,0,1,0,16Z"></path></svg>
+                                                </button>
+                                                <button type="button" class="mk-builder-action mk-builder-action--remove" data-mk-remove-item aria-label="Remover da lista final">
+                                                    <svg viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="mk-builder-sidebar">
+                    <section class="mk-builder-summary elevated">
+                        <div class="mk-builder-summary-head">
+                            <div>
+                                <span class="finance-eyebrow">Lista final</span>
+                                <h2>Itens selecionados</h2>
+                            </div>
+                        </div>
+                        <div class="mk-builder-summary-list" data-mk-summary-list></div>
+                        <p class="mk-builder-summary-empty" hidden data-mk-summary-empty>Nenhum item adicionado à lista final.</p>
+                        <div class="mk-builder-summary-totals">
+                            <div>
+                                <span>Valor total previsto</span>
+                                <strong data-mk-summary-total>R$ 0,00</strong>
+                            </div>
+                            <div>
+                                <span>Total de pontos previsto</span>
+                                <strong data-mk-summary-points>0 pts</strong>
+                            </div>
+                        </div>
+                        <button type="button" class="clients-primary-button mk-builder-finish-button">Finalizar e exportar</button>
+                    </section>
+                </aside>
+            </section>
+
+            <footer class="page-footer">
+                <span>© <span data-current-year></span> PinkBox Sistema de Gestão de Vendas.</span>
+            </footer>
+        </main>
+    </div>
+
+    <div class="client-modal" id="mk-builder-delete-modal" hidden>
+        <div class="client-modal-backdrop" data-mk-builder-delete-close></div>
+        <div class="client-modal-dialog elevated product-stock-modal-dialog">
+            <button class="client-modal-close" type="button" aria-label="Fechar confirmação de exclusão" data-mk-builder-delete-close>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </button>
+            <h2>Excluir do carrinho</h2>
+            <p class="client-modal-subtitle">
+                Tem certeza que deseja excluir o
+                <strong data-mk-builder-delete-name>produto</strong>
+                do carrinho?
+            </p>
+
+            <div class="product-stock-confirm-actions">
+                <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-mk-builder-delete-confirm>Sim, excluir</button>
+                <button type="button" class="products-toolbar-button" data-mk-builder-delete-close>Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/js/main.js"></script>
+</body>
+</html>

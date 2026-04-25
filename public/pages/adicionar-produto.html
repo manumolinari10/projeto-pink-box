@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PinkBox | Perfil</title>
+    <title>PinkBox | Adicionar Produto</title>
     <link rel="icon" type="image/png" href="../favicon.ico">
     <link rel="stylesheet" href="../src/css/global.css">
 </head>
-<body class="profile-page">
+<body class="products-page">
     <div class="dashboard-shell">
         <aside class="sidebar" aria-label="Menu lateral">
             <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
@@ -28,16 +28,16 @@
                     </span>
                     <span>Clientes</span>
                 </a>
-                <div class="sidebar-group" data-sidebar-group>
-                    <button class="nav-link nav-link--submenu-toggle" type="button" data-sidebar-submenu-toggle aria-expanded="false">
+                <div class="sidebar-group is-open" data-sidebar-group>
+                    <button class="nav-link nav-link--submenu-toggle is-active" type="button" data-sidebar-submenu-toggle aria-expanded="true">
                         <span class="nav-icon">
                             <svg viewBox="0 0 256 256"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.35,44L178.57,92.29l-80.35-44Zm0,88L47.65,76,81.56,57.43l80.35,44Zm88,55.85h0l-80,43.79V133.83l32-17.51V152a8,8,0,0,0,16,0V107.56l32-17.51v85.76Z"></path></svg>
                         </span>
                         <span class="nav-text">Estoque</span>
                         <span class="nav-caret" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"></path></svg></span>
                     </button>
-                    <div class="nav-submenu" data-sidebar-submenu hidden>
-                        <a class="nav-submenu-link" href="./produtos.html">Produtos</a>
+                    <div class="nav-submenu" data-sidebar-submenu>
+                        <a class="nav-submenu-link is-active" href="./produtos.html" aria-current="page">Produtos</a>
                         <a class="nav-submenu-link" href="./pedidos-mk.html">Pedidos MK</a>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
             </div>
         </aside>
 
-        <main class="main-panel profile-main-panel">
+        <main class="main-panel products-main-panel" data-manual-product-page>
             <header class="topbar clients-topbar">
                 <div class="clients-topbar-left">
                     <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
@@ -102,9 +102,9 @@
                             <span class="notification-dot"></span>
                         </button>
                         <div class="notification-menu" hidden data-notification-menu>
-                            <button type="button">Resumo semanal disponível</button>
-                            <button type="button">Novo insight publicado</button>
-                            <button type="button">Meta mensal acima da média</button>
+                            <button type="button">Produto cadastrado manualmente hoje</button>
+                            <button type="button">Conferir item incluído fora do pedido MK</button>
+                            <button type="button">Estoque atualizado manualmente</button>
                             <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
                         </div>
                     </div>
@@ -119,112 +119,132 @@
                 </div>
             </header>
 
-            <section class="product-detail-header profile-page-header page-intro-wrap">
+            <section class="product-detail-header page-intro-wrap">
                 <div class="page-intro-copy">
-                    <div class="products-breadcrumb">Dashboard / Perfil</div>
-                    <h1>Meu Perfil</h1>
-                    <p>Posicionamento, identidade profissional e preferências da consultora dentro da PinkBox.</p>
+                    <div class="products-breadcrumb">Estoque / Produtos / Adicionar Produto</div>
+                    <h1>Adicionar Produto</h1>
+                    <p>Inclua um item manualmente no estoque quando ele não tiver sido adquirido a partir de um pedido no Em Sintonia.</p>
                 </div>
             </section>
 
-            <section class="profile-layout">
-                <div class="profile-showcase-column">
-                    <article class="profile-hero-card elevated">
-                        <div class="profile-portrait-wrap">
-                            <div class="profile-portrait-frame">
-                                <img src="../src/assets/users/default.webp" alt="Retrato de Beatriz Souza">
-                                <a class="profile-image-edit" href="./configuracoes.html">Alterar imagem</a>
-                            </div>
-                            <div class="profile-rank-badge elevated">
-                                <span>Ranked #1</span>
-                                <strong>Elite</strong>
-                                <p>Top 5% das consultoras com maior destaque nesta temporada.</p>
-                            </div>
-                        </div>
-
-                        <div class="profile-identity-block">
-                            <h2>Beatriz <span>Souza</span></h2>
-                            <p>Consultora PinkBox com perfil premium de relacionamento e atendimento personalizado. <a class="profile-inline-edit" href="./configuracoes.html">[EDITAR]</a></p>
-                            <div class="profile-tags">
-                                <span>São Paulo</span>
-                                <span>Beauty</span>
-                                <span>Consultora</span>
-                            </div>
-                        </div>
-                    </article>
+            <section class="mk-builder-alert-card elevated">
+                <div class="mk-builder-alert-head">
+                    <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm-8,56a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm8,104a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path></svg>
+                    <strong>Importante!</strong>
                 </div>
-
-                <div class="profile-content-column">
-                    <article class="profile-section-card elevated">
-                        <div class="profile-section-head">
-                            <h2>Dados Pessoais</h2>
-                            <a class="profile-card-edit" href="./configuracoes.html">Editar</a>
-                        </div>
-                        <div class="profile-info-grid">
-                            <div>
-                                <span>Nome Completo</span>
-                                <strong>Beatriz Fernanda Souza</strong>
-                            </div>
-                            <div>
-                                <span>Data de Nascimento</span>
-                                <strong>15/08/1992</strong>
-                            </div>
-                            <div>
-                                <span>Cidade/Estado</span>
-                                <strong>São Paulo / SP</strong>
-                            </div>
-                            <div>
-                                <span>CPF</span>
-                                <strong>123.456.789-00</strong>
-                            </div>
-                            <div>
-                                <span>Gênero</span>
-                                <strong>Feminino</strong>
-                            </div>
-                            <div>
-                                <span>Estado Civil</span>
-                                <strong>Casada</strong>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="profile-section-card elevated">
-                        <div class="profile-section-head">
-                            <h2>Dados Profissionais</h2>
-                            <a class="profile-card-edit" href="./configuracoes.html">Editar</a>
-                        </div>
-                        <div class="profile-info-grid">
-                            <div>
-                                <span>Data de Início na MK</span>
-                                <strong>12/03/2021</strong>
-                            </div>
-                            <div>
-                                <span>Código de Consultora</span>
-                                <strong>MK-204587</strong>
-                            </div>
-                            <div>
-                                <span>Nome da Diretora</span>
-                                <strong>Ana Paula Martins</strong>
-                            </div>
-                            <div>
-                                <span>Telefone de Contato</span>
-                                <strong>+55 11 99876-0128</strong>
-                            </div>
-                            <div>
-                                <span>E-mail de Contato</span>
-                                <strong>beatrizsouza@pinkbox.com.br</strong>
-                            </div>
-                            <div>
-                                <span>Link da Loja</span>
-                                <strong>pinkbox.com.br/beatrizsouza</strong>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+                <ul class="manual-product-alert-list">
+                    <li>Esta é uma forma <strong>não oficial</strong> de adicionar produtos ao seu estoque. Caso esteja corrigindo o estoque, é indicado que você atualize a quantidade na página do produto.</li>
+                    <li>Os produtos adicionados aqui <strong>NÃO</strong> serão exibidos na <a href="./pedidos-mk.html">Lista de Pedidos</a> MK e não serão contabilizados como gastos no <a href="./financeiro.html">Painel Financeiro</a>.</li>
+                    <li>Se este produto é originado de uma compra no <strong>Em Sintonia</strong>, vá até a página <a href="./novo-pedido-mk.html">Novo Pedido MK</a> para adicionar ao estoque. Será exigido o número do pedido, entre outras informações.</li>
+                </ul>
             </section>
 
-            <footer class="page-footer">© 2026 PinkBox Sistema de Gestão de Vendas.</footer>
+            <section class="manual-product-layout">
+                <article class="manual-product-card elevated">
+                    <div class="manual-product-head">
+                        <span class="finance-eyebrow">Adicionar ao Estoque</span>
+                    </div>
+
+                    <form class="manual-product-form" data-manual-product-form novalidate>
+                        <div class="manual-product-row">
+                            <div class="manual-product-search-shell">
+                                <span>Nome ou Código do Produto</span>
+                                <label class="products-toolbar-search manual-product-search">
+                                    <span aria-hidden="true">
+                                        <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                                    </span>
+                                    <input type="search" placeholder="digite pelo menos 3 caracteres..." autocomplete="off" data-manual-product-search>
+                                </label>
+                                <div class="manual-product-results" hidden data-manual-product-results></div>
+                            </div>
+
+                            <div class="manual-product-qty-field">
+                                <span>Quantidade</span>
+                                <div class="mk-builder-qty manual-product-qty-control">
+                                    <button type="button" class="mk-builder-qty-button" data-manual-product-minus aria-label="Diminuir quantidade" disabled>-</button>
+                                    <span data-manual-product-qty>1</span>
+                                    <button type="button" class="mk-builder-qty-button" data-manual-product-plus aria-label="Aumentar quantidade">+</button>
+                                </div>
+                            </div>
+
+                            <button type="button" class="clients-primary-button manual-product-add-button" data-manual-product-add disabled>Adicionar</button>
+                        </div>
+
+                        <p class="manual-product-selection" data-manual-product-selection>Nenhum produto selecionado.</p>
+                    </form>
+                </article>
+
+                <section class="products-table-card elevated manual-product-history-card">
+                    <div class="mk-builder-section-head">
+                        <div>
+                            <span class="finance-eyebrow">Histórico de Produtos Adicionados</span>
+                        </div>
+                    </div>
+                    <div class="products-table-wrap">
+                        <table class="products-table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                </tr>
+                            </thead>
+                            <tbody data-manual-product-history>
+                                <tr>
+                                    <td>25 Abr, 2026</td>
+                                    <td><strong>Base Fluida Matte Skin - Tom 20</strong></td>
+                                    <td>4 un</td>
+                                </tr>
+                                <tr>
+                                    <td>24 Abr, 2026</td>
+                                    <td><strong>Sérum Facial Glow Booster 30ml</strong></td>
+                                    <td>2 un</td>
+                                </tr>
+                                <tr>
+                                    <td>22 Abr, 2026</td>
+                                    <td><strong>Batom Matte Velvet - Rose Pink</strong></td>
+                                    <td>6 un</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="clients-table-footer">
+                        <p>Mostrando 3 registros</p>
+                        <div class="clients-pagination">
+                            <button type="button" aria-label="Página anterior">&lsaquo;</button>
+                            <button type="button" class="is-active">1</button>
+                            <button type="button">2</button>
+                            <button type="button">3</button>
+                            <button type="button" aria-label="Próxima página">&rsaquo;</button>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <footer class="page-footer">
+                <span>© <span data-current-year></span> PinkBox Sistema de Gestão de Vendas.</span>
+            </footer>
         </main>
+    </div>
+
+    <div class="client-modal" id="manual-product-confirm-modal" hidden>
+        <div class="client-modal-backdrop" data-manual-product-close></div>
+        <div class="client-modal-dialog elevated product-stock-modal-dialog">
+            <button class="client-modal-close" type="button" aria-label="Fechar confirmação de adição" data-manual-product-close>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </button>
+            <h2>Confirmar adição ao estoque</h2>
+            <p class="client-modal-subtitle">
+                Tem certeza que deseja adicionar
+                <strong><span data-manual-product-confirm-qty>1</span> <span data-manual-product-confirm-name>o produto</span></strong>
+                ao estoque?
+            </p>
+
+            <div class="product-stock-confirm-actions">
+                <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-manual-product-confirm>Sim</button>
+                <button type="button" class="products-toolbar-button" data-manual-product-close>Cancelar</button>
+            </div>
+        </div>
     </div>
 
     <script src="../src/js/main.js"></script>

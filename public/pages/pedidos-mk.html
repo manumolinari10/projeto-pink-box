@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PinkBox | Perfil</title>
+    <title>PinkBox | Pedidos MK</title>
     <link rel="icon" type="image/png" href="../favicon.ico">
     <link rel="stylesheet" href="../src/css/global.css">
 </head>
-<body class="profile-page">
+<body class="products-page">
     <div class="dashboard-shell">
         <aside class="sidebar" aria-label="Menu lateral">
             <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
@@ -28,17 +28,17 @@
                     </span>
                     <span>Clientes</span>
                 </a>
-                <div class="sidebar-group" data-sidebar-group>
-                    <button class="nav-link nav-link--submenu-toggle" type="button" data-sidebar-submenu-toggle aria-expanded="false">
+                <div class="sidebar-group is-open" data-sidebar-group>
+                    <button class="nav-link nav-link--submenu-toggle is-active" type="button" data-sidebar-submenu-toggle aria-expanded="true">
                         <span class="nav-icon">
                             <svg viewBox="0 0 256 256"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.35,44L178.57,92.29l-80.35-44Zm0,88L47.65,76,81.56,57.43l80.35,44Zm88,55.85h0l-80,43.79V133.83l32-17.51V152a8,8,0,0,0,16,0V107.56l32-17.51v85.76Z"></path></svg>
                         </span>
                         <span class="nav-text">Estoque</span>
                         <span class="nav-caret" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"></path></svg></span>
                     </button>
-                    <div class="nav-submenu" data-sidebar-submenu hidden>
+                    <div class="nav-submenu" data-sidebar-submenu>
                         <a class="nav-submenu-link" href="./produtos.html">Produtos</a>
-                        <a class="nav-submenu-link" href="./pedidos-mk.html">Pedidos MK</a>
+                        <a class="nav-submenu-link is-active" href="./pedidos-mk.html" aria-current="page">Pedidos MK</a>
                     </div>
                 </div>
                 <a class="nav-link" href="./vendas.html">
@@ -85,7 +85,7 @@
             </div>
         </aside>
 
-        <main class="main-panel profile-main-panel">
+        <main class="main-panel products-main-panel">
             <header class="topbar clients-topbar">
                 <div class="clients-topbar-left">
                     <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
@@ -102,9 +102,9 @@
                             <span class="notification-dot"></span>
                         </button>
                         <div class="notification-menu" hidden data-notification-menu>
-                            <button type="button">Resumo semanal disponível</button>
-                            <button type="button">Novo insight publicado</button>
-                            <button type="button">Meta mensal acima da média</button>
+                            <button type="button">Pedido MK sincronizado hoje</button>
+                            <button type="button">Novo lote aguardando cadastro</button>
+                            <button type="button">Conferir pedido com alta pontuação</button>
                             <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
                         </div>
                     </div>
@@ -119,111 +119,156 @@
                 </div>
             </header>
 
-            <section class="product-detail-header profile-page-header page-intro-wrap">
+            <section class="product-detail-header page-intro-wrap">
                 <div class="page-intro-copy">
-                    <div class="products-breadcrumb">Dashboard / Perfil</div>
-                    <h1>Meu Perfil</h1>
-                    <p>Posicionamento, identidade profissional e preferências da consultora dentro da PinkBox.</p>
+                    <div class="products-breadcrumb">Produtos / Pedidos MK</div>
+                    <h1>Pedidos MK</h1>
+                    <p>Acompanhe os pedidos realizados no sistema Mary Kay e consulte pontos, itens e valores totais de cada compra.</p>
+                </div>
+                <div class="product-header-actions">
+                    <a class="product-action-button product-action-button--secondary" href="./carrinho.html">
+                        <span>Ver Carrinho</span>
+                    </a>
+                    <a class="product-action-button product-action-button--primary" href="./novo-pedido-mk.html">
+                        <span>Novo Pedido MK</span>
+                    </a>
                 </div>
             </section>
 
-            <section class="profile-layout">
-                <div class="profile-showcase-column">
-                    <article class="profile-hero-card elevated">
-                        <div class="profile-portrait-wrap">
-                            <div class="profile-portrait-frame">
-                                <img src="../src/assets/users/default.webp" alt="Retrato de Beatriz Souza">
-                                <a class="profile-image-edit" href="./configuracoes.html">Alterar imagem</a>
-                            </div>
-                            <div class="profile-rank-badge elevated">
-                                <span>Ranked #1</span>
-                                <strong>Elite</strong>
-                                <p>Top 5% das consultoras com maior destaque nesta temporada.</p>
-                            </div>
-                        </div>
+            <section class="products-toolbar clients-toolbar elevated" data-mk-filters-wrap>
+                <label class="products-toolbar-search">
+                    <span aria-hidden="true">
+                        <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                    </span>
+                    <input type="search" placeholder="Buscar por número do pedido...">
+                </label>
 
-                        <div class="profile-identity-block">
-                            <h2>Beatriz <span>Souza</span></h2>
-                            <p>Consultora PinkBox com perfil premium de relacionamento e atendimento personalizado. <a class="profile-inline-edit" href="./configuracoes.html">[EDITAR]</a></p>
-                            <div class="profile-tags">
-                                <span>São Paulo</span>
-                                <span>Beauty</span>
-                                <span>Consultora</span>
-                            </div>
-                        </div>
-                    </article>
+                <div class="products-toolbar-actions">
+                    <button type="button" class="products-toolbar-button" data-mk-filters-toggle aria-expanded="false">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm3 5h10v2H7zm3 5h4v2h-4z"></path></svg>
+                        <span>Filtros</span>
+                    </button>
+                    <button type="button" class="products-toolbar-button">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6l7 0" /><path d="M4 12l7 0" /><path d="M4 18l9 0" /><path d="M15 9l3 -3l3 3" /><path d="M18 6l0 12" /></svg>
+                        <span>Ordenar</span>
+                    </button>
+                    <button type="button" class="products-toolbar-button">
+                        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34Zm-56,83.32-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35a8,8,0,0,1,11.32,11.32ZM152,88V44l44,44Z"></path></svg>
+                        <span>Exportar</span>
+                    </button>
                 </div>
 
-                <div class="profile-content-column">
-                    <article class="profile-section-card elevated">
-                        <div class="profile-section-head">
-                            <h2>Dados Pessoais</h2>
-                            <a class="profile-card-edit" href="./configuracoes.html">Editar</a>
-                        </div>
-                        <div class="profile-info-grid">
-                            <div>
-                                <span>Nome Completo</span>
-                                <strong>Beatriz Fernanda Souza</strong>
+                <div class="clients-filters-panel" hidden data-mk-filters-panel>
+                    <div class="clients-filters-grid products-filters-grid">
+                        <label class="clients-filter-field clients-filter-field--range">
+                            <span>Data do pedido na Mary Kay</span>
+                            <div class="clients-filter-range">
+                                <input type="date" aria-label="Data inicial do pedido na Mary Kay">
+                                <input type="date" aria-label="Data final do pedido na Mary Kay">
                             </div>
-                            <div>
-                                <span>Data de Nascimento</span>
-                                <strong>15/08/1992</strong>
-                            </div>
-                            <div>
-                                <span>Cidade/Estado</span>
-                                <strong>São Paulo / SP</strong>
-                            </div>
-                            <div>
-                                <span>CPF</span>
-                                <strong>123.456.789-00</strong>
-                            </div>
-                            <div>
-                                <span>Gênero</span>
-                                <strong>Feminino</strong>
-                            </div>
-                            <div>
-                                <span>Estado Civil</span>
-                                <strong>Casada</strong>
-                            </div>
-                        </div>
-                    </article>
+                        </label>
 
-                    <article class="profile-section-card elevated">
-                        <div class="profile-section-head">
-                            <h2>Dados Profissionais</h2>
-                            <a class="profile-card-edit" href="./configuracoes.html">Editar</a>
-                        </div>
-                        <div class="profile-info-grid">
-                            <div>
-                                <span>Data de Início na MK</span>
-                                <strong>12/03/2021</strong>
+                        <label class="clients-filter-field clients-filter-field--range">
+                            <span>Data em que o pedido foi adicionado ao sistema</span>
+                            <div class="clients-filter-range">
+                                <input type="date" aria-label="Data inicial do cadastro no sistema">
+                                <input type="date" aria-label="Data final do cadastro no sistema">
                             </div>
-                            <div>
-                                <span>Código de Consultora</span>
-                                <strong>MK-204587</strong>
+                        </label>
+
+                        <label class="clients-filter-field clients-filter-field--range">
+                            <span>Valor (R$)</span>
+                            <div class="clients-filter-range">
+                                <input type="number" min="0" step="0.01" placeholder="Mínimo">
+                                <input type="number" min="0" step="0.01" placeholder="Máximo">
                             </div>
-                            <div>
-                                <span>Nome da Diretora</span>
-                                <strong>Ana Paula Martins</strong>
+                        </label>
+
+                        <label class="clients-filter-field clients-filter-field--range">
+                            <span>Pontos</span>
+                            <div class="clients-filter-range">
+                                <input type="number" min="0" step="1" placeholder="Mínimo">
+                                <input type="number" min="0" step="1" placeholder="Máximo">
                             </div>
-                            <div>
-                                <span>Telefone de Contato</span>
-                                <strong>+55 11 99876-0128</strong>
-                            </div>
-                            <div>
-                                <span>E-mail de Contato</span>
-                                <strong>beatrizsouza@pinkbox.com.br</strong>
-                            </div>
-                            <div>
-                                <span>Link da Loja</span>
-                                <strong>pinkbox.com.br/beatrizsouza</strong>
-                            </div>
-                        </div>
-                    </article>
+                        </label>
+                    </div>
+
+                    <div class="clients-filters-actions">
+                        <span class="clients-filters-counter" data-mk-filters-counter>0/8 filtros aplicados</span>
+                        <button type="button" class="products-toolbar-button" data-mk-filters-clear>Limpar filtros</button>
+                        <button type="button" class="clients-primary-button products-filter-apply-button" data-mk-filters-apply>Aplicar filtros</button>
+                    </div>
                 </div>
             </section>
 
-            <footer class="page-footer">© 2026 PinkBox Sistema de Gestão de Vendas.</footer>
+            <section class="products-table-card elevated">
+                <div class="products-table-wrap">
+                    <table class="products-table">
+                        <thead>
+                            <tr>
+                                <th>Data do Pedido</th>
+                                <th>Número do Pedido</th>
+                                <th>Pontos</th>
+                                <th>Quantidade de Itens</th>
+                                <th>Valor Total do Pedido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-row-href="./pedido-mk.html">
+                                <td>24 Abr, 2026</td>
+                                <td><strong>#MK-458921</strong></td>
+                                <td>312</td>
+                                <td>18 itens</td>
+                                <td class="products-total">R$ 1.284,90</td>
+                            </tr>
+                            <tr data-row-href="./pedido-mk.html">
+                                <td>17 Abr, 2026</td>
+                                <td><strong>#MK-458780</strong></td>
+                                <td>208</td>
+                                <td>12 itens</td>
+                                <td class="products-total">R$ 864,50</td>
+                            </tr>
+                            <tr data-row-href="./pedido-mk.html">
+                                <td>09 Abr, 2026</td>
+                                <td><strong>#MK-458602</strong></td>
+                                <td>420</td>
+                                <td>25 itens</td>
+                                <td class="products-total">R$ 1.756,30</td>
+                            </tr>
+                            <tr data-row-href="./pedido-mk.html">
+                                <td>28 Mar, 2026</td>
+                                <td><strong>#MK-458441</strong></td>
+                                <td>156</td>
+                                <td>9 itens</td>
+                                <td class="products-total">R$ 642,80</td>
+                            </tr>
+                            <tr data-row-href="./pedido-mk.html">
+                                <td>14 Mar, 2026</td>
+                                <td><strong>#MK-458210</strong></td>
+                                <td>510</td>
+                                <td>31 itens</td>
+                                <td class="products-total">R$ 2.109,40</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="clients-table-footer">
+                    <p>Mostrando 5 de 124 pedidos MK</p>
+                    <div class="clients-pagination">
+                        <button type="button" aria-label="Página anterior">&lsaquo;</button>
+                        <button type="button" class="is-active">1</button>
+                        <button type="button">2</button>
+                        <button type="button">3</button>
+                        <span>...</span>
+                        <button type="button">10</button>
+                        <button type="button" aria-label="Próxima página">&rsaquo;</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="page-footer">
+                <p>&copy; <span data-current-year>YEAR</span> PinkBox Sistema de Gestão de Produtos.</p>
+            </footer>
         </main>
     </div>
 

@@ -28,12 +28,19 @@
                     </span>
                     <span>Clientes</span>
                 </a>
-                <a class="nav-link is-active" href="./produtos.html" aria-current="page">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 256 256"><path d="M184,96.8V88a32,32,0,0,0-32-32H136V32h32a8,8,0,0,1,8,8,8,8,0,0,0,16,0,24,24,0,0,0-24-24H104a8,8,0,0,0,0,16h16V56H104A32,32,0,0,0,72,88v8.8A40.07,40.07,0,0,0,40,136v80a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136A40.07,40.07,0,0,0,184,96.8ZM104,72h48a16,16,0,0,1,16,16v8H88V88A16,16,0,0,1,104,72Z"></path></svg>
-                    </span>
-                    <span>Produtos</span>
-                </a>
+                <div class="sidebar-group is-open" data-sidebar-group>
+                    <button class="nav-link nav-link--submenu-toggle is-active" type="button" data-sidebar-submenu-toggle aria-expanded="true">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.35,44L178.57,92.29l-80.35-44Zm0,88L47.65,76,81.56,57.43l80.35,44Zm88,55.85h0l-80,43.79V133.83l32-17.51V152a8,8,0,0,0,16,0V107.56l32-17.51v85.76Z"></path></svg>
+                        </span>
+                        <span class="nav-text">Estoque</span>
+                        <span class="nav-caret" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"></path></svg></span>
+                    </button>
+                    <div class="nav-submenu" data-sidebar-submenu>
+                        <a class="nav-submenu-link is-active" href="./produtos.html" aria-current="page">Produtos</a>
+                        <a class="nav-submenu-link" href="./pedidos-mk.html">Pedidos MK</a>
+                    </div>
+                </div>
                 <a class="nav-link" href="./vendas.html">
                     <span class="nav-icon">
                         <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
@@ -119,13 +126,9 @@
                     <p>SKU: PBX-992381</p>
                 </div>
                 <div class="product-header-actions">
-                    <a class="product-action-button product-action-button--secondary" href="./produtos.html">
+                    <button class="product-action-button product-action-button--primary" type="button" data-product-stock-open>
                         <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M227.31,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96A16,16,0,0,0,227.31,73.37Z"></path></svg>
-                        <span>Editar Produto</span>
-                    </a>
-                    <button class="product-action-button product-action-button--primary" type="button">
-                        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm40,112H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32a8,8,0,0,1,0,16Z"></path></svg>
-                        <span>Registrar Nova Entrada</span>
+                        <span>Atualizar Estoque</span>
                     </button>
                 </div>
             </section>
@@ -148,24 +151,12 @@
                             <span class="product-description-label">Informações Técnicas</span>
                             <div class="product-technical-grid">
                                 <div class="product-technical-item">
-                                    <span>Lote principal</span>
-                                    <strong>LT-2026-03-RP</strong>
-                                </div>
-                                <div class="product-technical-item">
                                     <span>Categoria</span>
-                                    <strong>Maquiagem . Lábios</strong>
+                                    <strong>Maquiagem > Lábios</strong>
                                 </div>
                                 <div class="product-technical-item">
                                     <span>Volume</span>
                                     <strong>5 ml</strong>
-                                </div>
-                                <div class="product-technical-item">
-                                    <span>Acabamento</span>
-                                    <strong>Matte aveludado</strong>
-                                </div>
-                                <div class="product-technical-item">
-                                    <span>Fabricante</span>
-                                    <strong>PinkBox Beauty Lab</strong>
                                 </div>
                                 <div class="product-technical-item">
                                     <span>Validade mais próxima do vencimento</span>
@@ -179,38 +170,38 @@
                 <div class="product-meta-grid">
                     <article class="product-meta-card product-meta-card--highlight elevated">
                         <div class="product-meta-icon">
-                            <svg viewBox="0 0 256 256"><path d="M184,96.8V88a32,32,0,0,0-32-32H136V32h32a8,8,0,0,1,8,8,8,8,0,0,0,16,0,24,24,0,0,0-24-24H104a8,8,0,0,0,0,16h16V56H104A32,32,0,0,0,72,88v8.8A40.07,40.07,0,0,0,40,136v80a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136A40.07,40.07,0,0,0,184,96.8ZM104,72h48a16,16,0,0,1,16,16v8H88V88A16,16,0,0,1,104,72Z"></path></svg>
+                            <svg viewBox="0 0 256 256"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.35,44L178.57,92.29l-80.35-44Zm0,88L47.65,76,81.56,57.43l80.35,44Zm88,55.85h0l-80,43.79V133.83l32-17.51V152a8,8,0,0,0,16,0V107.56l32-17.51v85.76Z"></path></svg>
                         </div>
                         <span class="product-meta-label">Estoque</span>
-                        <strong data-target="142" data-suffix=" un">142 un</strong>
-                        <p>Disponível para pronta entrega</p>
+                        <strong data-target="142" data-suffix=" un" data-product-stock-current>142 un</strong>
+                        <p>Disponível Pronta Entrega</p>
                     </article>
 
                     <article class="product-meta-card elevated">
                         <div class="product-meta-icon">
-                            <svg viewBox="0 0 256 256"><path d="M184,64H72A16,16,0,0,0,56,80v96a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V80A16,16,0,0,0,184,64Zm0,112H72V80H184v96Zm-88-56a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,120Z"></path></svg>
+                            <svg viewBox="0 0 256 256"><path d="M207.58,63.84C186.85,53.48,159.33,48,128,48S69.15,53.48,48.42,63.84,16,88.78,16,104v48c0,15.22,11.82,29.85,32.42,40.16S96.67,208,128,208s58.85-5.48,79.58-15.84S240,167.22,240,152V104C240,88.78,228.18,74.15,207.58,63.84Zm-87.58,96v32c-19-.62-35-3.42-48-7.49V153.05A203.43,203.43,0,0,0,120,159.86Zm16,0a203.43,203.43,0,0,0,48-6.81v31.31c-13,4.07-29,6.87-48,7.49ZM32,152V133.53a82.88,82.88,0,0,0,16.42,10.63c2.43,1.21,5,2.35,7.58,3.43V178C40.17,170.16,32,160.29,32,152Zm168,26V147.59c2.61-1.08,5.15-2.22,7.58-3.43A82.88,82.88,0,0,0,224,133.53V152C224,160.29,215.83,170.16,200,178Z"></path></svg>
                         </div>
                         <span class="product-meta-label">Valor Unitário</span>
                         <strong class="product-money"><span class="product-money-currency">R$</span><span class="sales-value" data-target="89.9">89,90</span></strong>
-                        <p>Preço de tabela MSRP</p>
+                        <p>Atualizado em 25/04/2026</p>
                     </article>
 
                     <article class="product-meta-card elevated">
                         <div class="product-meta-icon product-meta-icon--light">
-                            <svg viewBox="0 0 256 256"><path d="M184,64H72A16,16,0,0,0,56,80v96a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V80A16,16,0,0,0,184,64Zm0,112H72V80H184v96Zm-88-56a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,120Z"></path></svg>
+                            <svg viewBox="0 0 256 256"><path d="M184,89.57V84c0-25.08-37.83-44-88-44S8,58.92,8,84v40c0,20.89,26.25,37.49,64,42.46V172c0,25.08,37.83,44,88,44s88-18.92,88-44V132C248,111.3,222.58,94.68,184,89.57ZM56,146.87C36.41,141.4,24,132.39,24,124V109.93c8.16,5.78,19.09,10.44,32,13.57Zm80-23.37c12.91-3.13,23.84-7.79,32-13.57V124c0,8.39-12.41,17.4-32,22.87Zm-16,71.37C100.41,189.4,88,180.39,88,172v-4.17c2.63.1,5.29.17,8,.17,3.88,0,7.67-.13,11.39-.35A121.92,121.92,0,0,0,120,171.41Zm0-44.62A163,163,0,0,1,96,152a163,163,0,0,1-24-1.75V126.46A183.74,183.74,0,0,0,96,128a183.74,183.74,0,0,0,24-1.54Zm64,48a165.45,165.45,0,0,1-48,0V174.4a179.48,179.48,0,0,0,24,1.6,183.74,183.74,0,0,0,24-1.54ZM232,172c0,8.39-12.41,17.4-32,22.87V171.5c12.91-3.13,23.84-7.79,32-13.57Z"></path></svg>
                         </div>
                         <span class="product-meta-label">Valor Total em Estoque</span>
                         <strong class="product-money"><span class="product-money-currency">R$</span><span class="sales-value" data-target="12765.8">12.765,80</span></strong>
-                        <p>Calculated asset value</p>
+                        <p>Base Valor Unitário</p>
                     </article>
 
                     <button class="product-meta-card product-meta-card--ranking elevated" type="button" data-modal-target="product-ranking-modal">
                         <div class="product-meta-icon">
-                            <svg viewBox="0 0 256 256"><path d="M216,48H176V32a8,8,0,0,0-16,0V48H96V32A8,8,0,0,0,80,32V48H40A16,16,0,0,0,24,64v32a16,16,0,0,0,16,16H54.05A74,74,0,0,0,120,187.95V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V187.95A74,74,0,0,0,201.95,112H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM40,96V64H80V96Zm88,76a58.07,58.07,0,0,1-57.42-50.22,8.12,8.12,0,0,0-.25-1.19c-.13-.51-.25-1-.36-1.54-.06-.26-.11-.53-.16-.8A58.45,58.45,0,0,1,69.05,112H186.95a58.45,58.45,0,0,1-.76,9.25c0,.27-.1.54-.16.8-.11.52-.23,1-.36,1.54a8.12,8.12,0,0,0-.25,1.19A58.07,58.07,0,0,1,128,172Zm88-76H176V64h40v32Z"></path></svg>
+                            <svg viewBox="0 0 256 256"><path d="M232,64H208V48a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V64H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z"></path></svg>
                         </div>
                         <span class="product-meta-label">Ranking</span>
                         <strong>#3</strong>
-                        <p>Entre os produtos mais vendidos</p>
+                        <p>Top Mais Vendidos</p>
                     </button>
 
                 </div>
@@ -222,11 +213,11 @@
                         <h2>Desempenho de Vendas</h2>
                         <p>Análise de saída e rotatividade do produto</p>
                     </div>
-                    <div class="product-performance-filters">
-                        <button type="button">7 dias</button>
-                        <button type="button" class="is-active">30 dias</button>
-                        <button type="button">90 dias</button>
-                        <button type="button">1 ano</button>
+                    <div class="product-performance-filters" data-product-performance-filters>
+                        <button type="button" data-product-range="7">7 dias</button>
+                        <button type="button" class="is-active" data-product-range="30">30 dias</button>
+                        <button type="button" data-product-range="90">90 dias</button>
+                        <button type="button" data-product-range="365">1 ano</button>
                     </div>
                 </div>
 
@@ -235,18 +226,12 @@
                         <span>Total de Vendas</span>
                         <strong data-target="42">42</strong>
                         <small>unidades</small>
-                        <p>+12.5% em relação ao mês anterior</p>
+                        <p>+12.5% em relação ao período anterior</p>
                     </div>
 
-                    <div class="product-performance-chart" aria-hidden="true">
-                        <span class="product-performance-bar" data-bar-height="26"></span>
-                        <span class="product-performance-bar" data-bar-height="40"></span>
-                        <span class="product-performance-bar" data-bar-height="31"></span>
-                        <span class="product-performance-bar" data-bar-height="54"></span>
-                        <span class="product-performance-bar" data-bar-height="44"></span>
-                        <span class="product-performance-bar" data-bar-height="70"></span>
-                        <span class="product-performance-bar is-strong" data-bar-height="82"></span>
-                        <span class="product-performance-bar" data-bar-height="36"></span>
+                    <div class="product-performance-chart-panel">
+                        <div class="product-performance-info" data-product-performance-info>23 un - 26 Mai 26</div>
+                        <div class="product-performance-chart" aria-hidden="true" data-product-performance-chart></div>
                     </div>
                 </div>
             </section>
@@ -303,53 +288,52 @@
 
                 <article class="product-detail-card elevated">
                     <div class="product-detail-card-head">
-                        <h2>Últimos Pedidos/Entradas</h2>
-                        <button type="button" class="product-detail-more" aria-label="Mais opções">...</button>
+                        <h2>Últimas Entradas</h2>
+                        <a href="./pedidos-mk.html">Ver tudo</a>
                     </div>
 
-                    <div class="product-entry-list">
-                        <div class="product-entry-item">
-                            <span class="product-entry-icon">
-                                <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg>
-                            </span>
-                            <div class="product-entry-copy">
-                                <strong>Nº 458921</strong>
-                                <span>Entrada de estoque</span>
-                            </div>
-                            <div class="product-entry-meta">
-                                <strong>+50 un</strong>
-                                <span>08 Out, 2023</span>
-                            </div>
-                        </div>
-
-                        <div class="product-entry-item">
-                            <span class="product-entry-icon">
-                                <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg>
-                            </span>
-                            <div class="product-entry-copy">
-                                <strong>Nº 458780</strong>
-                                <span>Entrada de estoque</span>
-                            </div>
-                            <div class="product-entry-meta">
-                                <strong>+100 un</strong>
-                                <span>25 Set, 2023</span>
-                            </div>
-                        </div>
-
-                        <div class="product-entry-item">
-                            <span class="product-entry-icon">
-                                <svg viewBox="0 0 256 256"><path d="M200,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Z"></path></svg>
-                            </span>
-                            <div class="product-entry-copy">
-                                <strong>Nº 458602</strong>
-                                <span>Devolução cliente</span>
-                            </div>
-                            <div class="product-entry-meta">
-                                <strong>+2 un</strong>
-                                <span>15 Set, 2023</span>
-                            </div>
-                        </div>
-                    </div>
+                    <table class="product-mini-table">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Número do Pedido</th>
+                                <th>Natureza</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08 Out, 2023</td>
+                                <td><strong>#458921</strong></td>
+                                <td>
+                                    <span class="product-entry-type">
+                                        <span>Entrada +50 un</span>
+                                    </span>
+                                </td>
+                                <td><a href="./pedido-mk.html" class="product-mini-link">Ver Pedido</a></td>
+                            </tr>
+                            <tr>
+                                <td>25 Set, 2023</td>
+                                <td><strong>#458780</strong></td>
+                                <td>
+                                    <span class="product-entry-type">
+                                        <span>Entrada +100 un</span>
+                                    </span>
+                                </td>
+                                <td><a href="./pedido-mk.html" class="product-mini-link">Ver Pedido</a></td>
+                            </tr>
+                            <tr>
+                                <td>15 Set, 2023</td>
+                                <td><strong>#458602</strong></td>
+                                <td>
+                                    <span class="product-entry-type product-entry-type--return">
+                                        <span>Devolução +2 un</span>
+                                    </span>
+                                </td>
+                                <td><a href="./pedido-mk.html" class="product-mini-link">Ver Pedido</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </article>
             </section>
 
@@ -360,7 +344,7 @@
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
                     </button>
                     <h2>Ranking de Produtos</h2>
-                    <p class="client-modal-subtitle">Posição deste item entre os produtos mais vendidos nos últimos 30 dias.</p>
+                    <p class="client-modal-subtitle">Posição deste item no Top Mais Vendidos dos últimos 30 dias.</p>
 
                     <div class="client-ranking-highlight">
                         <strong>#3</strong>
@@ -388,6 +372,54 @@
                             <span>5. Eau de Parfum Pink Seduction 50ml</span>
                             <strong>35 vendas</strong>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-modal" id="product-stock-modal" hidden>
+                <div class="client-modal-backdrop" data-product-stock-close></div>
+                <div class="client-modal-dialog elevated product-stock-modal-dialog">
+                    <button class="client-modal-close" type="button" aria-label="Fechar atualização de estoque" data-product-stock-close>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+                    </button>
+                    <h2>Atualizar Estoque</h2>
+                    <div class="product-stock-alert">
+                        <div class="product-stock-alert-head">
+                            <span class="product-stock-alert-icon" aria-hidden="true">
+                                <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm-8,56a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm8,104a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path></svg>
+                            </span>
+                            <strong>Atenção!</strong>
+                        </div>
+                        <p>Esta funcionalidade é apenas para correção de estoque em casos de inventário, perdas ou produtos danificados. Se deseja adicionar produtos originados de uma compra na Mary Kay ou dar baixa de vendas, vá até a página <a href="./pedidos-mk.html">Pedidos MK</a> ou <a href="./nova-venda.html">Nova Venda</a>.</p>
+                    </div>
+
+                    <div class="product-stock-stepper">
+                        <button type="button" class="product-stock-stepper-button" data-product-stock-decrease>-</button>
+                        <strong data-product-stock-value>142</strong>
+                        <button type="button" class="product-stock-stepper-button" data-product-stock-increase>+</button>
+                    </div>
+
+                    <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-product-stock-confirm-open>Confirmar</button>
+                </div>
+            </div>
+
+            <div class="client-modal" id="product-stock-confirm-modal" hidden>
+                <div class="client-modal-backdrop" data-product-stock-confirm-close></div>
+                <div class="client-modal-dialog elevated product-stock-modal-dialog">
+                    <button class="client-modal-close" type="button" aria-label="Fechar confirmação de estoque" data-product-stock-confirm-close>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+                    </button>
+                    <h2>Confirmar Alteração</h2>
+                    <p class="client-modal-subtitle">
+                        Tem certeza que deseja alterar a quantidade do produto
+                        <strong data-product-stock-name>Batom Matte Velvet - Rose Pink</strong>
+                        de <strong data-product-stock-from>142</strong> para
+                        <strong data-product-stock-to>142</strong>?
+                    </p>
+
+                    <div class="product-stock-confirm-actions">
+                        <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-product-stock-apply>Confirmar</button>
+                        <button type="button" class="products-toolbar-button" data-product-stock-confirm-close>Cancelar</button>
                     </div>
                 </div>
             </div>
