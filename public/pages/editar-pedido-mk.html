@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PinkBox | Novo Pedido MK</title>
+    <title>PinkBox | Editar Pedido MK</title>
     <link rel="icon" type="image/png" href="../favicon.ico">
     <link rel="stylesheet" href="../src/css/global.css">
 </head>
@@ -81,9 +81,9 @@
                             <span class="notification-dot"></span>
                         </button>
                         <div class="notification-menu" hidden data-notification-menu>
-                            <button type="button">Você pode importar PDF do Em Sintonia</button>
-                            <button type="button">Complete o pedido com os produtos desejados</button>
-                            <button type="button">Revise pontos e valores antes de finalizar</button>
+                            <button type="button">Revise os produtos antes de salvar as alterações</button>
+                            <button type="button">Atualize quantidades e pontos com cuidado</button>
+                            <button type="button">Confirme o pedido ao finalizar a edição</button>
                             <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
                         </div>
                     </div>
@@ -96,30 +96,18 @@
 
             <section class="product-detail-header page-intro-wrap">
                 <div class="page-intro-copy">
-                    <div class="products-breadcrumb">Estoque / Pedidos MK / Novo Pedido MK</div>
-                    <h1>Lançar Pedido MK</h1>
-                    <p>Monte manualmente um novo pedido da Mary Kay e acompanhe pontos, quantidades e valor total dos itens selecionados.</p>
+                    <div class="products-breadcrumb">Estoque / Pedidos MK / Editar Pedido</div>
+                    <h1>Editar Pedido MK</h1>
+                    <p>Atualize os produtos, quantidades e valores do pedido antes de confirmar as alterações no sistema.</p>
                 </div>
                 <div class="product-header-actions">
-                    <a class="product-action-button product-action-button--secondary" href="./pedidos-mk.html">
+                    <a class="product-action-button product-action-button--secondary" href="./pedido-mk.html">
                         <span>Cancelar</span>
                     </a>
-                    <button type="button" class="product-action-button product-action-button--primary" data-mk-launch-open>
-                        <span>Lançar Produtos</span>
-                    </button>
+                    <a class="product-action-button product-action-button--primary" href="./pedido-mk.html">
+                        <span>Salvar Alterações</span>
+                    </a>
                 </div>
-            </section>
-
-            <section class="clients-cta-card elevated">
-                <div>
-                    <h2>Importar PDF do Em Sintonia</h2>
-                    <p>Você tem a opção de enviar o PDF de pedidos gerado no Em Sintonia para adicionar os produtos de forma automática.</p>
-                </div>
-                <button class="products-toolbar-button mk-pdf-button" type="button" data-mk-pdf-trigger>
-                    <svg viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM152,88V44l44,44Zm-16,64V120a8,8,0,0,0-16,0v32H88a8,8,0,0,0,0,16h32v32a8,8,0,0,0,16,0V168h32a8,8,0,0,0,0-16Z"></path></svg>
-                    <span data-mk-pdf-label>Enviar PDF</span>
-                </button>
-                <input type="file" accept="application/pdf" hidden data-mk-pdf-input>
             </section>
 
             <section class="manual-product-layout">
@@ -171,58 +159,58 @@
                     <div class="products-table-wrap">
                         <table class="products-table">
                             <thead>
-                            <tr>
-                                <th>Código do Produto</th>
-                                <th>Produto</th>
-                                <th>Pontos</th>
-                                <th>Preço Unitário</th>
-                                <th>Quantidade</th>
-                                <th>Valor Total</th>
-                                <th>Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody data-mk-new-order-history>
-                            <tr>
-                                <td><span class="products-sku">MK-445821</span></td>
-                                <td><strong>Kit TimeWise Repair Volu-Firm</strong></td>
-                                <td>48</td>
-                                <td>R$ 249,90</td>
-                                <td>2</td>
-                                <td>R$ 499,80</td>
-                                <td>
-                                    <button type="button" class="mk-order-row-delete" data-mk-new-order-delete="Kit TimeWise Repair Volu-Firm" aria-label="Excluir Kit TimeWise Repair Volu-Firm">
-                                        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="products-sku">MK-772145</span></td>
-                                <td><strong>Sérum C+E TimeWise</strong></td>
-                                <td>44</td>
-                                <td>R$ 179,90</td>
-                                <td>1</td>
-                                <td>R$ 179,90</td>
-                                <td>
-                                    <button type="button" class="mk-order-row-delete" data-mk-new-order-delete="Sérum C+E TimeWise" aria-label="Excluir Sérum C+E TimeWise">
-                                        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="products-sku">MK-390512</span></td>
-                                <td><strong>Loção Corporal Satin Body</strong></td>
-                                <td>16</td>
-                                <td>R$ 23,10</td>
-                                <td>3</td>
-                                <td>R$ 69,30</td>
-                                <td>
-                                    <button type="button" class="mk-order-row-delete" data-mk-new-order-delete="Loção Corporal Satin Body" aria-label="Excluir Loção Corporal Satin Body">
-                                        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                <tr>
+                                    <th>Código do Produto</th>
+                                    <th>Produto</th>
+                                    <th>Pontos</th>
+                                    <th>Preço Unitário</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor Total</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody data-mk-new-order-history>
+                                <tr>
+                                    <td><span class="products-sku">MK-445821</span></td>
+                                    <td><strong>Kit TimeWise Repair Volu-Firm</strong></td>
+                                    <td>48</td>
+                                    <td>R$ 249,90</td>
+                                    <td>2</td>
+                                    <td>R$ 499,80</td>
+                                    <td>
+                                        <button type="button" class="mk-order-row-delete" data-mk-new-order-delete="Kit TimeWise Repair Volu-Firm" aria-label="Excluir Kit TimeWise Repair Volu-Firm">
+                                            <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="products-sku">MK-772145</span></td>
+                                    <td><strong>Sérum C+E TimeWise</strong></td>
+                                    <td>44</td>
+                                    <td>R$ 179,90</td>
+                                    <td>1</td>
+                                    <td>R$ 179,90</td>
+                                    <td>
+                                        <button type="button" class="mk-order-row-delete" data-mk-new-order-delete="Sérum C+E TimeWise" aria-label="Excluir Sérum C+E TimeWise">
+                                            <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="products-sku">MK-390512</span></td>
+                                    <td><strong>Loção Corporal Satin Body</strong></td>
+                                    <td>16</td>
+                                    <td>R$ 23,10</td>
+                                    <td>3</td>
+                                    <td>R$ 69,30</td>
+                                    <td>
+                                        <button type="button" class="mk-order-row-delete" data-mk-new-order-delete="Loção Corporal Satin Body" aria-label="Excluir Loção Corporal Satin Body">
+                                            <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="clients-table-footer">
                         <p>Mostrando 3 produtos</p>
@@ -241,40 +229,6 @@
                 <span>© <span data-current-year></span> PinkBox Sistema de Gestão de Vendas.</span>
             </footer>
         </main>
-    </div>
-
-    <div class="client-modal" id="mk-pdf-replace-modal" hidden>
-        <div class="client-modal-backdrop" data-mk-pdf-close></div>
-        <div class="client-modal-dialog elevated product-stock-modal-dialog">
-            <button class="client-modal-close" type="button" aria-label="Fechar confirmação do PDF" data-mk-pdf-close>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
-            </button>
-            <h2>Substituir lista atual</h2>
-            <p class="client-modal-subtitle">Já existem produtos adicionados à lista. Este PDF substituirá todos os itens adicionados anteriormente. Deseja continuar? Caso queira salvar a lista adicionada anteriormente, salve o pedido antes de enviar o PDF.</p>
-
-            <div class="product-stock-confirm-actions">
-                <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-mk-pdf-use>Usar PDF</button>
-                <button type="button" class="products-toolbar-button" data-mk-pdf-close>Cancelar</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="client-modal" id="mk-launch-products-modal" hidden>
-        <div class="client-modal-backdrop" data-mk-launch-close></div>
-        <div class="client-modal-dialog elevated product-stock-modal-dialog">
-            <button class="client-modal-close" type="button" aria-label="Fechar confirmação de lançamento" data-mk-launch-close>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
-            </button>
-            <h2>Confirmar Lançamento</h2>
-            <p class="client-modal-subtitle">
-                Os produtos desta lista serão incluídos em seu estoque e os valores adicionados ao painel financeiro.
-            </p>
-
-            <div class="product-stock-confirm-actions">
-                <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-mk-launch-confirm>Confirmar</button>
-                <button type="button" class="products-toolbar-button" data-mk-launch-close>Cancelar</button>
-            </div>
-        </div>
     </div>
 
     <div class="client-modal" id="mk-new-order-delete-modal" hidden>

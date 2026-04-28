@@ -5,6 +5,21 @@ function formatCurrencyPtBr(value) {
     }).format(value);
 }
 
+function parseCurrencyPtBr(value) {
+    if (typeof value !== "string") {
+        return Number(value) || 0;
+    }
+
+    const normalized = value
+        .replace(/\s/g, "")
+        .replace(/R\$/gi, "")
+        .replace(/\./g, "")
+        .replace(",", ".")
+        .replace(/[^\d.-]/g, "");
+
+    return Number(normalized) || 0;
+}
+
 function animateValue(element) {
     const target = Number(element.dataset.target);
 
@@ -1737,17 +1752,18 @@ function setupManualProductAddPage() {
     }
 
     const catalog = [
-        { code: "PBX-993281", name: "Batom Matte Velvet - Rose Pink" },
-        { code: "PBX-442110", name: "Sérum Facial Glow Booster 30ml" },
-        { code: "PBX-883344", name: "Paleta de Sombras Midnight Bloom" },
-        { code: "PBX-112233", name: "Eau de Parfum Pink Seduction 50ml" },
-        { code: "PBX-556677", name: "Base Fluida Matte Skin - Tom 20" },
-        { code: "MK-445821", name: "Kit TimeWise Repair Volu-Firm" },
-        { code: "MK-772145", name: "Sérum C+E TimeWise" },
-        { code: "MK-390512", name: "Loção Corporal Satin Body" }
+        { code: "PBX-993281", name: "Batom Matte Velvet - Rose Pink", price: 89.90 },
+        { code: "PBX-442110", name: "Sérum Facial Glow Booster 30ml", price: 159.00 },
+        { code: "PBX-883344", name: "Paleta de Sombras Midnight Bloom", price: 124.90 },
+        { code: "PBX-112233", name: "Eau de Parfum Pink Seduction 50ml", price: 299.00 },
+        { code: "PBX-556677", name: "Base Fluida Matte Skin - Tom 20", price: 75.00 },
+        { code: "MK-445821", name: "Kit TimeWise Repair Volu-Firm", price: 249.90 },
+        { code: "MK-772145", name: "Sérum C+E TimeWise", price: 179.90 },
+        { code: "MK-390512", name: "Loção Corporal Satin Body", price: 23.10 }
     ];
 
     const searchInput = page.querySelector("[data-manual-product-search]");
+    const priceInput = page.querySelector("[data-manual-product-price]");
     const qtyValue = page.querySelector("[data-manual-product-qty]");
     const qtyMinus = page.querySelector("[data-manual-product-minus]");
     const qtyPlus = page.querySelector("[data-manual-product-plus]");
@@ -1763,7 +1779,7 @@ function setupManualProductAddPage() {
     let selectedProduct = null;
     let quantity = 1;
 
-    if (!searchInput || !qtyValue || !qtyMinus || !qtyPlus || !addButton || !results || !selection || !historyTable || !modal || !confirmQty || !confirmName || !confirmButton) {
+    if (!searchInput || !priceInput || !qtyValue || !qtyMinus || !qtyPlus || !addButton || !results || !selection || !historyTable || !modal || !confirmQty || !confirmName || !confirmButton) {
         return;
     }
 
@@ -1780,7 +1796,7 @@ function setupManualProductAddPage() {
     }
 
     function updateButtonState() {
-        addButton.disabled = !selectedProduct || quantity < 1;
+        addButton.disabled = !selectedProduct || quantity < 1 || parseCurrencyPtBr(priceInput.value) <= 0;
         qtyMinus.disabled = quantity <= 1;
         qtyValue.textContent = String(quantity);
     }
@@ -1788,6 +1804,8 @@ function setupManualProductAddPage() {
     function setSelection(product) {
         selectedProduct = product;
         searchInput.value = `${product.name} (${product.code})`;
+        priceInput.disabled = false;
+        priceInput.value = `R$ ${formatCurrencyPtBr(product.price)}`;
         selection.textContent = `Produto selecionado: ${product.name}`;
         results.hidden = true;
         results.innerHTML = "";
@@ -1837,9 +1855,15 @@ function setupManualProductAddPage() {
 
     searchInput.addEventListener("input", () => {
         selectedProduct = null;
+        priceInput.value = "";
+        priceInput.disabled = true;
         selection.textContent = "Nenhum produto selecionado.";
         updateButtonState();
         renderResults(searchInput.value);
+    });
+
+    priceInput.addEventListener("input", () => {
+        updateButtonState();
     });
 
     qtyMinus.addEventListener("click", () => {
@@ -1874,6 +1898,7 @@ function setupManualProductAddPage() {
             <tr>
                 <td>${formattedDate}</td>
                 <td><strong>${selectedProduct.name}</strong></td>
+                <td>R$ ${formatCurrencyPtBr(parseCurrencyPtBr(priceInput.value))}</td>
                 <td>${quantity} un</td>
             </tr>
         `);
@@ -1881,6 +1906,8 @@ function setupManualProductAddPage() {
         closeModal();
         selectedProduct = null;
         searchInput.value = "";
+        priceInput.value = "";
+        priceInput.disabled = true;
         quantity = 1;
         selection.textContent = "Produto adicionado ao estoque com sucesso.";
         updateButtonState();
@@ -1900,6 +1927,333 @@ function setupManualProductAddPage() {
         if (event.key === "Escape") {
             closeModal();
             results.hidden = true;
+        }
+    });
+
+    updateButtonState();
+}
+
+function setupNewMkOrderPage() {
+    const page = document.querySelector("[data-mk-new-order-page]");
+
+    if (!page) {
+        return;
+    }
+
+    const catalog = [
+        { code: "MK-445821", name: "Kit TimeWise Repair Volu-Firm", points: 48, price: 249.90 },
+        { code: "MK-772145", name: "Sérum C+E TimeWise", points: 44, price: 179.90 },
+        { code: "MK-390512", name: "Loção Corporal Satin Body", points: 16, price: 23.10 },
+        { code: "MK-228940", name: "Batom Gel Semi-Matte Rosé", points: 13, price: 49.80 },
+        { code: "MK-834120", name: "Sabonete 3 em 1 TimeWise", points: 18, price: 72.40 },
+        { code: "MK-681450", name: "Máscara de Cílios Lash Love", points: 15, price: 63.50 },
+        { code: "MK-553710", name: "Base TimeWise 3D Beige 2", points: 22, price: 89.90 }
+    ];
+
+    const pdfTrigger = page.querySelector("[data-mk-pdf-trigger]");
+    const pdfInput = page.querySelector("[data-mk-pdf-input]");
+    const pdfLabel = page.querySelector("[data-mk-pdf-label]");
+    const searchInput = page.querySelector("[data-mk-new-order-search]");
+    const priceInput = page.querySelector("[data-mk-new-order-price]");
+    const results = page.querySelector("[data-mk-new-order-results]");
+    const qtyValue = page.querySelector("[data-mk-new-order-qty]");
+    const qtyMinus = page.querySelector("[data-mk-new-order-minus]");
+    const qtyPlus = page.querySelector("[data-mk-new-order-plus]");
+    const addButton = page.querySelector("[data-mk-new-order-add]");
+    const selection = page.querySelector("[data-mk-new-order-selection]");
+    const historyTable = page.querySelector("[data-mk-new-order-history]");
+    const launchButton = page.querySelector("[data-mk-launch-open]");
+    const replaceModal = document.getElementById("mk-pdf-replace-modal");
+    const replaceConfirm = replaceModal?.querySelector("[data-mk-pdf-use]");
+    const launchModal = document.getElementById("mk-launch-products-modal");
+    const launchConfirm = launchModal?.querySelector("[data-mk-launch-confirm]");
+    const deleteModal = document.getElementById("mk-new-order-delete-modal");
+    const deleteName = deleteModal?.querySelector("[data-mk-new-order-delete-name]");
+    const deleteConfirm = deleteModal?.querySelector("[data-mk-new-order-delete-confirm]");
+
+    let selectedProduct = null;
+    let quantity = 1;
+    let pdfReady = false;
+    let currentPdfName = "";
+    let pendingDeleteRow = null;
+
+    if (!searchInput || !priceInput || !results || !qtyValue || !qtyMinus || !qtyPlus || !addButton || !selection || !historyTable || !deleteModal || !deleteName || !deleteConfirm) {
+        return;
+    }
+
+    function closeReplaceModal() {
+        if (!replaceModal) {
+            return;
+        }
+        replaceModal.hidden = true;
+        if (!document.querySelector(".client-modal:not([hidden])")) {
+            document.body.classList.remove("modal-open");
+        }
+    }
+
+    function openReplaceModal() {
+        if (!replaceModal) {
+            return;
+        }
+        replaceModal.hidden = false;
+        document.body.classList.add("modal-open");
+    }
+
+    function closeLaunchModal() {
+        if (!launchModal) {
+            return;
+        }
+        launchModal.hidden = true;
+        if (!document.querySelector(".client-modal:not([hidden])")) {
+            document.body.classList.remove("modal-open");
+        }
+    }
+
+    function openLaunchModal() {
+        if (!launchModal) {
+            return;
+        }
+        launchModal.hidden = false;
+        document.body.classList.add("modal-open");
+    }
+
+    function closeDeleteModal() {
+        deleteModal.hidden = true;
+        pendingDeleteRow = null;
+        if (!document.querySelector(".client-modal:not([hidden])")) {
+            document.body.classList.remove("modal-open");
+        }
+    }
+
+    function openDeleteModal(row, name) {
+        pendingDeleteRow = row;
+        deleteName.textContent = name;
+        deleteModal.hidden = false;
+        document.body.classList.add("modal-open");
+    }
+
+    function renderHistoryRow(product, rowQuantity) {
+        return `
+            <tr>
+                <td><span class="products-sku">${product.code}</span></td>
+                <td><strong>${product.name}</strong></td>
+                <td>${product.points}</td>
+                <td>R$ ${formatCurrencyPtBr(product.price)}</td>
+                <td>${rowQuantity}</td>
+                <td>R$ ${formatCurrencyPtBr(product.price * rowQuantity)}</td>
+                <td>
+                    <button type="button" class="mk-order-row-delete" data-mk-new-order-delete="${product.name}" aria-label="Excluir ${product.name}">
+                        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                    </button>
+                </td>
+            </tr>
+        `;
+    }
+
+    function updateButtonState() {
+        addButton.disabled = !selectedProduct || quantity < 1 || parseCurrencyPtBr(priceInput.value) <= 0;
+        qtyMinus.disabled = quantity <= 1;
+        qtyValue.textContent = String(quantity);
+    }
+
+    function setSelection(product) {
+        selectedProduct = product;
+        searchInput.value = `${product.name} (${product.code})`;
+        priceInput.disabled = false;
+        priceInput.value = `R$ ${formatCurrencyPtBr(product.price)}`;
+        selection.textContent = `Produto selecionado: ${product.name}`;
+        results.hidden = true;
+        results.innerHTML = "";
+        updateButtonState();
+    }
+
+    function renderResults(query) {
+        const normalized = query.trim().toLowerCase();
+
+        if (normalized.length < 3) {
+            results.hidden = true;
+            results.innerHTML = "";
+            return;
+        }
+
+        const matches = catalog.filter((product) => {
+            return `${product.name} ${product.code}`.toLowerCase().includes(normalized);
+        });
+
+        if (!matches.length) {
+            results.innerHTML = '<div class="manual-product-result-empty">Nenhum produto encontrado.</div>';
+            results.hidden = false;
+            return;
+        }
+
+        results.innerHTML = matches.map((product) => `
+            <button type="button" class="manual-product-result-item" data-mk-new-order-option="${product.code}">
+                <strong>${product.name}</strong>
+                <span>${product.code}</span>
+            </button>
+        `).join("");
+
+        results.hidden = false;
+
+        results.querySelectorAll("[data-mk-new-order-option]").forEach((button) => {
+            button.addEventListener("click", () => {
+                const chosen = catalog.find((product) => product.code === button.dataset.mkNewOrderOption);
+
+                if (chosen) {
+                    setSelection(chosen);
+                }
+            });
+        });
+    }
+
+    function applyPdfProducts() {
+        const pdfItems = [
+            { code: "MK-902310", name: "Conjunto TimeWise Miracle Set", points: 62, price: 319.90, qty: 1 },
+            { code: "MK-551240", name: "Base TimeWise 3D Beige N 140", points: 22, price: 89.90, qty: 3 },
+            { code: "MK-770180", name: "Batom Unlimited Lip Gloss Rosé", points: 11, price: 42.50, qty: 2 },
+            { code: "MK-118420", name: "Sabonete Botanical Effects", points: 14, price: 58.40, qty: 1 }
+        ];
+
+        historyTable.innerHTML = pdfItems.map((item) => renderHistoryRow(item, item.qty)).join("");
+
+        selection.textContent = currentPdfName
+            ? `PDF salvo e produtos importados: ${currentPdfName}`
+            : "PDF salvo e produtos importados com sucesso.";
+    }
+
+    if (pdfTrigger && pdfInput && pdfLabel && replaceModal && replaceConfirm) {
+        pdfTrigger.addEventListener("click", () => {
+            if (!pdfReady) {
+                pdfInput.click();
+                return;
+            }
+
+            if (historyTable.querySelector("tr")) {
+                openReplaceModal();
+                return;
+            }
+
+            applyPdfProducts();
+        });
+
+        pdfInput.addEventListener("change", () => {
+            const fileName = pdfInput.files?.[0]?.name;
+
+            if (fileName) {
+                selection.textContent = `PDF selecionado: ${fileName}`;
+                currentPdfName = fileName;
+                pdfReady = true;
+                pdfLabel.textContent = "Salvar PDF";
+                pdfTrigger.classList.remove("products-toolbar-button");
+                pdfTrigger.classList.add("clients-primary-button", "mk-pdf-button", "is-ready");
+            }
+        });
+
+        replaceConfirm.addEventListener("click", () => {
+            applyPdfProducts();
+            closeReplaceModal();
+        });
+
+        replaceModal.querySelectorAll("[data-mk-pdf-close]").forEach((button) => {
+            button.addEventListener("click", closeReplaceModal);
+        });
+    }
+
+    searchInput.addEventListener("input", () => {
+        selectedProduct = null;
+        priceInput.value = "";
+        priceInput.disabled = true;
+        selection.textContent = "Nenhum produto selecionado.";
+        updateButtonState();
+        renderResults(searchInput.value);
+    });
+
+    priceInput.addEventListener("input", () => {
+        updateButtonState();
+    });
+
+    qtyMinus.addEventListener("click", () => {
+        quantity = Math.max(1, quantity - 1);
+        updateButtonState();
+    });
+
+    qtyPlus.addEventListener("click", () => {
+        quantity += 1;
+        updateButtonState();
+    });
+
+    addButton.addEventListener("click", () => {
+        if (!selectedProduct) {
+            return;
+        }
+
+        const productForRow = {
+            ...selectedProduct,
+            price: parseCurrencyPtBr(priceInput.value)
+        };
+
+        historyTable.insertAdjacentHTML("afterbegin", renderHistoryRow(productForRow, quantity));
+
+        selectedProduct = null;
+        quantity = 1;
+        searchInput.value = "";
+        priceInput.value = "";
+        priceInput.disabled = true;
+        selection.textContent = "Produto adicionado ao pedido com sucesso.";
+        updateButtonState();
+    });
+
+    historyTable.addEventListener("click", (event) => {
+        const deleteButton = event.target.closest("[data-mk-new-order-delete]");
+
+        if (!deleteButton) {
+            return;
+        }
+
+        const row = deleteButton.closest("tr");
+
+        if (!row) {
+            return;
+        }
+
+        openDeleteModal(row, deleteButton.dataset.mkNewOrderDelete || "este produto");
+    });
+
+    deleteConfirm.addEventListener("click", () => {
+        pendingDeleteRow?.remove();
+        selection.textContent = "Produto removido da lista.";
+        closeDeleteModal();
+    });
+
+    deleteModal.querySelectorAll("[data-mk-new-order-delete-close]").forEach((button) => {
+        button.addEventListener("click", closeDeleteModal);
+    });
+
+    if (launchButton && launchModal && launchConfirm) {
+        launchButton.addEventListener("click", () => {
+            openLaunchModal();
+        });
+
+        launchConfirm.addEventListener("click", () => {
+            window.location.href = "./pedidos-mk.html";
+        });
+
+        launchModal.querySelectorAll("[data-mk-launch-close]").forEach((button) => {
+            button.addEventListener("click", closeLaunchModal);
+        });
+    }
+
+    document.addEventListener("click", (event) => {
+        if (!page.contains(event.target)) {
+            results.hidden = true;
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeReplaceModal();
+            closeLaunchModal();
+            closeDeleteModal();
         }
     });
 
@@ -2081,6 +2435,100 @@ function setupMkOrderSortMenu() {
     document.addEventListener("click", (event) => {
         if (!sortWrap.contains(event.target)) {
             closeSortMenu();
+        }
+    });
+}
+
+function setupMkOrderActions() {
+    const actionsWrap = document.querySelector("[data-mk-order-actions]");
+    const optionsWrap = document.querySelector("[data-mk-order-options]");
+    const optionsToggle = document.querySelector("[data-mk-order-options-toggle]");
+    const optionsMenu = document.querySelector("[data-mk-order-options-menu]");
+    const exportButton = document.querySelector("[data-mk-order-export]");
+    const deleteOpenButton = document.querySelector("[data-mk-order-delete-open]");
+    const confirmButton = document.querySelector("[data-mk-order-confirm]");
+    const deleteModal = document.getElementById("mk-order-delete-modal");
+    const deleteConfirm = deleteModal?.querySelector("[data-mk-order-delete-confirm]");
+
+    if (!actionsWrap || !optionsWrap || !optionsToggle || !optionsMenu || !exportButton || !deleteOpenButton || !confirmButton || !deleteModal || !deleteConfirm) {
+        return;
+    }
+
+    function closeOptionsMenu() {
+        optionsMenu.hidden = true;
+        optionsToggle.setAttribute("aria-expanded", "false");
+    }
+
+    function openDeleteModal() {
+        deleteModal.hidden = false;
+        document.body.classList.add("modal-open");
+    }
+
+    function closeDeleteModal() {
+        deleteModal.hidden = true;
+        if (!document.querySelector(".client-modal:not([hidden])")) {
+            document.body.classList.remove("modal-open");
+        }
+    }
+
+    optionsToggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const shouldOpen = optionsMenu.hidden;
+        optionsMenu.hidden = !shouldOpen;
+        optionsToggle.setAttribute("aria-expanded", String(shouldOpen));
+    });
+
+    exportButton.addEventListener("click", () => {
+        const fileContent = [
+            "Pedido MK #458921",
+            "Data do pedido: 25/04/2026",
+            "",
+            "Itens:",
+            "MK-445821 | Kit TimeWise Repair Volu-Firm | 2 un | R$ 499,80",
+            "MK-772145 | Sérum C+E TimeWise | 3 un | R$ 539,70",
+            "MK-228940 | Batom Gel Semi-Matte Rosé | 4 un | R$ 199,20",
+            "MK-390512 | Loção Corporal Satin Body | 2 un | R$ 46,20"
+        ].join("\n");
+
+        const blob = new Blob([fileContent], { type: "application/pdf" });
+        const objectUrl = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = objectUrl;
+        link.download = "pedido-mk-458921.pdf";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(objectUrl);
+        closeOptionsMenu();
+    });
+
+    deleteOpenButton.addEventListener("click", () => {
+        closeOptionsMenu();
+        openDeleteModal();
+    });
+
+    confirmButton.addEventListener("click", () => {
+        window.location.href = "./pedidos-mk.html";
+    });
+
+    deleteConfirm.addEventListener("click", () => {
+        window.location.href = "./pedidos-mk.html";
+    });
+
+    deleteModal.querySelectorAll("[data-mk-order-delete-close]").forEach((button) => {
+        button.addEventListener("click", closeDeleteModal);
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!optionsWrap.contains(event.target)) {
+            closeOptionsMenu();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeOptionsMenu();
+            closeDeleteModal();
         }
     });
 }
@@ -3420,8 +3868,10 @@ window.addEventListener("load", () => {
     setupProductFilters();
     setupMkOrdersFilters();
     setupMkOrderSortMenu();
+    setupMkOrderActions();
     setupMkOrderBuilder();
     setupManualProductAddPage();
+    setupNewMkOrderPage();
     setupProductPerformance();
     setupProductStockModal();
     setupFinanceMonthNav();

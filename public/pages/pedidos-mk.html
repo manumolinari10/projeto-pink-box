@@ -130,9 +130,24 @@
                         <span>Ver Carrinho</span>
                     </a>
                     <a class="product-action-button product-action-button--primary" href="./novo-pedido-mk.html">
-                        <span>Novo Pedido MK</span>
+                        <span>Lançar Pedido MK</span>
                     </a>
                 </div>
+            </section>
+
+            <section class="mk-orders-legend elevated" aria-label="Legenda de status dos pedidos MK">
+                <span class="mk-orders-legend-item mk-orders-legend-item--saved">
+                    <i aria-hidden="true"></i>
+                    <span>Pedido Salvo e pendente de compra no <strong>Em Sintonia</strong>.</span>
+                </span>
+                <span class="mk-orders-legend-item mk-orders-legend-item--placed">
+                    <i aria-hidden="true"></i>
+                    <span>Pedido realizado no <strong>Em Sintonia</strong> e pendente de lançamento no sistema <strong>PinkBox</strong>.</span>
+                </span>
+                <span class="mk-orders-legend-item mk-orders-legend-item--confirmed">
+                    <i aria-hidden="true"></i>
+                    <span>Pedido confirmado e produtos adicionados no estoque do <strong>PinkBox</strong>.</span>
+                </span>
             </section>
 
             <section class="products-toolbar clients-toolbar elevated" data-mk-filters-wrap>
@@ -206,6 +221,7 @@
                     <table class="products-table">
                         <thead>
                             <tr>
+                                <th>Status</th>
                                 <th>Data do Pedido</th>
                                 <th>Número do Pedido</th>
                                 <th>Pontos</th>
@@ -215,6 +231,7 @@
                         </thead>
                         <tbody>
                             <tr data-row-href="./pedido-mk.html">
+                                <td><span class="clients-status mk-order-status mk-order-status--saved">Salvo</span></td>
                                 <td>24 Abr, 2026</td>
                                 <td><strong>#MK-458921</strong></td>
                                 <td>312</td>
@@ -222,6 +239,7 @@
                                 <td class="products-total">R$ 1.284,90</td>
                             </tr>
                             <tr data-row-href="./pedido-mk.html">
+                                <td><span class="clients-status mk-order-status mk-order-status--placed">Realizado</span></td>
                                 <td>17 Abr, 2026</td>
                                 <td><strong>#MK-458780</strong></td>
                                 <td>208</td>
@@ -229,6 +247,7 @@
                                 <td class="products-total">R$ 864,50</td>
                             </tr>
                             <tr data-row-href="./pedido-mk.html">
+                                <td><span class="clients-status mk-order-status mk-order-status--confirmed">Confirmado</span></td>
                                 <td>09 Abr, 2026</td>
                                 <td><strong>#MK-458602</strong></td>
                                 <td>420</td>
@@ -236,6 +255,7 @@
                                 <td class="products-total">R$ 1.756,30</td>
                             </tr>
                             <tr data-row-href="./pedido-mk.html">
+                                <td><span class="clients-status mk-order-status mk-order-status--saved">Salvo</span></td>
                                 <td>28 Mar, 2026</td>
                                 <td><strong>#MK-458441</strong></td>
                                 <td>156</td>
@@ -243,6 +263,7 @@
                                 <td class="products-total">R$ 642,80</td>
                             </tr>
                             <tr data-row-href="./pedido-mk.html">
+                                <td><span class="clients-status mk-order-status mk-order-status--confirmed">Confirmado</span></td>
                                 <td>14 Mar, 2026</td>
                                 <td><strong>#MK-458210</strong></td>
                                 <td>510</td>
