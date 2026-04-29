@@ -119,11 +119,17 @@
                 </div>
             </header>
 
-            <section class="product-detail-header page-intro-wrap">
+            <section class="product-detail-header page-intro-wrap calendar-page-intro">
                 <div class="page-intro-copy">
                     <div class="products-breadcrumb">Dashboard / Calendário</div>
                     <h1>Calendário Comercial</h1>
                     <p>Planeje ações, acompanhe datas importantes e visualize oportunidades do mês em um só lugar.</p>
+                </div>
+                <div class="calendar-page-actions">
+                    <button type="button" class="clients-primary-button" data-calendar-open-add>
+                        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M136,56v64h64a8,8,0,0,1,0,16H136v64a8,8,0,0,1-16,0V136H56a8,8,0,0,1,0-16h64V56a8,8,0,0,1,16,0Z"></path></svg>
+                        <span>Adicionar Evento</span>
+                    </button>
                 </div>
             </section>
 
@@ -136,8 +142,8 @@
                             <button type="button" class="calendar-filter calendar-filter--formula is-active" data-calendar-filter="formula">2+2+2</button>
                             <button type="button" class="calendar-filter calendar-filter--birthday is-active" data-calendar-filter="birthday">Aniversários</button>
                             <button type="button" class="calendar-filter calendar-filter--payment is-active" data-calendar-filter="payment">Pagamento</button>
-                            <button type="button" class="calendar-filter calendar-filter--business is-active" data-calendar-filter="business">5º dia útil</button>
-                            <button type="button" class="calendar-filter calendar-filter--holiday is-active" data-calendar-filter="holiday">Datas comemorativas</button>
+                            <button type="button" class="calendar-filter calendar-filter--holiday is-active" data-calendar-filter="holiday">Comemorativas</button>
+                            <button type="button" class="calendar-filter calendar-filter--manual is-active" data-calendar-filter="manual">Meus Eventos</button>
                         </div>
 
                         <div class="calendar-month-head" data-calendar-month-nav>
@@ -172,7 +178,7 @@
 
                     <article class="calendar-agenda-card elevated">
                         <div class="calendar-side-head">
-                            <h2>Próximos eventos</h2>
+                            <h2>Meus Eventos</h2>
                         </div>
                         <div class="calendar-agenda-list" data-calendar-agenda-list></div>
                     </article>
@@ -195,10 +201,55 @@
             <div class="calendar-modal-body">
                 <p data-calendar-modal-description></p>
                 <div class="calendar-modal-note">
-                    <strong>Ação recomendada</strong>
+                    <strong data-calendar-modal-note-label>Ação recomendada</strong>
                     <p data-calendar-modal-action></p>
                 </div>
+                <div class="calendar-modal-actions" data-calendar-related-action-wrap hidden>
+                    <a class="products-toolbar-button" href="#" data-calendar-related-action>Ver detalhe</a>
+                </div>
+                <div class="calendar-modal-actions" data-calendar-manual-actions hidden>
+                    <button type="button" class="products-toolbar-button" data-calendar-edit-event>Editar</button>
+                    <button type="button" class="clients-primary-button" data-calendar-complete-event>Concluído</button>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <div class="client-modal calendar-modal" id="calendar-add-modal" hidden>
+        <div class="client-modal-backdrop" data-calendar-modal-close></div>
+        <div class="client-modal-dialog elevated calendar-modal-dialog calendar-form-dialog">
+            <button class="client-modal-close" type="button" aria-label="Fechar janela" data-calendar-modal-close>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+            </button>
+            <span class="calendar-modal-pill calendar-modal-pill--soft">Meus Eventos</span>
+            <h2>Adicionar Evento</h2>
+            <p class="client-modal-subtitle">Cadastre um evento manual para acompanhar compromissos pessoais e lembretes do dia.</p>
+            <form class="calendar-add-form" data-calendar-add-form>
+                <label class="calendar-form-field calendar-form-field--full">
+                    <span>Descrição</span>
+                    <input type="text" name="description" placeholder="Descreva o evento" required maxlength="15">
+                </label>
+                <label class="calendar-form-field">
+                    <span>Data</span>
+                    <input type="date" name="date" required>
+                </label>
+                <label class="calendar-form-field">
+                    <span>Hora</span>
+                    <input type="time" name="time" required>
+                </label>
+                <label class="calendar-form-field calendar-form-field--full">
+                    <span>Local</span>
+                    <input type="text" name="location" placeholder="Endereço completo do evento">
+                </label>
+                <label class="calendar-form-field calendar-form-field--full">
+                    <span>Notas</span>
+                    <textarea name="notes" rows="3" placeholder="Adicione observações importantes sobre este evento"></textarea>
+                </label>
+                <div class="calendar-form-actions">
+                    <button type="submit" class="clients-primary-button">Salvar Evento</button>
+                    <button type="button" class="products-toolbar-button" data-calendar-modal-close>Cancelar</button>
+                </div>
+            </form>
         </div>
     </div>
 

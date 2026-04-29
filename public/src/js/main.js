@@ -5821,6 +5821,15 @@ function setupCalendarPage() {
     const detailDate = document.querySelector("[data-calendar-modal-date]");
     const detailDescription = document.querySelector("[data-calendar-modal-description]");
     const detailAction = document.querySelector("[data-calendar-modal-action]");
+    const detailNoteLabel = document.querySelector("[data-calendar-modal-note-label]");
+    const relatedActionWrap = document.querySelector("[data-calendar-related-action-wrap]");
+    const relatedActionLink = document.querySelector("[data-calendar-related-action]");
+    const addModal = document.getElementById("calendar-add-modal");
+    const addForm = document.querySelector("[data-calendar-add-form]");
+    const addButton = document.querySelector("[data-calendar-open-add]");
+    const manualActions = document.querySelector("[data-calendar-manual-actions]");
+    const editEventButton = document.querySelector("[data-calendar-edit-event]");
+    const completeEventButton = document.querySelector("[data-calendar-complete-event]");
     const monthNames = [
         "Janeiro",
         "Fevereiro",
@@ -5848,19 +5857,43 @@ function setupCalendarPage() {
         formula: "2+2+2",
         birthday: "Aniversário",
         payment: "Pagamento",
-        business: "5º dia útil",
-        holiday: "Comemorativa"
+        holiday: "Comemorativa",
+        manual: "Meus Eventos"
     };
     const typeIcons = {
         formula: '<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M117.25,157.75a8,8,0,0,1-11.32,0L80,131.88,54.06,157.75a8,8,0,0,1-11.31-11.32L68.69,120,42.75,94.06A8,8,0,0,1,54.06,82.75L80,108.69l25.93-25.94a8,8,0,0,1,11.32,11.31L91.31,120l25.94,25.94A8,8,0,0,1,117.25,157.75Zm96-75a8,8,0,0,0-11.31,0L176,108.69,150.06,82.75a8,8,0,0,0-11.31,11.31L164.69,120l-25.94,25.94a8,8,0,1,0,11.31,11.31L176,131.31l25.94,25.94a8,8,0,0,0,11.31-11.31L187.31,120l25.94-25.94A8,8,0,0,0,213.25,82.75Z"></path></svg>',
         birthday: '<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M128,32a40,40,0,1,0,40,40A40,40,0,0,0,128,32Zm76,96H52A20,20,0,0,0,32,148v20a56,56,0,0,0,56,56h80a56,56,0,0,0,56-56V148A20,20,0,0,0,204,128Z"></path></svg>',
         payment: '<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M224,56H32A16,16,0,0,0,16,72v112a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V72A16,16,0,0,0,224,56ZM96,152H48a8,8,0,0,1,0-16H96a8,8,0,0,1,0,16Zm112-32H48a8,8,0,0,1,0-16H208a8,8,0,0,1,0,16Z"></path></svg>',
-        business: '<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M224,56H32A16,16,0,0,0,16,72v40a8,8,0,0,0,8,8H232a8,8,0,0,0,8-8V72A16,16,0,0,0,224,56ZM80,144H32a16,16,0,0,0-16,16v40a16,16,0,0,0,16,16H80a16,16,0,0,0,16-16V160A16,16,0,0,0,80,144Zm144,0H128a16,16,0,0,0-16,16v40a16,16,0,0,0,16,16h96a16,16,0,0,0,16-16V160A16,16,0,0,0,224,144Z"></path></svg>',
-        holiday: '<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M128,24l24.71,50.08L208,82.38,168,121.35l9.44,55L128,150.32,78.56,176.36,88,121.35,48,82.38l55.29-8.3Z"></path></svg>'
+        holiday: '<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M128,24l24.71,50.08L208,82.38,168,121.35l9.44,55L128,150.32,78.56,176.36,88,121.35,48,82.38l55.29-8.3Z"></path></svg>',
+        manual: '<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M200,32H168V24a8,8,0,0,0-16,0v8H104V24a8,8,0,0,0-16,0v8H56A24,24,0,0,0,32,56V200a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V56A24,24,0,0,0,200,32ZM176,136H136v40a8,8,0,0,1-16,0V136H80a8,8,0,0,1,0-16h40V80a8,8,0,0,1,16,0v40h40a8,8,0,0,1,0,16Z"></path></svg>'
     };
-    const activeFilters = new Set(["formula", "birthday", "payment", "business", "holiday"]);
-    let currentDate = new Date(2026, 3, 1);
+    const activeFilters = new Set(["formula", "birthday", "payment", "holiday", "manual"]);
+    const registrationDate = new Date(2026, 3, 1);
+    const minCalendarDate = new Date(registrationDate.getFullYear(), 0, 1);
+    const currentYear = new Date().getFullYear();
+    const maxCalendarDate = new Date(currentYear + 2, 11, 1);
+    let currentDate = new Date(registrationDate.getFullYear(), registrationDate.getMonth(), 1);
     let openedSummaryItem = null;
+    let editingManualEventId = null;
+    let openedManualEventId = null;
+    const manualEvents = {
+        "2026-3": [
+            {
+                id: "manual-apr-28-reuniao",
+                type: "manual",
+                day: 28,
+                title: "Reunião com fornecedora",
+                tag: "Reunião com fornecedora",
+                description: "",
+                location: "Rua das Camélias, 145 - Jardim Primavera - São Paulo/SP",
+                notes: "Alinhar reposição de estoque e prazo de entrega dos próximos pedidos.",
+                noteLabel: "Notas",
+                time: "15:30",
+                date: "28 Abril 2026 • Terça-feira",
+                completed: false
+            }
+        ]
+    };
 
     const calendarData = {
         "2026-2": {
@@ -5870,7 +5903,7 @@ function setupCalendarPage() {
                     type: "business",
                     day: 5,
                     title: "Campanha do 5º dia útil",
-                    tag: "5º dia útil",
+                    tag: "Campanha do dia",
                     description: "Hoje é um ótimo momento para reforçar ofertas de pronta-entrega e kits com ticket médio acessível.",
                     action: "Criar uma campanha rápida com Produto X e enviar para a lista com histórico de compra recorrente."
                 },
@@ -6021,7 +6054,7 @@ function setupCalendarPage() {
                     type: "business",
                     day: 27,
                     title: "Ação do 5º dia útil",
-                    tag: "5º dia útil",
+                    tag: "Campanha do dia",
                     description: "Quinto dia útil costuma ser um momento de compra rápida. Priorize ofertas simples e de fácil decisão.",
                     action: "Anunciar o Produto X para clientes com maior chance de recompra e pronta resposta."
                 },
@@ -6144,7 +6177,7 @@ function setupCalendarPage() {
                     type: "business",
                     day: 5,
                     title: "5º dia útil de maio",
-                    tag: "5º dia útil",
+                    tag: "Campanha do dia",
                     description: "Momento ideal para reforçar campanhas de pronta-entrega e itens com recompra rápida.",
                     action: "Disparar oferta do Produto X com CTA direto e prazo curto."
                 },
@@ -6241,7 +6274,13 @@ function setupCalendarPage() {
     }
 
     function getMonthData(date) {
-        return calendarData[getMonthKey(date)] || { events: [], summary: [] };
+        const key = getMonthKey(date);
+        const baseData = calendarData[key] || { events: [], summary: [] };
+        const ownEvents = manualEvents[key] || [];
+        return {
+            events: [...baseData.events, ...ownEvents],
+            summary: baseData.summary
+        };
     }
 
     function formatDisplayDate(date) {
@@ -6249,7 +6288,7 @@ function setupCalendarPage() {
     }
 
     function updateModalState() {
-        const isAnyOpen = [detailModal, summaryModal, dayModal].some((modal) => modal && !modal.hidden);
+        const isAnyOpen = [detailModal, summaryModal, dayModal, addModal].some((modal) => modal && !modal.hidden);
         document.body.classList.toggle("modal-open", isAnyOpen);
     }
 
@@ -6276,15 +6315,58 @@ function setupCalendarPage() {
             return;
         }
 
+        openedManualEventId = item.type === "manual" ? item.id : null;
         detailType.textContent = typeLabels[item.type] || "Evento";
         detailType.className = `calendar-modal-pill calendar-tag--${item.type}`;
         detailTitle.textContent = item.title;
-        detailDate.textContent = item.date || formatDisplayDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), item.day || 1));
-        detailDescription.textContent = item.description;
-        detailAction.textContent = item.action;
+        if (item.type === "manual" && item.time) {
+            const baseDate = item.date || formatDisplayDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), item.day || 1));
+            detailDate.innerHTML = `${baseDate} • <strong>${item.time}</strong>`;
+        } else {
+            detailDate.textContent = item.date || formatDisplayDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), item.day || 1));
+        }
+        const locationText = item.type === "manual" && item.location ? `Local: ${item.location}` : item.description || "";
+        detailDescription.textContent = locationText;
+        detailDescription.hidden = !locationText;
+        detailAction.textContent = item.notes || item.action || "Sem observações adicionais.";
+        if (detailNoteLabel) {
+            detailNoteLabel.textContent = item.noteLabel || "Ação recomendada";
+        }
+        if (relatedActionWrap && relatedActionLink) {
+            relatedActionWrap.hidden = true;
+            relatedActionLink.textContent = "Ver detalhe";
+            relatedActionLink.removeAttribute("href");
+
+            if (item.type === "formula" || item.type === "birthday") {
+                relatedActionLink.textContent = "Ver cliente";
+                relatedActionLink.setAttribute("href", "./cliente.html");
+                relatedActionWrap.hidden = false;
+            } else if (item.type === "payment") {
+                relatedActionLink.textContent = "Ver compra";
+                relatedActionLink.setAttribute("href", "./pedido.html");
+                relatedActionWrap.hidden = false;
+            }
+        }
+        if (manualActions) {
+            manualActions.hidden = item.type !== "manual";
+        }
+        if (completeEventButton && item.type === "manual") {
+            completeEventButton.textContent = item.completed ? "Reabrir" : "Concluído";
+        }
         closeCalendarModal(summaryModal);
         closeCalendarModal(dayModal);
+        closeCalendarModal(addModal);
         openCalendarModal(detailModal);
+    }
+
+    function findManualEventById(id) {
+        for (const [key, events] of Object.entries(manualEvents)) {
+            const eventItem = events.find((item) => item.id === id);
+            if (eventItem) {
+                return { key, eventItem };
+            }
+        }
+        return null;
     }
 
     function openSummaryModal(summaryItem) {
@@ -6300,11 +6382,16 @@ function setupCalendarPage() {
         summaryItem.actions.forEach((actionItem) => {
             const button = document.createElement("button");
             button.type = "button";
-            button.className = "calendar-summary-action";
+            button.className = "calendar-agenda-item calendar-summary-action-card";
+            const dateParts = String(actionItem.date || "").split(" ");
+            const shortDay = dateParts[0] || String(actionItem.day || "").padStart(2, "0");
+            const shortMonth = (dateParts[1] || monthNames[currentDate.getMonth()]).slice(0, 3);
             button.innerHTML = `
-                <span class="calendar-summary-action-icon">${typeIcons[actionItem.type] || typeIcons.holiday}</span>
-                <strong>${actionItem.title}</strong>
-                <span>${actionItem.date}</span>
+                <strong>${shortDay} ${shortMonth}</strong>
+                <div>
+                    <span class="calendar-tag calendar-tag--${actionItem.type}">${typeLabels[actionItem.type] || typeLabels.holiday}</span>
+                    <p>${actionItem.title}</p>
+                </div>
             `;
             button.addEventListener("click", () => openDetailModal(actionItem));
             summaryActionsWrap.appendChild(button);
@@ -6363,6 +6450,9 @@ function setupCalendarPage() {
         const button = document.createElement("button");
         button.type = "button";
         button.className = `calendar-tag calendar-tag--${eventItem.type}`;
+        if (eventItem.completed) {
+            button.classList.add("is-completed");
+        }
         button.textContent = eventItem.tag;
         button.hidden = !activeFilters.has(eventItem.type);
         button.addEventListener("click", () => openDetailModal({
@@ -6375,6 +6465,8 @@ function setupCalendarPage() {
     function renderGrid() {
         const monthData = getMonthData(currentDate);
         const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+        const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+        const totalCells = Math.ceil((firstDay.getDay() + daysInMonth) / 7) * 7;
         const startDate = new Date(firstDay);
         startDate.setDate(firstDay.getDate() - firstDay.getDay());
         const today = new Date();
@@ -6382,7 +6474,7 @@ function setupCalendarPage() {
         monthLabel.textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
         grid.innerHTML = "";
 
-        for (let index = 0; index < 42; index += 1) {
+        for (let index = 0; index < totalCells; index += 1) {
             const date = new Date(startDate);
             date.setDate(startDate.getDate() + index);
 
@@ -6407,7 +6499,15 @@ function setupCalendarPage() {
 
             if (date.getMonth() === currentDate.getMonth()) {
                 const dayEvents = monthData.events.filter((eventItem) => eventItem.day === date.getDate());
-                const visibleEvents = dayEvents.filter((eventItem) => activeFilters.has(eventItem.type));
+                const businessEvents = dayEvents.filter((eventItem) => eventItem.type === "business");
+                const visibleEvents = dayEvents.filter((eventItem) => eventItem.type !== "business" && activeFilters.has(eventItem.type));
+
+                businessEvents.forEach(() => {
+                    const fixedNote = document.createElement("span");
+                    fixedNote.className = "calendar-fixed-note";
+                    fixedNote.textContent = "• 5º dia útil";
+                    dayCard.appendChild(fixedNote);
+                });
 
                 visibleEvents.slice(0, 3).forEach((eventItem) => {
                         dayCard.appendChild(createTagButton(eventItem));
@@ -6431,7 +6531,7 @@ function setupCalendarPage() {
         const monthData = getMonthData(currentDate);
         summaryList.innerHTML = "";
 
-        monthData.summary.forEach((summaryItem) => {
+        monthData.summary.filter((summaryItem) => summaryItem.type !== "business").forEach((summaryItem) => {
             const item = document.createElement("li");
             const button = document.createElement("button");
             button.type = "button";
@@ -6446,11 +6546,26 @@ function setupCalendarPage() {
     function renderAgenda() {
         const monthData = getMonthData(currentDate);
         agendaList.innerHTML = "";
+        const ownEvents = monthData.events
+            .filter((eventItem) => eventItem.type === "manual")
+            .slice()
+            .sort((a, b) => a.day - b.day);
 
-        monthData.events.slice().sort((a, b) => a.day - b.day).slice(0, 4).forEach((eventItem) => {
+        if (!ownEvents.length) {
+            const emptyState = document.createElement("div");
+            emptyState.className = "calendar-agenda-empty";
+            emptyState.textContent = "Nenhum evento manual cadastrado para este mês.";
+            agendaList.appendChild(emptyState);
+            return;
+        }
+
+        ownEvents.slice(0, 4).forEach((eventItem) => {
             const item = document.createElement("button");
             item.type = "button";
             item.className = "calendar-agenda-item";
+            if (eventItem.completed) {
+                item.classList.add("is-completed");
+            }
             item.innerHTML = `
                 <strong>${String(eventItem.day).padStart(2, "0")} ${monthNames[currentDate.getMonth()].slice(0, 3)}</strong>
                 <div>
@@ -6471,6 +6586,10 @@ function setupCalendarPage() {
         renderSummary();
         renderAgenda();
         syncFilterButtons();
+        previousButton.disabled = currentDate.getFullYear() === minCalendarDate.getFullYear()
+            && currentDate.getMonth() === minCalendarDate.getMonth();
+        nextButton.disabled = currentDate.getFullYear() === maxCalendarDate.getFullYear()
+            && currentDate.getMonth() === maxCalendarDate.getMonth();
     }
 
     filterButtons.forEach((button) => {
@@ -6479,7 +6598,7 @@ function setupCalendarPage() {
 
             if (filter === "all") {
                 activeFilters.clear();
-                ["formula", "birthday", "payment", "business", "holiday"].forEach((type) => activeFilters.add(type));
+                ["formula", "birthday", "payment", "holiday", "manual"].forEach((type) => activeFilters.add(type));
                 renderCalendar();
                 return;
             }
@@ -6495,11 +6614,23 @@ function setupCalendarPage() {
     });
 
     previousButton.addEventListener("click", () => {
+        if (
+            currentDate.getFullYear() === minCalendarDate.getFullYear()
+            && currentDate.getMonth() === minCalendarDate.getMonth()
+        ) {
+            return;
+        }
         currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
         renderCalendar();
     });
 
     nextButton.addEventListener("click", () => {
+        if (
+            currentDate.getFullYear() === maxCalendarDate.getFullYear()
+            && currentDate.getMonth() === maxCalendarDate.getMonth()
+        ) {
+            return;
+        }
         currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
         renderCalendar();
     });
@@ -6509,6 +6640,7 @@ function setupCalendarPage() {
             closeCalendarModal(detailModal);
             closeCalendarModal(summaryModal);
             closeCalendarModal(dayModal);
+            closeCalendarModal(addModal);
         });
     });
 
@@ -6517,7 +6649,142 @@ function setupCalendarPage() {
             closeCalendarModal(detailModal);
             closeCalendarModal(summaryModal);
             closeCalendarModal(dayModal);
+            closeCalendarModal(addModal);
         }
+    });
+
+    addButton?.addEventListener("click", () => {
+        editingManualEventId = null;
+        addForm?.reset();
+        const now = new Date();
+        const dateInput = addForm?.querySelector('[name="date"]');
+        if (dateInput) {
+            dateInput.value = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+        }
+        const timeInput = addForm?.querySelector('[name="time"]');
+        if (timeInput) {
+            timeInput.value = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+        }
+        const title = addModal?.querySelector("h2");
+        if (title) {
+            title.textContent = "Adicionar Evento";
+        }
+        const submit = addForm?.querySelector('button[type="submit"]');
+        if (submit) {
+            submit.textContent = "Salvar Evento";
+        }
+        openCalendarModal(addModal);
+    });
+
+    editEventButton?.addEventListener("click", () => {
+        if (!openedManualEventId || !addForm) {
+            return;
+        }
+
+        const found = findManualEventById(openedManualEventId);
+
+        if (!found) {
+            return;
+        }
+
+        editingManualEventId = found.eventItem.id;
+        addForm.querySelector('[name="description"]').value = found.eventItem.title || "";
+        addForm.querySelector('[name="date"]').value = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, "0")}-${String(found.eventItem.day).padStart(2, "0")}`;
+        addForm.querySelector('[name="time"]').value = found.eventItem.time || "09:00";
+        addForm.querySelector('[name="location"]').value = found.eventItem.location || "";
+        addForm.querySelector('[name="notes"]').value = found.eventItem.notes || "";
+
+        const title = addModal?.querySelector("h2");
+        if (title) {
+            title.textContent = "Editar Evento";
+        }
+        const submit = addForm.querySelector('button[type="submit"]');
+        if (submit) {
+            submit.textContent = "Salvar";
+        }
+
+        closeCalendarModal(detailModal);
+        openCalendarModal(addModal);
+    });
+
+    completeEventButton?.addEventListener("click", () => {
+        if (!openedManualEventId) {
+            return;
+        }
+
+        const found = findManualEventById(openedManualEventId);
+
+        if (!found) {
+            return;
+        }
+
+        found.eventItem.completed = !found.eventItem.completed;
+        closeCalendarModal(detailModal);
+        renderCalendar();
+    });
+
+    addForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!addForm.reportValidity()) {
+            return;
+        }
+
+        const formData = new FormData(addForm);
+        const description = String(formData.get("description") || "").trim();
+        const dateValue = String(formData.get("date") || "");
+        const timeValue = String(formData.get("time") || "");
+        const location = String(formData.get("location") || "").trim();
+        const notes = String(formData.get("notes") || "").trim();
+        const eventDate = new Date(`${dateValue}T00:00:00`);
+        const key = getMonthKey(eventDate);
+        const timeLabel = timeValue || "09:00";
+        const baseDate = `${String(eventDate.getDate()).padStart(2, "0")} ${monthNames[eventDate.getMonth()]} ${eventDate.getFullYear()} • ${weekdayNames[eventDate.getDay()]}`;
+
+        if (editingManualEventId) {
+            const found = findManualEventById(editingManualEventId);
+
+            if (found) {
+                found.eventItem.day = eventDate.getDate();
+                found.eventItem.title = description;
+                found.eventItem.location = location;
+                found.eventItem.notes = notes || "Sem observações adicionais.";
+                found.eventItem.time = timeLabel;
+                found.eventItem.date = baseDate;
+
+                if (found.key !== key) {
+                    manualEvents[found.key] = manualEvents[found.key].filter((item) => item.id !== editingManualEventId);
+                    if (!manualEvents[key]) {
+                        manualEvents[key] = [];
+                    }
+                    manualEvents[key].push(found.eventItem);
+                }
+            }
+        } else {
+            if (!manualEvents[key]) {
+                manualEvents[key] = [];
+            }
+
+            manualEvents[key].push({
+                id: `manual-${Date.now()}`,
+                type: "manual",
+                day: eventDate.getDate(),
+                title: description,
+                tag: description,
+                description: "",
+                location,
+                notes: notes || "Sem observações adicionais.",
+                noteLabel: "Notas",
+                time: timeLabel,
+                date: baseDate,
+                completed: false
+            });
+        }
+
+        editingManualEventId = null;
+        currentDate = new Date(eventDate.getFullYear(), eventDate.getMonth(), 1);
+        closeCalendarModal(addModal);
+        renderCalendar();
     });
 
     renderCalendar();
