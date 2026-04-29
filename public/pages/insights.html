@@ -160,6 +160,7 @@
                                     <strong>Fulano</strong>
                                     <p>Demonstrou interesse no Produto X. Envie uma oferta com 10% de desconto.</p>
                                 </div>
+                                <button type="button" data-client-compose-trigger data-client-compose-name="Fulano" data-client-compose-subtitle="Interesse em Produto X" data-client-compose-avatar="../src/assets/customers/default.webp">Enviar mensagem</button>
                             </div>
                             <div class="insights-personal-item">
                                 <img src="../src/assets/customers/default.webp" alt="Cliente Fulana">
@@ -167,6 +168,7 @@
                                     <strong>Fulana</strong>
                                     <p>Costuma comprar o Produto X e deve precisar de reposição em 5 dias.</p>
                                 </div>
+                                <button type="button" data-client-compose-trigger data-client-compose-name="Fulana" data-client-compose-subtitle="Reposição em 5 dias" data-client-compose-avatar="../src/assets/customers/default.webp">Enviar mensagem</button>
                             </div>
                             <div class="insights-personal-item">
                                 <img src="../src/assets/customers/default.webp" alt="Cliente Aniversariante">
@@ -174,6 +176,7 @@
                                     <strong>Fulano</strong>
                                     <p>Hoje é aniversário. Vale mandar parabéns com desconto especial.</p>
                                 </div>
+                                <button type="button" data-client-compose-trigger data-client-compose-name="Fulano" data-client-compose-subtitle="Aniversário hoje" data-client-compose-avatar="../src/assets/customers/default.webp">Enviar mensagem</button>
                             </div>
                         </div>
                     </article>
@@ -261,7 +264,7 @@
                                     <strong>Mariana Torres</strong>
                                     <span>Última compra há 34 dias</span>
                                 </div>
-                                <button type="button">Enviar desconto</button>
+                                <button type="button" data-client-compose-trigger data-client-compose-name="Mariana Torres" data-client-compose-subtitle="Última compra há 34 dias" data-client-compose-avatar="../src/assets/customers/default.webp">Enviar mensagem</button>
                             </div>
                             <div class="insights-client-row">
                                 <img src="../src/assets/customers/default.webp" alt="Cliente Juliana Paiva">
@@ -269,7 +272,7 @@
                                     <strong>Juliana Paiva</strong>
                                     <span>VIP recorrente em perfumaria</span>
                                 </div>
-                                <button type="button">Condição especial</button>
+                                <button type="button" data-client-compose-trigger data-client-compose-name="Juliana Paiva" data-client-compose-subtitle="VIP recorrente em perfumaria" data-client-compose-avatar="../src/assets/customers/default.webp">Enviar mensagem</button>
                             </div>
                             <div class="insights-client-row">
                                 <img src="../src/assets/customers/default.webp" alt="Cliente Ana Ribeiro">
@@ -277,7 +280,7 @@
                                     <strong>Ana Ribeiro</strong>
                                     <span>Sem compra desde o mês passado</span>
                                 </div>
-                                <button type="button">Mensagem rápida</button>
+                                <button type="button" data-client-compose-trigger data-client-compose-name="Ana Ribeiro" data-client-compose-subtitle="Sem compra desde o mês passado" data-client-compose-avatar="../src/assets/customers/default.webp">Enviar mensagem</button>
                             </div>
                         </div>
                     </article>
@@ -341,6 +344,27 @@
                     </article>
                 </aside>
             </section>
+
+            <div class="client-modal dashboard-modal" id="client-compose-modal" hidden>
+                <div class="client-modal-backdrop" data-client-compose-close></div>
+                <div class="client-modal-dialog elevated dashboard-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="client-compose-modal-title">
+                    <button class="client-modal-close" type="button" aria-label="Fechar janela" data-client-compose-close>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                    </button>
+                    <span class="calendar-modal-pill calendar-modal-pill--soft">Mensagem</span>
+                    <div class="dashboard-message-person">
+                        <img class="birthday-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto da cliente" data-client-compose-avatar>
+                        <div>
+                            <strong data-client-compose-name>Cliente</strong>
+                            <span data-client-compose-subtitle>Detalhes da cliente</span>
+                        </div>
+                    </div>
+                    <div class="dashboard-message-box">
+                        <textarea rows="6" maxlength="500" placeholder="Digite sua mensagem..." data-client-compose-text></textarea>
+                    </div>
+                    <button class="clients-primary-button dashboard-send-button" type="button">Enviar mensagem</button>
+                </div>
+            </div>
 
             <footer class="page-footer">© 2026 PinkBox Sistema de Gestão de Vendas.</footer>
         </main>

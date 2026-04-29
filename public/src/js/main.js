@@ -892,11 +892,23 @@ function setupClientDetailModals() {
 
     if (composeModal) {
         const composeText = composeModal.querySelector("[data-client-compose-text]");
+        const composeAvatar = composeModal.querySelector("[data-client-compose-avatar]");
+        const composeName = composeModal.querySelector("[data-client-compose-name]");
+        const composeSubtitle = composeModal.querySelector("[data-client-compose-subtitle]");
 
         document.querySelectorAll("[data-client-compose-trigger]").forEach((trigger) => {
             trigger.addEventListener("click", () => {
                 if (composeText) {
                     composeText.value = "";
+                }
+                if (composeAvatar) {
+                    composeAvatar.src = trigger.dataset.clientComposeAvatar || composeAvatar.src;
+                }
+                if (composeName) {
+                    composeName.textContent = trigger.dataset.clientComposeName || "Cliente";
+                }
+                if (composeSubtitle) {
+                    composeSubtitle.textContent = trigger.dataset.clientComposeSubtitle || "";
                 }
 
                 composeModal.hidden = false;
