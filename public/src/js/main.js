@@ -20,6 +20,12 @@ function parseCurrencyPtBr(value) {
     return Number(normalized) || 0;
 }
 
+function formatMoneyInputPtBr(rawValue) {
+    const digits = String(rawValue ?? "").replace(/\D/g, "");
+    const cents = Number(digits || "0") / 100;
+    return formatCurrencyPtBr(cents);
+}
+
 function animateValue(element) {
     const target = Number(element.dataset.target);
 
@@ -2294,6 +2300,7 @@ function setupNewSalePage() {
     const productPlus = page.querySelector("[data-new-sale-product-plus]");
     const productAdd = page.querySelector("[data-new-sale-product-add]");
     const productsHistory = page.querySelector("[data-new-sale-products-history]");
+    const productsEmptyRow = page.querySelector("[data-new-sale-products-empty-row]");
     const productsCount = page.querySelector("[data-new-sale-products-count]");
     const deleteModal = document.getElementById("new-sale-delete-modal");
     const deleteName = deleteModal?.querySelector("[data-new-sale-delete-name]");
@@ -2412,7 +2419,7 @@ function setupNewSalePage() {
     }
 
     function getProductRows() {
-        return Array.from(productsHistory.querySelectorAll("tr"));
+        return Array.from(productsHistory.querySelectorAll("tr")).filter((row) => !row.hasAttribute("data-new-sale-products-empty-row"));
     }
 
     function getProductsSubtotal() {
@@ -2635,6 +2642,12 @@ function setupNewSalePage() {
             : discountOther > 0
                 ? (adjustments.discount.Outros.description || "Outros descontos")
                 : "Sem ajustes";
+        const subtotalItem = summarySubtotal?.closest(".mk-builder-summary-item");
+        const freightItem = summaryFreight?.closest(".mk-builder-summary-item");
+        const insuranceItem = summaryInsurance?.closest(".mk-builder-summary-item");
+        const taxItem = summaryTax?.closest(".mk-builder-summary-item");
+        const discountItem = summaryDiscount?.closest(".mk-builder-summary-item");
+        const otherItem = summaryOther?.closest(".mk-builder-summary-item");
 
         if (summaryCount) summaryCount.textContent = `${rowCount} item${rowCount === 1 ? "" : "s"} selecionado${rowCount === 1 ? "" : "s"}`;
         if (summarySubtotal) summarySubtotal.textContent = `R$ ${formatCurrencyPtBr(subtotal)}`;
@@ -2650,6 +2663,12 @@ function setupNewSalePage() {
             summaryOther.textContent = `${netOther < 0 ? "- " : ""}R$ ${formatCurrencyPtBr(Math.abs(netOther))}`;
         }
         if (summaryOtherDescription) summaryOtherDescription.textContent = otherDescription;
+        if (subtotalItem) subtotalItem.hidden = subtotal <= 0;
+        if (freightItem) freightItem.hidden = adjustments.cost.Frete.value <= 0;
+        if (insuranceItem) insuranceItem.hidden = adjustments.cost.Seguro.value <= 0;
+        if (taxItem) taxItem.hidden = adjustments.cost.Imposto.value <= 0;
+        if (discountItem) discountItem.hidden = adjustments.discount.Desconto.value <= 0;
+        if (otherItem) otherItem.hidden = netOther === 0;
         if (confirmTotal) confirmTotal.textContent = `R$ ${formatCurrencyPtBr(total)}`;
         if (confirmReceived) confirmReceived.textContent = `R$ ${formatCurrencyPtBr(paidTotal)}`;
         if (confirmPending) confirmPending.textContent = `R$ ${formatCurrencyPtBr(pendingTotal)}`;
@@ -2815,7 +2834,13 @@ function setupNewSalePage() {
     }
 
     function updateProductsCount() {
-        productsCount.textContent = `${productsHistory.querySelectorAll("tr").length} itens adicionados`;
+        const productRows = getProductRows();
+
+        if (productsEmptyRow) {
+            productsEmptyRow.hidden = productRows.length > 0;
+        }
+
+        productsCount.textContent = `${productRows.length} itens adicionados`;
     }
 
     function updateProductButtonState() {
@@ -2950,7 +2975,15 @@ function setupNewSalePage() {
 
     adjustmentRows.forEach((row) => {
         row.querySelectorAll("input").forEach((input) => {
+            if (input.hasAttribute("data-adjustment-value")) {
+                input.value = formatMoneyInputPtBr(input.value);
+            }
+
             input.addEventListener("input", () => {
+                if (input.hasAttribute("data-adjustment-value")) {
+                    input.value = formatMoneyInputPtBr(input.value);
+                }
+
                 syncInstallmentRows();
                 buildConfirmSummary();
             });
@@ -3974,6 +4007,1395 @@ function setupMkOrderBuilder() {
     });
 
     renderSummary();
+}
+
+function setupFinancePage() {
+    const page = document.querySelector("[data-finance-page]");
+
+    if (!page) {
+        return;
+    }
+
+    const periodButtons = Array.from(page.querySelectorAll("[data-finance-period]"));
+    const performanceTitle = page.querySelector("[data-finance-performance-title]");
+    const performanceValue = page.querySelector("[data-finance-performance-value]");
+    const performanceDelta = page.querySelector("[data-finance-performance-delta]");
+    const performanceInfo = page.querySelector("[data-finance-performance-info]");
+    const performanceChart = page.querySelector("[data-finance-performance-chart]");
+    const seriesToggles = Array.from(page.querySelectorAll("[data-finance-series-toggle]"));
+    const delinquencyPill = page.querySelector("[data-finance-delinquency-pill]");
+    const delinquencyIcon = page.querySelector("[data-finance-delinquency-icon]");
+    const delinquencyValue = page.querySelector("[data-finance-delinquency-value]");
+    const delinquencyMessage = page.querySelector("[data-finance-delinquency-message]");
+    const debtorsLink = page.querySelector("[data-finance-debtors-link]");
+    const paymentDonut = page.querySelector("[data-finance-payment-donut]");
+    const paymentPix = page.querySelector("[data-finance-payment-pix]");
+    const paymentCredit = page.querySelector("[data-finance-payment-credit]");
+    const paymentDebit = page.querySelector("[data-finance-payment-debit]");
+    const paymentOther = page.querySelector("[data-finance-payment-other]");
+    const receivedValue = page.querySelector("[data-finance-received-value]");
+    const pendingValue = page.querySelector("[data-finance-pending-value]");
+    const receivedTrack = page.querySelector("[data-finance-received-track]");
+    const pendingTrack = page.querySelector("[data-finance-pending-track]");
+    const today = new Date(2026, 3, 29);
+
+    if (!periodButtons.length || !performanceTitle || !performanceValue || !performanceDelta || !performanceInfo || !performanceChart || !seriesToggles.length || !delinquencyPill || !delinquencyIcon || !delinquencyValue || !delinquencyMessage || !debtorsLink || !paymentDonut || !paymentPix || !paymentCredit || !paymentDebit || !paymentOther || !receivedValue || !pendingValue || !receivedTrack || !pendingTrack) {
+        return;
+    }
+
+    const activeSeries = new Set(["gain", "cost"]);
+    let currentFinancePeriodKey = "30d";
+
+    const periods = {
+        "7d": {
+            title: "Performance Semanal",
+            delta: "+8.4%",
+            gainTotal: 9840,
+            costTotal: 2680,
+            sourceDays: 7,
+            delinquency: { amount: 0, count: 0 },
+            payments: { pix: 52, credit: 24, debit: 16, other: 8 },
+            receivables: { received: 9840, pending: 2140 }
+        },
+        "30d": {
+            title: "Performance Mensal",
+            delta: "+12.5%",
+            gainTotal: 42850,
+            costTotal: 16320,
+            sourceDays: 30,
+            delinquency: { amount: 3120, count: 12 },
+            payments: { pix: 45, credit: 25, debit: 20, other: 10 },
+            receivables: { received: 28400, pending: 11200 }
+        },
+        "90d": {
+            title: "Performance Trimestral",
+            delta: "+16.2%",
+            gainTotal: 126430,
+            costTotal: 48180,
+            sourceDays: 90,
+            delinquency: { amount: 5690, count: 21 },
+            payments: { pix: 43, credit: 31, debit: 17, other: 9 },
+            receivables: { received: 96200, pending: 30230 }
+        },
+        "6m": {
+            title: "Performance Semestral",
+            delta: "+19.1%",
+            gainTotal: 248670,
+            costTotal: 90340,
+            sourceDays: 180,
+            delinquency: { amount: 7420, count: 28 },
+            payments: { pix: 40, credit: 34, debit: 18, other: 8 },
+            receivables: { received: 189420, pending: 59250 }
+        },
+        "1y": {
+            title: "Performance Anual",
+            delta: "+23.7%",
+            gainTotal: 482960,
+            costTotal: 178220,
+            sourceDays: 365,
+            delinquency: { amount: 9840, count: 36 },
+            payments: { pix: 38, credit: 37, debit: 17, other: 8 },
+            receivables: { received: 398460, pending: 84490 }
+        },
+        "all": {
+            title: "Performance Total",
+            delta: "+31.4%",
+            gainTotal: 913840,
+            costTotal: 341590,
+            sourceDays: 900,
+            delinquency: { amount: 11860, count: 42 },
+            payments: { pix: 39, credit: 35, debit: 17, other: 9 },
+            receivables: { received: 764280, pending: 149560 }
+        }
+    };
+
+    function formatShortDate(date) {
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = date.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "");
+        const year = String(date.getFullYear()).slice(-2);
+        return `${day} ${month.charAt(0).toUpperCase() + month.slice(1)} ${year}`;
+    }
+
+    function formatMonthShort(date) {
+        return date.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "").slice(0, 3);
+    }
+
+    function formatMonthYearShort(date) {
+        const month = formatMonthShort(date);
+        const year = String(date.getFullYear()).slice(-2);
+        return `${month} ${year}`;
+    }
+
+    function formatRangeLabel(startDate, endDate) {
+        const startDay = String(startDate.getDate()).padStart(2, "0");
+        const endDay = String(endDate.getDate()).padStart(2, "0");
+        const startMonth = formatMonthShort(startDate);
+        const endMonth = formatMonthShort(endDate);
+
+        if (startDate.getMonth() === endDate.getMonth() && startDate.getFullYear() === endDate.getFullYear()) {
+            return `${startDay} ${startMonth} - ${endDay} ${endMonth}`;
+        }
+
+        return `${startDay} ${startMonth} - ${endDay} ${endMonth}`;
+    }
+
+    function allocateTotals(weights, total) {
+        const weightSum = weights.reduce((sum, value) => sum + value, 0) || 1;
+        let allocated = 0;
+
+        return weights.map((weight, index) => {
+            const amount = index === weights.length - 1
+                ? Math.max(0, total - allocated)
+                : Math.round((weight / weightSum) * total);
+
+            allocated += amount;
+            return amount;
+        });
+    }
+
+    function buildFinanceSeries(sourceDays, periodKey, gainTotal, costTotal) {
+        const startDate = new Date(today);
+        startDate.setDate(today.getDate() - (sourceDays - 1));
+
+        const rawItems = Array.from({ length: sourceDays }, (_, index) => {
+            const date = new Date(startDate);
+            date.setDate(startDate.getDate() + index);
+
+            const gainWeight = Math.max(
+                14,
+                Math.round(18 + (((Math.sin((index + 1) * 0.68) + 1) / 2) * 92) + (((Math.cos((index + 1) * 0.19) + 1) / 2) * 28))
+            );
+            const costWeight = Math.max(
+                10,
+                Math.round(12 + (((Math.cos((index + 1) * 0.51) + 1) / 2) * 70) + (((Math.sin((index + 3) * 0.17) + 1) / 2) * 20))
+            );
+
+            return {
+                date,
+                label: periodKey === "7d"
+                    ? date.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "").slice(0, 3)
+                    : periodKey === "30d"
+                        ? String(date.getDate()).padStart(2, "0")
+                        : "",
+                dateLabel: formatShortDate(date),
+                gainWeight,
+                costWeight
+            };
+        });
+
+        const gainAmounts = allocateTotals(rawItems.map((item) => item.gainWeight), gainTotal);
+        const costAmounts = allocateTotals(rawItems.map((item) => item.costWeight), costTotal);
+
+        const hydratedItems = rawItems.map((item, index) => ({
+            ...item,
+            gainAmount: gainAmounts[index],
+            costAmount: costAmounts[index]
+        }));
+
+        let buckets = [];
+
+        if (periodKey === "7d" || periodKey === "30d") {
+            buckets = hydratedItems.map((item) => ({
+                ...item
+            }));
+        } else if (periodKey === "90d") {
+            for (let start = 0; start < hydratedItems.length; start += 15) {
+                const slice = hydratedItems.slice(start, start + 15);
+
+                if (!slice.length) {
+                    continue;
+                }
+
+                const firstItem = slice[0];
+                const lastItem = slice[slice.length - 1];
+
+                buckets.push({
+                    date: lastItem.date,
+                    dateLabel: formatRangeLabel(firstItem.date, lastItem.date),
+                    label: formatRangeLabel(firstItem.date, lastItem.date),
+                    gainAmount: slice.reduce((sum, item) => sum + item.gainAmount, 0),
+                    costAmount: slice.reduce((sum, item) => sum + item.costAmount, 0),
+                    gainWeight: slice.reduce((sum, item) => sum + item.gainWeight, 0),
+                    costWeight: slice.reduce((sum, item) => sum + item.costWeight, 0)
+                });
+            }
+        } else {
+            const monthBuckets = [];
+            let currentBucket = null;
+
+            hydratedItems.forEach((item) => {
+                const monthKey = `${item.date.getFullYear()}-${item.date.getMonth()}`;
+
+                if (!currentBucket || currentBucket.key !== monthKey) {
+                    currentBucket = {
+                        key: monthKey,
+                        startDate: item.date,
+                        endDate: item.date,
+                        gainAmount: 0,
+                        costAmount: 0,
+                        gainWeight: 0,
+                        costWeight: 0
+                    };
+                    monthBuckets.push(currentBucket);
+                }
+
+                currentBucket.endDate = item.date;
+                currentBucket.gainAmount += item.gainAmount;
+                currentBucket.costAmount += item.costAmount;
+                currentBucket.gainWeight += item.gainWeight;
+                currentBucket.costWeight += item.costWeight;
+            });
+
+            if (periodKey === "6m" || periodKey === "1y") {
+                buckets = monthBuckets.map((bucket) => ({
+                    date: bucket.endDate,
+                    dateLabel: formatMonthYearShort(bucket.endDate),
+                    label: formatMonthShort(bucket.endDate),
+                    gainAmount: bucket.gainAmount,
+                    costAmount: bucket.costAmount,
+                    gainWeight: bucket.gainWeight,
+                    costWeight: bucket.costWeight
+                }));
+            } else {
+                if (monthBuckets.length <= 24) {
+                    buckets = monthBuckets.map((bucket) => ({
+                        date: bucket.endDate,
+                        dateLabel: formatMonthYearShort(bucket.endDate),
+                        label: formatMonthYearShort(bucket.endDate),
+                        gainAmount: bucket.gainAmount,
+                        costAmount: bucket.costAmount,
+                        gainWeight: bucket.gainWeight,
+                        costWeight: bucket.costWeight
+                    }));
+                } else {
+                    for (let index = 0; index < monthBuckets.length; index += 2) {
+                        const firstBucket = monthBuckets[index];
+                        const secondBucket = monthBuckets[index + 1];
+
+                        if (!secondBucket) {
+                            buckets.push({
+                                date: firstBucket.endDate,
+                                dateLabel: formatMonthYearShort(firstBucket.endDate),
+                                label: formatMonthYearShort(firstBucket.endDate),
+                                gainAmount: firstBucket.gainAmount,
+                                costAmount: firstBucket.costAmount,
+                                gainWeight: firstBucket.gainWeight,
+                                costWeight: firstBucket.costWeight
+                            });
+                            continue;
+                        }
+
+                        buckets.push({
+                            date: secondBucket.endDate,
+                            dateLabel: `${formatMonthYearShort(firstBucket.endDate)} - ${formatMonthYearShort(secondBucket.endDate)}`,
+                            label: `${formatMonthShort(firstBucket.endDate)} - ${formatMonthShort(secondBucket.endDate)} ${String(secondBucket.endDate.getFullYear()).slice(-2)}`,
+                            gainAmount: firstBucket.gainAmount + secondBucket.gainAmount,
+                            costAmount: firstBucket.costAmount + secondBucket.costAmount,
+                            gainWeight: firstBucket.gainWeight + secondBucket.gainWeight,
+                            costWeight: firstBucket.costWeight + secondBucket.costWeight
+                        });
+                    }
+                }
+            }
+        }
+
+        const gainMax = Math.max(...buckets.map((item) => item.gainWeight), 1);
+        const costMax = Math.max(...buckets.map((item) => item.costWeight), 1);
+
+        return buckets.map((item) => ({
+            ...item,
+            gainHeight: Math.round((item.gainWeight / gainMax) * 170),
+            costHeight: Math.round((item.costWeight / costMax) * 145)
+        }));
+    }
+
+    function updatePerformanceHeadline(amount, typeLabel, dateLabel) {
+        performanceValue.textContent = formatCurrencyPtBr(amount);
+        performanceInfo.textContent = `${typeLabel} - ${dateLabel}`;
+    }
+
+    function syncFinanceLegend() {
+        seriesToggles.forEach((button) => {
+            const isActive = activeSeries.has(button.dataset.financeSeriesToggle);
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+    }
+
+    function renderPerformanceChart(items) {
+        performanceChart.innerHTML = "";
+        performanceChart.style.gap = "10px";
+
+        const plot = document.createElement("div");
+        plot.className = "finance-line-plot";
+
+        const svgNS = "http://www.w3.org/2000/svg";
+        const svg = document.createElementNS(svgNS, "svg");
+        svg.setAttribute("viewBox", "0 0 100 200");
+        svg.setAttribute("preserveAspectRatio", "none");
+        svg.classList.add("finance-line-svg");
+
+        const xStart = 4;
+        const xEnd = 96;
+        const yBase = 186;
+        const gainPoints = [];
+        const costPoints = [];
+
+        items.forEach((item, index) => {
+            const x = items.length === 1 ? 50 : xStart + ((index / (items.length - 1)) * (xEnd - xStart));
+            const gainY = yBase - item.gainHeight;
+            const costY = yBase - item.costHeight;
+
+            if (activeSeries.has("gain")) {
+                gainPoints.push(`${x},${gainY}`);
+
+                const gainDot = document.createElement("button");
+                gainDot.type = "button";
+                gainDot.className = `finance-line-point finance-line-point--gain${index === items.length - 1 ? " is-strong" : ""}`;
+                gainDot.style.left = `${x}%`;
+                gainDot.style.top = `${(gainY / 200) * 100}%`;
+                gainDot.dataset.value = `R$ ${formatCurrencyPtBr(item.gainAmount)}`;
+                gainDot.setAttribute("aria-label", `Ganhos de R$ ${formatCurrencyPtBr(item.gainAmount)} em ${item.dateLabel}`);
+                gainDot.addEventListener("mouseenter", () => updatePerformanceHeadline(item.gainAmount, "Ganhos", item.dateLabel));
+                gainDot.addEventListener("focus", () => updatePerformanceHeadline(item.gainAmount, "Ganhos", item.dateLabel));
+                plot.appendChild(gainDot);
+            }
+
+            if (activeSeries.has("cost")) {
+                costPoints.push(`${x},${costY}`);
+
+                const costDot = document.createElement("button");
+                costDot.type = "button";
+                costDot.className = "finance-line-point finance-line-point--cost";
+                costDot.style.left = `${x}%`;
+                costDot.style.top = `${(costY / 200) * 100}%`;
+                costDot.dataset.value = `R$ ${formatCurrencyPtBr(item.costAmount)}`;
+                costDot.setAttribute("aria-label", `Custos de R$ ${formatCurrencyPtBr(item.costAmount)} em ${item.dateLabel}`);
+                costDot.addEventListener("mouseenter", () => updatePerformanceHeadline(item.costAmount, "Custos", item.dateLabel));
+                costDot.addEventListener("focus", () => updatePerformanceHeadline(item.costAmount, "Custos", item.dateLabel));
+                plot.appendChild(costDot);
+            }
+        });
+
+        if (gainPoints.length > 1) {
+            const gainPath = document.createElementNS(svgNS, "polyline");
+            gainPath.classList.add("finance-line-path", "finance-line-path--gain");
+            gainPath.setAttribute("points", gainPoints.join(" "));
+            svg.appendChild(gainPath);
+        }
+
+        if (costPoints.length > 1) {
+            const costPath = document.createElementNS(svgNS, "polyline");
+            costPath.classList.add("finance-line-path", "finance-line-path--cost");
+            costPath.setAttribute("points", costPoints.join(" "));
+            svg.appendChild(costPath);
+        }
+
+        plot.prepend(svg);
+
+        const labels = document.createElement("div");
+        labels.className = "finance-line-labels";
+
+        items.forEach((item, index) => {
+            const label = document.createElement("small");
+            label.textContent = item.label;
+            if (index === items.length - 1) {
+                label.classList.add("is-current");
+            }
+            labels.appendChild(label);
+        });
+
+        performanceChart.append(plot, labels);
+
+        const lastItem = items[items.length - 1];
+
+        if (lastItem) {
+            if (activeSeries.has("gain")) {
+                updatePerformanceHeadline(lastItem.gainAmount, "Ganhos", lastItem.dateLabel);
+            } else if (activeSeries.has("cost")) {
+                updatePerformanceHeadline(lastItem.costAmount, "Custos", lastItem.dateLabel);
+            }
+        }
+    }
+
+    function updateDelinquency(period) {
+        const hasDelinquency = period.delinquency.amount > 0 && period.delinquency.count > 0;
+
+        if (hasDelinquency) {
+            delinquencyValue.classList.remove("finance-delinquency-value--text");
+            delinquencyPill.textContent = "Alerta Crítico";
+            delinquencyPill.style.background = "";
+            delinquencyPill.style.color = "";
+            delinquencyIcon.classList.remove("is-success");
+            delinquencyIcon.innerHTML = '<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M236.8,188.09,149.35,36.07a24,24,0,0,0-42.7,0L19.2,188.09A24,24,0,0,0,40,224H216a24,24,0,0,0,20.8-35.91ZM120,108a8,8,0,0,1,16,0v36a8,8,0,0,1-16,0Zm8,76a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path></svg>';
+            delinquencyValue.innerHTML = `<span class="product-money-currency">R$</span><span>${formatCurrencyPtBr(period.delinquency.amount)}</span>`;
+            delinquencyMessage.textContent = `${period.delinquency.count} pagamentos em atraso`;
+            debtorsLink.hidden = false;
+            return;
+        }
+
+        delinquencyPill.textContent = "Tudo em Dia";
+        delinquencyPill.style.background = "#e8fbf2";
+        delinquencyPill.style.color = "#17996b";
+        delinquencyIcon.classList.add("is-success");
+        delinquencyValue.classList.add("finance-delinquency-value--text");
+        delinquencyIcon.innerHTML = '<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,90.34l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,201.37,218.34,79a8,8,0,0,1,11.32,11.32Z"></path></svg>';
+        delinquencyValue.textContent = "Tudo em dia";
+        delinquencyMessage.textContent = "Nenhuma inadimplência no período selecionado";
+        debtorsLink.hidden = true;
+    }
+
+    function updatePaymentMethods(period) {
+        const pix = period.payments.pix;
+        const credit = period.payments.credit;
+        const debit = period.payments.debit;
+        const other = period.payments.other;
+        const firstStop = pix;
+        const secondStop = pix + credit;
+        const thirdStop = secondStop + debit;
+
+        paymentDonut.style.background = `conic-gradient(var(--pink) 0 ${firstStop}%, var(--pink-dark) ${firstStop}% ${secondStop}%, #ffdbe9 ${secondStop}% ${thirdStop}%, #dedde1 ${thirdStop}% 100%)`;
+        paymentPix.textContent = `${pix}%`;
+        paymentCredit.textContent = `${credit}%`;
+        paymentDebit.textContent = `${debit}%`;
+        paymentOther.textContent = `${other}%`;
+    }
+
+    function updateReceivables(period) {
+        const received = period.receivables.received;
+        const pending = period.receivables.pending;
+        const maxValue = Math.max(received, pending, 1);
+        const receivedPercent = Math.max(18, Math.round((received / maxValue) * 100));
+        const pendingPercent = Math.max(18, Math.round((pending / maxValue) * 100));
+
+        receivedValue.textContent = `R$ ${formatCurrencyPtBr(received)}`;
+        pendingValue.textContent = `R$ ${formatCurrencyPtBr(pending)}`;
+        receivedTrack.style.width = `${Math.min(receivedPercent, 100)}%`;
+        pendingTrack.style.width = `${Math.min(pendingPercent, 100)}%`;
+    }
+
+    function applyPeriod(key) {
+        currentFinancePeriodKey = key;
+        const period = periods[key] || periods["30d"];
+        const performanceSeries = buildFinanceSeries(period.sourceDays, key, period.gainTotal, period.costTotal);
+
+        periodButtons.forEach((button) => {
+            button.classList.toggle("is-active", button.dataset.financePeriod === key);
+        });
+
+        performanceTitle.textContent = period.title;
+        performanceValue.textContent = formatCurrencyPtBr(period.gainTotal);
+        performanceDelta.textContent = period.delta;
+        renderPerformanceChart(performanceSeries);
+        updateDelinquency(period);
+        updatePaymentMethods(period);
+        updateReceivables(period);
+    }
+
+    periodButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            applyPeriod(button.dataset.financePeriod);
+        });
+    });
+
+    seriesToggles.forEach((button) => {
+        button.addEventListener("click", () => {
+            const type = button.dataset.financeSeriesToggle;
+
+            if (activeSeries.has(type) && activeSeries.size === 1) {
+                return;
+            }
+
+            if (activeSeries.has(type)) {
+                activeSeries.delete(type);
+            } else {
+                activeSeries.add(type);
+            }
+
+            syncFinanceLegend();
+            applyPeriod(currentFinancePeriodKey);
+        });
+    });
+
+    syncFinanceLegend();
+    applyPeriod("30d");
+}
+
+function setupFinanceGainModal() {
+    const movementModal = document.getElementById("finance-movement-modal");
+    const gainModal = document.getElementById("finance-gain-modal");
+    const gainTrigger = movementModal?.querySelector('[data-modal-target="finance-gain-modal"]');
+    const gainForm = gainModal?.querySelector("[data-finance-gain-form]");
+    const moneyInput = gainModal?.querySelector("[data-finance-gain-money]");
+    const gainTitle = gainModal?.querySelector("[data-finance-gain-title]");
+    const gainSubmit = gainModal?.querySelector("[data-finance-gain-submit]");
+    const gainAlert = gainModal?.querySelector("[data-finance-gain-alert]");
+    const costModal = document.getElementById("finance-cost-modal");
+    const costTrigger = movementModal?.querySelector('[data-modal-target="finance-cost-modal"]');
+    const costForm = costModal?.querySelector("[data-finance-cost-form]");
+    const costMoneyInput = costModal?.querySelector("[data-finance-cost-money]");
+    const costTitle = costModal?.querySelector("[data-finance-cost-title]");
+    const costSubmit = costModal?.querySelector("[data-finance-cost-submit]");
+    let editingRow = null;
+    let editingType = "";
+
+    if (!movementModal || !gainModal || !gainTrigger || !gainForm || !moneyInput || !costModal || !costTrigger || !costForm || !costMoneyInput) {
+        return;
+    }
+
+    function closeModal(modal) {
+        modal.hidden = true;
+        const anyOpen = document.querySelector(".client-modal:not([hidden])");
+        document.body.classList.toggle("modal-open", Boolean(anyOpen));
+    }
+
+    function openModal(modal) {
+        modal.hidden = false;
+        document.body.classList.add("modal-open");
+    }
+
+    function getRowDateIso(row) {
+        if (row.dataset.financeDateIso) {
+            return row.dataset.financeDateIso;
+        }
+
+        let pointer = row.previousElementSibling;
+
+        while (pointer && !pointer.classList.contains("finance-day-row")) {
+            pointer = pointer.previousElementSibling;
+        }
+
+        const day = Number(pointer?.querySelector("span")?.textContent || 29);
+        const monthLabel = document.querySelector("[data-finance-month-label]")?.textContent?.trim() || "ABRIL 26";
+        const monthMap = {
+            JANEIRO: 0,
+            FEVEREIRO: 1,
+            "MARÇO": 2,
+            ABRIL: 3,
+            MAIO: 4,
+            JUNHO: 5,
+            JULHO: 6,
+            AGOSTO: 7,
+            SETEMBRO: 8,
+            OUTUBRO: 9,
+            NOVEMBRO: 10,
+            DEZEMBRO: 11
+        };
+        const [monthText, yearText] = monthLabel.split(/\s+/);
+        const monthIndex = monthMap[monthText] ?? 3;
+        const year = yearText ? 2000 + Number(yearText) : 2026;
+        const date = new Date(year, monthIndex, day);
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+    }
+
+    function getStatusTextFromRow(row) {
+        return (row.children[5]?.textContent || "").trim().toLowerCase();
+    }
+
+    function deriveStatusFromForm(dateIso, isPaid) {
+        if (isPaid) {
+            return "pago";
+        }
+
+        const targetDate = new Date(dateIso);
+        const today = new Date();
+        targetDate.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0);
+        return targetDate < today ? "atrasado" : "pendente";
+    }
+
+    function setModalMode(modalType, isEditing) {
+        if (modalType === "gain") {
+            if (gainTitle) {
+                gainTitle.textContent = isEditing ? "Editar Ganho" : "Adicionar Ganho";
+            }
+            if (gainSubmit) {
+                gainSubmit.textContent = isEditing ? "Salvar" : "Confirmar";
+            }
+            if (gainAlert) {
+                gainAlert.hidden = isEditing;
+            }
+            return;
+        }
+
+        if (costTitle) {
+            costTitle.textContent = isEditing ? "Editar Custo" : "Adicionar Custo";
+        }
+        if (costSubmit) {
+            costSubmit.textContent = isEditing ? "Salvar" : "Confirmar";
+        }
+    }
+
+    function resetEditingState() {
+        editingRow = null;
+        editingType = "";
+        setModalMode("gain", false);
+        setModalMode("cost", false);
+    }
+
+    function populateEditForm(row) {
+        const isGain = Boolean(row.querySelector(".finance-type-icon--gain"));
+        const description = row.querySelector(".finance-description")?.textContent.trim() || "";
+        const category = (row.children[3]?.textContent || "").trim().toLowerCase();
+        const value = row.children[4]?.textContent.trim() || "R$ 0,00";
+        const dateIso = getRowDateIso(row);
+        const isPaid = getStatusTextFromRow(row) === "pago";
+
+        editingRow = row;
+        editingType = isGain ? "gain" : "cost";
+
+        if (isGain) {
+            setModalMode("gain", true);
+            gainForm.reset();
+            gainForm.querySelector('[name="description"]').value = description;
+            gainForm.querySelector('[name="value"]').value = value;
+            gainForm.querySelector('[name="date"]').value = dateIso;
+            gainForm.querySelector('[name="status_paid"]').checked = isPaid;
+            gainForm.querySelector('[name="notes"]').value = "";
+
+            const radioValue = category === "bonificação" ? "Bonificações" : category === "iniciadas ativas" ? "Iniciadas Ativas" : "Outros";
+            const radio = gainForm.querySelector(`[name="finance-gain-type"][value="${radioValue}"]`);
+            if (radio) {
+                radio.checked = true;
+            }
+
+            openModal(gainModal);
+            return;
+        }
+
+        setModalMode("cost", true);
+        costForm.reset();
+        costForm.querySelector('[name="description"]').value = description;
+        costForm.querySelector('[name="value"]').value = value;
+        costForm.querySelector('[name="date"]').value = dateIso;
+        costForm.querySelector('[name="status_paid"]').checked = isPaid;
+        costForm.querySelector('[name="notes"]').value = "";
+
+        const radioValue = category === "impostos" ? "Impostos" : category === "operacional" ? "Operacional" : "Outros";
+        const radio = costForm.querySelector(`[name="finance-cost-type"][value="${radioValue}"]`);
+        if (radio) {
+            radio.checked = true;
+        }
+
+        openModal(costModal);
+    }
+
+    function applyEditToRow(form, type) {
+        if (!editingRow) {
+            return;
+        }
+
+        const description = form.querySelector('[name="description"]').value.trim();
+        const value = form.querySelector('[name="value"]').value.trim() || "R$ 0,00";
+        const dateIso = form.querySelector('[name="date"]').value;
+        const isPaid = form.querySelector('[name="status_paid"]').checked;
+        const status = deriveStatusFromForm(dateIso, isPaid);
+        const category =
+            type === "gain"
+                ? form.querySelector('[name="finance-gain-type"]:checked')?.value || "Outros"
+                : form.querySelector('[name="finance-cost-type"]:checked')?.value || "Outros";
+
+        const categoryLabel =
+            type === "gain"
+                ? category === "Bonificações"
+                    ? "Bonificação"
+                    : category
+                : category;
+
+        const statusMap = {
+            pago: { label: "Pago", className: "clients-status clients-status--active" },
+            pendente: { label: "Pendente", className: "clients-status sales-status--pending" },
+            atrasado: { label: "Atrasado", className: "clients-status status-overdue" }
+        };
+
+        const descriptionNode = editingRow.querySelector(".finance-description");
+        const categoryCell = editingRow.children[3];
+        const valueCell = editingRow.children[4];
+        const statusNode = editingRow.children[5]?.querySelector("span");
+
+        if (descriptionNode) {
+            descriptionNode.textContent = description;
+        }
+        if (categoryCell) {
+            categoryCell.textContent = categoryLabel;
+        }
+        if (valueCell) {
+            valueCell.textContent = value;
+        }
+        if (statusNode) {
+            statusNode.textContent = statusMap[status].label;
+            statusNode.className = statusMap[status].className;
+        }
+
+        editingRow.dataset.financeDateIso = dateIso;
+        document.dispatchEvent(new CustomEvent("finance:row-updated"));
+    }
+
+    function formatMoneyInput(value) {
+        const digits = String(value || "").replace(/\D/g, "");
+        const normalized = digits ? Number(digits) / 100 : 0;
+
+        return normalized.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    }
+
+    gainTrigger.addEventListener("click", () => {
+        resetEditingState();
+        gainForm.reset();
+        moneyInput.value = "R$ 0,00";
+        gainForm.querySelector('[name="status_paid"]').checked = true;
+        gainForm.querySelector('[name="finance-gain-type"][value="Outros"]').checked = true;
+        closeModal(movementModal);
+        openModal(gainModal);
+    });
+
+    costTrigger.addEventListener("click", () => {
+        resetEditingState();
+        costForm.reset();
+        costMoneyInput.value = "R$ 0,00";
+        costForm.querySelector('[name="status_paid"]').checked = true;
+        costForm.querySelector('[name="finance-cost-type"][value="Outros"]').checked = true;
+        closeModal(movementModal);
+        openModal(costModal);
+    });
+
+    moneyInput.addEventListener("input", () => {
+        moneyInput.value = formatMoneyInput(moneyInput.value);
+    });
+
+    moneyInput.addEventListener("focus", () => {
+        if (!moneyInput.value.trim()) {
+            moneyInput.value = "R$ 0,00";
+        }
+    });
+
+    costMoneyInput.addEventListener("input", () => {
+        costMoneyInput.value = formatMoneyInput(costMoneyInput.value);
+    });
+
+    costMoneyInput.addEventListener("focus", () => {
+        if (!costMoneyInput.value.trim()) {
+            costMoneyInput.value = "R$ 0,00";
+        }
+    });
+
+    gainForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (editingRow && editingType === "gain") {
+            applyEditToRow(gainForm, "gain");
+            resetEditingState();
+        }
+        closeModal(gainModal);
+    });
+
+    costForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (editingRow && editingType === "cost") {
+            applyEditToRow(costForm, "cost");
+            resetEditingState();
+        }
+        closeModal(costModal);
+    });
+
+    document.addEventListener("finance:edit-row", (event) => {
+        const row = event.detail?.row;
+
+        if (!row) {
+            return;
+        }
+
+        populateEditForm(row);
+    });
+}
+
+function setupFinanceTableFilters() {
+    const wrap = document.querySelector("[data-finance-filters-wrap]");
+    const toggle = document.querySelector("[data-finance-filters-toggle]");
+    const sortToggle = document.querySelector("[data-finance-sort-toggle]");
+    const sortIcon = document.querySelector("[data-finance-sort-icon]");
+    const archiveToggle = document.querySelector("[data-finance-archive-toggle]");
+    const panel = document.querySelector("[data-finance-filters-panel]");
+    const searchInput = document.querySelector("[data-finance-search]");
+    const clearButton = document.querySelector("[data-finance-filters-clear]");
+    const checkAllButton = document.querySelector("[data-finance-filters-check-all]");
+    const applyButton = document.querySelector("[data-finance-filters-apply]");
+    const counter = document.querySelector("[data-finance-filters-counter]");
+    const tableBody = document.querySelector(".finance-table tbody");
+    const monthLabel = document.querySelector("[data-finance-month-label]");
+    const viewModal = document.getElementById("finance-view-modal");
+    const summaryGain = document.querySelector("[data-finance-summary-gain]");
+    const summaryCost = document.querySelector("[data-finance-summary-cost]");
+    const summaryBalance = document.querySelector("[data-finance-summary-balance]");
+
+    if (!wrap || !toggle || !panel || !searchInput || !tableBody) {
+        return;
+    }
+
+    const dayRows = Array.from(tableBody.querySelectorAll(".finance-day-row"));
+    const allRows = Array.from(tableBody.querySelectorAll("tr")).filter((row) => !row.classList.contains("finance-day-row"));
+    const typeCheckboxes = Array.from(panel.querySelectorAll("[data-finance-filter-type]"));
+    const categoryCheckboxes = Array.from(panel.querySelectorAll("[data-finance-filter-category]"));
+    const statusCheckboxes = Array.from(panel.querySelectorAll("[data-finance-filter-status]"));
+    const minInput = panel.querySelector("[data-finance-filter-value-min]");
+    const maxInput = panel.querySelector("[data-finance-filter-value-max]");
+    let isAscending = false;
+    let showArchivedOnly = false;
+    const appliedFilters = {
+        types: new Set(typeCheckboxes.filter((input) => input.checked).map((input) => input.dataset.financeFilterType)),
+        categories: new Set(categoryCheckboxes.filter((input) => input.checked).map((input) => input.dataset.financeFilterCategory)),
+        statuses: new Set(statusCheckboxes.filter((input) => input.checked).map((input) => input.dataset.financeFilterStatus)),
+        minValue: "",
+        maxValue: ""
+    };
+
+    function parseCurrency(value) {
+        const normalized = String(value || "")
+            .replace(/[^\d,.-]/g, "")
+            .replace(/\./g, "")
+            .replace(",", ".");
+        return Number(normalized) || 0;
+    }
+
+    function getDayNumber(dayRow) {
+        return Number(dayRow.querySelector("span")?.textContent || 0);
+    }
+
+    function getFinanceMonthContext() {
+        const monthMap = {
+            JANEIRO: 0,
+            FEVEREIRO: 1,
+            "MARÇO": 2,
+            ABRIL: 3,
+            MAIO: 4,
+            JUNHO: 5,
+            JULHO: 6,
+            AGOSTO: 7,
+            SETEMBRO: 8,
+            OUTUBRO: 9,
+            NOVEMBRO: 10,
+            DEZEMBRO: 11
+        };
+        const fallback = { monthIndex: 3, year: 2026 };
+        const raw = monthLabel?.textContent?.trim();
+
+        if (!raw) {
+            return fallback;
+        }
+
+        const [monthText, yearText] = raw.split(/\s+/);
+        const monthIndex = monthMap[monthText] ?? fallback.monthIndex;
+        const year = yearText ? 2000 + Number(yearText) : fallback.year;
+        return { monthIndex, year };
+    }
+
+    function updateSortIcon() {
+        if (!sortToggle || !sortIcon) {
+            return;
+        }
+
+        sortToggle.setAttribute("aria-pressed", String(isAscending));
+        sortIcon.innerHTML = isAscending
+            ? '<path d="M12 19V5"></path><path d="m7 10 5-5 5 5"></path>'
+            : '<path d="M12 5v14"></path><path d="m7 14 5 5 5-5"></path>';
+    }
+
+    function isArchivedRow(row) {
+        const statusText = (row.children[5]?.textContent || "").trim().toLowerCase();
+        return statusText === "arquivado";
+    }
+
+    function getStatusConfig(status) {
+        switch (status) {
+            case "pago":
+                return { label: "Pago", className: "clients-status clients-status--active" };
+            case "pendente":
+                return { label: "Pendente", className: "clients-status sales-status--pending" };
+            case "atrasado":
+                return { label: "Atrasado", className: "clients-status status-overdue" };
+            default:
+                return { label: "Arquivado", className: "clients-status" };
+        }
+    }
+
+    function deriveFinanceCategory(row) {
+        const description = row.querySelector(".finance-description")?.textContent.trim().toLowerCase() || "";
+        const isGain = Boolean(row.querySelector(".finance-type-icon--gain"));
+
+        if (isGain) {
+            if (description.startsWith("venda #")) {
+                return "Vendas";
+            }
+            if (description.includes("bônus") || description.includes("bonus")) {
+                return "Bonificação";
+            }
+            if (description.includes("iniciadas ativas")) {
+                return "Iniciadas Ativas";
+            }
+            return "Outros";
+        }
+
+        if (description.includes("reposição estoque") || description.includes("reposicao estoque") || description.includes("compra de produtos")) {
+            return "Pedido MK";
+        }
+        if (description.includes("imposto") || description.includes("icms")) {
+            return "Impostos";
+        }
+        if (
+            description.includes("embalagens") ||
+            description.includes("gateway") ||
+            description.includes("campanha") ||
+            description.includes("frete") ||
+            description.includes("plataforma")
+        ) {
+            return "Operacional";
+        }
+        return "Outros";
+    }
+
+    function hydrateFinanceCategories() {
+        allRows.forEach((row) => {
+            const categoryCell = row.children[3];
+
+            if (!categoryCell) {
+                return;
+            }
+
+            categoryCell.textContent = deriveFinanceCategory(row);
+        });
+    }
+
+    function formatFinanceDate(date) {
+        const weekday = date.toLocaleDateString("pt-BR", { weekday: "long" });
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = date.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "");
+        const year = String(date.getFullYear());
+        return `${weekday.charAt(0).toUpperCase() + weekday.slice(1)}, ${day} ${month} ${year}`;
+    }
+
+    function populateFinanceViewModal(row) {
+        if (!viewModal) {
+            return;
+        }
+
+        const description = row.querySelector(".finance-description")?.textContent.trim() || "Movimentação";
+        const isGain = Boolean(row.querySelector(".finance-type-icon--gain"));
+        const typeLabel = isGain ? "Ganho" : "Custo";
+        const category = row.children[3]?.textContent.trim() || "Outros";
+        const value = row.children[4]?.textContent.trim() || "R$ 0,00";
+        const status = row.children[5]?.textContent.trim() || "Pendente";
+        const archived = isArchivedRow(row);
+        const rowDate = getRowDate(row);
+        const day = String(rowDate.getDate()).padStart(2, "0");
+        const summary = archived
+            ? "Movimentação arquivada para consulta histórica, sem exibição na lista principal enquanto permanecer nesse estado."
+            : "Movimentação ativa no painel financeiro, disponível para acompanhamento, filtros e atualização de status.";
+
+        const fields = {
+            "[data-finance-view-type]": typeLabel,
+            "[data-finance-view-description]": description,
+            "[data-finance-view-date]": formatFinanceDate(rowDate),
+            "[data-finance-view-value]": value,
+            "[data-finance-view-status]": status,
+            "[data-finance-view-category]": category,
+            "[data-finance-view-archive-state]": archived ? "Arquivado" : "Ativo",
+            "[data-finance-view-description-duplicate]": description,
+            "[data-finance-view-type-label]": typeLabel,
+            "[data-finance-view-category-duplicate]": category,
+            "[data-finance-view-status-duplicate]": status,
+            "[data-finance-view-day]": day,
+            "[data-finance-view-month]": monthLabel?.textContent?.trim() || "ABRIL 26",
+            "[data-finance-view-summary]": summary
+        };
+
+        Object.entries(fields).forEach(([selector, valueText]) => {
+            const element = viewModal.querySelector(selector);
+
+            if (!element) {
+                return;
+            }
+
+            element.textContent = valueText;
+        });
+
+        const typeEyebrow = viewModal.querySelector("[data-finance-view-type]");
+        const statusPill = viewModal.querySelector("[data-finance-view-status]");
+        const archivePill = viewModal.querySelector("[data-finance-view-archive-state]");
+
+        if (typeEyebrow) {
+            typeEyebrow.classList.toggle("finance-description--gain", isGain);
+            typeEyebrow.classList.toggle("finance-description--cost", !isGain);
+        }
+
+        if (statusPill) {
+            statusPill.className = "finance-view-pill";
+            if (status.toLowerCase() === "pago") {
+                statusPill.classList.add("finance-view-pill--success");
+            } else if (status.toLowerCase() === "atrasado") {
+                statusPill.classList.add("finance-view-pill--danger");
+            } else if (status.toLowerCase() === "arquivado") {
+                statusPill.classList.add("finance-view-pill--soft");
+            } else {
+                statusPill.classList.add("finance-view-pill--warning");
+            }
+        }
+
+        if (archivePill) {
+            archivePill.className = "finance-view-pill finance-view-pill--soft";
+        }
+    }
+
+    function closeRowMenu(row) {
+        const menu = row.querySelector("[data-actions-menu]");
+        const toggleButton = row.querySelector("[data-actions-toggle]");
+
+        if (menu) {
+            menu.hidden = true;
+        }
+
+        if (toggleButton) {
+            toggleButton.setAttribute("aria-expanded", "false");
+        }
+    }
+
+    function getRowCategory(row) {
+        return (row.children[3]?.textContent || "").trim().toLowerCase();
+    }
+
+    function buildRowMenu(row, status) {
+        const menu = row.querySelector("[data-actions-menu]");
+
+        if (!menu) {
+            return;
+        }
+
+        const category = getRowCategory(row);
+        const isProtectedCategory = category === "vendas" || category === "pedido mk";
+
+        if (status === "arquivado") {
+            menu.innerHTML = `
+                <button type="button" data-modal-target="finance-view-modal">Visualizar</button>
+                <button type="button" data-finance-row-action="restore">Restaurar</button>
+            `;
+            return;
+        }
+
+        const paymentAction = status === "pago" ? "mark-unpaid" : "mark-paid";
+        const paymentLabel = status === "pago" ? "Marcar como não pago" : "Marcar como pago";
+
+        menu.innerHTML = `
+            <button type="button" data-modal-target="finance-view-modal">Visualizar</button>
+            <button type="button" data-finance-row-action="${paymentAction}">${paymentLabel}</button>
+            ${isProtectedCategory ? "" : '<button type="button" data-finance-row-action="edit">Editar</button>'}
+            ${isProtectedCategory ? "" : '<button type="button" data-finance-row-action="archive">Arquivar</button>'}
+        `;
+    }
+
+    function updateRowStatus(row, status) {
+        const statusCell = row.children[5]?.querySelector("span");
+        const config = getStatusConfig(status);
+
+        if (statusCell) {
+            statusCell.textContent = config.label;
+            statusCell.className = config.className;
+        }
+
+        buildRowMenu(row, status);
+    }
+
+    function getRowDate(row) {
+        const dayRow = row.previousElementSibling?.classList.contains("finance-day-row")
+            ? row.previousElementSibling
+            : row.previousElementSibling?.closest?.(".finance-day-row");
+        let pointer = row.previousElementSibling;
+
+        while (pointer && !pointer.classList.contains("finance-day-row")) {
+            pointer = pointer.previousElementSibling;
+        }
+
+        const headerRow = dayRow || pointer;
+        const day = Number(headerRow?.querySelector("span")?.textContent || 0);
+        const { monthIndex, year } = getFinanceMonthContext();
+        return new Date(year, monthIndex, day || 1);
+    }
+
+    function updateArchivedVisibility() {
+        allRows.forEach((row) => {
+            const hiddenByArchiveState = showArchivedOnly ? !isArchivedRow(row) : isArchivedRow(row);
+            row.dataset.financeArchivedHidden = hiddenByArchiveState ? "true" : "false";
+        });
+    }
+
+    function setupRowActions() {
+        allRows.forEach((row) => {
+            buildRowMenu(row, isArchivedRow(row) ? "arquivado" : (row.children[5]?.textContent || "").trim().toLowerCase());
+
+            const menu = row.querySelector("[data-actions-menu]");
+
+            if (!menu || menu.dataset.financeBound === "true") {
+                return;
+            }
+
+            menu.dataset.financeBound = "true";
+            menu.addEventListener("click", (event) => {
+                const viewTrigger = event.target.closest('[data-modal-target="finance-view-modal"]');
+                const actionButton = event.target.closest("[data-finance-row-action]");
+
+                if (viewTrigger) {
+                    populateFinanceViewModal(row);
+                    if (viewModal) {
+                        viewModal.hidden = false;
+                        document.body.classList.add("modal-open");
+                    }
+                    closeRowMenu(row);
+                    return;
+                }
+
+                if (!actionButton) {
+                    return;
+                }
+
+                const action = actionButton.dataset.financeRowAction;
+
+                if (action === "restore") {
+                    updateRowStatus(row, "pago");
+                } else if (action === "archive") {
+                    updateRowStatus(row, "arquivado");
+                } else if (action === "mark-paid") {
+                    updateRowStatus(row, "pago");
+                } else if (action === "mark-unpaid") {
+                    const rowDate = getRowDate(row);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    rowDate.setHours(0, 0, 0, 0);
+                    updateRowStatus(row, rowDate < today ? "atrasado" : "pendente");
+                } else if (action === "edit") {
+                    closeRowMenu(row);
+                    document.dispatchEvent(new CustomEvent("finance:edit-row", { detail: { row } }));
+                    return;
+                }
+
+                updateArchivedVisibility();
+                closeRowMenu(row);
+                applyFilters();
+            });
+        });
+    }
+
+    function readPendingFilters() {
+        return {
+            types: new Set(typeCheckboxes.filter((input) => input.checked).map((input) => input.dataset.financeFilterType)),
+            categories: new Set(
+                categoryCheckboxes.filter((input) => input.checked).map((input) => input.dataset.financeFilterCategory)
+            ),
+            statuses: new Set(
+                statusCheckboxes.filter((input) => input.checked).map((input) => input.dataset.financeFilterStatus)
+            ),
+            minValue: parseCurrency(minInput?.value || ""),
+            maxValue: parseCurrency(maxInput?.value || "")
+        };
+    }
+
+    function updateCounter() {
+        if (!counter) {
+            return;
+        }
+
+        const total = typeCheckboxes.length + categoryCheckboxes.length + statusCheckboxes.length;
+        const applied =
+            typeCheckboxes.filter((input) => input.checked).length +
+            categoryCheckboxes.filter((input) => input.checked).length +
+            statusCheckboxes.filter((input) => input.checked).length;
+        counter.textContent = `${applied}/${total} filtros aplicados`;
+    }
+
+    function rowMatches(row) {
+        const description = row.querySelector(".finance-description")?.textContent.trim().toLowerCase() || "";
+        const type = row.querySelector(".finance-type-icon--gain") ? "gain" : row.querySelector(".finance-type-icon--cost") ? "cost" : "";
+        const category = (row.children[3]?.textContent || "").trim().toLowerCase();
+        const value = parseCurrency(row.children[4]?.textContent || "");
+        const statusText = (row.children[5]?.textContent || "").trim().toLowerCase();
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        const archived = isArchivedRow(row);
+
+        const matchesSearch = !searchTerm || description.includes(searchTerm);
+        if (showArchivedOnly) {
+            return archived && matchesSearch;
+        }
+        if (archived) {
+            return false;
+        }
+        const matchesType = appliedFilters.types.has(type);
+        const matchesCategory = appliedFilters.categories.has(category);
+        const matchesStatus = appliedFilters.statuses.has(statusText);
+        const matchesMin = !appliedFilters.minValue || value >= appliedFilters.minValue;
+        const matchesMax = !appliedFilters.maxValue || value <= appliedFilters.maxValue;
+
+        return matchesSearch && matchesType && matchesCategory && matchesStatus && matchesMin && matchesMax;
+    }
+
+    function applyFilters() {
+        updateArchivedVisibility();
+
+        allRows.forEach((row) => {
+            const hiddenByArchiveState = row.dataset.financeArchivedHidden === "true";
+            row.hidden = hiddenByArchiveState || !rowMatches(row);
+        });
+
+        dayRows.forEach((dayRow) => {
+            let next = dayRow.nextElementSibling;
+            let hasVisibleRows = false;
+
+            while (next && !next.classList.contains("finance-day-row")) {
+                if (!next.hidden) {
+                    hasVisibleRows = true;
+                }
+                next = next.nextElementSibling;
+            }
+
+            dayRow.hidden = !hasVisibleRows;
+        });
+
+        updateFinanceSummary();
+    }
+
+    function updateFinanceSummary() {
+        if (!summaryGain || !summaryCost || !summaryBalance) {
+            return;
+        }
+
+        let gainTotal = 0;
+        let costTotal = 0;
+
+        allRows.forEach((row) => {
+            if (row.hidden) {
+                return;
+            }
+
+            const value = parseCurrency(row.children[4]?.textContent || "");
+            const isGain = Boolean(row.querySelector(".finance-type-icon--gain"));
+
+            if (isGain) {
+                gainTotal += value;
+            } else {
+                costTotal += value;
+            }
+        });
+
+        summaryGain.textContent = `R$ ${formatCurrencyPtBr(gainTotal)}`;
+        summaryCost.textContent = `R$ ${formatCurrencyPtBr(costTotal)}`;
+        summaryBalance.textContent = `R$ ${formatCurrencyPtBr(gainTotal - costTotal)}`;
+    }
+
+    function sortFinanceRows() {
+        const groups = dayRows.map((dayRow) => {
+            const rows = [dayRow];
+            let next = dayRow.nextElementSibling;
+
+            while (next && !next.classList.contains("finance-day-row")) {
+                rows.push(next);
+                next = next.nextElementSibling;
+            }
+
+            return {
+                day: getDayNumber(dayRow),
+                rows
+            };
+        });
+
+        groups.sort((a, b) => (isAscending ? a.day - b.day : b.day - a.day));
+
+        groups.forEach((group) => {
+            group.rows.forEach((row) => {
+                tableBody.appendChild(row);
+            });
+        });
+    }
+
+    panel.hidden = true;
+    toggle.setAttribute("aria-expanded", "false");
+
+    toggle.addEventListener("click", () => {
+        const shouldOpen = panel.hidden;
+        panel.hidden = !shouldOpen;
+        toggle.setAttribute("aria-expanded", String(shouldOpen));
+        wrap.classList.toggle("is-expanded", shouldOpen);
+    });
+
+    sortToggle?.addEventListener("click", () => {
+        isAscending = !isAscending;
+        updateSortIcon();
+        sortFinanceRows();
+        applyFilters();
+    });
+
+    archiveToggle?.addEventListener("click", () => {
+        showArchivedOnly = !showArchivedOnly;
+        archiveToggle.classList.toggle("is-active", showArchivedOnly);
+        archiveToggle.setAttribute("aria-pressed", String(showArchivedOnly));
+        applyFilters();
+    });
+
+    searchInput.addEventListener("input", () => {
+        applyFilters();
+    });
+
+    [...typeCheckboxes, ...categoryCheckboxes, ...statusCheckboxes].forEach((input) => {
+        input.addEventListener("change", () => {
+            updateCounter();
+        });
+    });
+
+    [minInput, maxInput].forEach((input) => {
+        input?.addEventListener("input", updateCounter);
+        input?.addEventListener("change", updateCounter);
+    });
+
+    clearButton?.addEventListener("click", () => {
+        [...typeCheckboxes, ...categoryCheckboxes, ...statusCheckboxes].forEach((input) => {
+            input.checked = false;
+        });
+
+        if (minInput) {
+            minInput.value = "";
+        }
+
+        if (maxInput) {
+            maxInput.value = "";
+        }
+
+        updateCounter();
+    });
+
+    checkAllButton?.addEventListener("click", () => {
+        [...typeCheckboxes, ...categoryCheckboxes, ...statusCheckboxes].forEach((input) => {
+            input.checked = true;
+        });
+
+        updateCounter();
+    });
+
+    applyButton?.addEventListener("click", () => {
+        const pending = readPendingFilters();
+        appliedFilters.types = pending.types;
+        appliedFilters.categories = pending.categories;
+        appliedFilters.statuses = pending.statuses;
+        appliedFilters.minValue = pending.minValue;
+        appliedFilters.maxValue = pending.maxValue;
+        applyFilters();
+    });
+
+    document.addEventListener("finance:row-updated", applyFilters);
+
+    updateCounter();
+    updateSortIcon();
+    hydrateFinanceCategories();
+    setupRowActions();
+    sortFinanceRows();
+    applyFilters();
 }
 
 function setupFinanceMonthNav() {
@@ -5138,6 +6560,9 @@ window.addEventListener("load", () => {
     setupSalesPage();
     setupProductPerformance();
     setupProductStockModal();
+    setupFinancePage();
+    setupFinanceGainModal();
+    setupFinanceTableFilters();
     setupFinanceMonthNav();
     setupInsightsMore();
     setupDashboardPage();

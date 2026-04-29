@@ -79,7 +79,7 @@
             </div>
         </aside>
 
-        <main class="main-panel finance-main-panel">
+        <main class="main-panel finance-main-panel" data-finance-page>
             <header class="topbar clients-topbar">
                 <div class="clients-topbar-left">
                     <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
@@ -113,10 +113,19 @@
                 </div>
             </header>
 
-            <section class="product-detail-header">
-                <div>
+            <section class="sales-header page-intro-wrap">
+                <div class="page-intro-copy">
                     <div class="products-breadcrumb">Dashboard / Financeiro</div>
                     <h1>Painel Financeiro</h1>
+                    <p>Monitore entradas, saídas, inadimplência e previsões financeiras do período.</p>
+                </div>
+                <div class="product-performance-filters sales-period-filters finance-period-filters">
+                    <button type="button" data-finance-period="7d">7 dias</button>
+                    <button type="button" class="is-active" data-finance-period="30d">30 dias</button>
+                    <button type="button" data-finance-period="90d">90 dias</button>
+                    <button type="button" data-finance-period="6m">6 meses</button>
+                    <button type="button" data-finance-period="1y">1 ano</button>
+                    <button type="button" data-finance-period="all">Todo o período</button>
                 </div>
             </section>
 
@@ -124,119 +133,35 @@
                 <article class="finance-performance-card elevated">
                     <div class="finance-card-head">
                         <div>
-                            <span class="finance-eyebrow">Performance Anual</span>
-                            <strong class="finance-main-money"><span class="product-money-currency">R$</span><span class="sales-value" data-target="42850">42.850,00</span></strong>
-                            <small>+12.5%</small>
+                            <span class="finance-eyebrow" data-finance-performance-title>Performance Mensal</span>
+                            <strong class="finance-main-money"><span class="product-money-currency">R$</span><span data-finance-performance-value>42.850,00</span></strong>
+                            <small data-finance-performance-delta>+12.5%</small>
+                            <p class="finance-performance-info" data-finance-performance-info>Ganhos - 29 Abr 26</p>
                         </div>
                         <div class="finance-legend">
-                            <span><i class="finance-dot finance-dot--pink"></i>Ganhos</span>
-                            <span><i class="finance-dot finance-dot--gray"></i>Custos</span>
+                            <button type="button" class="finance-legend-toggle is-active" data-finance-series-toggle="gain" aria-pressed="true"><i class="finance-dot finance-dot--pink"></i>Ganhos</button>
+                            <button type="button" class="finance-legend-toggle is-active" data-finance-series-toggle="cost" aria-pressed="true"><i class="finance-dot finance-dot--gray"></i>Custos</button>
                         </div>
                     </div>
 
-                    <div class="finance-month-chart" aria-hidden="true">
-                        <div class="finance-month-pair">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar" data-bar-height="66"></span>
-                                <span class="finance-cost-bar" data-bar-height="48"></span>
-                            </div>
-                            <small>Mai</small>
-                        </div>
-                        <div class="finance-month-pair">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar" data-bar-height="84"></span>
-                                <span class="finance-cost-bar" data-bar-height="62"></span>
-                            </div>
-                            <small>Jun</small>
-                        </div>
-                        <div class="finance-month-pair">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar" data-bar-height="72"></span>
-                                <span class="finance-cost-bar" data-bar-height="55"></span>
-                            </div>
-                            <small>Jul</small>
-                        </div>
-                        <div class="finance-month-pair">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar" data-bar-height="108"></span>
-                                <span class="finance-cost-bar" data-bar-height="70"></span>
-                            </div>
-                            <small>Ago</small>
-                        </div>
-                        <div class="finance-month-pair">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar" data-bar-height="96"></span>
-                                <span class="finance-cost-bar" data-bar-height="68"></span>
-                            </div>
-                            <small>Set</small>
-                        </div>
-                        <div class="finance-month-pair">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar" data-bar-height="118"></span>
-                                <span class="finance-cost-bar" data-bar-height="78"></span>
-                            </div>
-                            <small>Out</small>
-                        </div>
-                        <div class="finance-month-pair">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar" data-bar-height="104"></span>
-                                <span class="finance-cost-bar" data-bar-height="74"></span>
-                            </div>
-                            <small>Nov</small>
-                        </div>
-                        <div class="finance-month-pair">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar" data-bar-height="132"></span>
-                                <span class="finance-cost-bar" data-bar-height="82"></span>
-                            </div>
-                            <small>Dez</small>
-                        </div>
-                        <div class="finance-month-pair">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar" data-bar-height="122"></span>
-                                <span class="finance-cost-bar" data-bar-height="88"></span>
-                            </div>
-                            <small>Jan</small>
-                        </div>
-                        <div class="finance-month-pair">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar" data-bar-height="148"></span>
-                                <span class="finance-cost-bar" data-bar-height="94"></span>
-                            </div>
-                            <small>Fev</small>
-                        </div>
-                        <div class="finance-month-pair">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar" data-bar-height="138"></span>
-                                <span class="finance-cost-bar" data-bar-height="92"></span>
-                            </div>
-                            <small>Mar</small>
-                        </div>
-                        <div class="finance-month-pair finance-month-pair--current">
-                            <div class="finance-month-bars">
-                                <span class="finance-sale-bar is-strong" data-bar-height="178"></span>
-                                <span class="finance-cost-bar" data-bar-height="116"></span>
-                            </div>
-                            <small>Abril</small>
-                        </div>
-                    </div>
+                    <div class="finance-month-chart" aria-hidden="true" data-finance-performance-chart></div>
                 </article>
 
                 <article class="finance-delinquency-card elevated">
                     <div class="finance-card-head">
                         <span class="finance-eyebrow">Inadimplência</span>
-                        <span class="finance-critical-pill">Alerta Crítico</span>
+                        <span class="finance-critical-pill" data-finance-delinquency-pill>Alerta Crítico</span>
                     </div>
                     <div class="finance-delinquency-body">
-                        <span class="finance-alert-icon">
-                            <svg viewBox="0 0 256 256"><path d="M236.8,188.09,149.35,36.07a24,24,0,0,0-42.7,0L19.2,188.09A24,24,0,0,0,40,224H216a24,24,0,0,0,20.8-35.91ZM120,108a8,8,0,0,1,16,0v36a8,8,0,0,1-16,0Zm8,76a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path></svg>
+                        <span class="finance-alert-icon" data-finance-delinquency-icon>
+                            <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M236.8,188.09,149.35,36.07a24,24,0,0,0-42.7,0L19.2,188.09A24,24,0,0,0,40,224H216a24,24,0,0,0,20.8-35.91ZM120,108a8,8,0,0,1,16,0v36a8,8,0,0,1-16,0Zm8,76a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path></svg>
                         </span>
                         <div>
-                            <strong><span class="product-money-currency">R$</span><span class="sales-value" data-target="3120">3.120,00</span></strong>
-                            <p>12 pagamentos em atraso</p>
+                            <strong data-finance-delinquency-value><span class="product-money-currency">R$</span><span>3.120,00</span></strong>
+                            <p data-finance-delinquency-message>12 pagamentos em atraso</p>
                         </div>
                     </div>
-                    <a class="finance-debtors-link" href="./vendas.html">Ver Devedores <span>&rarr;</span></a>
+                    <a class="finance-debtors-link" href="./vendas.html" data-finance-debtors-link>Ver Devedores <span>&rarr;</span></a>
                 </article>
             </section>
 
@@ -244,12 +169,12 @@
                 <article class="finance-payment-card elevated">
                     <span class="finance-eyebrow">Métodos de Pagamento</span>
                     <div class="finance-payment-body">
-                        <div class="finance-donut" aria-hidden="true"></div>
+                        <div class="finance-donut" aria-hidden="true" data-finance-payment-donut></div>
                         <div class="finance-payment-list">
-                            <div><span><i class="finance-dot finance-dot--pink"></i>Pix</span><strong>45%</strong></div>
-                            <div><span><i class="finance-dot finance-dot--dark"></i>Cartão Crédito</span><strong>25%</strong></div>
-                            <div><span><i class="finance-dot finance-dot--soft"></i>Cartão Débito</span><strong>20%</strong></div>
-                            <div><span><i class="finance-dot finance-dot--gray"></i>Outros</span><strong>10%</strong></div>
+                            <div><span><i class="finance-dot finance-dot--pink"></i>Pix</span><strong data-finance-payment-pix>45%</strong></div>
+                            <div><span><i class="finance-dot finance-dot--dark"></i>Cartão Crédito</span><strong data-finance-payment-credit>25%</strong></div>
+                            <div><span><i class="finance-dot finance-dot--soft"></i>Cartão Débito</span><strong data-finance-payment-debit>20%</strong></div>
+                            <div><span><i class="finance-dot finance-dot--gray"></i>Outros</span><strong data-finance-payment-other>10%</strong></div>
                         </div>
                     </div>
                 </article>
@@ -258,18 +183,18 @@
                     <span class="finance-eyebrow">Contas a Receber vs Recebidos</span>
                     <div class="finance-receivable-list">
                         <div class="finance-receivable-item">
-                            <div><span>Recebidos</span><strong>R$ 28.400</strong></div>
-                            <div class="finance-track"><span style="width: 72%"></span></div>
+                            <div><span>Recebidos</span><strong data-finance-received-value>R$ 28.400</strong></div>
+                            <div class="finance-track"><span data-finance-received-track style="width: 72%"></span></div>
                         </div>
                         <div class="finance-receivable-item">
-                            <div><span>A Receber (Previsão)</span><strong>R$ 11.200</strong></div>
-                            <div class="finance-track finance-track--soft"><span style="width: 38%"></span></div>
+                            <div><span>A Receber (Previsão)</span><strong data-finance-pending-value>R$ 11.200</strong></div>
+                            <div class="finance-track finance-track--soft"><span data-finance-pending-track style="width: 38%"></span></div>
                         </div>
                     </div>
                 </article>
             </section>
 
-            <section class="products-table-card finance-table-card elevated">
+            <section class="products-table-card finance-table-card elevated" data-finance-filters-wrap>
                 <div class="finance-table-head">
                     <h2>Movimentações Financeiras</h2>
                     <div class="products-toolbar-actions">
@@ -277,18 +202,70 @@
                             <span aria-hidden="true">
                                 <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                             </span>
-                            <input type="search" placeholder="Filtrar descrição...">
+                            <input type="search" placeholder="Filtrar descrição..." data-finance-search>
                         </label>
-                        <button type="button" class="products-toolbar-button" aria-label="Filtrar">
+                        <button type="button" class="products-toolbar-button" aria-label="Filtrar" data-finance-filters-toggle aria-expanded="false">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm3 5h10v2H7zm3 5h4v2h-4z"></path></svg>
                         </button>
-                        <button type="button" class="products-toolbar-button" aria-label="Baixar">
-                            <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M213.66,165.66l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L120,220.69V24a8,8,0,0,1,16,0V220.69l66.34-66.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                        <button type="button" class="products-toolbar-button" aria-label="Ordenar" data-finance-sort-toggle aria-pressed="false">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" data-finance-sort-icon><path d="M12 5v14"></path><path d="m7 14 5 5 5-5"></path></svg>
                         </button>
                         <button type="button" class="clients-primary-button finance-add-button" data-modal-target="finance-movement-modal">
                             <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M136,56v64h64a8,8,0,0,1,0,16H136v64a8,8,0,0,1-16,0V136H56a8,8,0,0,1,0-16h64V56a8,8,0,0,1,16,0Z"></path></svg>
                             <span>Nova Movimentação</span>
                         </button>
+                        <button type="button" class="products-toolbar-button finance-archive-button" aria-label="Arquivados" aria-pressed="false" data-finance-archive-toggle>
+                            <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M224,48H32A16,16,0,0,0,16,64V96A16,16,0,0,0,32,112v96a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V112a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48ZM80,144h96a8,8,0,0,1,0,16H80a8,8,0,0,1,0-16Z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="clients-filters-panel finance-filters-panel" hidden data-finance-filters-panel>
+                    <div class="clients-filters-grid products-filters-grid finance-filters-grid">
+                        <div class="clients-filter-field">
+                            <span>Por Status</span>
+                            <div class="clients-checkbox-group finance-filters-checkbox-group">
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-status="pago" checked><span>Pago</span></label>
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-status="pendente" checked><span>Pendente</span></label>
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-status="atrasado" checked><span>Atrasado</span></label>
+                            </div>
+                        </div>
+
+                        <div class="clients-filter-field">
+                            <span>Por Tipo</span>
+                            <div class="clients-checkbox-group finance-filters-checkbox-group">
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-type="gain" checked><span>Ganho</span></label>
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-type="cost" checked><span>Custo</span></label>
+                            </div>
+                        </div>
+
+                        <div class="clients-filter-field finance-category-field">
+                            <span>Por Categoria</span>
+                            <div class="clients-checkbox-group finance-filters-checkbox-group">
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-category="vendas" checked><span>Vendas</span></label>
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-category="bonificação" checked><span>Bonificação</span></label>
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-category="iniciadas ativas" checked><span>Iniciadas Ativas</span></label>
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-category="pedido mk" checked><span>Pedido MK</span></label>
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-category="operacional" checked><span>Operacional</span></label>
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-category="impostos" checked><span>Impostos</span></label>
+                                <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-category="outros" checked><span>Outros</span></label>
+                            </div>
+                        </div>
+
+                        <label class="clients-filter-field clients-filter-field--range">
+                            <span>Por Valor (R$)</span>
+                            <div class="clients-filter-range">
+                                <input type="number" min="0" step="0.01" placeholder="Mínimo" data-finance-filter-value-min>
+                                <input type="number" min="0" step="0.01" placeholder="Máximo" data-finance-filter-value-max>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="clients-filters-actions">
+                        <span class="clients-filters-counter" data-finance-filters-counter>0/12 filtros aplicados</span>
+                        <button type="button" class="products-toolbar-button" data-finance-filters-clear>Limpar Todos</button>
+                        <button type="button" class="products-toolbar-button" data-finance-filters-check-all>Marcar Todos</button>
+                        <button type="button" class="clients-primary-button" data-finance-filters-apply>Aplicar Filtros</button>
                     </div>
                 </div>
 
@@ -305,7 +282,7 @@
                                 <th>Dia</th>
                                 <th>Tipo</th>
                                 <th>Descrição</th>
-                                <th>Método</th>
+                                <th>Categoria</th>
                                 <th>Valor</th>
                                 <th>Status</th>
                                 <th>Ações</th>
@@ -731,6 +708,48 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr class="finance-day-row">
+                                <td colspan="7"><span>18</span><strong>Sábado</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="finance-row-day"></td>
+                                <td><span class="finance-type-icon finance-type-icon--gain">+</span></td>
+                                <td><strong class="finance-description finance-description--gain">Bônus de Indicação</strong></td>
+                                <td>Pix</td>
+                                <td>R$ 95,00</td>
+                                <td><span class="clients-status">Arquivado</span></td>
+                                <td>
+                                    <div class="finance-actions-menu">
+                                        <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
+                                        <div class="finance-row-menu" hidden data-actions-menu>
+                                            <button type="button" data-modal-target="finance-view-modal">Visualizar</button>
+                                            <button type="button">Restaurar</button>
+                                            <button type="button">Editar</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="finance-day-row">
+                                <td colspan="7"><span>16</span><strong>Quinta-Feira</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="finance-row-day"></td>
+                                <td><span class="finance-type-icon finance-type-icon--cost">-</span></td>
+                                <td><strong class="finance-description finance-description--cost">Ajuste de Caixa</strong></td>
+                                <td>Outros</td>
+                                <td>R$ 42,00</td>
+                                <td><span class="clients-status">Arquivado</span></td>
+                                <td>
+                                    <div class="finance-actions-menu">
+                                        <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
+                                        <div class="finance-row-menu" hidden data-actions-menu>
+                                            <button type="button" data-modal-target="finance-view-modal">Visualizar</button>
+                                            <button type="button">Restaurar</button>
+                                            <button type="button">Editar</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -738,15 +757,15 @@
                 <div class="finance-month-summary">
                     <div class="finance-summary-item finance-summary-item--gain">
                         <span>Total de Entradas</span>
-                        <strong>R$ 8.278,35</strong>
+                        <strong data-finance-summary-gain>R$ 8.278,35</strong>
                     </div>
                     <div class="finance-summary-item finance-summary-item--cost">
                         <span>Total de Saídas</span>
-                        <strong>R$ 3.683,40</strong>
+                        <strong data-finance-summary-cost>R$ 3.683,40</strong>
                     </div>
                     <div class="finance-summary-item finance-summary-item--balance">
                         <span>Saldo do Mês</span>
-                        <strong>R$ 4.594,95</strong>
+                        <strong data-finance-summary-balance>R$ 4.594,95</strong>
                     </div>
                 </div>
             </section>
@@ -761,7 +780,7 @@
                     <p class="client-modal-subtitle">Escolha o tipo de lançamento financeiro que deseja registrar.</p>
 
                     <div class="finance-movement-options">
-                        <button class="finance-movement-option finance-movement-option--gain" type="button">
+                        <button class="finance-movement-option finance-movement-option--gain" type="button" data-modal-target="finance-gain-modal">
                             <span class="finance-movement-icon">
                                 <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,64V192a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V64A16,16,0,0,1,56,48H200A16,16,0,0,1,216,64ZM96,128h24v24a8,8,0,0,0,16,0V128h24a8,8,0,0,0,0-16H136V88a8,8,0,0,0-16,0v24H96a8,8,0,0,0,0,16Z"></path></svg>
                             </span>
@@ -769,7 +788,7 @@
                             <small>Registre vendas, recebimentos e entradas financeiras.</small>
                         </button>
 
-                        <button class="finance-movement-option finance-movement-option--cost" type="button">
+                        <button class="finance-movement-option finance-movement-option--cost" type="button" data-modal-target="finance-cost-modal">
                             <span class="finance-movement-icon">
                                 <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,64V192a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V64A16,16,0,0,1,56,48H200A16,16,0,0,1,216,64ZM96,136h64a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16Z"></path></svg>
                             </span>
@@ -789,32 +808,163 @@
                     <h2>Detalhes da Movimentação</h2>
                     <p class="client-modal-subtitle">Resumo do lançamento financeiro selecionado.</p>
 
+                    <section class="finance-view-hero">
+                        <div class="finance-view-hero-copy">
+                            <span class="finance-view-eyebrow" data-finance-view-type>Ganho</span>
+                            <strong data-finance-view-description>Venda #8821</strong>
+                            <p data-finance-view-date>Quinta-feira, 30 Abr 2026</p>
+                        </div>
+                        <div class="finance-view-hero-value">
+                            <span>Valor do lançamento</span>
+                            <strong data-finance-view-value>R$ 189,90</strong>
+                        </div>
+                    </section>
+
                     <div class="finance-view-grid">
                         <div>
                             <span>Descrição</span>
-                            <strong>Venda #8821</strong>
+                            <strong data-finance-view-description-duplicate>Venda #8821</strong>
                         </div>
                         <div>
                             <span>Tipo</span>
-                            <strong class="finance-description--gain">Entrada</strong>
+                            <strong data-finance-view-type-label>Ganho</strong>
                         </div>
                         <div>
-                            <span>Data</span>
-                            <strong>12 Out, 2023</strong>
+                            <span>Categoria</span>
+                            <strong data-finance-view-category-duplicate>Vendas</strong>
                         </div>
                         <div>
-                            <span>Método</span>
-                            <strong>Pix</strong>
+                            <span>Status Atual</span>
+                            <strong data-finance-view-status-duplicate>Pago</strong>
                         </div>
                         <div>
-                            <span>Valor</span>
-                            <strong>R$ 189,90</strong>
+                            <span>Dia do Mês</span>
+                            <strong data-finance-view-day>30</strong>
                         </div>
                         <div>
-                            <span>Status</span>
-                            <strong>Pago</strong>
+                            <span>Mês de Referência</span>
+                            <strong data-finance-view-month>ABRIL 26</strong>
+                        </div>
+                        <div class="finance-view-field finance-view-field--full">
+                            <span>Resumo</span>
+                            <p data-finance-view-summary>Movimentação financeira registrada no período atual, pronta para acompanhamento no painel.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="client-modal finance-gain-modal" id="finance-gain-modal" hidden>
+                <div class="client-modal-backdrop" data-modal-close></div>
+                <div class="client-modal-dialog elevated finance-gain-dialog">
+                    <button class="client-modal-close" type="button" aria-label="Fechar novo ganho" data-modal-close>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+                    </button>
+                    <h2 data-finance-gain-title>Adicionar Ganho</h2>
+
+                    <div class="finance-gain-alert" data-finance-gain-alert>
+                        <strong>Atenção</strong>
+                        <p>Os ganhos referente às vendas são lançados automaticamente. Você não precisa informá-los aqui.</p>
+                    </div>
+
+                    <form class="finance-gain-form" data-finance-gain-form>
+                        <fieldset class="finance-gain-type-group">
+                            <legend>Tipo de ganho</legend>
+                            <div class="finance-gain-type-options">
+                                <label><input type="radio" name="finance-gain-type" value="Bonificações" required> <span>Bonificações</span></label>
+                                <label><input type="radio" name="finance-gain-type" value="Iniciadas Ativas"> <span>Iniciadas Ativas</span></label>
+                                <label><input type="radio" name="finance-gain-type" value="Outros" checked> <span>Outros</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="finance-gain-grid">
+                            <label class="finance-gain-field finance-gain-field--full">
+                                <span>Descrição</span>
+                                <input type="text" name="description" placeholder="Descreva a origem do ganho" required>
+                            </label>
+
+                            <label class="finance-gain-field">
+                                <span>Valor</span>
+                                <input type="text" name="value" value="R$ 0,00" inputmode="numeric" data-finance-gain-money required>
+                            </label>
+
+                            <label class="finance-gain-field">
+                                <span>Data</span>
+                                <input type="date" name="date" value="2026-04-29" required>
+                            </label>
+
+                            <fieldset class="finance-gain-field finance-gain-field--status">
+                                <div class="finance-gain-status-inline">
+                                    <span>Recebido?</span>
+                                    <label><input type="checkbox" name="status_paid" value="1" checked> <span>Sim</span></label>
+                                </div>
+                            </fieldset>
+
+                            <label class="finance-gain-field finance-gain-field--full">
+                                <span>Observações</span>
+                                <textarea name="notes" rows="3" placeholder="Adicione observações importantes sobre este ganho"></textarea>
+                            </label>
+                        </div>
+
+                        <div class="finance-gain-actions">
+                            <button type="submit" class="clients-primary-button" data-finance-gain-submit>Confirmar</button>
+                            <button type="button" class="products-toolbar-button" data-modal-close>Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="client-modal finance-gain-modal" id="finance-cost-modal" hidden>
+                <div class="client-modal-backdrop" data-modal-close></div>
+                <div class="client-modal-dialog elevated finance-gain-dialog">
+                    <button class="client-modal-close" type="button" aria-label="Fechar novo custo" data-modal-close>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+                    </button>
+                    <h2 data-finance-cost-title>Adicionar Custo</h2>
+
+                    <form class="finance-gain-form" data-finance-cost-form>
+                        <fieldset class="finance-gain-type-group">
+                            <legend>Tipo de custo</legend>
+                            <div class="finance-gain-type-options">
+                                <label><input type="radio" name="finance-cost-type" value="Operacional" required> <span>Operacional</span></label>
+                                <label><input type="radio" name="finance-cost-type" value="Impostos"> <span>Impostos</span></label>
+                                <label><input type="radio" name="finance-cost-type" value="Outros" checked> <span>Outros</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="finance-gain-grid">
+                            <label class="finance-gain-field finance-gain-field--full">
+                                <span>Descrição</span>
+                                <input type="text" name="description" placeholder="Descreva a origem do custo" required>
+                            </label>
+
+                            <label class="finance-gain-field">
+                                <span>Valor</span>
+                                <input type="text" name="value" value="R$ 0,00" inputmode="numeric" data-finance-cost-money required>
+                            </label>
+
+                            <label class="finance-gain-field">
+                                <span>Data</span>
+                                <input type="date" name="date" value="2026-04-29" required>
+                            </label>
+
+                            <fieldset class="finance-gain-field finance-gain-field--status">
+                                <div class="finance-gain-status-inline">
+                                    <span>Pago?</span>
+                                    <label><input type="checkbox" name="status_paid" value="1" checked> <span>Sim</span></label>
+                                </div>
+                            </fieldset>
+
+                            <label class="finance-gain-field finance-gain-field--full">
+                                <span>Observações</span>
+                                <textarea name="notes" rows="3" placeholder="Adicione observações importantes sobre este custo"></textarea>
+                            </label>
+                        </div>
+
+                        <div class="finance-gain-actions">
+                            <button type="submit" class="clients-primary-button" data-finance-cost-submit>Confirmar</button>
+                            <button type="button" class="products-toolbar-button" data-modal-close>Cancelar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

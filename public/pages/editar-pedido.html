@@ -214,6 +214,9 @@
                                     </tr>
                                 </thead>
                                 <tbody data-new-sale-products-history>
+                                    <tr class="new-sale-products-empty-row" data-new-sale-products-empty-row hidden>
+                                        <td colspan="6">Nenhum produto adicionado...</td>
+                                    </tr>
                                     <tr>
                                         <td><strong>Batom Matte Velvet - Rose Pink</strong></td>
                                         <td>PBX-992381</td>
@@ -306,37 +309,37 @@
                                     <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Frete">
                                         <label class="new-client-field">
                                             <span>Frete</span>
-                                            <input type="text" value="8,00" data-adjustment-value>
+                                            <input type="text" value="18,00" data-adjustment-value>
                                         </label>
                                         <label class="new-client-field">
                                             <span>Descrição</span>
-                                            <input type="text" value="Correios" data-adjustment-description>
+                                            <input type="text" value="Entrega local" placeholder="Descreva o valor cobrado" data-adjustment-description>
                                         </label>
                                     </div>
                                     <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Seguro">
                                         <label class="new-client-field">
                                             <span>Seguro</span>
-                                            <input type="text" value="0,00" data-adjustment-value>
+                                            <input type="text" value="8,00" data-adjustment-value>
                                         </label>
                                         <label class="new-client-field">
                                             <span>Descrição</span>
-                                            <input type="text" placeholder="" data-adjustment-description>
+                                            <input type="text" value="Proteção de transporte" placeholder="Descreva o valor cobrado" data-adjustment-description>
                                         </label>
                                     </div>
                                     <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Imposto">
                                         <label class="new-client-field">
                                             <span>Imposto</span>
-                                            <input type="text" value="2,53" data-adjustment-value>
+                                            <input type="text" value="10,00" data-adjustment-value>
                                         </label>
                                         <label class="new-client-field">
                                             <span>Descrição</span>
-                                            <input type="text" value="ICMS" data-adjustment-description>
+                                            <input type="text" value="Tributação da operação" placeholder="Descreva o valor cobrado" data-adjustment-description>
                                         </label>
                                     </div>
                                     <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Outros">
                                         <label class="new-client-field">
                                             <span>Outros</span>
-                                            <input type="text" value="3,00" data-adjustment-value>
+                                            <input type="text" value="0,00" data-adjustment-value>
                                         </label>
                                         <label class="new-client-field">
                                             <span>Descrição</span>
@@ -358,7 +361,7 @@
                                         </label>
                                         <label class="new-client-field">
                                             <span>Descrição</span>
-                                            <input type="text" value="Campanha da semana" data-adjustment-description>
+                                            <input type="text" value="Campanha da semana" placeholder="Descreva o valor descontado" data-adjustment-description>
                                         </label>
                                     </div>
                                     <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="discount" data-adjustment-label="Outros">
@@ -491,52 +494,52 @@
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Subtotal dos produtos</strong>
-                                        <span data-new-sale-summary-count>4 itens selecionados</span>
+                                        <span data-new-sale-summary-count>0 itens selecionados</span>
                                     </div>
-                                    <strong data-new-sale-summary-subtotal>R$ 827,80</strong>
+                                    <strong data-new-sale-summary-subtotal>R$ 0,00</strong>
                                 </div>
                             </div>
                             <div class="mk-builder-summary-item">
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Frete</strong>
-                                        <span data-new-sale-summary-freight-description>Entrega local</span>
+                                        <span data-new-sale-summary-freight-description></span>
                                     </div>
-                                    <strong data-new-sale-summary-freight>R$ 18,00</strong>
+                                    <strong data-new-sale-summary-freight>R$ 0,00</strong>
                                 </div>
                             </div>
                             <div class="mk-builder-summary-item">
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Seguro</strong>
-                                        <span data-new-sale-summary-insurance-description>Proteção de transporte</span>
+                                        <span data-new-sale-summary-insurance-description></span>
                                     </div>
-                                    <strong data-new-sale-summary-insurance>R$ 8,00</strong>
+                                    <strong data-new-sale-summary-insurance>R$ 0,00</strong>
                                 </div>
                             </div>
                             <div class="mk-builder-summary-item">
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Imposto</strong>
-                                        <span data-new-sale-summary-tax-description>Tributação da operação</span>
+                                        <span data-new-sale-summary-tax-description></span>
                                     </div>
-                                    <strong data-new-sale-summary-tax>R$ 10,00</strong>
+                                    <strong data-new-sale-summary-tax>R$ 0,00</strong>
                                 </div>
                             </div>
                             <div class="mk-builder-summary-item">
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Desconto aplicado</strong>
-                                        <span data-new-sale-summary-discount-description>Campanha da semana</span>
+                                        <span data-new-sale-summary-discount-description></span>
                                     </div>
-                                    <strong data-new-sale-summary-discount>- R$ 27,80</strong>
+                                    <strong data-new-sale-summary-discount>- R$ 0,00</strong>
                                 </div>
                             </div>
                             <div class="mk-builder-summary-item">
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Outros</strong>
-                                        <span data-new-sale-summary-other-description>Taxa de separação</span>
+                                        <span data-new-sale-summary-other-description></span>
                                     </div>
                                     <strong data-new-sale-summary-other>R$ 0,00</strong>
                                 </div>
@@ -546,15 +549,15 @@
                         <div class="mk-builder-summary-totals">
                             <div>
                                 <span>Total da venda</span>
-                                <strong data-new-sale-summary-total>R$ 818,00</strong>
+                                <strong data-new-sale-summary-total>R$ 0,00</strong>
                             </div>
                             <div>
                                 <span>Recebido hoje</span>
-                                <strong data-new-sale-summary-received>R$ 409,00</strong>
+                                <strong data-new-sale-summary-received>R$ 0,00</strong>
                             </div>
                             <div>
                                 <span>Pendente</span>
-                                <strong data-new-sale-summary-pending>R$ 409,00</strong>
+                                <strong data-new-sale-summary-pending>R$ 0,00</strong>
                             </div>
                         </div>
                     </article>

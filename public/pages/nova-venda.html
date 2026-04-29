@@ -167,7 +167,7 @@
                             <div>
                                 <span class="finance-eyebrow">Produtos do Pedido</span>
                             </div>
-                            <span data-new-sale-products-count>3 itens adicionados</span>
+                            <span data-new-sale-products-count>0 itens adicionados</span>
                         </div>
                         <div class="manual-product-card">
                             <div class="manual-product-form">
@@ -214,41 +214,8 @@
                                     </tr>
                                 </thead>
                                 <tbody data-new-sale-products-history>
-                                    <tr>
-                                        <td><strong>Batom Matte Velvet - Rose Pink</strong></td>
-                                        <td>PBX-992381</td>
-                                        <td>R$ 89,90</td>
-                                        <td><span class="order-qty-pill">2</span></td>
-                                        <td class="products-total">R$ 179,80</td>
-                                        <td>
-                                            <button type="button" class="mk-order-row-delete" data-new-sale-delete="Batom Matte Velvet - Rose Pink" aria-label="Excluir Batom Matte Velvet - Rose Pink">
-                                                <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Sérum Facial Glow Booster 30ml</strong></td>
-                                        <td>PBX-442110</td>
-                                        <td>R$ 159,00</td>
-                                        <td><span class="order-qty-pill">1</span></td>
-                                        <td class="products-total">R$ 159,00</td>
-                                        <td>
-                                            <button type="button" class="mk-order-row-delete" data-new-sale-delete="Sérum Facial Glow Booster 30ml" aria-label="Excluir Sérum Facial Glow Booster 30ml">
-                                                <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Perfume Rose Exclusive 50ml</strong></td>
-                                        <td>PB-ROS-050</td>
-                                        <td>R$ 489,00</td>
-                                        <td><span class="order-qty-pill">1</span></td>
-                                        <td class="products-total">R$ 489,00</td>
-                                        <td>
-                                            <button type="button" class="mk-order-row-delete" data-new-sale-delete="Perfume Rose Exclusive 50ml" aria-label="Excluir Perfume Rose Exclusive 50ml">
-                                                <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
-                                            </button>
-                                        </td>
+                                    <tr class="new-sale-products-empty-row" data-new-sale-products-empty-row>
+                                        <td colspan="6">Nenhum produto adicionado...</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -306,11 +273,11 @@
                                     <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Frete">
                                         <label class="new-client-field">
                                             <span>Frete</span>
-                                            <input type="text" value="8,00" data-adjustment-value>
+                                            <input type="text" value="0,00" data-adjustment-value>
                                         </label>
                                         <label class="new-client-field">
                                             <span>Descrição</span>
-                                            <input type="text" value="Correios" data-adjustment-description>
+                                            <input type="text" placeholder="Descreva o valor cobrado" data-adjustment-description>
                                         </label>
                                     </div>
                                     <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Seguro">
@@ -320,23 +287,23 @@
                                         </label>
                                         <label class="new-client-field">
                                             <span>Descrição</span>
-                                            <input type="text" placeholder="" data-adjustment-description>
+                                            <input type="text" placeholder="Descreva o valor cobrado" data-adjustment-description>
                                         </label>
                                     </div>
                                     <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Imposto">
                                         <label class="new-client-field">
                                             <span>Imposto</span>
-                                            <input type="text" value="2,53" data-adjustment-value>
+                                            <input type="text" value="0,00" data-adjustment-value>
                                         </label>
                                         <label class="new-client-field">
                                             <span>Descrição</span>
-                                            <input type="text" value="ICMS" data-adjustment-description>
+                                            <input type="text" placeholder="Descreva o valor cobrado" data-adjustment-description>
                                         </label>
                                     </div>
                                     <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Outros">
                                         <label class="new-client-field">
                                             <span>Outros</span>
-                                            <input type="text" value="3,00" data-adjustment-value>
+                                            <input type="text" value="0,00" data-adjustment-value>
                                         </label>
                                         <label class="new-client-field">
                                             <span>Descrição</span>
@@ -354,11 +321,11 @@
                                     <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="discount" data-adjustment-label="Desconto">
                                         <label class="new-client-field">
                                             <span>Desconto</span>
-                                            <input type="text" value="27,80" data-adjustment-value>
+                                            <input type="text" value="0,00" data-adjustment-value>
                                         </label>
                                         <label class="new-client-field">
                                             <span>Descrição</span>
-                                            <input type="text" value="Campanha da semana" data-adjustment-description>
+                                            <input type="text" placeholder="Descreva o valor descontado" data-adjustment-description>
                                         </label>
                                     </div>
                                     <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="discount" data-adjustment-label="Outros">
@@ -491,52 +458,52 @@
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Subtotal dos produtos</strong>
-                                        <span data-new-sale-summary-count>4 itens selecionados</span>
+                                        <span data-new-sale-summary-count>0 itens selecionados</span>
                                     </div>
-                                    <strong data-new-sale-summary-subtotal>R$ 827,80</strong>
+                                    <strong data-new-sale-summary-subtotal>R$ 0,00</strong>
                                 </div>
                             </div>
                             <div class="mk-builder-summary-item">
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Frete</strong>
-                                        <span data-new-sale-summary-freight-description>Entrega local</span>
+                                        <span data-new-sale-summary-freight-description></span>
                                     </div>
-                                    <strong data-new-sale-summary-freight>R$ 18,00</strong>
+                                    <strong data-new-sale-summary-freight>R$ 0,00</strong>
                                 </div>
                             </div>
                             <div class="mk-builder-summary-item">
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Seguro</strong>
-                                        <span data-new-sale-summary-insurance-description>Proteção de transporte</span>
+                                        <span data-new-sale-summary-insurance-description></span>
                                     </div>
-                                    <strong data-new-sale-summary-insurance>R$ 8,00</strong>
+                                    <strong data-new-sale-summary-insurance>R$ 0,00</strong>
                                 </div>
                             </div>
                             <div class="mk-builder-summary-item">
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Imposto</strong>
-                                        <span data-new-sale-summary-tax-description>Tributação da operação</span>
+                                        <span data-new-sale-summary-tax-description></span>
                                     </div>
-                                    <strong data-new-sale-summary-tax>R$ 10,00</strong>
+                                    <strong data-new-sale-summary-tax>R$ 0,00</strong>
                                 </div>
                             </div>
                             <div class="mk-builder-summary-item">
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Desconto aplicado</strong>
-                                        <span data-new-sale-summary-discount-description>Campanha da semana</span>
+                                        <span data-new-sale-summary-discount-description></span>
                                     </div>
-                                    <strong data-new-sale-summary-discount>- R$ 27,80</strong>
+                                    <strong data-new-sale-summary-discount>- R$ 0,00</strong>
                                 </div>
                             </div>
                             <div class="mk-builder-summary-item">
                                 <div class="mk-builder-summary-item-top">
                                     <div>
                                         <strong>Outros</strong>
-                                        <span data-new-sale-summary-other-description>Taxa de separação</span>
+                                        <span data-new-sale-summary-other-description></span>
                                     </div>
                                     <strong data-new-sale-summary-other>R$ 0,00</strong>
                                 </div>
@@ -546,15 +513,15 @@
                         <div class="mk-builder-summary-totals">
                             <div>
                                 <span>Total da venda</span>
-                                <strong data-new-sale-summary-total>R$ 818,00</strong>
+                                <strong data-new-sale-summary-total>R$ 0,00</strong>
                             </div>
                             <div>
                                 <span>Recebido hoje</span>
-                                <strong data-new-sale-summary-received>R$ 409,00</strong>
+                                <strong data-new-sale-summary-received>R$ 0,00</strong>
                             </div>
                             <div>
                                 <span>Pendente</span>
-                                <strong data-new-sale-summary-pending>R$ 409,00</strong>
+                                <strong data-new-sale-summary-pending>R$ 0,00</strong>
                             </div>
                         </div>
                     </article>
