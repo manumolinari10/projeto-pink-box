@@ -85,7 +85,7 @@
             </div>
         </aside>
 
-        <main class="main-panel sales-main-panel">
+        <main class="main-panel sales-main-panel" data-sales-page>
             <header class="topbar clients-topbar">
                 <div class="clients-topbar-left">
                     <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
@@ -126,10 +126,11 @@
                     <p>Acompanhe pedidos, faturamento e desempenho comercial em tempo real.</p>
                 </div>
                 <div class="product-performance-filters sales-period-filters">
-                    <button type="button">7 dias</button>
-                    <button type="button" class="is-active">30 dias</button>
-                    <button type="button">90 dias</button>
-                    <button type="button">1 ano</button>
+                    <button type="button" data-sales-period="7d">7 dias</button>
+                    <button type="button" class="is-active" data-sales-period="30d">30 dias</button>
+                    <button type="button" data-sales-period="90d">90 dias</button>
+                    <button type="button" data-sales-period="1y">1 ano</button>
+                    <button type="button" data-sales-period="all">Todo o período</button>
                 </div>
             </section>
 
@@ -138,52 +139,26 @@
                     <h2>Lançar Nova Venda</h2>
                     <p>Registre rapidamente um novo pedido para acompanhar parcelas, status de pagamento e histórico completo da venda.</p>
                 </div>
-                <button class="clients-primary-button" type="button">
+                <a class="clients-primary-button" href="./nova-venda.html">
                     <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
                     <span>Lançar Nova Venda</span>
-                </button>
+                </a>
             </section>
 
             <section class="sales-overview-grid">
                 <article class="sales-chart-card elevated">
                     <div class="sales-chart-head">
-                        <h2>Desempenho Semanal</h2>
+                        <div class="sales-chart-copy">
+                            <h2>Desempenho Semanal</h2>
+                            <p class="sales-chart-info" data-sales-chart-info>0 vendas - 00 Abr 26</p>
+                        </div>
                         <span class="sales-chart-legend">
                             <span></span>
                             <strong>Vendas Realizadas</strong>
                         </span>
                     </div>
 
-                    <div class="sales-chart-bars" aria-hidden="true">
-                        <div class="sales-chart-group">
-                            <span class="sales-chart-bar" data-bar-height="82"></span>
-                            <small>Seg</small>
-                        </div>
-                        <div class="sales-chart-group">
-                            <span class="sales-chart-bar" data-bar-height="104"></span>
-                            <small>Ter</small>
-                        </div>
-                        <div class="sales-chart-group">
-                            <span class="sales-chart-bar is-strong" data-bar-height="126"></span>
-                            <small>Qua</small>
-                        </div>
-                        <div class="sales-chart-group">
-                            <span class="sales-chart-bar" data-bar-height="92"></span>
-                            <small>Qui</small>
-                        </div>
-                        <div class="sales-chart-group">
-                            <span class="sales-chart-bar" data-bar-height="118"></span>
-                            <small>Sex</small>
-                        </div>
-                        <div class="sales-chart-group">
-                            <span class="sales-chart-bar" data-bar-height="76"></span>
-                            <small>Sáb</small>
-                        </div>
-                        <div class="sales-chart-group">
-                            <span class="sales-chart-bar" data-bar-height="88"></span>
-                            <small>Dom</small>
-                        </div>
-                    </div>
+                    <div class="sales-chart-bars" aria-hidden="true" data-sales-chart></div>
                 </article>
 
                 <div class="sales-summary-column">
@@ -192,7 +167,7 @@
                             <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
                         </div>
                         <p>Total de Vendas</p>
-                        <strong data-target="452">452</strong>
+                        <strong data-sales-total>452</strong>
                     </article>
 
                     <article class="sales-summary-card elevated">
@@ -200,26 +175,26 @@
                             <svg viewBox="0 0 256 256"><path d="M232,56V200a16,16,0,0,1-16,16H40A16,16,0,0,1,24,200V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM72,128a8,8,0,0,0,8,8h32v32a8,8,0,0,0,16,0V136h32a8,8,0,0,0,0-16H128V88a8,8,0,0,0-16,0v32H80A8,8,0,0,0,72,128Z"></path></svg>
                         </div>
                         <p>Faturamento Total</p>
-                        <strong class="sales-summary-money"><span class="product-money-currency">R$</span><span class="sales-value" data-target="42150">42.150,00</span></strong>
+                        <strong class="sales-summary-money"><span class="product-money-currency">R$</span><span class="sales-value" data-sales-revenue>42.150,00</span></strong>
                     </article>
 
                     <article class="sales-summary-card sales-summary-card--goal elevated">
                         <div class="sales-goal-head">
                             <p>Meta do Período</p>
-                            <strong data-target="72" data-suffix="%">72%</strong>
+                            <strong data-sales-goal-percent>72%</strong>
                         </div>
                         <div class="progress-track sales-goal-track">
-                            <span class="progress-fill" data-progress-target="72"></span>
+                            <span class="progress-fill" data-sales-goal-fill></span>
                         </div>
                         <div class="sales-goal-values">
-                            <span>R$ 30.348,00</span>
-                            <strong>R$ 42.150,00</strong>
+                            <span data-sales-goal-current>R$ 30.348,00</span>
+                            <strong data-sales-goal-target>R$ 42.150,00</strong>
                         </div>
                     </article>
                 </div>
             </section>
 
-            <section class="products-toolbar sales-toolbar elevated">
+            <section class="products-toolbar clients-toolbar sales-toolbar elevated" data-sales-filters-wrap>
                 <label class="products-toolbar-search">
                     <span aria-hidden="true">
                         <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
@@ -228,7 +203,7 @@
                 </label>
 
                 <div class="products-toolbar-actions">
-                    <button type="button" class="products-toolbar-button">
+                    <button type="button" class="products-toolbar-button" data-sales-filters-toggle aria-expanded="false">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm3 5h10v2H7zm3 5h4v2h-4z"></path></svg>
                         <span>Filtros</span>
                     </button>
@@ -240,6 +215,81 @@
                         <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14Z"></path></svg>
                         <span>Entregas Pendentes</span>
                     </button>
+                </div>
+
+                <div class="clients-filters-panel" hidden data-sales-filters-panel>
+                    <div class="clients-filters-grid products-filters-grid">
+                        <div class="clients-filter-field">
+                            <span>Status</span>
+                            <div class="clients-checkbox-group sales-filters-checkbox-group">
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Concluído</span></label>
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Pendente</span></label>
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Cancelado</span></label>
+                            </div>
+                        </div>
+
+                        <label class="clients-filter-field clients-filter-field--range">
+                            <span>Data</span>
+                            <div class="clients-filter-range">
+                                <input type="date" data-sales-filter-input>
+                                <input type="date" data-sales-filter-input>
+                            </div>
+                        </label>
+
+                        <label class="clients-filter-field clients-filter-field--range">
+                            <span>Valor (R$)</span>
+                            <div class="clients-filter-range">
+                                <input type="number" min="0" step="0.01" placeholder="Mínimo" data-sales-filter-input>
+                                <input type="number" min="0" step="0.01" placeholder="Máximo" data-sales-filter-input>
+                            </div>
+                        </label>
+
+                        <div class="clients-filter-field">
+                            <span>Tipo de Pagamento</span>
+                            <div class="clients-checkbox-group sales-filters-checkbox-group">
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Cartão de Crédito</span></label>
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Pix</span></label>
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Boleto</span></label>
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Dinheiro</span></label>
+                            </div>
+                        </div>
+
+                        <div class="clients-filter-field">
+                            <span>Tipo de Venda</span>
+                            <div class="clients-checkbox-group sales-filters-checkbox-group">
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Venda Direta</span></label>
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Entrega</span></label>
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Retirada</span></label>
+                            </div>
+                        </div>
+
+                        <div class="clients-filter-field">
+                            <span>Parcelamento</span>
+                            <div class="clients-checkbox-group sales-filters-checkbox-group">
+                                <label><input type="radio" name="sales-installments" data-sales-filter-radio checked><span>Todos</span></label>
+                                <label><input type="radio" name="sales-installments" data-sales-filter-radio><span>Sim</span></label>
+                                <label><input type="radio" name="sales-installments" data-sales-filter-radio><span>Não</span></label>
+                            </div>
+                        </div>
+
+                        <div class="clients-filter-field">
+                            <span>Custos Extras</span>
+                            <div class="clients-checkbox-group sales-filters-checkbox-group">
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Envio</span></label>
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Seguro</span></label>
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Impostos</span></label>
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Desconto</span></label>
+                                <label><input type="checkbox" data-sales-filter-checkbox checked><span>Outras despesas</span></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clients-filters-actions">
+                        <span class="clients-filters-counter" data-sales-filters-counter>0/20 filtros aplicados</span>
+                        <button type="button" class="products-toolbar-button" data-sales-filters-clear>Limpar Todos</button>
+                        <button type="button" class="products-toolbar-button" data-sales-filters-check-all>Marcar Todos</button>
+                        <button type="button" class="clients-primary-button products-filter-apply-button" data-sales-filters-apply>Aplicar Filtros</button>
+                    </div>
                 </div>
             </section>
 
@@ -255,85 +305,12 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="sales-table-row" data-row-href="./pedido.html">
-                                <td>14 Out, 2023</td>
-                                <td><strong class="sales-order-number">#458921</strong></td>
-                                <td>
-                                    <a class="sales-client-link" href="./cliente.html">
-                                        <img class="sales-client-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Mariana Silveira">
-                                        <strong>Mariana Silveira</strong>
-                                    </a>
-                                </td>
-                                <td>R$ 840,00</td>
-                                <td><span class="clients-status clients-status--active">Concluído</span></td>
-                            </tr>
-                            <tr class="sales-table-row" data-row-href="./pedido.html">
-                                <td>14 Out, 2023</td>
-                                <td><strong class="sales-order-number">#458918</strong></td>
-                                <td>
-                                    <a class="sales-client-link" href="./cliente.html">
-                                        <img class="sales-client-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Ricardo Alencar">
-                                        <strong>Ricardo Alencar</strong>
-                                    </a>
-                                </td>
-                                <td>R$ 1.250,00</td>
-                                <td><span class="clients-status sales-status--pending">Pendente</span></td>
-                            </tr>
-                            <tr class="sales-table-row" data-row-href="./pedido.html">
-                                <td>13 Out, 2023</td>
-                                <td><strong class="sales-order-number">#458902</strong></td>
-                                <td>
-                                    <a class="sales-client-link" href="./cliente.html">
-                                        <img class="sales-client-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Ana Beatriz Dias">
-                                        <strong>Ana Beatriz Dias</strong>
-                                    </a>
-                                </td>
-                                <td>R$ 450,00</td>
-                                <td><span class="clients-status clients-status--cancelled">Cancelado</span></td>
-                            </tr>
-                            <tr class="sales-table-row" data-row-href="./pedido.html">
-                                <td>13 Out, 2023</td>
-                                <td><strong class="sales-order-number">#458884</strong></td>
-                                <td>
-                                    <a class="sales-client-link" href="./cliente.html">
-                                        <img class="sales-client-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Lucas Mendes">
-                                        <strong>Lucas Mendes</strong>
-                                    </a>
-                                </td>
-                                <td>R$ 299,00</td>
-                                <td><span class="clients-status clients-status--active">Concluído</span></td>
-                            </tr>
-                            <tr class="sales-table-row" data-row-href="./pedido.html">
-                                <td>12 Out, 2023</td>
-                                <td><strong class="sales-order-number">#458861</strong></td>
-                                <td>
-                                    <a class="sales-client-link" href="./cliente.html">
-                                        <img class="sales-client-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Clara Martins">
-                                        <strong>Clara Martins</strong>
-                                    </a>
-                                </td>
-                                <td>R$ 1.100,00</td>
-                                <td><span class="clients-status clients-status--active">Concluído</span></td>
-                            </tr>
-                            <tr class="sales-table-row" data-row-href="./pedido.html">
-                                <td>12 Out, 2023</td>
-                                <td><strong class="sales-order-number">#458844</strong></td>
-                                <td>
-                                    <a class="sales-client-link" href="./cliente.html">
-                                        <img class="sales-client-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de Hugo Pereira">
-                                        <strong>Hugo Pereira</strong>
-                                    </a>
-                                </td>
-                                <td>R$ 540,00</td>
-                                <td><span class="clients-status sales-status--pending">Pendente</span></td>
-                            </tr>
-                        </tbody>
+                        <tbody data-sales-orders></tbody>
                     </table>
                 </div>
 
                 <div class="clients-table-footer sales-table-footer">
-                    <p>Mostrando 1-20 de 184 resultados</p>
+                    <p data-sales-footer>Mostrando 1-20 de 184 resultados</p>
                     <div class="clients-pagination">
                         <button type="button" aria-label="Página anterior">&lsaquo;</button>
                         <button type="button" class="is-active">1</button>

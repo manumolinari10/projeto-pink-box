@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PinkBox | Editar Pedido</title>
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <link rel="stylesheet" href="../src/css/global.css">
+</head>
+<body class="new-sale-page" data-edit-order-page>
+    <div class="dashboard-shell">
+        <aside class="sidebar" aria-label="Menu lateral">
+            <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
+                <img class="brand-logo brand-logo-horizontal" src="../src/assets/logo_horizontal.webp" alt="PinkBox Executive Portal">
+                <img class="brand-logo brand-logo-simple" src="../src/assets/logo_simple.webp" alt="PinkBox">
+            </a>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="./index.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" /></svg>
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-link" href="./clientes.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"></path></svg>
+                    </span>
+                    <span>Clientes</span>
+                </a>
+                <div class="sidebar-group" data-sidebar-group>
+                    <button class="nav-link nav-link--submenu-toggle" type="button" data-sidebar-submenu-toggle aria-expanded="false">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.35,44L178.57,92.29l-80.35-44Zm0,88L47.65,76,81.56,57.43l80.35,44Zm88,55.85h0l-80,43.79V133.83l32-17.51V152a8,8,0,0,0,16,0V107.56l32-17.51v85.76Z"></path></svg>
+                        </span>
+                        <span class="nav-text">Estoque</span>
+                        <span class="nav-caret" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"></path></svg></span>
+                    </button>
+                    <div class="nav-submenu" data-sidebar-submenu hidden>
+                        <a class="nav-submenu-link" href="./produtos.html">Produtos</a>
+                        <a class="nav-submenu-link" href="./pedidos-mk.html">Pedidos MK</a>
+                    </div>
+                </div>
+                <a class="nav-link is-active" href="./vendas.html" aria-current="page">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
+                    </span>
+                    <span>Vendas</span>
+                </a>
+                <a class="nav-link" href="./financeiro.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm0 8a1 1 0 0 0 -1 1v.05a2.5 2.5 0 0 0 .5 4.95h1a.5 .5 0 1 1 0 1h-2.5a1 1 0 0 0 0 2h1a1 1 0 0 0 2 0v-.05a2.5 2.5 0 0 0 -.5 -4.95h-1a.5 .5 0 1 1 0 -1h2.5a1 1 0 0 0 0 -2h-1a1 1 0 0 0 -1 -1" /><path d="M19 7h-4l-.001 -4.001z" /></svg>
+                    </span>
+                    <span>Financeiro</span>
+                </a>
+                <a class="nav-link" href="./calendario.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM84,184a12,12,0,1,1,12-12A12,12,0,0,1,84,184Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,128,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,128,144Zm44,40a12,12,0,1,1,12-12A12,12,0,0,1,172,184Zm0-40a12,12,0,1,1,12-12A12,12,0,0,1,172,144Zm36-64H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24Z"></path></svg>
+                    </span>
+                    <span>Calendário</span>
+                </a>
+                <a class="nav-link" href="./insights.html">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" /><path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" /><path d="M4.893 4.893a1 1 0 0 1 1.32 -.083l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 0 -1.414z" /><path d="M17.693 4.893a1 1 0 0 1 1.497 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7z" /><path d="M14 18a1 1 0 0 1 1 1a3 3 0 0 1 -6 0a1 1 0 0 1 .883 -.993l.117 -.007h4z" /><path d="M12 6a6 6 0 0 1 3.6 10.8a1 1 0 0 1 -.471 .192l-.129 .008h-6a1 1 0 0 1 -.6 -.2a6 6 0 0 1 3.6 -10.8z" /></svg>
+                    </span>
+                    <span>Insights</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-links">
+                    <a class="nav-link nav-link--subtle" href="./configuracoes.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 256 256"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg>
+                        </span>
+                        <span>Configurações</span>
+                    </a>
+                    <a class="nav-link nav-link--subtle" href="./login.html">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-12a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h12zm-3 2h-9a1 1 0 0 0 -.993 .883l-.007 .117v12a1 1 0 0 0 .883 .993l.117 .007h9v-14zm-5.387 4.21l.094 .083l2 2a1 1 0 0 1 .083 1.32l-.083 .094l-2 2a1 1 0 0 1 -1.497 -1.32l.083 -.094l1.292 -1.293l-1.292 -1.293a1 1 0 0 1 -.083 -1.32l.083 -.094a1 1 0 0 1 1.32 -.083z" /></svg>
+                        </span>
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-panel new-sale-main-panel" data-new-sale-page>
+            <header class="topbar clients-topbar">
+                <div class="clients-topbar-left">
+                    <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="notification-wrapper">
+                        <button class="icon-button" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" data-notification-toggle>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22m6-6V11a6 6 0 1 0-12 0v5L4 18v1h16v-1z"></path></svg>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <div class="notification-menu" hidden data-notification-menu>
+                            <button type="button">Pagamento pendente em 2 pedidos</button>
+                            <button type="button">Meta diária acima da média</button>
+                            <button type="button">Nova entrega para confirmar</button>
+                            <a class="notification-menu-link" href="./notificacoes.html">Ler todas mensagens</a>
+                        </div>
+                    </div>
+
+                    <a class="profile-card" href="./perfil.html">
+                        <div class="profile-copy">
+                            <strong>Beatriz Souza</strong>
+                            <span>CONSULTORA DIAMANTE</span>
+                        </div>
+                        <img class="profile-avatar avatar-image" src="../src/assets/users/default.webp" alt="Foto de perfil de Beatriz Souza">
+                    </a>
+                </div>
+            </header>
+
+            <section class="product-detail-header page-intro-wrap">
+                <div class="page-intro-copy">
+                    <div class="products-breadcrumb">Dashboard / Vendas / Editar Pedido</div>
+                    <h1>Editar Pedido #8821</h1>
+                    <p>Revise os dados da venda, atualize produtos, pagamento e observações antes de salvar as alterações.</p>
+                </div>
+                <div class="product-header-actions">
+                    <a class="product-action-button product-action-button--secondary" href="./vendas.html">Cancelar</a>
+                    <button class="product-action-button product-action-button--primary" type="button" data-new-sale-save-open>Salvar</button>
+                </div>
+            </section>
+
+            <section class="new-sale-layout">
+                <div class="new-sale-content">
+                    <article class="new-client-card elevated">
+                        <div class="new-client-card-head">
+                            <div>
+                                <span class="finance-eyebrow">Dados da Venda</span>
+                            </div>
+                        </div>
+                        <div class="new-client-grid">
+                            <div class="new-client-field new-client-field--wide new-sale-lookup-field">
+                                <span>Nome, CPF ou Telefone</span>
+                                <input type="text" placeholder="Digite pelo menos 3 caracteres..." data-new-sale-client-search data-initial-client-name="Mariana Silveira" data-initial-client-cpf="123.456.789-00" data-initial-client-phone="(11) 99876-5432" value="Mariana Silveira (123.456.789-00)" required>
+                                <div class="manual-product-results" hidden data-new-sale-client-results></div>
+                                <p class="new-sale-selection" data-new-sale-client-selection>Cliente selecionada: Mariana Silveira • (11) 99876-5432</p>
+                            </div>
+                            <label class="new-client-field">
+                                <span>Data da Venda</span>
+                                <input type="date" value="2026-04-26" data-new-sale-sale-date required>
+                            </label>
+                            <label class="new-client-field">
+                                <span>Tipo de Venda</span>
+                                <select data-new-sale-sale-type required>
+                                    <option>Venda Direta</option>
+                                    <option selected>Entrega</option>
+                                    <option>Retirada</option>
+                                    <option>Pedido Online</option>
+                                </select>
+                            </label>
+                        </div>
+                    </article>
+
+                    <section class="products-table-card order-products-card elevated">
+                        <div class="new-client-card-head order-products-head">
+                            <div>
+                                <span class="finance-eyebrow">Produtos do Pedido</span>
+                            </div>
+                            <span data-new-sale-products-count>3 itens adicionados</span>
+                        </div>
+                        <div class="manual-product-card">
+                            <div class="manual-product-form">
+                                <div class="manual-product-row">
+                                    <div class="manual-product-search-shell manual-product-search-shell--sale">
+                                        <span>Pesquisar Produto</span>
+                                        <label class="products-toolbar-search manual-product-search">
+                                            <span aria-hidden="true">
+                                                <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                                            </span>
+                                            <input type="search" placeholder="Digite pelo menos 3 caracteres..." data-new-sale-product-search>
+                                        </label>
+                                        <div class="manual-product-results" hidden data-new-sale-product-results></div>
+                                    </div>
+
+                                    <label class="manual-product-value-field">
+                                        <span>Valor</span>
+                                        <input type="text" value="R$ 0,00" data-new-sale-product-price disabled>
+                                    </label>
+
+                                    <div class="manual-product-qty-field">
+                                            <span>Qtd.</span>
+                                        <div class="mk-builder-qty-control manual-product-qty-control">
+                                            <button type="button" class="mk-builder-qty-button" data-new-sale-product-minus aria-label="Diminuir quantidade">-</button>
+                                            <span data-new-sale-product-qty>1</span>
+                                            <button type="button" class="mk-builder-qty-button" data-new-sale-product-plus aria-label="Aumentar quantidade">+</button>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="clients-primary-button manual-product-add-button" data-new-sale-product-add disabled>Adicionar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="products-table-wrap">
+                            <table class="products-table order-products-table">
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>SKU</th>
+                                        <th>Preço Unit.</th>
+                                        <th>Qtd.</th>
+                                        <th>Total</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-new-sale-products-history>
+                                    <tr>
+                                        <td><strong>Batom Matte Velvet - Rose Pink</strong></td>
+                                        <td>PBX-992381</td>
+                                        <td>R$ 89,90</td>
+                                        <td><span class="order-qty-pill">2</span></td>
+                                        <td class="products-total">R$ 179,80</td>
+                                        <td>
+                                            <button type="button" class="mk-order-row-delete" data-new-sale-delete="Batom Matte Velvet - Rose Pink" aria-label="Excluir Batom Matte Velvet - Rose Pink">
+                                                <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sérum Facial Glow Booster 30ml</strong></td>
+                                        <td>PBX-442110</td>
+                                        <td>R$ 159,00</td>
+                                        <td><span class="order-qty-pill">1</span></td>
+                                        <td class="products-total">R$ 159,00</td>
+                                        <td>
+                                            <button type="button" class="mk-order-row-delete" data-new-sale-delete="Sérum Facial Glow Booster 30ml" aria-label="Excluir Sérum Facial Glow Booster 30ml">
+                                                <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Perfume Rose Exclusive 50ml</strong></td>
+                                        <td>PB-ROS-050</td>
+                                        <td>R$ 489,00</td>
+                                        <td><span class="order-qty-pill">1</span></td>
+                                        <td class="products-total">R$ 489,00</td>
+                                        <td>
+                                            <button type="button" class="mk-order-row-delete" data-new-sale-delete="Perfume Rose Exclusive 50ml" aria-label="Excluir Perfume Rose Exclusive 50ml">
+                                                <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <article class="new-client-card elevated">
+                        <div class="new-client-card-head">
+                            <div>
+                                <span class="finance-eyebrow">Dados do Pagamento</span>
+                            </div>
+                        </div>
+                        <div class="new-client-grid">
+                            <label class="new-client-field">
+                                <span>Forma de Pagamento</span>
+                                <select data-new-sale-payment-method>
+                                    <option selected>Cartão de Crédito</option>
+                                    <option>Pix</option>
+                                    <option>Boleto</option>
+                                    <option>Dinheiro</option>
+                                    <option>Várias</option>
+                                </select>
+                            </label>
+                            <label class="new-client-field">
+                                <span>Parcelas</span>
+                                <select data-new-sale-payment-installments>
+                                    <option>À vista</option>
+                                    <option>2 parcelas</option>
+                                    <option selected>3 parcelas</option>
+                                    <option>4 parcelas</option>
+                                </select>
+                            </label>
+                            <label class="new-client-field">
+                                <span>Status de Pagamento</span>
+                                <select data-new-sale-payment-status>
+                                    <option>Pago</option>
+                                    <option selected>Pagamento Parcial</option>
+                                    <option>Não pago</option>
+                                </select>
+                            </label>
+                            <label class="new-client-field">
+                                <span>Status de Entrega</span>
+                                <select data-new-sale-delivery-status>
+                                    <option>Entregue</option>
+                                    <option selected>Entrega Parcial</option>
+                                    <option>Não entregue</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="new-sale-subsection">
+                            <div class="new-sale-adjustments-group">
+                                <span class="finance-eyebrow">Custos</span>
+                                <div class="new-sale-adjustment-list">
+                                    <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Frete">
+                                        <label class="new-client-field">
+                                            <span>Frete</span>
+                                            <input type="text" value="8,00" data-adjustment-value>
+                                        </label>
+                                        <label class="new-client-field">
+                                            <span>Descrição</span>
+                                            <input type="text" value="Correios" data-adjustment-description>
+                                        </label>
+                                    </div>
+                                    <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Seguro">
+                                        <label class="new-client-field">
+                                            <span>Seguro</span>
+                                            <input type="text" value="0,00" data-adjustment-value>
+                                        </label>
+                                        <label class="new-client-field">
+                                            <span>Descrição</span>
+                                            <input type="text" placeholder="" data-adjustment-description>
+                                        </label>
+                                    </div>
+                                    <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Imposto">
+                                        <label class="new-client-field">
+                                            <span>Imposto</span>
+                                            <input type="text" value="2,53" data-adjustment-value>
+                                        </label>
+                                        <label class="new-client-field">
+                                            <span>Descrição</span>
+                                            <input type="text" value="ICMS" data-adjustment-description>
+                                        </label>
+                                    </div>
+                                    <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="cost" data-adjustment-label="Outros">
+                                        <label class="new-client-field">
+                                            <span>Outros</span>
+                                            <input type="text" value="3,00" data-adjustment-value>
+                                        </label>
+                                        <label class="new-client-field">
+                                            <span>Descrição</span>
+                                            <input type="text" placeholder="Descreva o valor cobrado" data-adjustment-description>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="new-sale-adjustments-divider" aria-hidden="true"></div>
+
+                            <div class="new-sale-adjustments-group">
+                                <span class="finance-eyebrow">Descontos</span>
+                                <div class="new-sale-adjustment-list">
+                                    <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="discount" data-adjustment-label="Desconto">
+                                        <label class="new-client-field">
+                                            <span>Desconto</span>
+                                            <input type="text" value="27,80" data-adjustment-value>
+                                        </label>
+                                        <label class="new-client-field">
+                                            <span>Descrição</span>
+                                            <input type="text" value="Campanha da semana" data-adjustment-description>
+                                        </label>
+                                    </div>
+                                    <div class="new-sale-adjustment-row" data-new-sale-adjustment-row data-adjustment-group="discount" data-adjustment-label="Outros">
+                                        <label class="new-client-field">
+                                            <span>Outros</span>
+                                            <input type="text" value="0,00" data-adjustment-value>
+                                        </label>
+                                        <label class="new-client-field">
+                                            <span>Descrição</span>
+                                            <input type="text" placeholder="Descreva o valor descontado" data-adjustment-description>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="new-sale-subsection">
+                            <span class="finance-eyebrow">Parcelas</span>
+                            <div class="new-sale-installments-table">
+                                <div class="new-sale-installments-head">
+                                    <span>Parcela</span>
+                                    <span>Data</span>
+                                    <span>Valor</span>
+                                    <span>Forma de Pagamento</span>
+                                    <span>Ação</span>
+                                    <span>Pago?</span>
+                                </div>
+                                <div class="new-sale-installments-row" data-new-sale-installment-row>
+                                    <span>1</span>
+                                    <span data-installment-view="date">28/04/2026</span>
+                                    <input type="date" value="2026-04-28" data-installment-input="date" hidden>
+                                    <span data-installment-view="value">409,00</span>
+                                    <input type="text" value="409,00" data-installment-input="value" hidden>
+                                    <span data-installment-view="payment">Pix</span>
+                                    <select data-installment-input="payment" hidden>
+                                        <option selected>Pix</option>
+                                        <option>Cartão de Crédito</option>
+                                        <option>Boleto</option>
+                                        <option>Dinheiro</option>
+                                    </select>
+                                    <button type="button" class="new-sale-installment-edit" data-new-sale-installment-edit aria-label="Editar parcela 1">
+                                        <svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path></svg>
+                                    </button>
+                                    <input type="checkbox" class="new-sale-installment-paid" data-new-sale-installment-paid aria-label="Parcela 1 paga">
+                                </div>
+                                <div class="new-sale-installments-row" data-new-sale-installment-row>
+                                    <span>2</span>
+                                    <span data-installment-view="date">28/05/2026</span>
+                                    <input type="date" value="2026-05-28" data-installment-input="date" hidden>
+                                    <span data-installment-view="value">409,00</span>
+                                    <input type="text" value="409,00" data-installment-input="value" hidden>
+                                    <span data-installment-view="payment">Cartão de Crédito</span>
+                                    <select data-installment-input="payment" hidden>
+                                        <option>Pix</option>
+                                        <option selected>Cartão de Crédito</option>
+                                        <option>Boleto</option>
+                                        <option>Dinheiro</option>
+                                    </select>
+                                    <button type="button" class="new-sale-installment-edit" data-new-sale-installment-edit aria-label="Editar parcela 2">
+                                        <svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path></svg>
+                                    </button>
+                                    <input type="checkbox" class="new-sale-installment-paid" data-new-sale-installment-paid aria-label="Parcela 2 paga">
+                                </div>
+                                <div class="new-sale-installments-row" data-new-sale-installment-row>
+                                    <span>3</span>
+                                    <span data-installment-view="date">28/06/2026</span>
+                                    <input type="date" value="2026-06-28" data-installment-input="date" hidden>
+                                    <span data-installment-view="value">409,00</span>
+                                    <input type="text" value="409,00" data-installment-input="value" hidden>
+                                    <span data-installment-view="payment">Cartão de Crédito</span>
+                                    <select data-installment-input="payment" hidden>
+                                        <option>Pix</option>
+                                        <option selected>Cartão de Crédito</option>
+                                        <option>Boleto</option>
+                                        <option>Dinheiro</option>
+                                    </select>
+                                    <button type="button" class="new-sale-installment-edit" data-new-sale-installment-edit aria-label="Editar parcela 3">
+                                        <svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path></svg>
+                                    </button>
+                                    <input type="checkbox" class="new-sale-installment-paid" data-new-sale-installment-paid aria-label="Parcela 3 paga">
+                                </div>
+                                <div class="new-sale-installments-row" data-new-sale-installment-row hidden>
+                                    <span>4</span>
+                                    <span data-installment-view="date">28/07/2026</span>
+                                    <input type="date" value="2026-07-28" data-installment-input="date" hidden>
+                                    <span data-installment-view="value">0,00</span>
+                                    <input type="text" value="0,00" data-installment-input="value" hidden>
+                                    <span data-installment-view="payment">Cartão de Crédito</span>
+                                    <select data-installment-input="payment" hidden>
+                                        <option>Pix</option>
+                                        <option selected>Cartão de Crédito</option>
+                                        <option>Boleto</option>
+                                        <option>Dinheiro</option>
+                                    </select>
+                                    <button type="button" class="new-sale-installment-edit" data-new-sale-installment-edit aria-label="Editar parcela 4">
+                                        <svg viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path></svg>
+                                    </button>
+                                    <input type="checkbox" class="new-sale-installment-paid" data-new-sale-installment-paid aria-label="Parcela 4 paga">
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="new-client-card elevated">
+                        <div class="new-client-card-head">
+                            <div>
+                                <span class="finance-eyebrow">Observações</span>
+                            </div>
+                        </div>
+                        <div class="new-client-grid">
+                            <label class="new-client-field new-client-field--wide">
+                                <span>Anotações Internas</span>
+                                <textarea rows="3" placeholder="Ex: cliente pediu para receber a entrega no período da tarde.">Cliente pediu atualização do endereço de entrega e embalagem para presente.</textarea>
+                            </label>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="new-sale-sidebar">
+                    <article class="elevated new-sale-summary-card">
+                        <div class="new-client-card-head">
+                            <div>
+                                <span class="finance-eyebrow">Resumo</span>
+                                <h2>Fechamento da venda</h2>
+                            </div>
+                        </div>
+
+                        <div class="mk-builder-summary-list">
+                            <div class="mk-builder-summary-item">
+                                <div class="mk-builder-summary-item-top">
+                                    <div>
+                                        <strong>Subtotal dos produtos</strong>
+                                        <span data-new-sale-summary-count>4 itens selecionados</span>
+                                    </div>
+                                    <strong data-new-sale-summary-subtotal>R$ 827,80</strong>
+                                </div>
+                            </div>
+                            <div class="mk-builder-summary-item">
+                                <div class="mk-builder-summary-item-top">
+                                    <div>
+                                        <strong>Frete</strong>
+                                        <span data-new-sale-summary-freight-description>Entrega local</span>
+                                    </div>
+                                    <strong data-new-sale-summary-freight>R$ 18,00</strong>
+                                </div>
+                            </div>
+                            <div class="mk-builder-summary-item">
+                                <div class="mk-builder-summary-item-top">
+                                    <div>
+                                        <strong>Seguro</strong>
+                                        <span data-new-sale-summary-insurance-description>Proteção de transporte</span>
+                                    </div>
+                                    <strong data-new-sale-summary-insurance>R$ 8,00</strong>
+                                </div>
+                            </div>
+                            <div class="mk-builder-summary-item">
+                                <div class="mk-builder-summary-item-top">
+                                    <div>
+                                        <strong>Imposto</strong>
+                                        <span data-new-sale-summary-tax-description>Tributação da operação</span>
+                                    </div>
+                                    <strong data-new-sale-summary-tax>R$ 10,00</strong>
+                                </div>
+                            </div>
+                            <div class="mk-builder-summary-item">
+                                <div class="mk-builder-summary-item-top">
+                                    <div>
+                                        <strong>Desconto aplicado</strong>
+                                        <span data-new-sale-summary-discount-description>Campanha da semana</span>
+                                    </div>
+                                    <strong data-new-sale-summary-discount>- R$ 27,80</strong>
+                                </div>
+                            </div>
+                            <div class="mk-builder-summary-item">
+                                <div class="mk-builder-summary-item-top">
+                                    <div>
+                                        <strong>Outros</strong>
+                                        <span data-new-sale-summary-other-description>Taxa de separação</span>
+                                    </div>
+                                    <strong data-new-sale-summary-other>R$ 0,00</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mk-builder-summary-totals">
+                            <div>
+                                <span>Total da venda</span>
+                                <strong data-new-sale-summary-total>R$ 818,00</strong>
+                            </div>
+                            <div>
+                                <span>Recebido hoje</span>
+                                <strong data-new-sale-summary-received>R$ 409,00</strong>
+                            </div>
+                            <div>
+                                <span>Pendente</span>
+                                <strong data-new-sale-summary-pending>R$ 409,00</strong>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="elevated new-sale-summary-card">
+                        <div class="new-client-card-head">
+                            <div>
+                                <span class="finance-eyebrow">Parcelas</span>
+                                <h2>Fluxo previsto</h2>
+                            </div>
+                        </div>
+
+                        <div class="order-installment-list" data-new-sale-sidebar-installments></div>
+                    </article>
+                </aside>
+            </section>
+
+            <footer class="page-footer">
+                <p>&copy; <span data-current-year>YEAR</span> PinkBox Sistema de Gestão de Vendas.</p>
+            </footer>
+        </main>
+    </div>
+
+    <div class="client-modal" id="new-sale-delete-modal" hidden>
+        <div class="client-modal-backdrop" data-new-sale-delete-close></div>
+        <div class="client-modal-dialog elevated product-stock-modal-dialog">
+            <button class="client-modal-close" type="button" aria-label="Fechar confirmação de exclusão" data-new-sale-delete-close>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </button>
+            <h2>Excluir produto</h2>
+            <p class="client-modal-subtitle">
+                Tem certeza que deseja excluir
+                <strong data-new-sale-delete-name>este produto</strong>
+                da lista?
+            </p>
+
+            <div class="product-stock-confirm-actions">
+                <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-new-sale-delete-confirm>Confirmar</button>
+                <button type="button" class="products-toolbar-button" data-new-sale-delete-close>Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="client-modal" id="new-sale-confirm-modal" hidden>
+        <div class="client-modal-backdrop" data-new-sale-confirm-close></div>
+        <div class="client-modal-dialog elevated new-sale-confirm-dialog">
+            <button class="client-modal-close" type="button" aria-label="Fechar confirmação da venda" data-new-sale-confirm-close>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </button>
+            <h2>Salvar alterações do pedido</h2>
+            <div class="new-sale-confirm-alert" hidden aria-live="polite" data-new-sale-edit-warning>
+                Todos os dados alterados no pedido serão substituídos e esta é uma alteração definitiva. Os dados do painel financeiro também poderão sofrer reajustes. Tem certeza que deseja continuar?
+            </div>
+            <div class="new-sale-confirm-alert" hidden data-new-sale-confirm-alert></div>
+            <div class="new-sale-confirm-summary">
+                <div class="new-sale-confirm-block">
+                    <span>Nome da cliente</span>
+                    <strong data-new-sale-confirm-client>Cliente não selecionada</strong>
+                </div>
+                <div class="new-sale-confirm-block">
+                    <span>Data da venda</span>
+                    <strong data-new-sale-confirm-date>28/04/2026</strong>
+                </div>
+                <div class="new-sale-confirm-block">
+                    <span>Produtos</span>
+                    <div class="new-sale-confirm-products" data-new-sale-confirm-products></div>
+                </div>
+                <div class="new-sale-confirm-grid">
+                    <div class="new-sale-confirm-block">
+                        <span>Forma de pagamento</span>
+                        <strong data-new-sale-confirm-method>Cartão de Crédito</strong>
+                    </div>
+                    <div class="new-sale-confirm-block">
+                        <span>Parcelas</span>
+                        <strong data-new-sale-confirm-installments>À vista</strong>
+                    </div>
+                    <div class="new-sale-confirm-block">
+                        <span>Status de pagamento</span>
+                        <strong data-new-sale-confirm-payment-status>Pago</strong>
+                    </div>
+                    <div class="new-sale-confirm-block">
+                        <span>Status de entrega</span>
+                        <strong data-new-sale-confirm-delivery-status>Entregue</strong>
+                    </div>
+                </div>
+                <div class="new-sale-confirm-block">
+                    <span>Demais custos e descontos</span>
+                    <div class="new-sale-confirm-costs" data-new-sale-confirm-costs></div>
+                </div>
+                <div class="new-sale-confirm-block">
+                    <span>Parcelas</span>
+                    <div class="new-sale-confirm-costs" data-new-sale-confirm-parcels></div>
+                </div>
+                <div class="new-sale-confirm-grid">
+                    <div class="new-sale-confirm-block">
+                        <span>Valor total da venda</span>
+                        <strong data-new-sale-confirm-total>R$ 818,00</strong>
+                    </div>
+                    <div class="new-sale-confirm-block">
+                        <span>Recebido hoje</span>
+                        <strong data-new-sale-confirm-received>R$ 409,00</strong>
+                    </div>
+                    <div class="new-sale-confirm-block">
+                        <span>Pendente</span>
+                        <strong data-new-sale-confirm-pending>R$ 409,00</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-stock-confirm-actions">
+                <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-new-sale-confirm-apply>Confirmar</button>
+                <button type="button" class="products-toolbar-button" data-new-sale-confirm-close>Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/js/main.js"></script>
+</body>
+</html>

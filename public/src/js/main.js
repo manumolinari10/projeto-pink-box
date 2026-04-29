@@ -2260,6 +2260,899 @@ function setupNewMkOrderPage() {
     updateButtonState();
 }
 
+function setupNewSalePage() {
+    const page = document.querySelector("[data-new-sale-page]");
+
+    if (!page) {
+        return;
+    }
+
+    const clients = [
+        { name: "Mariana Silveira", cpf: "123.456.789-00", phone: "(11) 99876-5432" },
+        { name: "Ana Paula Santos", cpf: "987.654.321-00", phone: "(11) 99111-2233" },
+        { name: "Camila Costa", cpf: "456.789.123-00", phone: "(21) 99777-8899" },
+        { name: "Clara Martins", cpf: "741.852.963-11", phone: "(31) 98888-1122" },
+        { name: "Juliana Reis", cpf: "258.369.147-22", phone: "(41) 99999-5566" }
+    ];
+
+    const catalog = [
+        { code: "PBX-992381", name: "Batom Matte Velvet - Rose Pink", price: 89.90 },
+        { code: "PBX-442110", name: "Sérum Facial Glow Booster 30ml", price: 159.00 },
+        { code: "PBX-883344", name: "Paleta de Sombras Midnight Bloom", price: 124.90 },
+        { code: "PB-ROS-050", name: "Perfume Rose Exclusive 50ml", price: 489.00 },
+        { code: "PBX-556677", name: "Base Fluida Matte Skin - Tom 20", price: 75.00 }
+    ];
+
+    const clientSearch = page.querySelector("[data-new-sale-client-search]");
+    const clientResults = page.querySelector("[data-new-sale-client-results]");
+    const clientSelection = page.querySelector("[data-new-sale-client-selection]");
+    const productSearch = page.querySelector("[data-new-sale-product-search]");
+    const productResults = page.querySelector("[data-new-sale-product-results]");
+    const productPrice = page.querySelector("[data-new-sale-product-price]");
+    const productQty = page.querySelector("[data-new-sale-product-qty]");
+    const productMinus = page.querySelector("[data-new-sale-product-minus]");
+    const productPlus = page.querySelector("[data-new-sale-product-plus]");
+    const productAdd = page.querySelector("[data-new-sale-product-add]");
+    const productsHistory = page.querySelector("[data-new-sale-products-history]");
+    const productsCount = page.querySelector("[data-new-sale-products-count]");
+    const deleteModal = document.getElementById("new-sale-delete-modal");
+    const deleteName = deleteModal?.querySelector("[data-new-sale-delete-name]");
+    const deleteConfirm = deleteModal?.querySelector("[data-new-sale-delete-confirm]");
+    const saveOpenButton = page.querySelector("[data-new-sale-save-open]");
+    const confirmModal = document.getElementById("new-sale-confirm-modal");
+    const confirmSummary = confirmModal?.querySelector(".new-sale-confirm-summary");
+    const confirmApply = confirmModal?.querySelector("[data-new-sale-confirm-apply]");
+    const saleDateInput = page.querySelector("[data-new-sale-sale-date]");
+    const saleTypeSelect = page.querySelector("[data-new-sale-sale-type]");
+    const paymentMethodSelect = page.querySelector("[data-new-sale-payment-method]");
+    const installmentsSelect = page.querySelector("[data-new-sale-payment-installments]");
+    const paymentStatusSelect = page.querySelector("[data-new-sale-payment-status]");
+    const deliveryStatusSelect = page.querySelector("[data-new-sale-delivery-status]");
+    const adjustmentRows = Array.from(page.querySelectorAll("[data-new-sale-adjustment-row]"));
+    const summaryCount = page.querySelector("[data-new-sale-summary-count]");
+    const summarySubtotal = page.querySelector("[data-new-sale-summary-subtotal]");
+    const summaryFreight = page.querySelector("[data-new-sale-summary-freight]");
+    const summaryFreightDescription = page.querySelector("[data-new-sale-summary-freight-description]");
+    const summaryInsurance = page.querySelector("[data-new-sale-summary-insurance]");
+    const summaryInsuranceDescription = page.querySelector("[data-new-sale-summary-insurance-description]");
+    const summaryTax = page.querySelector("[data-new-sale-summary-tax]");
+    const summaryTaxDescription = page.querySelector("[data-new-sale-summary-tax-description]");
+    const summaryDiscount = page.querySelector("[data-new-sale-summary-discount]");
+    const summaryDiscountDescription = page.querySelector("[data-new-sale-summary-discount-description]");
+    const summaryOther = page.querySelector("[data-new-sale-summary-other]");
+    const summaryOtherDescription = page.querySelector("[data-new-sale-summary-other-description]");
+    const sidebarInstallments = page.querySelector("[data-new-sale-sidebar-installments]");
+    const confirmClient = confirmModal?.querySelector("[data-new-sale-confirm-client]");
+    const confirmDate = confirmModal?.querySelector("[data-new-sale-confirm-date]");
+    const confirmProducts = confirmModal?.querySelector("[data-new-sale-confirm-products]");
+    const confirmMethod = confirmModal?.querySelector("[data-new-sale-confirm-method]");
+    const confirmInstallments = confirmModal?.querySelector("[data-new-sale-confirm-installments]");
+    const confirmPaymentStatus = confirmModal?.querySelector("[data-new-sale-confirm-payment-status]");
+    const confirmDeliveryStatus = confirmModal?.querySelector("[data-new-sale-confirm-delivery-status]");
+    const confirmCosts = confirmModal?.querySelector("[data-new-sale-confirm-costs]");
+    const confirmParcels = confirmModal?.querySelector("[data-new-sale-confirm-parcels]");
+    const confirmTotal = confirmModal?.querySelector("[data-new-sale-confirm-total]");
+    const confirmReceived = confirmModal?.querySelector("[data-new-sale-confirm-received]");
+    const confirmPending = confirmModal?.querySelector("[data-new-sale-confirm-pending]");
+    const confirmAlert = confirmModal?.querySelector("[data-new-sale-confirm-alert]");
+    const editWarning = confirmModal?.querySelector("[data-new-sale-edit-warning]");
+    const installmentRows = Array.from(page.querySelectorAll("[data-new-sale-installment-row]"));
+
+    let selectedClient = null;
+    let selectedProduct = null;
+    let quantity = 1;
+    let pendingDeleteRow = null;
+
+    if (!clientSearch || !clientResults || !clientSelection || !productSearch || !productResults || !productPrice || !productQty || !productMinus || !productPlus || !productAdd || !productsHistory || !productsCount || !deleteModal || !deleteName || !deleteConfirm) {
+        return;
+    }
+
+    const initialClientName = clientSearch.dataset.initialClientName;
+    const initialClientCpf = clientSearch.dataset.initialClientCpf;
+    const initialClientPhone = clientSearch.dataset.initialClientPhone;
+
+    if (initialClientName && initialClientCpf && initialClientPhone) {
+        selectedClient = {
+            name: initialClientName,
+            cpf: initialClientCpf,
+            phone: initialClientPhone
+        };
+
+        clientSearch.value = `${initialClientName} (${initialClientCpf})`;
+        clientSelection.textContent = `Cliente selecionada: ${initialClientName} • ${initialClientPhone}`;
+    }
+
+    function closeDeleteModal() {
+        deleteModal.hidden = true;
+        pendingDeleteRow = null;
+        if (!document.querySelector(".client-modal:not([hidden])")) {
+            document.body.classList.remove("modal-open");
+        }
+    }
+
+    function closeConfirmModal() {
+        if (!confirmModal) {
+            return;
+        }
+
+        confirmModal.hidden = true;
+
+        if (!document.querySelector(".client-modal:not([hidden])")) {
+            document.body.classList.remove("modal-open");
+        }
+    }
+
+    function openDeleteModal(row, name) {
+        pendingDeleteRow = row;
+        deleteName.textContent = name;
+        deleteModal.hidden = false;
+        document.body.classList.add("modal-open");
+    }
+
+    function formatDatePtBr(value) {
+        const [year, month, day] = String(value || "").split("-");
+        return year && month && day ? `${day}/${month}/${year}` : "";
+    }
+
+    function toIsoDate(value) {
+        if (!value) {
+            return "";
+        }
+
+        if (value.includes("-")) {
+            return value;
+        }
+
+        const [day, month, year] = String(value).split("/");
+        return year && month && day ? `${year}-${month}-${day}` : "";
+    }
+
+    function getVisibleInstallmentRows() {
+        return installmentRows.filter((row) => !row.hidden);
+    }
+
+    function getProductRows() {
+        return Array.from(productsHistory.querySelectorAll("tr"));
+    }
+
+    function getProductsSubtotal() {
+        return getProductRows().reduce((total, row) => {
+            const value = row.querySelector(".products-total")?.textContent?.trim() || "0";
+            return total + parseCurrencyPtBr(value);
+        }, 0);
+    }
+
+    function getAdjustmentData() {
+        const data = {
+            cost: { Frete: { value: 0, description: "" }, Seguro: { value: 0, description: "" }, Imposto: { value: 0, description: "" }, Outros: { value: 0, description: "" } },
+            discount: { Desconto: { value: 0, description: "" }, Outros: { value: 0, description: "" } }
+        };
+
+        adjustmentRows.forEach((row) => {
+            const group = row.dataset.adjustmentGroup;
+            const label = row.dataset.adjustmentLabel;
+            const valueInput = row.querySelector("[data-adjustment-value]");
+            const descriptionInput = row.querySelector("[data-adjustment-description]");
+
+            if (!group || !label || !data[group]?.[label]) {
+                return;
+            }
+
+            data[group][label] = {
+                value: parseCurrencyPtBr(valueInput?.value || "0"),
+                description: descriptionInput?.value?.trim() || ""
+            };
+        });
+
+        return data;
+    }
+
+    function getGrandTotal() {
+        const adjustments = getAdjustmentData();
+        const subtotal = getProductsSubtotal();
+        const costs = adjustments.cost.Frete.value + adjustments.cost.Seguro.value + adjustments.cost.Imposto.value + adjustments.cost.Outros.value;
+        const discounts = adjustments.discount.Desconto.value + adjustments.discount.Outros.value;
+        return subtotal + costs - discounts;
+    }
+
+    function splitInstallments(total, count) {
+        const cents = Math.max(0, Math.round(total * 100));
+        const base = count > 0 ? Math.floor(cents / count) : 0;
+        const remainder = count > 0 ? cents - (base * count) : 0;
+        return Array.from({ length: count }, (_, index) => ((base + (index === count - 1 ? remainder : 0)) / 100));
+    }
+
+    function syncInstallmentRows() {
+        const installmentsValue = installmentsSelect?.value || "À vista";
+        const countMatch = installmentsValue.match(/\d+/);
+        const count = installmentsValue === "À vista" ? 1 : Math.max(1, Number(countMatch?.[0] || 1));
+        const total = getGrandTotal();
+        const values = splitInstallments(total, count);
+        const baseDate = saleDateInput?.value ? new Date(`${saleDateInput.value}T12:00:00`) : new Date("2026-04-28T12:00:00");
+        const paymentMethod = paymentMethodSelect?.value || "Cartão de Crédito";
+
+        installmentRows.forEach((row, index) => {
+            const isVisible = index < count;
+            row.hidden = !isVisible;
+
+            if (!isVisible) {
+                return;
+            }
+
+            const dateInput = row.querySelector('[data-installment-input="date"]');
+            const dateView = row.querySelector('[data-installment-view="date"]');
+            const valueInput = row.querySelector('[data-installment-input="value"]');
+            const valueView = row.querySelector('[data-installment-view="value"]');
+            const paymentInput = row.querySelector('[data-installment-input="payment"]');
+            const paymentView = row.querySelector('[data-installment-view="payment"]');
+            const paidCheckbox = row.querySelector("[data-new-sale-installment-paid]");
+
+            const rowDate = new Date(baseDate);
+            rowDate.setMonth(rowDate.getMonth() + index);
+            const yyyy = rowDate.getFullYear();
+            const mm = String(rowDate.getMonth() + 1).padStart(2, "0");
+            const dd = String(rowDate.getDate()).padStart(2, "0");
+            const brDate = `${dd}/${mm}/${yyyy}`;
+            const formattedValue = formatCurrencyPtBr(values[index] || 0);
+
+            if (dateInput) dateInput.value = `${yyyy}-${mm}-${dd}`;
+            if (dateView) dateView.textContent = brDate;
+            if (valueInput) valueInput.value = formattedValue;
+            if (valueView) valueView.textContent = formattedValue;
+
+            if (paymentMethod !== "Várias") {
+                if (paymentInput) paymentInput.value = paymentMethod;
+                if (paymentView) paymentView.textContent = paymentMethod;
+            }
+
+            if (paidCheckbox && paymentStatusSelect?.value !== "Pagamento Parcial") {
+                paidCheckbox.checked = paymentStatusSelect?.value === "Pago";
+            }
+        });
+
+        syncPaymentStatus();
+        renderSidebarInstallments();
+    }
+
+    function validateInstallmentDate(row, nextDateValue) {
+        const visibleRows = getVisibleInstallmentRows();
+        const currentIndex = visibleRows.indexOf(row);
+
+        if (currentIndex === -1) {
+            return { valid: true, message: "" };
+        }
+
+        const saleDateValue = saleDateInput?.value || "";
+        const previousRow = currentIndex > 0 ? visibleRows[currentIndex - 1] : null;
+        const nextRow = currentIndex < visibleRows.length - 1 ? visibleRows[currentIndex + 1] : null;
+        const previousDate = previousRow?.querySelector('[data-installment-input="date"]')?.value
+            || toIsoDate(previousRow?.querySelector('[data-installment-view="date"]')?.textContent?.trim());
+        const nextDate = nextRow?.querySelector('[data-installment-input="date"]')?.value
+            || toIsoDate(nextRow?.querySelector('[data-installment-view="date"]')?.textContent?.trim());
+
+        if (saleDateValue && nextDateValue < saleDateValue) {
+            return {
+                valid: false,
+                message: "A data da parcela não pode ser anterior à data da compra."
+            };
+        }
+
+        if (previousDate && nextDateValue < previousDate) {
+            return {
+                valid: false,
+                message: "A data da parcela não pode ser menor do que a data da parcela anterior."
+            };
+        }
+
+        if (nextDate && nextDateValue > nextDate) {
+            return {
+                valid: false,
+                message: "A data da parcela não pode ser maior do que a data da próxima parcela."
+            };
+        }
+
+        return { valid: true, message: "" };
+    }
+
+    function syncPaymentStatus() {
+        const status = paymentStatusSelect?.value || "Pago";
+        const visibleRows = getVisibleInstallmentRows();
+
+        visibleRows.forEach((row) => {
+            const checkbox = row.querySelector("[data-new-sale-installment-paid]");
+            if (!checkbox) return;
+
+            if (status === "Pago") {
+                checkbox.checked = true;
+                checkbox.disabled = true;
+            } else if (status === "Não pago") {
+                checkbox.checked = false;
+                checkbox.disabled = true;
+            } else {
+                checkbox.disabled = false;
+            }
+        });
+
+        renderSidebarInstallments();
+        updateSummary();
+    }
+
+    function renderSidebarInstallments() {
+        if (!sidebarInstallments) {
+            return;
+        }
+
+        const status = paymentStatusSelect?.value || "Pago";
+        const visibleRows = getVisibleInstallmentRows();
+
+        sidebarInstallments.innerHTML = visibleRows.map((row, index) => {
+            const payment = row.querySelector('[data-installment-view="payment"]')?.textContent?.trim() || "-";
+            const date = row.querySelector('[data-installment-view="date"]')?.textContent?.trim() || "-";
+            const value = row.querySelector('[data-installment-view="value"]')?.textContent?.trim() || "0,00";
+            const checked = row.querySelector("[data-new-sale-installment-paid]")?.checked;
+            const receivedClass = status === "Pago" || checked ? " order-installment-item--received" : "";
+            const iconClass = status === "Pago" || checked ? "" : " order-installment-icon--warning";
+            const iconPath = status === "Pago" || checked
+                ? '<path d="M229.66,90.34l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,201.37,218.34,79a8,8,0,0,1,11.32,11.31Z"></path>'
+                : '<path d="M236.8,188.09,149.35,36.24a24,24,0,0,0-42.7,0L19.2,188.09A24,24,0,0,0,40,224H216a24,24,0,0,0,20.8-35.91ZM128,112a8,8,0,0,1,8,8v32a8,8,0,0,1-16,0V120A8,8,0,0,1,128,112Zm0,72a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path>';
+
+            return `
+                <div class="order-installment-item${receivedClass}">
+                    <span class="order-installment-icon${iconClass}">
+                        <svg viewBox="0 0 256 256">${iconPath}</svg>
+                    </span>
+                    <div class="order-installment-copy">
+                        <strong>Parcela ${index + 1}</strong>
+                        <span>${payment}</span>
+                        <span>${date}</span>
+                    </div>
+                    <strong>R$ ${String(value).replace(/^R\$\s*/, "")}</strong>
+                </div>`;
+        }).join("");
+    }
+
+    function updateSummary() {
+        const adjustments = getAdjustmentData();
+        const subtotal = getProductsSubtotal();
+        const total = getGrandTotal();
+        const visibleRows = getVisibleInstallmentRows();
+        const paidTotal = paymentStatusSelect?.value === "Pago"
+            ? total
+            : paymentStatusSelect?.value === "Não pago"
+                ? 0
+                : visibleRows.reduce((sum, row) => {
+                    const checked = row.querySelector("[data-new-sale-installment-paid]")?.checked;
+                    const value = row.querySelector('[data-installment-view="value"]')?.textContent?.trim() || "0";
+                    return checked ? sum + parseCurrencyPtBr(value) : sum;
+                }, 0);
+        const pendingTotal = Math.max(0, total - paidTotal);
+        const rowCount = getProductRows().length;
+        const costOther = adjustments.cost.Outros.value;
+        const discountOther = adjustments.discount.Outros.value;
+        const netOther = costOther - discountOther;
+        const otherDescription = costOther > 0
+            ? (adjustments.cost.Outros.description || "Outros custos")
+            : discountOther > 0
+                ? (adjustments.discount.Outros.description || "Outros descontos")
+                : "Sem ajustes";
+
+        if (summaryCount) summaryCount.textContent = `${rowCount} item${rowCount === 1 ? "" : "s"} selecionado${rowCount === 1 ? "" : "s"}`;
+        if (summarySubtotal) summarySubtotal.textContent = `R$ ${formatCurrencyPtBr(subtotal)}`;
+        if (summaryFreight) summaryFreight.textContent = `R$ ${formatCurrencyPtBr(adjustments.cost.Frete.value)}`;
+        if (summaryFreightDescription) summaryFreightDescription.textContent = adjustments.cost.Frete.description || "Sem descrição";
+        if (summaryInsurance) summaryInsurance.textContent = `R$ ${formatCurrencyPtBr(adjustments.cost.Seguro.value)}`;
+        if (summaryInsuranceDescription) summaryInsuranceDescription.textContent = adjustments.cost.Seguro.description || "Sem descrição";
+        if (summaryTax) summaryTax.textContent = `R$ ${formatCurrencyPtBr(adjustments.cost.Imposto.value)}`;
+        if (summaryTaxDescription) summaryTaxDescription.textContent = adjustments.cost.Imposto.description || "Sem descrição";
+        if (summaryDiscount) summaryDiscount.textContent = `- R$ ${formatCurrencyPtBr(adjustments.discount.Desconto.value)}`;
+        if (summaryDiscountDescription) summaryDiscountDescription.textContent = adjustments.discount.Desconto.description || "Sem descrição";
+        if (summaryOther) {
+            summaryOther.textContent = `${netOther < 0 ? "- " : ""}R$ ${formatCurrencyPtBr(Math.abs(netOther))}`;
+        }
+        if (summaryOtherDescription) summaryOtherDescription.textContent = otherDescription;
+        if (confirmTotal) confirmTotal.textContent = `R$ ${formatCurrencyPtBr(total)}`;
+        if (confirmReceived) confirmReceived.textContent = `R$ ${formatCurrencyPtBr(paidTotal)}`;
+        if (confirmPending) confirmPending.textContent = `R$ ${formatCurrencyPtBr(pendingTotal)}`;
+
+        const totalStrong = page.querySelector("[data-new-sale-summary-total]");
+        const receivedStrong = page.querySelector("[data-new-sale-summary-received]");
+        const pendingStrong = page.querySelector("[data-new-sale-summary-pending]");
+        if (totalStrong) totalStrong.textContent = `R$ ${formatCurrencyPtBr(total)}`;
+        if (receivedStrong) receivedStrong.textContent = `R$ ${formatCurrencyPtBr(paidTotal)}`;
+        if (pendingStrong) pendingStrong.textContent = `R$ ${formatCurrencyPtBr(pendingTotal)}`;
+    }
+
+    function getValidationError() {
+        if (!selectedClient) {
+            return "Falta preencher o campo cliente.";
+        }
+
+        if (!saleDateInput?.value) {
+            return "Falta preencher o campo data da venda.";
+        }
+
+        if (!saleTypeSelect?.value) {
+            return "Falta preencher o campo tipo de venda.";
+        }
+
+        if (!getProductRows().length) {
+            return "Falta preencher o campo produtos do pedido.";
+        }
+
+        const visibleRows = getVisibleInstallmentRows();
+        const isPartial = paymentStatusSelect?.value === "Pagamento Parcial";
+
+        if (isPartial) {
+            const paidCount = visibleRows.filter((row) => row.querySelector("[data-new-sale-installment-paid]")?.checked).length;
+
+            if (!paidCount) {
+                return "Você escolheu a opção de pagamento parcial, mas não informou qual parcela foi paga.";
+            }
+
+            if (paidCount === visibleRows.length) {
+                return "Pagamento parcial não permite que todas as parcelas estejam marcadas como pagas.";
+            }
+        }
+
+        return "";
+    }
+
+    function buildConfirmSummary() {
+        if (!confirmModal) {
+            return;
+        }
+
+        const validationError = getValidationError();
+
+        if (confirmApply) {
+            confirmApply.disabled = Boolean(validationError);
+        }
+
+        if (validationError) {
+            if (editWarning) {
+                editWarning.hidden = true;
+            }
+
+            if (confirmAlert) {
+                confirmAlert.hidden = false;
+                confirmAlert.textContent = validationError;
+            }
+
+            if (confirmSummary) {
+                confirmSummary.hidden = true;
+            }
+
+            if (confirmProducts) confirmProducts.innerHTML = "";
+            if (confirmCosts) confirmCosts.innerHTML = "";
+            if (confirmParcels) confirmParcels.innerHTML = "";
+            return;
+        }
+
+        if (confirmAlert) {
+            confirmAlert.hidden = true;
+            confirmAlert.textContent = "";
+        }
+
+        if (editWarning) {
+            editWarning.hidden = false;
+        }
+
+        if (confirmSummary) {
+            confirmSummary.hidden = false;
+        }
+
+        const clientText = selectedClient?.name || "Cliente não selecionada";
+        const rows = getProductRows();
+        const productItems = rows.map((row) => {
+            const cells = row.querySelectorAll("td");
+            const name = cells[0]?.textContent?.trim() || "Produto";
+            const qty = cells[3]?.textContent?.trim() || "1";
+            const total = cells[4]?.textContent?.trim() || "R$ 0,00";
+            return `<div class="new-sale-confirm-item"><div><strong>${name}</strong><span>${qty} unidade(s)</span></div><strong>${total}</strong></div>`;
+        }).join("");
+
+        const costItems = adjustmentRows.map((row) => {
+            const label = row.dataset.adjustmentLabel || "";
+            const group = row.dataset.adjustmentGroup || "";
+            const value = parseCurrencyPtBr(row.querySelector("[data-adjustment-value]")?.value || "0");
+            const description = row.querySelector("[data-adjustment-description]")?.value?.trim() || "Sem descrição";
+
+            if (!value) {
+                return "";
+            }
+
+            const prefix = group === "discount" ? "- " : "";
+
+            return `<div class="new-sale-confirm-item"><div><strong>${label}</strong><span>${description}</span></div><strong>${prefix}R$ ${formatCurrencyPtBr(value)}</strong></div>`;
+        }).filter(Boolean).join("");
+
+        const parcelItems = getVisibleInstallmentRows().map((row, index) => {
+            const number = row.children[0]?.textContent?.trim() || "-";
+            const date = row.querySelector('[data-installment-view="date"]')?.textContent?.trim()
+                || formatDatePtBr(row.querySelector('[data-installment-input="date"]')?.value)
+                || "-";
+            const value = row.querySelector('[data-installment-view="value"]')?.textContent?.trim()
+                || row.querySelector('[data-installment-input="value"]')?.value
+                || "0,00";
+            const payment = row.querySelector('[data-installment-view="payment"]')?.textContent?.trim()
+                || row.querySelector('[data-installment-input="payment"]')?.value
+                || "-";
+            const checked = row.querySelector("[data-new-sale-installment-paid]")?.checked;
+            const isPaid = paymentStatusSelect?.value === "Pago" || checked;
+            const iconClass = isPaid ? "" : " order-installment-icon--warning";
+            const iconPath = isPaid
+                ? '<path d="M229.66,90.34l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,201.37,218.34,79a8,8,0,0,1,11.32,11.31Z"></path>'
+                : '<path d="M236.8,188.09,149.35,36.24a24,24,0,0,0-42.7,0L19.2,188.09A24,24,0,0,0,40,224H216a24,24,0,0,0,20.8-35.91ZM128,112a8,8,0,0,1,8,8v32a8,8,0,0,1-16,0V120A8,8,0,0,1,128,112Zm0,72a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path>';
+
+            return `
+                <div class="order-installment-item${isPaid ? " order-installment-item--received" : ""}">
+                    <span class="order-installment-icon${iconClass}">
+                        <svg viewBox="0 0 256 256" aria-hidden="true">${iconPath}</svg>
+                    </span>
+                    <div class="order-installment-copy">
+                        <strong>Parcela ${number || index + 1}</strong>
+                        <span>${payment}</span>
+                        <span>${date}</span>
+                    </div>
+                    <div class="order-installment-value">
+                        <strong>R$ ${String(value).replace(/^R\\$\\s*/, "")}</strong>
+                    </div>
+                </div>`;
+        }).join("");
+
+        if (confirmClient) confirmClient.textContent = clientText;
+        if (confirmDate) confirmDate.textContent = formatDatePtBr(saleDateInput?.value) || "28/04/2026";
+        if (confirmProducts) confirmProducts.innerHTML = productItems;
+        if (confirmMethod) confirmMethod.textContent = paymentMethodSelect?.value || "-";
+        if (confirmInstallments) confirmInstallments.textContent = installmentsSelect?.value || "-";
+        if (confirmPaymentStatus) confirmPaymentStatus.textContent = paymentStatusSelect?.value || "-";
+        if (confirmDeliveryStatus) confirmDeliveryStatus.textContent = deliveryStatusSelect?.value || "-";
+        if (confirmCosts) confirmCosts.innerHTML = costItems || '<div class="new-sale-confirm-item"><div><strong>Sem custos ou descontos adicionais</strong></div><strong>R$ 0,00</strong></div>';
+        if (confirmParcels) confirmParcels.innerHTML = parcelItems;
+        if (confirmTotal) confirmTotal.textContent = page.querySelector("[data-new-sale-summary-total]")?.textContent?.trim() || "R$ 0,00";
+        if (confirmReceived) confirmReceived.textContent = page.querySelector("[data-new-sale-summary-received]")?.textContent?.trim() || "R$ 0,00";
+        if (confirmPending) confirmPending.textContent = page.querySelector("[data-new-sale-summary-pending]")?.textContent?.trim() || "R$ 0,00";
+    }
+
+    function updateProductsCount() {
+        productsCount.textContent = `${productsHistory.querySelectorAll("tr").length} itens adicionados`;
+    }
+
+    function updateProductButtonState() {
+        productMinus.disabled = quantity <= 1;
+        productQty.textContent = String(quantity);
+        productAdd.disabled = !selectedProduct || parseCurrencyPtBr(productPrice.value) <= 0;
+    }
+
+    function renderClientResults(query) {
+        const normalized = query.trim().toLowerCase();
+
+        if (normalized.length < 3) {
+            clientResults.hidden = true;
+            clientResults.innerHTML = "";
+            return;
+        }
+
+        const matches = clients.filter((client) => `${client.name} ${client.cpf} ${client.phone}`.toLowerCase().includes(normalized));
+
+        if (!matches.length) {
+            clientResults.innerHTML = '<div class="manual-product-result-empty">Nenhuma cliente encontrada.</div>';
+            clientResults.hidden = false;
+            return;
+        }
+
+        clientResults.innerHTML = matches.map((client) => `
+            <button type="button" class="manual-product-result-item" data-new-sale-client-option="${client.cpf}">
+                <strong>${client.name}</strong>
+                <span>${client.cpf} • ${client.phone}</span>
+            </button>
+        `).join("");
+
+        clientResults.hidden = false;
+
+        clientResults.querySelectorAll("[data-new-sale-client-option]").forEach((button) => {
+            button.addEventListener("click", () => {
+                const chosen = clients.find((client) => client.cpf === button.dataset.newSaleClientOption);
+
+                if (!chosen) {
+                    return;
+                }
+
+                selectedClient = chosen;
+                clientSearch.value = `${chosen.name} (${chosen.cpf})`;
+                clientSelection.textContent = `Cliente selecionada: ${chosen.name} • ${chosen.phone}`;
+                clientResults.hidden = true;
+                clientResults.innerHTML = "";
+                buildConfirmSummary();
+            });
+        });
+    }
+
+    function renderProductResults(query) {
+        const normalized = query.trim().toLowerCase();
+
+        if (normalized.length < 3) {
+            productResults.hidden = true;
+            productResults.innerHTML = "";
+            return;
+        }
+
+        const matches = catalog.filter((product) => `${product.name} ${product.code}`.toLowerCase().includes(normalized));
+
+        if (!matches.length) {
+            productResults.innerHTML = '<div class="manual-product-result-empty">Nenhum produto encontrado.</div>';
+            productResults.hidden = false;
+            return;
+        }
+
+        productResults.innerHTML = matches.map((product) => `
+            <button type="button" class="manual-product-result-item" data-new-sale-product-option="${product.code}">
+                <strong>${product.name}</strong>
+                <span>${product.code}</span>
+            </button>
+        `).join("");
+
+        productResults.hidden = false;
+
+        productResults.querySelectorAll("[data-new-sale-product-option]").forEach((button) => {
+            button.addEventListener("click", () => {
+                const chosen = catalog.find((product) => product.code === button.dataset.newSaleProductOption);
+
+                if (!chosen) {
+                    return;
+                }
+
+                selectedProduct = chosen;
+                productSearch.value = `${chosen.name} (${chosen.code})`;
+                productPrice.value = `R$ ${formatCurrencyPtBr(chosen.price)}`;
+                productPrice.disabled = false;
+                productResults.hidden = true;
+                productResults.innerHTML = "";
+                updateProductButtonState();
+            });
+        });
+    }
+
+    clientSearch.addEventListener("input", () => {
+        selectedClient = null;
+        clientSelection.textContent = "Nenhuma cliente selecionada.";
+        renderClientResults(clientSearch.value);
+        buildConfirmSummary();
+    });
+
+    productSearch.addEventListener("input", () => {
+        selectedProduct = null;
+        productPrice.value = "R$ 0,00";
+        productPrice.disabled = true;
+        renderProductResults(productSearch.value);
+        updateProductButtonState();
+    });
+
+    productPrice.addEventListener("input", updateProductButtonState);
+    saleDateInput?.addEventListener("input", () => {
+        syncInstallmentRows();
+        buildConfirmSummary();
+    });
+    saleTypeSelect?.addEventListener("change", buildConfirmSummary);
+    paymentMethodSelect?.addEventListener("change", () => {
+        syncInstallmentRows();
+        buildConfirmSummary();
+    });
+    installmentsSelect?.addEventListener("change", () => {
+        syncInstallmentRows();
+        buildConfirmSummary();
+    });
+    paymentStatusSelect?.addEventListener("change", () => {
+        syncPaymentStatus();
+        buildConfirmSummary();
+    });
+    deliveryStatusSelect?.addEventListener("change", buildConfirmSummary);
+
+    adjustmentRows.forEach((row) => {
+        row.querySelectorAll("input").forEach((input) => {
+            input.addEventListener("input", () => {
+                syncInstallmentRows();
+                buildConfirmSummary();
+            });
+        });
+    });
+
+    productMinus.addEventListener("click", () => {
+        quantity = Math.max(1, quantity - 1);
+        updateProductButtonState();
+    });
+
+    productPlus.addEventListener("click", () => {
+        quantity += 1;
+        updateProductButtonState();
+    });
+
+    productAdd.addEventListener("click", () => {
+        if (!selectedProduct) {
+            return;
+        }
+
+        const price = parseCurrencyPtBr(productPrice.value);
+        const total = price * quantity;
+
+        productsHistory.insertAdjacentHTML("afterbegin", `
+            <tr>
+                <td><strong>${selectedProduct.name}</strong></td>
+                <td>${selectedProduct.code}</td>
+                <td>R$ ${formatCurrencyPtBr(price)}</td>
+                <td><span class="order-qty-pill">${quantity}</span></td>
+                <td class="products-total">R$ ${formatCurrencyPtBr(total)}</td>
+                <td>
+                    <button type="button" class="mk-order-row-delete" data-new-sale-delete="${selectedProduct.name}" aria-label="Excluir ${selectedProduct.name}">
+                        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path></svg>
+                    </button>
+                </td>
+            </tr>
+        `);
+
+        selectedProduct = null;
+        quantity = 1;
+        productSearch.value = "";
+        productPrice.value = "R$ 0,00";
+        productPrice.disabled = true;
+        updateProductButtonState();
+        updateProductsCount();
+        syncInstallmentRows();
+        buildConfirmSummary();
+    });
+
+    document.addEventListener("click", (event) => {
+        const deleteButton = event.target.closest("[data-new-sale-delete]");
+
+        if (deleteButton) {
+            const row = deleteButton.closest("tr");
+
+            if (row) {
+                openDeleteModal(row, deleteButton.dataset.newSaleDelete);
+            }
+        }
+
+        if (!clientSearch.closest(".new-sale-lookup-field")?.contains(event.target)) {
+            clientResults.hidden = true;
+        }
+
+        if (!productSearch.closest(".manual-product-search-shell")?.contains(event.target)) {
+            productResults.hidden = true;
+        }
+    });
+
+    deleteConfirm.addEventListener("click", () => {
+        if (pendingDeleteRow) {
+            pendingDeleteRow.remove();
+            updateProductsCount();
+            syncInstallmentRows();
+            buildConfirmSummary();
+        }
+
+        closeDeleteModal();
+    });
+
+    deleteModal.querySelectorAll("[data-new-sale-delete-close]").forEach((button) => {
+        button.addEventListener("click", closeDeleteModal);
+    });
+
+    confirmModal?.querySelectorAll("[data-new-sale-confirm-close]").forEach((button) => {
+        button.addEventListener("click", closeConfirmModal);
+    });
+
+    saveOpenButton?.addEventListener("click", () => {
+        buildConfirmSummary();
+        confirmModal.hidden = false;
+        document.body.classList.add("modal-open");
+    });
+
+    confirmApply?.addEventListener("click", () => {
+        if (confirmApply.disabled) {
+            return;
+        }
+        window.location.href = "./vendas.html";
+    });
+
+    installmentRows.forEach((row) => {
+        const editButton = row.querySelector("[data-new-sale-installment-edit]");
+        const dateView = row.querySelector('[data-installment-view="date"]');
+        const valueView = row.querySelector('[data-installment-view="value"]');
+        const paymentView = row.querySelector('[data-installment-view="payment"]');
+        const dateInput = row.querySelector('[data-installment-input="date"]');
+        const valueInput = row.querySelector('[data-installment-input="value"]');
+        const paymentInput = row.querySelector('[data-installment-input="payment"]');
+
+        if (!editButton || !dateView || !valueView || !paymentView || !dateInput || !valueInput || !paymentInput) {
+            return;
+        }
+
+        const editIcon = '<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path></svg>';
+        const confirmIcon = '<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,90.34l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,201.37,218.34,79a8,8,0,0,1,11.32,11.31Z"></path></svg>';
+
+        editButton.addEventListener("click", () => {
+            const isEditing = row.classList.toggle("is-editing");
+
+            [dateView, valueView, paymentView].forEach((element) => {
+                element.hidden = isEditing;
+            });
+
+            [dateInput, valueInput, paymentInput].forEach((element) => {
+                element.hidden = !isEditing;
+            });
+
+            editButton.innerHTML = isEditing ? confirmIcon : editIcon;
+            editButton.setAttribute("aria-label", isEditing ? "Confirmar edição da parcela" : "Editar parcela");
+
+            if (isEditing) {
+                const visibleRows = getVisibleInstallmentRows();
+                const currentIndex = visibleRows.indexOf(row);
+                const previousRow = currentIndex > 0 ? visibleRows[currentIndex - 1] : null;
+                const nextRow = currentIndex < visibleRows.length - 1 ? visibleRows[currentIndex + 1] : null;
+                const previousDate = previousRow?.querySelector('[data-installment-input="date"]')?.value
+                    || toIsoDate(previousRow?.querySelector('[data-installment-view="date"]')?.textContent?.trim());
+                const nextDate = nextRow?.querySelector('[data-installment-input="date"]')?.value
+                    || toIsoDate(nextRow?.querySelector('[data-installment-view="date"]')?.textContent?.trim());
+
+                dateInput.min = previousDate || saleDateInput?.value || "";
+                dateInput.max = nextDate || "";
+            } else {
+                const validation = validateInstallmentDate(row, dateInput.value);
+
+                if (!validation.valid) {
+                    row.classList.add("is-editing");
+                    [dateView, valueView, paymentView].forEach((element) => {
+                        element.hidden = true;
+                    });
+
+                    [dateInput, valueInput, paymentInput].forEach((element) => {
+                        element.hidden = false;
+                    });
+
+                    editButton.innerHTML = confirmIcon;
+                    editButton.setAttribute("aria-label", "Confirmar edição da parcela");
+
+                    window.alert(validation.message);
+                    return;
+                }
+
+                const [year, month, day] = dateInput.value.split("-");
+
+                if (year && month && day) {
+                    dateView.textContent = `${day}/${month}/${year}`;
+                }
+
+                valueView.textContent = valueInput.value;
+                paymentView.textContent = paymentInput.value;
+                updateSummary();
+                renderSidebarInstallments();
+                buildConfirmSummary();
+            }
+        });
+
+        const paidCheckbox = row.querySelector("[data-new-sale-installment-paid]");
+
+        paidCheckbox?.addEventListener("change", () => {
+            if (paymentStatusSelect?.value === "Pagamento Parcial") {
+                const visibleRows = getVisibleInstallmentRows();
+                const allChecked = visibleRows.every((visibleRow) => visibleRow.querySelector("[data-new-sale-installment-paid]")?.checked);
+
+                if (allChecked) {
+                    paidCheckbox.checked = false;
+                }
+            }
+
+            updateSummary();
+            renderSidebarInstallments();
+            buildConfirmSummary();
+        });
+    });
+
+    updateProductButtonState();
+    updateProductsCount();
+    syncInstallmentRows();
+    buildConfirmSummary();
+}
+
 function setupProductStockModal() {
     const openButton = document.querySelector("[data-product-stock-open]");
     const stockDisplay = document.querySelector("[data-product-stock-current]");
@@ -2352,6 +3245,374 @@ function setupProductStockModal() {
     confirmModal.querySelectorAll("[data-product-stock-confirm-close]").forEach((button) => {
         button.addEventListener("click", () => closeModal(confirmModal));
     });
+}
+
+function setupSalesPage() {
+    const page = document.querySelector("[data-sales-page]");
+
+    if (!page) {
+        return;
+    }
+
+    const periodButtons = Array.from(page.querySelectorAll("[data-sales-period]"));
+    const chart = page.querySelector("[data-sales-chart]");
+    const chartInfo = page.querySelector("[data-sales-chart-info]");
+    const totalElement = page.querySelector("[data-sales-total]");
+    const revenueElement = page.querySelector("[data-sales-revenue]");
+    const goalPercentElement = page.querySelector("[data-sales-goal-percent]");
+    const goalFillElement = page.querySelector("[data-sales-goal-fill]");
+    const goalCurrentElement = page.querySelector("[data-sales-goal-current]");
+    const goalTargetElement = page.querySelector("[data-sales-goal-target]");
+    const ordersBody = page.querySelector("[data-sales-orders]");
+    const footerElement = page.querySelector("[data-sales-footer]");
+    const today = new Date();
+
+    if (!periodButtons.length || !chart || !totalElement || !revenueElement || !goalPercentElement || !goalFillElement || !goalCurrentElement || !goalTargetElement || !ordersBody || !footerElement) {
+        return;
+    }
+
+    const periods = {
+        "7d": {
+            total: 94,
+            revenue: 8940,
+            goalPercent: 61,
+            goalCurrent: 8940,
+            goalTarget: 14650,
+            chartCount: 7,
+            chartScale: 86,
+            orders: [
+                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "27 Abr, 2026", number: "#459818", client: "Clara Martins", value: 890, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "27 Abr, 2026", number: "#459814", client: "Paula Gomes", value: 315, status: "Pendente", statusClass: "sales-status--pending" },
+                { date: "26 Abr, 2026", number: "#459802", client: "Lucas Mendes", value: 280, status: "Concluído", statusClass: "clients-status--active" }
+            ],
+            footer: "Mostrando 1-4 de 94 resultados"
+        },
+        "30d": {
+            total: 452,
+            revenue: 42150,
+            goalPercent: 72,
+            goalCurrent: 30348,
+            goalTarget: 42150,
+            chartCount: 30,
+            chartScale: 98,
+            orders: [
+                { date: "14 Out, 2023", number: "#458921", client: "Mariana Silveira", value: 840, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "14 Out, 2023", number: "#458918", client: "Ricardo Alencar", value: 1250, status: "Pendente", statusClass: "sales-status--pending" },
+                { date: "13 Out, 2023", number: "#458902", client: "Ana Beatriz Dias", value: 450, status: "Cancelado", statusClass: "clients-status--cancelled" },
+                { date: "13 Out, 2023", number: "#458884", client: "Lucas Mendes", value: 299, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "12 Out, 2023", number: "#458861", client: "Clara Martins", value: 1100, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "12 Out, 2023", number: "#458844", client: "Hugo Pereira", value: 540, status: "Pendente", statusClass: "sales-status--pending" }
+            ],
+            footer: "Mostrando 1-20 de 184 resultados"
+        },
+        "90d": {
+            total: 1186,
+            revenue: 109380,
+            goalPercent: 83,
+            goalCurrent: 90785,
+            goalTarget: 109380,
+            chartCount: 90,
+            chartScale: 104,
+            orders: [
+                { date: "26 Abr, 2026", number: "#459770", client: "Camila Costa", value: 960, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "24 Abr, 2026", number: "#459742", client: "Ana Paula Santos", value: 1380, status: "Pendente", statusClass: "sales-status--pending" },
+                { date: "22 Abr, 2026", number: "#459730", client: "Renata Moura", value: 720, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "20 Abr, 2026", number: "#459701", client: "Priscila Nunes", value: 510, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "18 Abr, 2026", number: "#459689", client: "Helena Prado", value: 450, status: "Cancelado", statusClass: "clients-status--cancelled" },
+                { date: "16 Abr, 2026", number: "#459660", client: "Juliana Reis", value: 1150, status: "Concluído", statusClass: "clients-status--active" }
+            ],
+            footer: "Mostrando 1-20 de 463 resultados"
+        },
+        "1y": {
+            total: 4280,
+            revenue: 398460,
+            goalPercent: 91,
+            goalCurrent: 362599,
+            goalTarget: 398460,
+            chartCount: 365,
+            chartScale: 110,
+            orders: [
+                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "25 Abr, 2026", number: "#459805", client: "Camila Costa", value: 960, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "21 Abr, 2026", number: "#459777", client: "Helena Prado", value: 1380, status: "Pendente", statusClass: "sales-status--pending" },
+                { date: "18 Abr, 2026", number: "#459744", client: "Priscila Nunes", value: 690, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "14 Abr, 2026", number: "#459701", client: "Juliana Reis", value: 1520, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "09 Abr, 2026", number: "#459662", client: "Ana Beatriz Dias", value: 480, status: "Cancelado", statusClass: "clients-status--cancelled" }
+            ],
+            footer: "Mostrando 1-20 de 1.284 resultados"
+        },
+        "all": {
+            total: 8732,
+            revenue: 812940,
+            goalPercent: 94,
+            goalCurrent: 764164,
+            goalTarget: 812940,
+            chartCount: 365,
+            chartScale: 116,
+            orders: [
+                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "18 Jan, 2026", number: "#458915", client: "Camila Costa", value: 2210, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "07 Set, 2025", number: "#457802", client: "Lucas Mendes", value: 940, status: "Pendente", statusClass: "sales-status--pending" },
+                { date: "12 Mar, 2025", number: "#456644", client: "Clara Martins", value: 1330, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "24 Nov, 2024", number: "#454281", client: "Juliana Reis", value: 760, status: "Cancelado", statusClass: "clients-status--cancelled" },
+                { date: "14 Fev, 2024", number: "#451930", client: "Ana Paula Santos", value: 1180, status: "Concluído", statusClass: "clients-status--active" }
+            ],
+            footer: "Mostrando 1-20 de 8.732 resultados"
+        }
+    };
+
+    function formatSalesLabel(date, periodKey, index, total) {
+        if (periodKey === "7d") {
+            return date.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "").slice(0, 3);
+        }
+
+        if (periodKey === "30d") {
+            return index % 5 === 0 || index === total - 1
+                ? String(date.getDate()).padStart(2, "0")
+                : "";
+        }
+
+        if (periodKey === "90d") {
+            return index % 15 === 0 || index === total - 1
+                ? String(date.getDate()).padStart(2, "0")
+                : "";
+        }
+
+        return date.getDate() === 1 || index === total - 1
+            ? date.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "").slice(0, 3)
+            : "";
+    }
+
+    function buildSalesSeries(count, scale, periodKey, totalRevenue) {
+        const startDate = new Date(today);
+        startDate.setDate(today.getDate() - (count - 1));
+        const rawItems = Array.from({ length: count }, (_, index) => {
+            const date = new Date(startDate);
+            date.setDate(startDate.getDate() + index);
+
+            const base = (Math.sin((index + 1) * 0.68) + 1) / 2;
+            const wave = (Math.cos((index + 1) * 0.21) + 1) / 2;
+            const mixed = (base * 0.58) + (wave * 0.42);
+            const value = Math.max(18, Math.round(16 + (mixed * (scale - 16))));
+
+            return {
+                label: formatSalesLabel(date, periodKey, index, count),
+                value,
+                dateLabel: formatShortDate(date)
+            };
+        });
+
+        const totalWeight = rawItems.reduce((sum, item) => sum + item.value, 0) || 1;
+        let allocatedRevenue = 0;
+
+        return rawItems.map((item, index) => {
+            const amount = index === rawItems.length - 1
+                ? Math.max(0, totalRevenue - allocatedRevenue)
+                : Math.round((item.value / totalWeight) * totalRevenue);
+
+            allocatedRevenue += amount;
+
+            return {
+                ...item,
+                amount
+            };
+        });
+    }
+
+    function formatShortDate(date) {
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = date.toLocaleDateString("pt-BR", { month: "short" })
+            .replace(".", "")
+            .split(" ")
+            .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+            .join(" ");
+        const year = String(date.getFullYear()).slice(-2);
+
+        return `${day} ${month} ${year}`;
+    }
+
+    function updateChartInfo(amount, dateText) {
+        if (!chartInfo) {
+            return;
+        }
+
+        chartInfo.textContent = `R$ ${formatCurrencyPtBr(amount)} - ${dateText}`;
+    }
+
+    function renderChart(items) {
+        chart.innerHTML = "";
+        chart.style.gap = items.length > 180 ? "1px" : items.length > 60 ? "2px" : "3px";
+
+        items.forEach((item, index) => {
+            const group = document.createElement("div");
+            group.className = "sales-chart-group";
+
+            const bar = document.createElement("span");
+            bar.className = `sales-chart-bar${index === items.length - 1 ? " is-strong" : ""}`;
+            bar.style.height = "0px";
+            bar.tabIndex = 0;
+            bar.dataset.value = `R$ ${formatCurrencyPtBr(item.amount)}`;
+            bar.setAttribute("aria-label", `R$ ${formatCurrencyPtBr(item.amount)} em ${item.dateLabel}`);
+
+            const label = document.createElement("small");
+            label.textContent = item.label;
+
+            group.append(bar, label);
+            chart.appendChild(group);
+
+            bar.addEventListener("mouseenter", () => {
+                updateChartInfo(item.amount, item.dateLabel);
+            });
+
+            bar.addEventListener("focus", () => {
+                updateChartInfo(item.amount, item.dateLabel);
+            });
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    bar.style.height = `${item.value}px`;
+                });
+            });
+        });
+
+        const lastItem = items[items.length - 1];
+
+        if (lastItem) {
+            updateChartInfo(lastItem.amount, lastItem.dateLabel);
+        }
+    }
+
+    function renderOrders(items) {
+        ordersBody.innerHTML = items.map((item) => `
+            <tr class="sales-table-row" data-row-href="./pedido.html">
+                <td>${item.date}</td>
+                <td><strong class="sales-order-number">${item.number}</strong></td>
+                <td>
+                    <a class="sales-client-link" href="./cliente.html">
+                        <img class="sales-client-avatar avatar-image" src="../src/assets/customers/default.webp" alt="Foto de ${item.client}">
+                        <strong>${item.client}</strong>
+                    </a>
+                </td>
+                <td>R$ ${formatCurrencyPtBr(item.value)}</td>
+                <td><span class="clients-status ${item.statusClass}">${item.status}</span></td>
+            </tr>
+        `).join("");
+
+        setupRowLinks();
+    }
+
+    function applyPeriod(key) {
+        const period = periods[key] || periods["30d"];
+
+        periodButtons.forEach((button) => {
+            button.classList.toggle("is-active", button.dataset.salesPeriod === key);
+        });
+
+        renderChart(buildSalesSeries(period.chartCount, period.chartScale, key, period.revenue));
+        totalElement.textContent = String(period.total);
+        revenueElement.textContent = formatCurrencyPtBr(period.revenue);
+        goalPercentElement.textContent = `${period.goalPercent}%`;
+        goalCurrentElement.textContent = `R$ ${formatCurrencyPtBr(period.goalCurrent)}`;
+        goalTargetElement.textContent = `R$ ${formatCurrencyPtBr(period.goalTarget)}`;
+        goalFillElement.style.width = `${period.goalPercent}%`;
+        renderOrders(period.orders);
+        footerElement.textContent = period.footer;
+    }
+
+    periodButtons.forEach((button) => {
+        button.addEventListener("click", () => applyPeriod(button.dataset.salesPeriod));
+    });
+
+    applyPeriod("30d");
+}
+
+function setupSalesFilters() {
+    const wrap = document.querySelector("[data-sales-filters-wrap]");
+    const toggle = document.querySelector("[data-sales-filters-toggle]");
+    const panel = document.querySelector("[data-sales-filters-panel]");
+    const clearButton = document.querySelector("[data-sales-filters-clear]");
+    const checkAllButton = document.querySelector("[data-sales-filters-check-all]");
+    const counter = document.querySelector("[data-sales-filters-counter]");
+
+    if (!wrap || !toggle || !panel) {
+        return;
+    }
+
+    const checkboxes = () => Array.from(panel.querySelectorAll("[data-sales-filter-checkbox]"));
+    const radios = () => Array.from(panel.querySelectorAll("[data-sales-filter-radio]"));
+    const radioGroups = () => Array.from(new Set(radios().map((input) => input.name)));
+    const inputs = () => Array.from(panel.querySelectorAll("[data-sales-filter-input]"));
+
+    function updateCounter() {
+        if (!counter) {
+            return;
+        }
+
+        const checkedCheckboxes = checkboxes().filter((checkbox) => checkbox.checked).length;
+        const checkedRadios = radioGroups().reduce((total, groupName) => {
+            return total + (panel.querySelector(`input[type="radio"][name="${groupName}"]:checked`) ? 1 : 0);
+        }, 0);
+        const totalFilters = checkboxes().length + radioGroups().length;
+        const appliedFilters = checkedCheckboxes + checkedRadios;
+
+        counter.textContent = `${appliedFilters}/${totalFilters} filtros aplicados`;
+    }
+
+    panel.hidden = true;
+    toggle.setAttribute("aria-expanded", "false");
+
+    toggle.addEventListener("click", () => {
+        const shouldOpen = panel.hidden;
+        panel.hidden = !shouldOpen;
+        toggle.setAttribute("aria-expanded", String(shouldOpen));
+        wrap.classList.toggle("is-expanded", shouldOpen);
+    });
+
+    checkboxes().forEach((checkbox) => checkbox.addEventListener("change", updateCounter));
+    radios().forEach((radio) => radio.addEventListener("change", updateCounter));
+    inputs().forEach((input) => {
+        input.addEventListener("input", updateCounter);
+        input.addEventListener("change", updateCounter);
+    });
+
+    clearButton?.addEventListener("click", () => {
+        checkboxes().forEach((checkbox) => {
+            checkbox.checked = false;
+        });
+
+        radioGroups().forEach((groupName) => {
+            const defaultRadio = radios().find((radio) => radio.name === groupName);
+
+            if (defaultRadio) {
+                defaultRadio.checked = true;
+            }
+        });
+
+        inputs().forEach((input) => {
+            input.value = "";
+        });
+
+        updateCounter();
+    });
+
+    checkAllButton?.addEventListener("click", () => {
+        checkboxes().forEach((checkbox) => {
+            checkbox.checked = true;
+        });
+
+        radioGroups().forEach((groupName) => {
+            const defaultRadio = radios().find((radio) => radio.name === groupName);
+
+            if (defaultRadio) {
+                defaultRadio.checked = true;
+            }
+        });
+
+        updateCounter();
+    });
+
+    updateCounter();
 }
 
 function setupMkOrdersFilters() {
@@ -3866,12 +5127,15 @@ window.addEventListener("load", () => {
     setupActionMenus();
     setupClientFilters();
     setupProductFilters();
+    setupSalesFilters();
     setupMkOrdersFilters();
     setupMkOrderSortMenu();
     setupMkOrderActions();
     setupMkOrderBuilder();
     setupManualProductAddPage();
     setupNewMkOrderPage();
+    setupNewSalePage();
+    setupSalesPage();
     setupProductPerformance();
     setupProductStockModal();
     setupFinanceMonthNav();
