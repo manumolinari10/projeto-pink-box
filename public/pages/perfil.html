@@ -132,8 +132,9 @@
                     <article class="profile-hero-card elevated">
                         <div class="profile-portrait-wrap">
                             <div class="profile-portrait-frame">
-                                <img src="../src/assets/users/default.webp" alt="Retrato de Beatriz Souza">
-                                <a class="profile-image-edit" href="./configuracoes.html">Alterar imagem</a>
+                                <img src="../src/assets/users/default.webp" alt="Retrato de Beatriz Souza" data-profile-image-preview>
+                                <button class="profile-image-edit" type="button" data-profile-image-trigger>Alterar imagem</button>
+                                <input type="file" accept="image/*" hidden data-profile-image-input>
                             </div>
                             <div class="profile-rank-badge elevated">
                                 <span>Ranked #1</span>
@@ -144,21 +145,54 @@
 
                         <div class="profile-identity-block">
                             <h2>Beatriz <span>Souza</span></h2>
-                            <p>Consultora PinkBox com perfil premium de relacionamento e atendimento personalizado. <a class="profile-inline-edit" href="./configuracoes.html">[EDITAR]</a></p>
-                            <div class="profile-tags">
-                                <span>São Paulo</span>
-                                <span>Beauty</span>
-                                <span>Consultora</span>
+                            <div class="profile-description-editor" data-profile-description-editor>
+                                <p data-profile-description-view>Consultora PinkBox com perfil premium de relacionamento e atendimento personalizado. <button class="profile-inline-edit" type="button" data-profile-description-toggle>[EDITAR]</button></p>
+                                <div class="profile-description-actions" data-profile-description-actions hidden>
+                                    <textarea class="client-profile-input profile-description-textarea" rows="2" data-profile-description-input>Consultora PinkBox com perfil premium de relacionamento e atendimento personalizado.</textarea>
+                                    <button class="profile-description-icon-button" type="button" aria-label="Cancelar edição" data-profile-description-cancel>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                                    </button>
+                                    <button class="profile-description-icon-button is-confirm" type="button" aria-label="Salvar descrição" data-profile-description-save>
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="profile-star-progress">
+                                <div class="progress-copy">
+                                    <div class="progress-label">
+                                        <span class="progress-icon" aria-hidden="true">
+                                            <svg viewBox="0 0 256 256"><path d="M240,56v64a8,8,0,0,1-13.66,5.66L200,99.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31,29.66,189.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0L136,140.69,188.69,88,162.34,61.66A8,8,0,0,1,168,48h64A8,8,0,0,1,240,56Z"></path></svg>
+                                        </span>
+                                        <strong class="progress-title">Progresso Consultora Estrela</strong>
+                                    </div>
+                                    <strong class="goal-status"><span data-target="68" data-suffix="%">68%</span> da meta</strong>
+                                </div>
+
+                                <div class="progress-track" aria-hidden="true">
+                                    <span class="progress-fill" data-progress-target="68"></span>
+                                </div>
+
+                                <div class="progress-meta">
+                                    <div><span>Atual</span><strong><span data-target="82">82</span> pts</strong></div>
+                                    <div><span>Faltam</span><strong><span data-target="38">38</span> pts</strong></div>
+                                    <div><span>Meta</span><strong><span data-target="120">120</span> pts</strong></div>
+                                </div>
                             </div>
                         </div>
                     </article>
                 </div>
 
                 <div class="profile-content-column">
-                    <article class="profile-section-card elevated">
+                    <article class="profile-section-card elevated" data-profile-section-editor>
                         <div class="profile-section-head">
                             <h2>Dados Pessoais</h2>
-                            <a class="profile-card-edit" href="./configuracoes.html">Editar</a>
+                            <div class="profile-section-actions">
+                                <button class="profile-card-edit" type="button" data-profile-section-toggle>Editar</button>
+                                <div class="profile-section-edit-actions" data-profile-section-actions hidden>
+                                    <button class="profile-inline-edit-button" type="button" data-profile-section-cancel>Cancelar</button>
+                                    <button class="client-profile-save-button" type="button" data-profile-section-save>Confirmar</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="profile-info-grid">
                             <div>
@@ -169,9 +203,12 @@
                                 <span>Data de Nascimento</span>
                                 <strong>15/08/1992</strong>
                             </div>
-                            <div>
+                            <div data-profile-editable-row="citystate">
                                 <span>Cidade/Estado</span>
-                                <strong>São Paulo / SP</strong>
+                                <strong data-profile-field-view>São Paulo / SP</strong>
+                                <div class="profile-field-editor" data-profile-field-editor hidden>
+                                    <input class="client-profile-input" type="text" value="São Paulo / SP" data-profile-field-input data-profile-input-type="text">
+                                </div>
                             </div>
                             <div>
                                 <span>CPF</span>
@@ -181,17 +218,32 @@
                                 <span>Gênero</span>
                                 <strong>Feminino</strong>
                             </div>
-                            <div>
+                            <div data-profile-editable-row="marital">
                                 <span>Estado Civil</span>
-                                <strong>Casada</strong>
+                                <strong data-profile-field-view>Casada</strong>
+                                <div class="profile-field-editor" data-profile-field-editor hidden>
+                                    <select class="client-profile-select" data-profile-field-input data-profile-input-type="select">
+                                        <option>Solteira</option>
+                                        <option selected>Casada</option>
+                                        <option>União estável</option>
+                                        <option>Divorciada</option>
+                                        <option>Viúva</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </article>
 
-                    <article class="profile-section-card elevated">
+                    <article class="profile-section-card elevated" data-profile-section-editor>
                         <div class="profile-section-head">
                             <h2>Dados Profissionais</h2>
-                            <a class="profile-card-edit" href="./configuracoes.html">Editar</a>
+                            <div class="profile-section-actions">
+                                <button class="profile-card-edit" type="button" data-profile-section-toggle>Editar</button>
+                                <div class="profile-section-edit-actions" data-profile-section-actions hidden>
+                                    <button class="profile-inline-edit-button" type="button" data-profile-section-cancel>Cancelar</button>
+                                    <button class="client-profile-save-button" type="button" data-profile-section-save>Confirmar</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="profile-info-grid">
                             <div>
@@ -206,22 +258,52 @@
                                 <span>Nome da Diretora</span>
                                 <strong>Ana Paula Martins</strong>
                             </div>
-                            <div>
+                            <div data-profile-editable-row="phone">
                                 <span>Telefone de Contato</span>
-                                <strong>+55 11 99876-0128</strong>
+                                <strong data-profile-field-view>(11) 99876-0128</strong>
+                                <div class="profile-field-editor" data-profile-field-editor hidden>
+                                    <input class="client-profile-input" type="text" value="(11) 99876-0128" data-profile-field-input data-profile-input-type="phone">
+                                </div>
                             </div>
-                            <div>
+                            <div data-profile-editable-row="email">
                                 <span>E-mail de Contato</span>
-                                <strong>beatrizsouza@pinkbox.com.br</strong>
+                                <strong data-profile-field-view>beatrizsouza@pinkbox.com.br</strong>
+                                <div class="profile-field-editor" data-profile-field-editor hidden>
+                                    <input class="client-profile-input" type="email" value="beatrizsouza@pinkbox.com.br" data-profile-field-input data-profile-input-type="email">
+                                </div>
                             </div>
-                            <div>
+                            <div data-profile-editable-row="store">
                                 <span>Link da Loja</span>
-                                <strong>pinkbox.com.br/beatrizsouza</strong>
+                                <strong data-profile-field-view>pinkbox.com.br/beatrizsouza</strong>
+                                <div class="profile-field-editor" data-profile-field-editor hidden>
+                                    <input class="client-profile-input" type="text" value="pinkbox.com.br/beatrizsouza" data-profile-field-input data-profile-input-type="text">
+                                </div>
                             </div>
                         </div>
                     </article>
                 </div>
             </section>
+
+            <div class="client-modal" id="profile-image-modal" hidden>
+                <div class="client-modal-backdrop" data-profile-image-close></div>
+                <div class="client-modal-dialog elevated new-client-image-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="profile-image-modal-title">
+                    <button type="button" class="client-modal-close" aria-label="Fechar ajuste de imagem" data-profile-image-close>
+                        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6l-12 12"></path></svg>
+                    </button>
+                    <h2 id="profile-image-modal-title">Ajustar imagem</h2>
+                    <p class="client-modal-subtitle">Arraste a foto para posicionar melhor o rosto no quadro.</p>
+                    <div class="new-client-image-editor">
+                        <div class="new-client-image-editor-frame" data-profile-image-editor>
+                            <img src="../src/assets/users/default.webp" alt="Ajuste de foto do perfil" class="new-client-image-editor-preview avatar-image" data-profile-image-editor-preview>
+                        </div>
+                    </div>
+                    <div class="new-client-image-editor-actions">
+                        <button type="button" class="client-profile-inline-button" data-profile-image-reset>Centralizar</button>
+                        <button type="button" class="client-profile-inline-button" data-profile-image-close>Cancelar</button>
+                        <button type="button" class="clients-primary-button" data-profile-image-apply>Usar imagem</button>
+                    </div>
+                </div>
+            </div>
 
             <footer class="page-footer">© 2026 PinkBox Sistema de Gestão de Vendas.</footer>
         </main>

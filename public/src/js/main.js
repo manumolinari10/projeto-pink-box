@@ -269,6 +269,346 @@ function setupProfileMenu() {
     });
 }
 
+function setupProfileSectionEditors() {
+    const sections = document.querySelectorAll("[data-profile-section-editor]");
+
+    if (!sections.length) {
+        return;
+    }
+
+    function formatProfilePhone(value) {
+        const digits = value.replace(/\D/g, "").slice(0, 11);
+
+        if (digits.length <= 2) {
+            return digits ? `(${digits}` : "";
+        }
+
+        if (digits.length <= 10) {
+            if (digits.length <= 6) {
+                return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+            }
+
+            return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+        }
+
+        if (digits.length <= 7) {
+            return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+        }
+
+        return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+    }
+
+    sections.forEach((section) => {
+        const toggleButton = section.querySelector("[data-profile-section-toggle]");
+        const actionsWrap = section.querySelector("[data-profile-section-actions]");
+        const cancelButton = section.querySelector("[data-profile-section-cancel]");
+        const saveButton = section.querySelector("[data-profile-section-save]");
+        const editableRows = Array.from(section.querySelectorAll("[data-profile-editable-row]"));
+
+        if (!toggleButton || !actionsWrap || !cancelButton || !saveButton || !editableRows.length) {
+            return;
+        }
+
+        const initialValues = new Map();
+
+        editableRows.forEach((row) => {
+            const input = row.querySelector("[data-profile-field-input]");
+            const view = row.querySelector("[data-profile-field-view]");
+
+            if (!input || !view) {
+                return;
+            }
+
+            initialValues.set(row.dataset.profileEditableRow, view.textContent.trim());
+        });
+
+        function setEditingState(isEditing) {
+            section.dataset.profileEditing = isEditing ? "true" : "false";
+            toggleButton.hidden = isEditing;
+            actionsWrap.hidden = !isEditing;
+
+            editableRows.forEach((row) => {
+                const editor = row.querySelector("[data-profile-field-editor]");
+                const view = row.querySelector("[data-profile-field-view]");
+                if (editor) {
+                    editor.hidden = !isEditing;
+                }
+                if (view) {
+                    view.hidden = isEditing;
+                }
+            });
+        }
+
+        function resetInputs() {
+            editableRows.forEach((row) => {
+                const input = row.querySelector("[data-profile-field-input]");
+                const originalValue = initialValues.get(row.dataset.profileEditableRow) || "";
+
+                if (!input) {
+                    return;
+                }
+
+                if (input.tagName === "SELECT") {
+                    Array.from(input.options).forEach((option) => {
+                        option.selected = option.text === originalValue;
+                    });
+                } else {
+                    input.value = originalValue;
+                }
+            });
+        }
+
+        toggleButton.addEventListener("click", () => {
+            resetInputs();
+            setEditingState(true);
+        });
+
+        editableRows.forEach((row) => {
+            const input = row.querySelector("[data-profile-field-input]");
+            const view = row.querySelector("[data-profile-field-view]");
+            const inputType = input?.dataset.profileInputType;
+
+            if (!input || !view) {
+                return;
+            }
+
+            if (inputType === "phone") {
+                input.addEventListener("input", (event) => {
+                    event.target.value = formatProfilePhone(event.target.value);
+                });
+            }
+
+            if (inputType === "email") {
+                input.addEventListener("blur", () => {
+                    input.value = input.value.trim().toLowerCase();
+                });
+            }
+        });
+
+        cancelButton.addEventListener("click", () => {
+            resetInputs();
+            setEditingState(false);
+        });
+
+        saveButton.addEventListener("click", () => {
+            for (const row of editableRows) {
+                const input = row.querySelector("[data-profile-field-input]");
+                const inputType = input?.dataset.profileInputType;
+
+                if (!input) {
+                    continue;
+                }
+
+                if (inputType === "email" && input.value && !input.checkValidity()) {
+                    input.reportValidity();
+                    return;
+                }
+            }
+
+            editableRows.forEach((row) => {
+                const input = row.querySelector("[data-profile-field-input]");
+                const view = row.querySelector("[data-profile-field-view]");
+
+                if (!input || !view) {
+                    return;
+                }
+
+                const nextValue = input.tagName === "SELECT"
+                    ? input.options[input.selectedIndex]?.text || ""
+                    : input.value.trim();
+
+                view.textContent = nextValue;
+                initialValues.set(row.dataset.profileEditableRow, nextValue);
+            });
+
+            setEditingState(false);
+        });
+    });
+}
+
+function setupProfileDescriptionEditor() {
+    const editor = document.querySelector("[data-profile-description-editor]");
+
+    if (!editor) {
+        return;
+    }
+
+    const view = editor.querySelector("[data-profile-description-view]");
+    const toggle = editor.querySelector("[data-profile-description-toggle]");
+    const actions = editor.querySelector("[data-profile-description-actions]");
+    const input = editor.querySelector("[data-profile-description-input]");
+    const cancel = editor.querySelector("[data-profile-description-cancel]");
+    const save = editor.querySelector("[data-profile-description-save]");
+
+    if (!view || !toggle || !actions || !input || !cancel || !save) {
+        return;
+    }
+
+    let initialValue = view.textContent.replace("[EDITAR]", "").trim();
+
+    function setEditingState(isEditing) {
+        view.hidden = isEditing;
+        actions.hidden = !isEditing;
+    }
+
+    toggle.addEventListener("click", () => {
+        input.value = initialValue;
+        setEditingState(true);
+    });
+
+    cancel.addEventListener("click", () => {
+        input.value = initialValue;
+        setEditingState(false);
+    });
+
+    save.addEventListener("click", () => {
+        initialValue = input.value.trim();
+        view.innerHTML = `${initialValue} <button class="profile-inline-edit" type="button" data-profile-description-toggle>[EDITAR]</button>`;
+        const renewedToggle = view.querySelector("[data-profile-description-toggle]");
+        renewedToggle?.addEventListener("click", () => {
+            input.value = initialValue;
+            setEditingState(true);
+        });
+        setEditingState(false);
+    });
+}
+
+function setupProfileImageUpload() {
+    const trigger = document.querySelector("[data-profile-image-trigger]");
+    const input = document.querySelector("[data-profile-image-input]");
+    const preview = document.querySelector("[data-profile-image-preview]");
+    const modal = document.getElementById("profile-image-modal");
+    const editor = document.querySelector("[data-profile-image-editor]");
+    const editorPreview = document.querySelector("[data-profile-image-editor-preview]");
+    const applyButton = document.querySelector("[data-profile-image-apply]");
+    const resetButton = document.querySelector("[data-profile-image-reset]");
+
+    if (!trigger || !input || !preview || !modal || !editor || !editorPreview || !applyButton || !resetButton) {
+        return;
+    }
+
+    let pendingImageSrc = "";
+    let pendingPosition = { x: 50, y: 50 };
+    let savedPosition = { x: 50, y: 50 };
+    let isDragging = false;
+    let dragStart = { x: 0, y: 0 };
+    let dragOrigin = { x: 50, y: 50 };
+
+    function setImagePosition(x, y) {
+        const clampedX = Math.max(0, Math.min(100, x));
+        const clampedY = Math.max(0, Math.min(100, y));
+        pendingPosition = { x: clampedX, y: clampedY };
+        editorPreview.style.setProperty("--new-client-image-x", `${clampedX}%`);
+        editorPreview.style.setProperty("--new-client-image-y", `${clampedY}%`);
+    }
+
+    function applySavedImage() {
+        preview.src = pendingImageSrc || preview.src;
+        preview.style.setProperty("--profile-image-x", `${savedPosition.x}%`);
+        preview.style.setProperty("--profile-image-y", `${savedPosition.y}%`);
+    }
+
+    function closeModal() {
+        modal.hidden = true;
+        document.body.classList.remove("modal-open");
+        input.value = "";
+    }
+
+    trigger.addEventListener("click", () => {
+        input.click();
+    });
+
+    input.addEventListener("change", () => {
+        const file = input.files?.[0];
+
+        if (!file) {
+            return;
+        }
+
+        if (!file.type.startsWith("image/")) {
+            input.value = "";
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const result = String(event.target?.result || "");
+
+            if (!result) {
+                return;
+            }
+
+            pendingImageSrc = result;
+            editorPreview.src = result;
+            pendingPosition = { ...savedPosition };
+            setImagePosition(pendingPosition.x, pendingPosition.y);
+            modal.hidden = false;
+            document.body.classList.add("modal-open");
+        };
+        reader.readAsDataURL(file);
+    });
+
+    editor.addEventListener("pointerdown", (event) => {
+        if (modal.hidden) {
+            return;
+        }
+
+        isDragging = true;
+        dragStart = { x: event.clientX, y: event.clientY };
+        dragOrigin = { ...pendingPosition };
+        editor.setPointerCapture(event.pointerId);
+    });
+
+    editor.addEventListener("pointermove", (event) => {
+        if (!isDragging) {
+            return;
+        }
+
+        const rect = editor.getBoundingClientRect();
+        const deltaX = ((event.clientX - dragStart.x) / rect.width) * 100;
+        const deltaY = ((event.clientY - dragStart.y) / rect.height) * 100;
+        setImagePosition(dragOrigin.x - deltaX, dragOrigin.y - deltaY);
+    });
+
+    function stopDragging(event) {
+        if (!isDragging) {
+            return;
+        }
+
+        isDragging = false;
+
+        if (typeof event.pointerId !== "undefined") {
+            try {
+                editor.releasePointerCapture(event.pointerId);
+            } catch (error) {
+                // ignore
+            }
+        }
+    }
+
+    editor.addEventListener("pointerup", stopDragging);
+    editor.addEventListener("pointercancel", stopDragging);
+    editor.addEventListener("pointerleave", stopDragging);
+
+    resetButton.addEventListener("click", () => {
+        setImagePosition(50, 50);
+    });
+
+    applyButton.addEventListener("click", () => {
+        savedPosition = { ...pendingPosition };
+        applySavedImage();
+        const result = pendingImageSrc || preview.src;
+        document.querySelectorAll(".profile-card .avatar-image, .profile-avatar.avatar-image").forEach((image) => {
+            image.src = result;
+        });
+        closeModal();
+    });
+
+    document.querySelectorAll("[data-profile-image-close]").forEach((button) => {
+        button.addEventListener("click", closeModal);
+    });
+}
+
 function setupSidebarFooterLinks() {
     const helpMarkup = `
         <span class="nav-icon">
@@ -6802,6 +7142,9 @@ window.addEventListener("load", () => {
     setupPeriodMenu();
     setupNotificationMenu();
     setupProfileMenu();
+    setupProfileImageUpload();
+    setupProfileDescriptionEditor();
+    setupProfileSectionEditors();
     setupModals();
     setupAccordions();
     setupJourneyFilters();

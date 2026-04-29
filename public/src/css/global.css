@@ -3421,6 +3421,10 @@ body.is-ready .page-footer {
     line-height: 1.15;
 }
 
+.insights-summary-radar.insights-priority-card strong {
+    font-size: 1.2rem;
+}
+
 .insights-priority-list {
     display: grid;
     gap: 10px;
@@ -3794,6 +3798,12 @@ body.is-ready .page-footer {
     opacity: 0.82;
 }
 
+.profile-card-edit {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
 .profile-portrait-wrap {
     position: relative;
     padding-right: 78px;
@@ -3802,7 +3812,7 @@ body.is-ready .page-footer {
 .profile-portrait-frame {
     position: relative;
     max-width: 360px;
-    aspect-ratio: 0.82 / 1;
+    aspect-ratio: 1 / 1;
     padding: 6px;
     border-radius: 30px;
     background: #fff;
@@ -3815,6 +3825,7 @@ body.is-ready .page-footer {
     height: 100%;
     display: block;
     object-fit: cover;
+    object-position: var(--profile-image-x, 50%) var(--profile-image-y, 50%);
     border-radius: 24px;
     transition: filter 0.25s ease, transform 0.25s ease;
 }
@@ -3929,6 +3940,62 @@ body.is-ready .page-footer {
     font-weight: 800;
     letter-spacing: 0.08em;
     white-space: nowrap;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.profile-description-editor {
+    margin-top: 14px;
+}
+
+.profile-description-editor p {
+    margin-top: 0;
+}
+
+.profile-description-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-description-actions .client-profile-input {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.profile-description-textarea {
+    min-height: 84px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    resize: vertical;
+}
+
+.profile-description-icon-button {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eadce4;
+    border-radius: 12px;
+    background: #fff;
+    color: #756875;
+    cursor: pointer;
+}
+
+.profile-description-icon-button svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
+
+.profile-description-icon-button.is-confirm {
+    background: linear-gradient(180deg, #e1007a 0%, #c40069 100%);
+    border-color: transparent;
+    color: #fff;
 }
 
 .profile-tags {
@@ -3936,6 +4003,56 @@ body.is-ready .page-footer {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 22px;
+}
+
+.profile-star-progress {
+    margin-top: 22px;
+}
+
+.profile-star-progress .progress-copy {
+    margin-top: 0;
+}
+
+.profile-star-progress .progress-meta span,
+.profile-star-progress .progress-meta strong {
+    color: inherit;
+}
+
+.profile-star-progress .progress-meta strong span {
+    display: inline;
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.profile-star-progress .progress-meta {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+}
+
+.profile-star-progress .progress-meta > div {
+    text-align: center;
+}
+
+.profile-star-progress .progress-meta > div:first-child {
+    justify-self: start;
+    text-align: left;
+}
+
+.profile-star-progress .progress-meta > div:nth-child(2) {
+    justify-self: center;
+}
+
+.profile-star-progress .progress-meta > div:last-child {
+    justify-self: end;
+    text-align: right;
+}
+
+.profile-star-progress .progress-meta div:nth-child(2) strong,
+.profile-star-progress .progress-meta div:nth-child(2) span {
+    color: var(--pink);
 }
 
 .profile-tags span {
@@ -3997,6 +4114,35 @@ body.is-ready .page-footer {
     font-weight: 700;
 }
 
+.profile-section-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-section-edit-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-inline-edit-button {
+    min-height: 38px;
+    padding: 0 14px;
+    border: 1px solid #eadce4;
+    border-radius: 12px;
+    background: #fff;
+    color: #675a67;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.profile-section-edit-actions .client-profile-save-button {
+    min-height: 38px;
+    padding: 0 16px;
+}
+
 .profile-info-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4011,6 +4157,15 @@ body.is-ready .page-footer {
     font-size: 1.08rem;
     font-weight: 600;
     line-height: 1.45;
+}
+
+.profile-field-editor {
+    margin-top: 10px;
+}
+
+.profile-field-editor .client-profile-input,
+.profile-field-editor .client-profile-select {
+    width: 100%;
 }
 
 .profile-summary-block {
@@ -7769,8 +7924,19 @@ body.is-ready .page-footer {
 }
 
 .client-profile-save-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-height: 38px;
     padding: 0 16px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #e1007a 0%, #c40069 100%);
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 700;
+    box-shadow: 0 12px 20px rgba(224, 5, 122, 0.14);
+    cursor: pointer;
 }
 
 .client-profile-grid {
