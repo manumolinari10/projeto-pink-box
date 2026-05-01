@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../src/css/global.css">
 </head>
 <body class="help-page">
+    <script>try{if(window.localStorage.getItem("pinkbox-sidebar-collapsed")==="true"){document.body.classList.add("sidebar-transition-disabled","sidebar-collapsed");}}catch(e){}</script>
     <div class="dashboard-shell">
         <aside class="sidebar" aria-label="Menu lateral">
             <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
@@ -118,6 +119,66 @@
                     <h2>Editar perfil e dados da consultora</h2>
                     <p>Atualize descrição, foto, dados pessoais e profissionais mantendo o perfil alinhado à sua atuação atual.</p>
                 </a>
+            </section>
+
+            <section class="help-faq-card elevated">
+                <div class="page-intro-copy">
+                    <div class="products-breadcrumb">Dúvidas Frequentes</div>
+                    <p class="help-faq-intro">Respostas curtas para os pontos que costumam gerar mais dúvidas no uso do sistema.</p>
+                </div>
+
+                <div class="help-faq-list">
+                    <details class="help-faq-item">
+                        <summary>Como corrigir estoque sem lançar um novo pedido?</summary>
+                        <p>Use a atualização de estoque direto na página do produto quando o ajuste for por inventário, perda ou dano. Para reposição comprada na Mary Kay, o ideal é lançar pelo fluxo de Pedidos MK.</p>
+                    </details>
+                    <details class="help-faq-item">
+                        <summary>Quando uma venda entra no financeiro?</summary>
+                        <p>Assim que a venda é salva, os dados da operação passam a alimentar o painel financeiro conforme status, custos, descontos e recebimento das parcelas.</p>
+                    </details>
+                    <details class="help-faq-item">
+                        <summary>Posso editar um pedido já salvo?</summary>
+                        <p>Sim. A página de edição permite revisar cliente, produtos, pagamento e parcelas. As alterações podem impactar o financeiro, então a confirmação final pede uma checagem extra.</p>
+                    </details>
+                    <details class="help-faq-item">
+                        <summary>Como usar os eventos manuais do calendário?</summary>
+                        <p>Você pode criar compromissos próprios com descrição, data, hora, local e notas. Depois, eles aparecem com a tag Meus Eventos e podem ser concluídos ou editados quando necessário.</p>
+                    </details>
+                </div>
+            </section>
+
+            <section class="help-feedback-card elevated">
+                <div class="page-intro-copy">
+                    <div class="products-breadcrumb">Dúvidas e Feedbacks</div>
+                    <p class="help-feedback-intro">Nos diga o que está achando. Envie sua dúvida ou nos dê um feedback de como tem sido seu uso na plataforma PinkBox.</p>
+                </div>
+
+                <form class="help-feedback-form">
+                    <div class="calendar-form-field calendar-form-field--full">
+                        <div class="help-feedback-choice-group">
+                            <label class="help-feedback-choice">
+                                <input type="radio" name="help-feedback-type" checked required>
+                                <span>Tenho uma dúvida</span>
+                            </label>
+                            <label class="help-feedback-choice">
+                                <input type="radio" name="help-feedback-type">
+                                <span>Dar um feedback</span>
+                            </label>
+                        </div>
+                    </div>
+                    <label class="calendar-form-field">
+                        <span>Assunto</span>
+                        <input type="text" placeholder="Digite aqui o assunto da mensagem..." required>
+                    </label>
+                    <label class="calendar-form-field calendar-form-field--full">
+                        <span>Mensagem</span>
+                        <textarea rows="5" placeholder="Descreva seu feedback ou sua dúvida..." required></textarea>
+                    </label>
+                    <div class="help-feedback-actions">
+                        <button type="button" class="profile-inline-edit-button">Limpar</button>
+                        <button type="button" class="clients-primary-button">Enviar Mensagem</button>
+                    </div>
+                </form>
             </section>
 
             <footer class="page-footer">© 2026 PinkBox Sistema de Gestão de Vendas.</footer>

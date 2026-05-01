@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../src/css/global.css">
 </head>
 <body class="settings-page">
+    <script>try{if(window.localStorage.getItem("pinkbox-sidebar-collapsed")==="true"){document.body.classList.add("sidebar-transition-disabled","sidebar-collapsed");}}catch(e){}</script>
     <div class="dashboard-shell">
         <aside class="sidebar" aria-label="Menu lateral">
             <a class="brand-block" href="./index.html" aria-label="Ir para a página inicial do dashboard">
@@ -125,6 +126,11 @@
                     <h1>Configurações</h1>
                     <p>Gerencie preferências do sistema, ativações de recursos e ajustes gerais da sua operação.</p>
                 </div>
+                <div class="client-hero-actions settings-header-actions">
+                    <button class="client-secondary-button" type="button">Cancelar</button>
+                    <button class="settings-tertiary-button" type="button">Restaurar padrão</button>
+                    <button class="clients-primary-button" type="button">Salvar alterações</button>
+                </div>
             </section>
 
             <section class="settings-layout">
@@ -132,45 +138,59 @@
                     <article class="settings-section-card elevated">
                         <div class="settings-section-head">
                             <div>
-                                <span class="finance-eyebrow">Sistema</span>
-                                <h2>Preferências Gerais</h2>
+                                <span class="finance-eyebrow">Perfil</span>
+                                <h2>Dados da Conta</h2>
                             </div>
-                            <span class="clients-stat-pill clients-stat-pill--positive">8 ativas</span>
                         </div>
 
                         <div class="settings-option-list">
-                            <label class="settings-option-row">
+                            <div class="settings-option-row settings-option-row--stacked">
                                 <div class="settings-option-copy">
-                                    <strong>Ativar notificações internas</strong>
-                                    <p>Exibe alertas do sistema para vendas, aniversários e oportunidades.</p>
+                                    <strong>Como devemos te chamar?</strong>
+                                    <p>Esse nome pode ser usado em mensagens, cumprimentos e experiências personalizadas da plataforma.</p>
                                 </div>
-                                <span class="settings-switch">
-                                    <input type="checkbox" checked>
-                                    <span class="settings-slider"></span>
-                                </span>
-                            </label>
+                                <label class="settings-currency-field">
+                                    <span>Nome exibido</span>
+                                    <div class="settings-number-input-wrap">
+                                        <input type="text" value="Beatriz" maxlength="20" aria-label="Como devemos te chamar">
+                                    </div>
+                                </label>
+                            </div>
 
-                            <label class="settings-option-row">
+                            <div class="settings-option-row settings-option-row--stacked">
                                 <div class="settings-option-copy">
-                                    <strong>Mostrar metas no dashboard</strong>
-                                    <p>Deixa visível o bloco de metas e progresso logo na página inicial.</p>
+                                    <strong>Trocar senha de acesso</strong>
+                                    <p>Atualize sua senha para manter o acesso à plataforma mais seguro.</p>
                                 </div>
-                                <span class="settings-switch">
-                                    <input type="checkbox" checked>
-                                    <span class="settings-slider"></span>
-                                </span>
-                            </label>
+                                <div class="settings-password-grid">
+                                    <label class="settings-currency-field">
+                                        <span>Senha atual</span>
+                                        <div class="settings-number-input-wrap">
+                                            <input type="password" value="12345678" aria-label="Senha atual">
+                                        </div>
+                                    </label>
+                                    <label class="settings-currency-field">
+                                        <span>Nova senha</span>
+                                        <div class="settings-number-input-wrap">
+                                            <input type="password" value="pinkbox2026" aria-label="Nova senha">
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
 
-                            <label class="settings-option-row">
+                            <div class="settings-option-row settings-option-row--stacked">
                                 <div class="settings-option-copy">
-                                    <strong>Habilitar atalhos rápidos</strong>
-                                    <p>Mostra ações principais como novos cadastros e lançamentos logo no topo das páginas.</p>
+                                    <strong>Meta de vendas mensal</strong>
+                                    <p>Defina o valor mensal usado como referência nas metas e acompanhamentos do sistema.</p>
                                 </div>
-                                <span class="settings-switch">
-                                    <input type="checkbox" checked>
-                                    <span class="settings-slider"></span>
-                                </span>
-                            </label>
+                                <label class="settings-currency-field">
+                                    <span>Valor da meta</span>
+                                    <div class="settings-number-input-wrap settings-number-input-wrap--currency">
+                                        <small>R$</small>
+                                        <input type="text" value="12.000,00" inputmode="decimal" aria-label="Meta de vendas mensal">
+                                    </div>
+                                </label>
+                            </div>
                         </div>
                     </article>
 
@@ -185,8 +205,8 @@
                         <div class="settings-option-list">
                             <label class="settings-option-row">
                                 <div class="settings-option-copy">
-                                    <strong>Lembrete de aniversários</strong>
-                                    <p>Notifica quando clientes entram em datas especiais para abordagem.</p>
+                                    <strong>Avisos</strong>
+                                    <p>Ativa alertas gerais do sistema para situações importantes da operação.</p>
                                 </div>
                                 <span class="settings-switch">
                                     <input type="checkbox" checked>
@@ -196,8 +216,8 @@
 
                             <label class="settings-option-row">
                                 <div class="settings-option-copy">
-                                    <strong>Alertar pagamentos em atraso</strong>
-                                    <p>Exibe aviso sempre que houver parcela vencida ou pendente.</p>
+                                    <strong>Notificações e ofertas</strong>
+                                    <p>Permite receber comunicações sobre novidades, funcionalidades e oportunidades.</p>
                                 </div>
                                 <span class="settings-switch">
                                     <input type="checkbox" checked>
@@ -207,8 +227,329 @@
 
                             <label class="settings-option-row">
                                 <div class="settings-option-copy">
-                                    <strong>Resumo semanal por notificação</strong>
-                                    <p>Envia um resumo automático das principais movimentações da semana.</p>
+                                    <strong>Resumo semanal</strong>
+                                    <p>Envia um panorama semanal com os principais acontecimentos do sistema.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Resumo mensal</strong>
+                                    <p>Gera um resumo mensal com os destaques e números consolidados do período.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox">
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+                        </div>
+                    </article>
+
+                    <article class="settings-section-card elevated">
+                        <div class="settings-section-head">
+                            <div>
+                                <span class="finance-eyebrow">Clientes</span>
+                                <h2>Status por Tempo Sem Compra</h2>
+                            </div>
+                        </div>
+
+                        <div class="settings-option-list">
+                            <div class="settings-option-row settings-option-row--stacked">
+                                <div class="settings-option-copy">
+                                    <strong>Quanto tempo sem comprar um cliente muda o status para</strong>
+                                    <p>Defina a quantidade de dias sem compra para atualizar automaticamente o status da cliente.</p>
+                                </div>
+
+                                <div class="settings-number-grid">
+                                    <label class="settings-number-field">
+                                        <span>Atenção</span>
+                                        <div class="settings-number-input-wrap">
+                                            <input type="number" min="0" step="1" value="90" inputmode="numeric">
+                                            <small>dias</small>
+                                        </div>
+                                    </label>
+
+                                    <label class="settings-number-field">
+                                        <span>Em risco</span>
+                                        <div class="settings-number-input-wrap">
+                                            <input type="number" min="0" step="1" value="180" inputmode="numeric">
+                                            <small>dias</small>
+                                        </div>
+                                    </label>
+
+                                    <label class="settings-number-field">
+                                        <span>Inativo</span>
+                                        <div class="settings-number-input-wrap">
+                                            <input type="number" min="0" step="1" value="365" inputmode="numeric">
+                                            <small>dias</small>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-option-row settings-option-row--stacked">
+                                <div class="settings-option-copy">
+                                    <strong>Mensagens padrão</strong>
+                                    <p>Se quiser deixar sem uma mensagem padrão definida, deixe o campo em branco.</p>
+                                </div>
+
+                                <div class="settings-message-grid">
+                                    <label class="settings-message-field">
+                                        <span>Pedido em aberto</span>
+                                        <textarea rows="4">Olá, Ana Souza! Tudo bem? Estou passando para retomar nosso contato sobre seu retorno de 2 dias e saber se posso te ajudar com alguma dúvida ou com uma sugestão ideal para este momento.</textarea>
+                                    </label>
+
+                                    <label class="settings-message-field">
+                                        <span>Retorno 2 dias</span>
+                                        <textarea rows="4">Olá, Julia Santos! Tudo bem? Estou passando para retomar nosso contato sobre seu retorno de 2 dias e saber se posso te ajudar com alguma dúvida ou com uma sugestão ideal para este momento.</textarea>
+                                    </label>
+
+                                    <label class="settings-message-field">
+                                        <span>Retorno 2 semanas</span>
+                                        <textarea rows="4">Olá, Marina Oliveira! Tudo bem? Estou passando para retomar nosso contato sobre seu retorno de 2 dias e saber se posso te ajudar com alguma dúvida ou com uma sugestão ideal para este momento.</textarea>
+                                    </label>
+
+                                    <label class="settings-message-field">
+                                        <span>Retorno 2 meses</span>
+                                        <textarea rows="4"></textarea>
+                                    </label>
+
+                                    <label class="settings-message-field">
+                                        <span>Aniversário</span>
+                                        <textarea rows="4">Olá, [NOME]! Passando para desejar um feliz aniversário. Que seu dia seja muito especial, cheio de alegrias e momentos lindos. Preparei uma condição especial de aniversário para você e vou amar te contar mais.</textarea>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="settings-section-card elevated">
+                        <div class="settings-section-head">
+                            <div>
+                                <span class="finance-eyebrow">Vendas</span>
+                                <h2>Métodos de Pagamento</h2>
+                            </div>
+                        </div>
+
+                        <div class="settings-option-list">
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Pix</strong>
+                                    <p>Permite registrar vendas pagas via transferência instantânea.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Cartão de Crédito</strong>
+                                    <p>Ativa pagamentos parcelados ou à vista com cartão de crédito.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Cartão de Débito</strong>
+                                    <p>Disponibiliza a opção de pagamento por débito nas vendas.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Dinheiro</strong>
+                                    <p>Permite registrar vendas recebidas em espécie.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Boleto</strong>
+                                    <p>Ativa cobranças e registros de pagamento via boleto bancário.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox">
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="settings-section-head settings-section-head--subsection">
+                            <div>
+                                <h2>Parcelamento Máximo</h2>
+                            </div>
+                        </div>
+
+                        <div class="settings-option-list">
+                            <div class="settings-option-row settings-option-row--stacked">
+                                <div class="settings-option-copy">
+                                    <strong>Máximo de parcelas permitido</strong>
+                                    <p>Máximo permitido no sistema é de 15 parcelas.</p>
+                                </div>
+
+                                <div class="settings-stepper" data-settings-stepper data-min="1" data-max="15">
+                                    <button class="settings-stepper-button" type="button" aria-label="Diminuir parcelamento máximo" data-settings-stepper-minus>-</button>
+                                    <input class="settings-stepper-value" type="number" min="1" max="15" step="1" value="12" inputmode="numeric" aria-label="Parcelamento máximo" data-settings-stepper-input>
+                                    <button class="settings-stepper-button" type="button" aria-label="Aumentar parcelamento máximo" data-settings-stepper-plus>+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section-head settings-section-head--subsection">
+                            <div>
+                                <h2>Tipos de Venda</h2>
+                            </div>
+                        </div>
+
+                        <div class="settings-option-list">
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Venda Direta</strong>
+                                    <p>Ativa o lançamento padrão de vendas realizadas diretamente com a cliente.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Entrega</strong>
+                                    <p>Permite registrar vendas finalizadas com entrega em domicílio.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Retirada</strong>
+                                    <p>Habilita vendas em que a cliente retira o pedido em mãos.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Pronta Entrega</strong>
+                                    <p>Ativa o fluxo de venda com produto disponível para entrega imediata.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Encomenda</strong>
+                                    <p>Permite registrar vendas em que o item será comprado ou reservado depois.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox">
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="settings-section-head settings-section-head--subsection">
+                            <div>
+                                <h2>Custos</h2>
+                            </div>
+                        </div>
+
+                        <div class="settings-option-list">
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Frete</strong>
+                                    <p>Permite adicionar valores de envio no fechamento das vendas.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Seguro</strong>
+                                    <p>Ativa o lançamento de custos de proteção ou cobertura do pedido.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox">
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Imposto</strong>
+                                    <p>Permite informar valores de tributos ou taxas adicionais no pedido.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="settings-section-head settings-section-head--subsection">
+                            <div>
+                                <h2>Descontos</h2>
+                            </div>
+                        </div>
+
+                        <div class="settings-option-list">
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Desconto</strong>
+                                    <p>Habilita descontos diretos aplicados manualmente na venda.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Promoções</strong>
+                                    <p>Permite registrar reduções de valor por campanha promocional.</p>
+                                </div>
+                                <span class="settings-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="settings-slider"></span>
+                                </span>
+                            </label>
+
+                            <label class="settings-option-row">
+                                <div class="settings-option-copy">
+                                    <strong>Cashback</strong>
+                                    <p>Ativa o uso de retorno em crédito ou abatimento para a cliente.</p>
                                 </div>
                                 <span class="settings-switch">
                                     <input type="checkbox">
@@ -262,68 +603,6 @@
                         </div>
                     </article>
                 </div>
-
-                <aside class="settings-side-column">
-                    <article class="settings-summary-card elevated">
-                        <span class="finance-eyebrow">Resumo</span>
-                        <h2>Status Atual</h2>
-                        <div class="settings-summary-grid">
-                            <div>
-                                <strong>12</strong>
-                                <span>ajustes ativos</span>
-                            </div>
-                            <div>
-                                <strong>3</strong>
-                                <span>pendentes de revisão</span>
-                            </div>
-                        </div>
-                        <p>Essa página é uma base inicial. Depois podemos conectar cada item a regras reais, permissões e integrações do sistema.</p>
-                    </article>
-
-                    <article class="settings-summary-card elevated">
-                        <span class="finance-eyebrow">Privacidade</span>
-                        <h2>Controles Rápidos</h2>
-                        <div class="settings-option-list settings-option-list--compact">
-                            <label class="settings-option-row">
-                                <div class="settings-option-copy">
-                                    <strong>Ocultar dados sensíveis</strong>
-                                </div>
-                                <span class="settings-switch">
-                                    <input type="checkbox">
-                                    <span class="settings-slider"></span>
-                                </span>
-                            </label>
-                            <label class="settings-option-row">
-                                <div class="settings-option-copy">
-                                    <strong>Bloquear exportações</strong>
-                                </div>
-                                <span class="settings-switch">
-                                    <input type="checkbox">
-                                    <span class="settings-slider"></span>
-                                </span>
-                            </label>
-                            <label class="settings-option-row">
-                                <div class="settings-option-copy">
-                                    <strong>Permitir acesso a relatórios</strong>
-                                </div>
-                                <span class="settings-switch">
-                                    <input type="checkbox" checked>
-                                    <span class="settings-slider"></span>
-                                </span>
-                            </label>
-                        </div>
-                    </article>
-
-                    <article class="settings-summary-card elevated">
-                        <span class="finance-eyebrow">Aparência</span>
-                        <h2>Preferências Visuais</h2>
-                        <ul class="settings-note-list">
-                            <li>Manter layout compacto nas tabelas</li>
-                            <li>Exibir cards principais no topo</li>
-                            <li>Destacar indicadores críticos automaticamente</li>
-                        </ul>
-                    </article>
-                </aside>
             </section>
 
             <footer class="page-footer">

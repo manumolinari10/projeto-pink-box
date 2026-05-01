@@ -709,8 +709,30 @@ function animateProfileRings() {
     });
 }
 
+function applySavedSidebarState() {
+    const storageKey = "pinkbox-sidebar-collapsed";
+    const savedState = window.localStorage.getItem(storageKey);
+    const toggle = document.querySelector(".menu-toggle");
+
+    if (savedState === "true") {
+        document.body.classList.add("sidebar-transition-disabled");
+        document.body.classList.add("sidebar-collapsed");
+        toggle?.setAttribute("aria-expanded", "false");
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                document.body.classList.remove("sidebar-transition-disabled");
+            });
+        });
+        return;
+    }
+
+    document.body.classList.remove("sidebar-collapsed");
+    toggle?.setAttribute("aria-expanded", "true");
+}
+
 function setupSidebarToggle() {
     const toggle = document.querySelector(".menu-toggle");
+    const storageKey = "pinkbox-sidebar-collapsed";
 
     if (!toggle) {
         return;
@@ -719,6 +741,7 @@ function setupSidebarToggle() {
     toggle.addEventListener("click", () => {
         const collapsed = document.body.classList.toggle("sidebar-collapsed");
         toggle.setAttribute("aria-expanded", String(!collapsed));
+        window.localStorage.setItem(storageKey, String(collapsed));
     });
 }
 
@@ -735,11 +758,47 @@ function setupSidebarSubmenus() {
         submenu.hidden = !shouldStartOpen;
         toggle.setAttribute("aria-expanded", String(shouldStartOpen));
 
-        toggle.addEventListener("click", () => {
+        function openSubmenu() {
+            submenu.hidden = false;
+            group.classList.add("is-open");
+            toggle.setAttribute("aria-expanded", "true");
+        }
+
+        function closeSubmenu() {
+            submenu.hidden = true;
+            group.classList.remove("is-open");
+            toggle.setAttribute("aria-expanded", "false");
+        }
+
+        toggle.addEventListener("click", (event) => {
+            if (document.body.classList.contains("sidebar-collapsed")) {
+                event.preventDefault();
+                return;
+            }
+
             const isOpen = !submenu.hidden;
-            submenu.hidden = isOpen;
-            group.classList.toggle("is-open", !isOpen);
-            toggle.setAttribute("aria-expanded", String(!isOpen));
+            if (isOpen) {
+                closeSubmenu();
+                return;
+            }
+
+            openSubmenu();
+        });
+
+        group.addEventListener("mouseenter", () => {
+            if (!document.body.classList.contains("sidebar-collapsed")) {
+                return;
+            }
+
+            openSubmenu();
+        });
+
+        group.addEventListener("mouseleave", () => {
+            if (!document.body.classList.contains("sidebar-collapsed")) {
+                return;
+            }
+
+            closeSubmenu();
         });
     });
 }
@@ -7142,6 +7201,55 @@ function setupCalendarPage() {
     renderCalendar();
 }
 
+function setupSettingsPage() {
+    document.querySelectorAll("[data-settings-stepper]").forEach((stepper) => {
+        const input = stepper.querySelector("[data-settings-stepper-input]");
+        const minusButton = stepper.querySelector("[data-settings-stepper-minus]");
+        const plusButton = stepper.querySelector("[data-settings-stepper-plus]");
+        const min = Number(stepper.dataset.min || input?.min || 0);
+        const max = Number(stepper.dataset.max || input?.max || 999);
+
+        if (!input || !minusButton || !plusButton) {
+            return;
+        }
+
+        const clampValue = (value) => {
+            if (Number.isNaN(value)) {
+                return min;
+            }
+
+            return Math.min(max, Math.max(min, value));
+        };
+
+        const syncValue = () => {
+            const nextValue = clampValue(Number(input.value));
+            input.value = String(nextValue);
+            minusButton.disabled = nextValue <= min;
+            plusButton.disabled = nextValue >= max;
+        };
+
+        minusButton.addEventListener("click", () => {
+            input.value = String(clampValue(Number(input.value) - 1));
+            syncValue();
+        });
+
+        plusButton.addEventListener("click", () => {
+            input.value = String(clampValue(Number(input.value) + 1));
+            syncValue();
+        });
+
+        input.addEventListener("input", () => {
+            const digitsOnly = input.value.replace(/\D/g, "");
+            input.value = digitsOnly;
+        });
+
+        input.addEventListener("blur", syncValue);
+        syncValue();
+    });
+}
+
+applySavedSidebarState();
+
 window.addEventListener("load", () => {
     window.scrollTo(0, 0);
     document.body.classList.add("is-ready");
@@ -7189,6 +7297,7 @@ window.addEventListener("load", () => {
     setupInsightsMore();
     setupDashboardPage();
     setupCalendarPage();
+    setupSettingsPage();
     animateProgressBar();
     animatePerformanceBars();
     animateStockBars();
