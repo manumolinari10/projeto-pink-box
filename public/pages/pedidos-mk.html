@@ -85,9 +85,9 @@
             </div>
         </aside>
 
-        <main class="main-panel products-main-panel">
-            <header class="topbar clients-topbar">
-                <div class="clients-topbar-left">
+        <main class="main-panel app-page-panel">
+            <header class="topbar app-topbar">
+                <div class="app-topbar-left">
                     <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
                         <span></span>
                         <span></span>
@@ -121,7 +121,7 @@
 
             <section class="product-detail-header page-intro-wrap">
                 <div class="page-intro-copy">
-                    <div class="products-breadcrumb">Dashboard / Estoque / Pedidos MK</div>
+                    <div class="app-breadcrumb">Dashboard / Estoque / Pedidos MK</div>
                     <h1>Pedidos MK</h1>
                     <p>Acompanhe os pedidos realizados no sistema Mary Kay e consulte pontos, itens e valores totais de cada compra.</p>
                 </div>
@@ -150,75 +150,75 @@
                 </span>
             </section>
 
-            <section class="products-toolbar clients-toolbar elevated" data-mk-filters-wrap>
-                <label class="products-toolbar-search">
+            <section class="app-toolbar app-filter-toolbar elevated" data-mk-filters-wrap>
+                <label class="app-toolbar-search">
                     <span aria-hidden="true">
                         <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                     </span>
                     <input type="search" placeholder="Buscar por número do pedido...">
                 </label>
 
-                <div class="products-toolbar-actions">
-                    <button type="button" class="products-toolbar-button" data-mk-filters-toggle aria-expanded="false">
+                <div class="app-toolbar-actions">
+                    <button type="button" class="app-toolbar-button" data-mk-filters-toggle aria-expanded="false">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm3 5h10v2H7zm3 5h4v2h-4z"></path></svg>
                         <span>Filtros</span>
                     </button>
-                    <button type="button" class="products-toolbar-button">
+                    <button type="button" class="app-toolbar-button">
                         <svg viewBox="0 0 256 256"><path d="M119.39,172.94a8,8,0,0,1-1.73,8.72l-32,32a8,8,0,0,1-11.32,0l-32-32A8,8,0,0,1,48,168H72V48a8,8,0,0,1,16,0V168h24A8,8,0,0,1,119.39,172.94Zm94.27-98.6-32-32a8,8,0,0,0-11.32,0l-32,32A8,8,0,0,0,144,88h24V208a8,8,0,0,0,16,0V88h24a8,8,0,0,0,5.66-13.66Z"></path></svg>
                         <span>Ordenar</span>
                     </button>
-                    <button type="button" class="products-toolbar-button">
+                    <button type="button" class="app-toolbar-button">
                         <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34Zm-56,83.32-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35a8,8,0,0,1,11.32,11.32ZM152,88V44l44,44Z"></path></svg>
                         <span>Exportar</span>
                     </button>
                 </div>
 
-                <div class="clients-filters-panel" hidden data-mk-filters-panel>
-                    <div class="clients-filters-grid products-filters-grid">
-                        <label class="clients-filter-field clients-filter-field--range">
+                <div class="app-filters-panel" hidden data-mk-filters-panel>
+                    <div class="app-filters-grid app-filters-grid--inventory">
+                        <label class="app-filter-field app-filter-field--range">
                             <span>Data do pedido na Mary Kay</span>
-                            <div class="clients-filter-range">
+                            <div class="app-filter-range">
                                 <input type="date" aria-label="Data inicial do pedido na Mary Kay">
                                 <input type="date" aria-label="Data final do pedido na Mary Kay">
                             </div>
                         </label>
 
-                        <label class="clients-filter-field clients-filter-field--range">
+                        <label class="app-filter-field app-filter-field--range">
                             <span>Data em que o pedido foi adicionado ao sistema</span>
-                            <div class="clients-filter-range">
+                            <div class="app-filter-range">
                                 <input type="date" aria-label="Data inicial do cadastro no sistema">
                                 <input type="date" aria-label="Data final do cadastro no sistema">
                             </div>
                         </label>
 
-                        <label class="clients-filter-field clients-filter-field--range">
+                        <label class="app-filter-field app-filter-field--range">
                             <span>Valor (R$)</span>
-                            <div class="clients-filter-range">
+                            <div class="app-filter-range">
                                 <input type="number" min="0" step="0.01" placeholder="Mínimo">
                                 <input type="number" min="0" step="0.01" placeholder="Máximo">
                             </div>
                         </label>
 
-                        <label class="clients-filter-field clients-filter-field--range">
+                        <label class="app-filter-field app-filter-field--range">
                             <span>Pontos</span>
-                            <div class="clients-filter-range">
+                            <div class="app-filter-range">
                                 <input type="number" min="0" step="1" placeholder="Mínimo">
                                 <input type="number" min="0" step="1" placeholder="Máximo">
                             </div>
                         </label>
                     </div>
 
-                    <div class="clients-filters-actions">
-                        <span class="clients-filters-counter" data-mk-filters-counter>0/8 filtros aplicados</span>
-                        <button type="button" class="products-toolbar-button" data-mk-filters-clear>Limpar filtros</button>
-                        <button type="button" class="clients-primary-button products-filter-apply-button" data-mk-filters-apply>Aplicar filtros</button>
+                    <div class="app-filters-actions">
+                        <span class="app-filters-counter" data-mk-filters-counter>0/8 filtros aplicados</span>
+                        <button type="button" class="app-toolbar-button" data-mk-filters-clear>Limpar filtros</button>
+                        <button type="button" class="app-primary-button app-filter-apply-button" data-mk-filters-apply>Aplicar filtros</button>
                     </div>
                 </div>
             </section>
 
-            <section class="products-table-card elevated">
-                <div class="products-table-wrap">
-                    <table class="products-table">
+            <section class="app-data-card elevated">
+                <div class="app-table-wrap">
+                    <table class="app-data-table">
                         <thead>
                             <tr>
                                 <th>Status</th>
@@ -231,7 +231,7 @@
                         </thead>
                         <tbody>
                             <tr data-row-href="./pedido-mk.html">
-                                <td><span class="clients-status mk-order-status mk-order-status--saved">Salvo</span></td>
+                                <td><span class="app-status mk-order-status mk-order-status--saved">Salvo</span></td>
                                 <td>24 Abr, 2026</td>
                                 <td><strong>#MK-458921</strong></td>
                                 <td>312</td>
@@ -239,7 +239,7 @@
                                 <td class="products-total">R$ 1.284,90</td>
                             </tr>
                             <tr data-row-href="./pedido-mk.html">
-                                <td><span class="clients-status mk-order-status mk-order-status--placed">Realizado</span></td>
+                                <td><span class="app-status mk-order-status mk-order-status--placed">Realizado</span></td>
                                 <td>17 Abr, 2026</td>
                                 <td><strong>#MK-458780</strong></td>
                                 <td>208</td>
@@ -247,7 +247,7 @@
                                 <td class="products-total">R$ 864,50</td>
                             </tr>
                             <tr data-row-href="./pedido-mk.html">
-                                <td><span class="clients-status mk-order-status mk-order-status--confirmed">Confirmado</span></td>
+                                <td><span class="app-status mk-order-status mk-order-status--confirmed">Confirmado</span></td>
                                 <td>09 Abr, 2026</td>
                                 <td><strong>#MK-458602</strong></td>
                                 <td>420</td>
@@ -255,7 +255,7 @@
                                 <td class="products-total">R$ 1.756,30</td>
                             </tr>
                             <tr data-row-href="./pedido-mk.html">
-                                <td><span class="clients-status mk-order-status mk-order-status--saved">Salvo</span></td>
+                                <td><span class="app-status mk-order-status mk-order-status--saved">Salvo</span></td>
                                 <td>28 Mar, 2026</td>
                                 <td><strong>#MK-458441</strong></td>
                                 <td>156</td>
@@ -263,7 +263,7 @@
                                 <td class="products-total">R$ 642,80</td>
                             </tr>
                             <tr data-row-href="./pedido-mk.html">
-                                <td><span class="clients-status mk-order-status mk-order-status--confirmed">Confirmado</span></td>
+                                <td><span class="app-status mk-order-status mk-order-status--confirmed">Confirmado</span></td>
                                 <td>14 Mar, 2026</td>
                                 <td><strong>#MK-458210</strong></td>
                                 <td>510</td>
@@ -273,9 +273,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="clients-table-footer">
+                <div class="app-table-footer">
                     <p>Mostrando 5 de 124 pedidos MK</p>
-                    <div class="clients-pagination">
+                    <div class="app-pagination">
                         <button type="button" aria-label="Página anterior">&lsaquo;</button>
                         <button type="button" class="is-active">1</button>
                         <button type="button">2</button>

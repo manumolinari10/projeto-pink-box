@@ -85,9 +85,9 @@
             </div>
         </aside>
 
-        <main class="main-panel clients-main-panel">
-            <header class="topbar clients-topbar">
-                <div class="clients-topbar-left">
+        <main class="main-panel app-page-panel">
+            <header class="topbar app-topbar">
+                <div class="app-topbar-left">
                     <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
                         <span></span>
                         <span></span>
@@ -121,7 +121,7 @@
 
             <section class="product-detail-header page-intro-wrap">
                 <div class="page-intro-copy">
-                    <div class="products-breadcrumb">Dashboard / Clientes / Mariana Silva / Anotações</div>
+                    <div class="app-breadcrumb">Dashboard / Clientes / Mariana Silva / Anotações</div>
                     <h1>Histórico de Anotações</h1>
                     <p>Centralize observações, contexto de relacionamento e registros de acompanhamento da cliente.</p>
                 </div>
@@ -170,7 +170,7 @@
                                 <button type="button" class="client-insight-tag client-insight-tag--critical">#Crítico</button>
                             </div>
 
-                            <button type="button" class="clients-primary-button client-insights-save">Salvar Anotação</button>
+                            <button type="button" class="app-primary-button client-insights-save">Salvar Anotação</button>
                         </form>
                     </article>
 
@@ -333,14 +333,14 @@
         </main>
     </div>
 
-    <div class="client-modal" id="note-delete-modal" hidden>
-        <div class="client-modal-backdrop" data-note-delete-close></div>
-        <div class="client-modal-dialog elevated note-delete-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="note-delete-modal-title">
-            <button type="button" class="client-modal-close" aria-label="Fechar confirmação" data-note-delete-close>
+    <div class="app-modal" id="note-delete-modal" hidden>
+        <div class="app-modal-backdrop" data-note-delete-close></div>
+        <div class="app-modal-dialog elevated note-delete-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="note-delete-modal-title">
+            <button type="button" class="app-modal-close" aria-label="Fechar confirmação" data-note-delete-close>
                 <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6l-12 12"></path></svg>
             </button>
             <h2 id="note-delete-modal-title">Excluir anotação</h2>
-            <p class="client-modal-subtitle">Tem certeza que deseja excluir esta nota?</p>
+            <p class="app-modal-subtitle">Tem certeza que deseja excluir esta nota?</p>
             <div class="client-insight-item note-delete-preview">
                 <div class="notes-feed-item-head">
                     <span class="client-insight-badge client-insight-badge--blue" data-note-delete-tag>Comportamento</span>
@@ -349,8 +349,8 @@
                 <small class="notes-feed-date" data-note-delete-date>HOJE, 27 MAR 2026</small>
             </div>
             <div class="note-delete-actions">
-                <button type="button" class="products-toolbar-button" data-note-delete-close>Cancelar</button>
-                <button type="button" class="clients-primary-button">Excluir anotação</button>
+                <button type="button" class="app-toolbar-button" data-note-delete-close>Cancelar</button>
+                <button type="button" class="app-primary-button">Excluir anotação</button>
             </div>
         </div>
     </div>

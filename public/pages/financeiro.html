@@ -86,8 +86,8 @@
         </aside>
 
         <main class="main-panel finance-main-panel" data-finance-page>
-            <header class="topbar clients-topbar">
-                <div class="clients-topbar-left">
+            <header class="topbar app-topbar">
+                <div class="app-topbar-left">
                     <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
                         <span></span>
                         <span></span>
@@ -121,7 +121,7 @@
 
             <section class="sales-header page-intro-wrap">
                 <div class="page-intro-copy">
-                    <div class="products-breadcrumb">Dashboard / Financeiro</div>
+                    <div class="app-breadcrumb">Dashboard / Financeiro</div>
                     <h1>Painel Financeiro</h1>
                     <p>Monitore entradas, saídas, inadimplência e previsões financeiras do período.</p>
                 </div>
@@ -208,54 +208,54 @@
                 </article>
             </section>
 
-            <section class="products-table-card finance-table-card elevated" data-finance-filters-wrap>
+            <section class="app-data-card finance-table-card elevated" data-finance-filters-wrap>
                 <div class="finance-table-head">
                     <h2>Movimentações Financeiras</h2>
-                    <div class="products-toolbar-actions">
-                        <label class="products-toolbar-search finance-table-search">
+                    <div class="app-toolbar-actions">
+                        <label class="app-toolbar-search finance-table-search">
                             <span aria-hidden="true">
                                 <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                             </span>
                             <input type="search" placeholder="Filtrar descrição..." data-finance-search>
                         </label>
-                        <button type="button" class="products-toolbar-button" aria-label="Filtrar" data-finance-filters-toggle aria-expanded="false">
+                        <button type="button" class="app-toolbar-button" aria-label="Filtrar" data-finance-filters-toggle aria-expanded="false">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm3 5h10v2H7zm3 5h4v2h-4z"></path></svg>
                         </button>
-                        <button type="button" class="products-toolbar-button" aria-label="Ordenar" data-finance-sort-toggle aria-pressed="false">
+                        <button type="button" class="app-toolbar-button" aria-label="Ordenar" data-finance-sort-toggle aria-pressed="false">
                             <svg viewBox="0 0 256 256"><path d="M119.39,172.94a8,8,0,0,1-1.73,8.72l-32,32a8,8,0,0,1-11.32,0l-32-32A8,8,0,0,1,48,168H72V48a8,8,0,0,1,16,0V168h24A8,8,0,0,1,119.39,172.94Zm94.27-98.6-32-32a8,8,0,0,0-11.32,0l-32,32A8,8,0,0,0,144,88h24V208a8,8,0,0,0,16,0V88h24a8,8,0,0,0,5.66-13.66Z"></path></svg>
                         </button>
-                        <button type="button" class="clients-primary-button finance-add-button" data-modal-target="finance-movement-modal">
+                        <button type="button" class="app-primary-button finance-add-button" data-modal-target="finance-movement-modal">
                             <svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm40,112H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32a8,8,0,0,1,0,16Z"></path></svg>
                             <span>Nova Movimentação</span>
                         </button>
-                        <button type="button" class="products-toolbar-button finance-archive-button" aria-label="Arquivados" aria-pressed="false" data-finance-archive-toggle>
+                        <button type="button" class="app-toolbar-button finance-archive-button" aria-label="Arquivados" aria-pressed="false" data-finance-archive-toggle>
                             <svg viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H92a4,4,0,0,0,4-4V208H88.27A8.17,8.17,0,0,1,80,200.53,8,8,0,0,1,88,192h8V176H88.27A8.17,8.17,0,0,1,80,168.53,8,8,0,0,1,88,160h8V144H88.27A8.17,8.17,0,0,1,80,136.53,8,8,0,0,1,88,128h8v-7.73a8.18,8.18,0,0,1,7.47-8.25,8,8,0,0,1,8.53,8v8h7.73a8.17,8.17,0,0,1,8.25,7.47,8,8,0,0,1-8,8.53h-8v16h7.73a8.17,8.17,0,0,1,8.25,7.47,8,8,0,0,1-8,8.53h-8v16h7.73a8.17,8.17,0,0,1,8.25,7.47,8,8,0,0,1-8,8.53h-8v20a4,4,0,0,0,4,4h84a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM152,88V44l44,44Z"></path></svg>
                         </button>
                     </div>
                 </div>
 
-                <div class="clients-filters-panel finance-filters-panel" hidden data-finance-filters-panel>
-                    <div class="clients-filters-grid products-filters-grid finance-filters-grid">
-                        <div class="clients-filter-field">
+                <div class="app-filters-panel finance-filters-panel" hidden data-finance-filters-panel>
+                    <div class="app-filters-grid app-filters-grid--inventory finance-filters-grid">
+                        <div class="app-filter-field">
                             <span>Por Status</span>
-                            <div class="clients-checkbox-group finance-filters-checkbox-group">
+                            <div class="app-checkbox-group finance-filters-checkbox-group">
                                 <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-status="pago" checked><span>Pago</span></label>
                                 <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-status="pendente" checked><span>Pendente</span></label>
                                 <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-status="atrasado" checked><span>Atrasado</span></label>
                             </div>
                         </div>
 
-                        <div class="clients-filter-field">
+                        <div class="app-filter-field">
                             <span>Por Tipo</span>
-                            <div class="clients-checkbox-group finance-filters-checkbox-group">
+                            <div class="app-checkbox-group finance-filters-checkbox-group">
                                 <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-type="gain" checked><span>Ganho</span></label>
                                 <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-type="cost" checked><span>Custo</span></label>
                             </div>
                         </div>
 
-                        <div class="clients-filter-field finance-category-field">
+                        <div class="app-filter-field finance-category-field">
                             <span>Por Categoria</span>
-                            <div class="clients-checkbox-group finance-filters-checkbox-group">
+                            <div class="app-checkbox-group finance-filters-checkbox-group">
                                 <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-category="vendas" checked><span>Vendas</span></label>
                                 <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-category="bonificação" checked><span>Bonificação</span></label>
                                 <label><input type="checkbox" data-finance-filter-checkbox data-finance-filter-category="iniciadas ativas" checked><span>Iniciadas Ativas</span></label>
@@ -266,20 +266,20 @@
                             </div>
                         </div>
 
-                        <label class="clients-filter-field clients-filter-field--range">
+                        <label class="app-filter-field app-filter-field--range">
                             <span>Por Valor (R$)</span>
-                            <div class="clients-filter-range">
+                            <div class="app-filter-range">
                                 <input type="number" min="0" step="0.01" placeholder="Mínimo" data-finance-filter-value-min>
                                 <input type="number" min="0" step="0.01" placeholder="Máximo" data-finance-filter-value-max>
                             </div>
                         </label>
                     </div>
 
-                    <div class="clients-filters-actions">
-                        <span class="clients-filters-counter" data-finance-filters-counter>0/12 filtros aplicados</span>
-                        <button type="button" class="products-toolbar-button" data-finance-filters-clear>Limpar Todos</button>
-                        <button type="button" class="products-toolbar-button" data-finance-filters-check-all>Marcar Todos</button>
-                        <button type="button" class="clients-primary-button" data-finance-filters-apply>Aplicar Filtros</button>
+                    <div class="app-filters-actions">
+                        <span class="app-filters-counter" data-finance-filters-counter>0/12 filtros aplicados</span>
+                        <button type="button" class="app-toolbar-button" data-finance-filters-clear>Limpar Todos</button>
+                        <button type="button" class="app-toolbar-button" data-finance-filters-check-all>Marcar Todos</button>
+                        <button type="button" class="app-primary-button" data-finance-filters-apply>Aplicar Filtros</button>
                     </div>
                 </div>
 
@@ -289,8 +289,8 @@
                     <button type="button" aria-label="Próximo mês" data-finance-month-next>&rsaquo;</button>
                 </div>
 
-                <div class="products-table-wrap">
-                    <table class="products-table finance-table">
+                <div class="app-table-wrap">
+                    <table class="app-data-table finance-table">
                         <thead>
                             <tr>
                                 <th>Dia</th>
@@ -312,7 +312,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8821</strong></td>
                                 <td>Pix</td>
                                 <td>R$ 189,90</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -331,7 +331,7 @@
                                 <td><strong class="finance-description finance-description--cost">Custo de Embalagens</strong></td>
                                 <td>Pix</td>
                                 <td>R$ 148,70</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -353,7 +353,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8819</strong></td>
                                 <td>Cartão de Crédito</td>
                                 <td>R$ 1.250,00</td>
-                                <td><span class="clients-status sales-status--pending">Pendente</span></td>
+                                <td><span class="app-status sales-status--pending">Pendente</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -372,7 +372,7 @@
                                 <td><strong class="finance-description finance-description--cost">Taxa Gateway</strong></td>
                                 <td>Débito Automático</td>
                                 <td>R$ 39,90</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -394,7 +394,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8812</strong></td>
                                 <td>Boleto</td>
                                 <td>R$ 342,15</td>
-                                <td><span class="clients-status status-overdue">Atrasado</span></td>
+                                <td><span class="app-status status-overdue">Atrasado</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -416,7 +416,7 @@
                                 <td><strong class="finance-description finance-description--gain">Assinatura Box VIP</strong></td>
                                 <td>Cartão de Crédito</td>
                                 <td>R$ 89,90</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -435,7 +435,7 @@
                                 <td><strong class="finance-description finance-description--cost">Campanha Social Ads</strong></td>
                                 <td>Cartão de Crédito</td>
                                 <td>R$ 350,00</td>
-                                <td><span class="clients-status sales-status--pending">Pendente</span></td>
+                                <td><span class="app-status sales-status--pending">Pendente</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -457,7 +457,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8807</strong></td>
                                 <td>Pix</td>
                                 <td>R$ 560,00</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -476,7 +476,7 @@
                                 <td><strong class="finance-description finance-description--cost">Compra de Produtos</strong></td>
                                 <td>Pix</td>
                                 <td>R$ 2.180,00</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -498,7 +498,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8801</strong></td>
                                 <td>Cartão de Débito</td>
                                 <td>R$ 710,00</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -517,7 +517,7 @@
                                 <td><strong class="finance-description finance-description--cost">Frete Pedido #8798</strong></td>
                                 <td>Cartão de Crédito</td>
                                 <td>R$ 64,90</td>
-                                <td><span class="clients-status sales-status--pending">Pendente</span></td>
+                                <td><span class="app-status sales-status--pending">Pendente</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -539,7 +539,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8796</strong></td>
                                 <td>Boleto</td>
                                 <td>R$ 920,50</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -561,7 +561,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8792</strong></td>
                                 <td>Cartão de Crédito</td>
                                 <td>R$ 315,90</td>
-                                <td><span class="clients-status sales-status--pending">Pendente</span></td>
+                                <td><span class="app-status sales-status--pending">Pendente</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -580,7 +580,7 @@
                                 <td><strong class="finance-description finance-description--cost">Reposição Estoque</strong></td>
                                 <td>Boleto</td>
                                 <td>R$ 780,00</td>
-                                <td><span class="clients-status status-overdue">Atrasado</span></td>
+                                <td><span class="app-status status-overdue">Atrasado</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -602,7 +602,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8788</strong></td>
                                 <td>Pix</td>
                                 <td>R$ 1.099,00</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -624,7 +624,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8783</strong></td>
                                 <td>Cartão de Crédito</td>
                                 <td>R$ 455,20</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -646,7 +646,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8779</strong></td>
                                 <td>Pix</td>
                                 <td>R$ 245,80</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -665,7 +665,7 @@
                                 <td><strong class="finance-description finance-description--cost">Assinatura Plataforma</strong></td>
                                 <td>Cartão de Crédito</td>
                                 <td>R$ 119,90</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -687,7 +687,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8774</strong></td>
                                 <td>Boleto</td>
                                 <td>R$ 680,00</td>
-                                <td><span class="clients-status status-overdue">Atrasado</span></td>
+                                <td><span class="app-status status-overdue">Atrasado</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -709,7 +709,7 @@
                                 <td><strong class="finance-description finance-description--gain">Venda #8771</strong></td>
                                 <td>Pix</td>
                                 <td>R$ 1.420,00</td>
-                                <td><span class="clients-status clients-status--active">Pago</span></td>
+                                <td><span class="app-status app-status--active">Pago</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -731,7 +731,7 @@
                                 <td><strong class="finance-description finance-description--gain">Bônus de Indicação</strong></td>
                                 <td>Pix</td>
                                 <td>R$ 95,00</td>
-                                <td><span class="clients-status">Arquivado</span></td>
+                                <td><span class="app-status">Arquivado</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -752,7 +752,7 @@
                                 <td><strong class="finance-description finance-description--cost">Ajuste de Caixa</strong></td>
                                 <td>Outros</td>
                                 <td>R$ 42,00</td>
-                                <td><span class="clients-status">Arquivado</span></td>
+                                <td><span class="app-status">Arquivado</span></td>
                                 <td>
                                     <div class="finance-actions-menu">
                                         <button class="finance-row-action" type="button" aria-label="Mais opções" aria-expanded="false" data-actions-toggle>...</button>
@@ -784,14 +784,14 @@
                 </div>
             </section>
 
-            <div class="client-modal finance-movement-modal" id="finance-movement-modal" hidden>
-                <div class="client-modal-backdrop" data-modal-close></div>
-                <div class="client-modal-dialog elevated finance-movement-dialog">
-                    <button class="client-modal-close" type="button" aria-label="Fechar nova movimentação" data-modal-close>
+            <div class="app-modal finance-movement-modal" id="finance-movement-modal" hidden>
+                <div class="app-modal-backdrop" data-modal-close></div>
+                <div class="app-modal-dialog elevated finance-movement-dialog">
+                    <button class="app-modal-close" type="button" aria-label="Fechar nova movimentação" data-modal-close>
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
                     </button>
                     <h2>Nova Movimentação</h2>
-                    <p class="client-modal-subtitle">Escolha o tipo de lançamento financeiro que deseja registrar.</p>
+                    <p class="app-modal-subtitle">Escolha o tipo de lançamento financeiro que deseja registrar.</p>
 
                     <div class="finance-movement-options">
                         <button class="finance-movement-option finance-movement-option--gain" type="button" data-modal-target="finance-gain-modal">
@@ -813,14 +813,14 @@
                 </div>
             </div>
 
-            <div class="client-modal finance-view-modal" id="finance-view-modal" hidden>
-                <div class="client-modal-backdrop" data-modal-close></div>
-                <div class="client-modal-dialog elevated finance-view-dialog">
-                    <button class="client-modal-close" type="button" aria-label="Fechar visualização" data-modal-close>
+            <div class="app-modal finance-view-modal" id="finance-view-modal" hidden>
+                <div class="app-modal-backdrop" data-modal-close></div>
+                <div class="app-modal-dialog elevated finance-view-dialog">
+                    <button class="app-modal-close" type="button" aria-label="Fechar visualização" data-modal-close>
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
                     </button>
                     <h2>Detalhes da Movimentação</h2>
-                    <p class="client-modal-subtitle">Resumo do lançamento financeiro selecionado.</p>
+                    <p class="app-modal-subtitle">Resumo do lançamento financeiro selecionado.</p>
 
                     <section class="finance-view-hero">
                         <div class="finance-view-hero-copy">
@@ -867,10 +867,10 @@
                 </div>
             </div>
 
-            <div class="client-modal finance-gain-modal" id="finance-gain-modal" hidden>
-                <div class="client-modal-backdrop" data-modal-close></div>
-                <div class="client-modal-dialog elevated finance-gain-dialog">
-                    <button class="client-modal-close" type="button" aria-label="Fechar novo ganho" data-modal-close>
+            <div class="app-modal finance-gain-modal" id="finance-gain-modal" hidden>
+                <div class="app-modal-backdrop" data-modal-close></div>
+                <div class="app-modal-dialog elevated finance-gain-dialog">
+                    <button class="app-modal-close" type="button" aria-label="Fechar novo ganho" data-modal-close>
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
                     </button>
                     <h2 data-finance-gain-title>Adicionar Ganho</h2>
@@ -920,17 +920,17 @@
                         </div>
 
                         <div class="finance-gain-actions">
-                            <button type="submit" class="clients-primary-button" data-finance-gain-submit>Confirmar</button>
-                            <button type="button" class="products-toolbar-button" data-modal-close>Cancelar</button>
+                            <button type="submit" class="app-primary-button" data-finance-gain-submit>Confirmar</button>
+                            <button type="button" class="app-toolbar-button" data-modal-close>Cancelar</button>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <div class="client-modal finance-gain-modal" id="finance-cost-modal" hidden>
-                <div class="client-modal-backdrop" data-modal-close></div>
-                <div class="client-modal-dialog elevated finance-gain-dialog">
-                    <button class="client-modal-close" type="button" aria-label="Fechar novo custo" data-modal-close>
+            <div class="app-modal finance-gain-modal" id="finance-cost-modal" hidden>
+                <div class="app-modal-backdrop" data-modal-close></div>
+                <div class="app-modal-dialog elevated finance-gain-dialog">
+                    <button class="app-modal-close" type="button" aria-label="Fechar novo custo" data-modal-close>
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
                     </button>
                     <h2 data-finance-cost-title>Adicionar Custo</h2>
@@ -975,8 +975,8 @@
                         </div>
 
                         <div class="finance-gain-actions">
-                            <button type="submit" class="clients-primary-button" data-finance-cost-submit>Confirmar</button>
-                            <button type="button" class="products-toolbar-button" data-modal-close>Cancelar</button>
+                            <button type="submit" class="app-primary-button" data-finance-cost-submit>Confirmar</button>
+                            <button type="button" class="app-toolbar-button" data-modal-close>Cancelar</button>
                         </div>
                     </form>
                 </div>

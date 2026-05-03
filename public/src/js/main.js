@@ -144,7 +144,7 @@ function setupBreadcrumbLinks() {
 
     const normalizeLabel = (value) => value.trim().toLocaleLowerCase("pt-BR");
 
-    document.querySelectorAll(".products-breadcrumb").forEach((breadcrumb) => {
+    document.querySelectorAll(".app-breadcrumb").forEach((breadcrumb) => {
         if (breadcrumb.querySelector("a")) {
             return;
         }
@@ -163,7 +163,7 @@ function setupBreadcrumbLinks() {
         parts.forEach((part, index) => {
             if (index > 0) {
                 const separator = document.createElement("span");
-                separator.className = "products-breadcrumb-separator";
+                separator.className = "app-breadcrumb-separator";
                 separator.textContent = "/";
                 breadcrumb.appendChild(separator);
             }
@@ -1037,7 +1037,7 @@ function setupModals() {
             return;
         }
 
-        document.querySelectorAll(".client-modal:not([hidden])").forEach((modal) => {
+        document.querySelectorAll(".app-modal:not([hidden])").forEach((modal) => {
             closeModal(modal);
         });
     });
@@ -1191,9 +1191,9 @@ function setupClientPurchaseHistory() {
 
     const loadMoreButton = historyCard.querySelector("[data-client-history-load-more]");
     const hiddenRows = Array.from(historyCard.querySelectorAll("[data-client-history-row]"));
-    const sortWrap = historyCard.querySelector("[data-client-history-sort]");
-    const sortToggle = historyCard.querySelector("[data-client-history-sort-toggle]");
-    const sortMenu = historyCard.querySelector("[data-client-history-sort-menu]");
+    const sortWrap = historyCard.querySelector("[data-app-sort]");
+    const sortToggle = historyCard.querySelector("[data-app-sort-toggle]");
+    const sortMenu = historyCard.querySelector("[data-app-sort-menu]");
 
     loadMoreButton?.addEventListener("click", () => {
         const nextRows = hiddenRows.filter((row) => row.hidden).slice(0, 10);
@@ -1225,7 +1225,7 @@ function setupClientPurchaseHistory() {
         sortToggle.setAttribute("aria-expanded", String(shouldOpen));
     });
 
-    sortMenu.querySelectorAll(".client-history-sort-option").forEach((option) => {
+    sortMenu.querySelectorAll(".app-sort-option").forEach((option) => {
         option.addEventListener("click", () => {
             closeSortMenu();
         });
@@ -2123,7 +2123,7 @@ function setupProductFilters() {
     const checkboxes = () => Array.from(panel.querySelectorAll('input[type="checkbox"]'));
     const radios = () => Array.from(panel.querySelectorAll('input[type="radio"]'));
     const radioGroups = () => Array.from(new Set(radios().map((input) => input.name)));
-    const rangeInputs = () => Array.from(panel.querySelectorAll(".clients-filter-range input"));
+    const rangeInputs = () => Array.from(panel.querySelectorAll(".app-filter-range input"));
     const parentCheckboxes = () => Array.from(panel.querySelectorAll("[data-product-category-parent]"));
     const childCheckboxes = (parentKey) => Array.from(panel.querySelectorAll(`[data-product-category-child="${parentKey}"]`));
 
@@ -2401,7 +2401,7 @@ function setupManualProductAddPage() {
 
     function closeModal() {
         modal.hidden = true;
-        if (!document.querySelector(".client-modal:not([hidden])")) {
+        if (!document.querySelector(".app-modal:not([hidden])")) {
             document.body.classList.remove("modal-open");
         }
     }
@@ -2602,7 +2602,7 @@ function setupNewMkOrderPage() {
             return;
         }
         replaceModal.hidden = true;
-        if (!document.querySelector(".client-modal:not([hidden])")) {
+        if (!document.querySelector(".app-modal:not([hidden])")) {
             document.body.classList.remove("modal-open");
         }
     }
@@ -2620,7 +2620,7 @@ function setupNewMkOrderPage() {
             return;
         }
         launchModal.hidden = true;
-        if (!document.querySelector(".client-modal:not([hidden])")) {
+        if (!document.querySelector(".app-modal:not([hidden])")) {
             document.body.classList.remove("modal-open");
         }
     }
@@ -2636,7 +2636,7 @@ function setupNewMkOrderPage() {
     function closeDeleteModal() {
         deleteModal.hidden = true;
         pendingDeleteRow = null;
-        if (!document.querySelector(".client-modal:not([hidden])")) {
+        if (!document.querySelector(".app-modal:not([hidden])")) {
             document.body.classList.remove("modal-open");
         }
     }
@@ -2760,8 +2760,8 @@ function setupNewMkOrderPage() {
                 currentPdfName = fileName;
                 pdfReady = true;
                 pdfLabel.textContent = "Salvar PDF";
-                pdfTrigger.classList.remove("products-toolbar-button");
-                pdfTrigger.classList.add("clients-primary-button", "mk-pdf-button", "is-ready");
+                pdfTrigger.classList.remove("app-toolbar-button");
+                pdfTrigger.classList.add("app-primary-button", "mk-pdf-button", "is-ready");
             }
         });
 
@@ -2984,7 +2984,7 @@ function setupNewSalePage() {
     function closeDeleteModal() {
         deleteModal.hidden = true;
         pendingDeleteRow = null;
-        if (!document.querySelector(".client-modal:not([hidden])")) {
+        if (!document.querySelector(".app-modal:not([hidden])")) {
             document.body.classList.remove("modal-open");
         }
     }
@@ -2996,7 +2996,7 @@ function setupNewSalePage() {
 
         confirmModal.hidden = true;
 
-        if (!document.querySelector(".client-modal:not([hidden])")) {
+        if (!document.querySelector(".app-modal:not([hidden])")) {
             document.body.classList.remove("modal-open");
         }
     }
@@ -3829,7 +3829,7 @@ function setupProductStockModal() {
 
     function closeModal(modal) {
         modal.hidden = true;
-        if (!document.querySelector(".client-modal:not([hidden])")) {
+        if (!document.querySelector(".app-modal:not([hidden])")) {
             document.body.classList.remove("modal-open");
         }
     }
@@ -3935,10 +3935,10 @@ function setupSalesPage() {
             chartCount: 7,
             chartScale: 86,
             orders: [
-                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "clients-status--active" },
-                { date: "27 Abr, 2026", number: "#459818", client: "Clara Martins", value: 890, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "app-status--active" },
+                { date: "27 Abr, 2026", number: "#459818", client: "Clara Martins", value: 890, status: "Concluído", statusClass: "app-status--active" },
                 { date: "27 Abr, 2026", number: "#459814", client: "Paula Gomes", value: 315, status: "Pendente", statusClass: "sales-status--pending" },
-                { date: "26 Abr, 2026", number: "#459802", client: "Lucas Mendes", value: 280, status: "Concluído", statusClass: "clients-status--active" }
+                { date: "26 Abr, 2026", number: "#459802", client: "Lucas Mendes", value: 280, status: "Concluído", statusClass: "app-status--active" }
             ],
             footer: "Mostrando 1-4 de 94 resultados"
         },
@@ -3951,11 +3951,11 @@ function setupSalesPage() {
             chartCount: 30,
             chartScale: 98,
             orders: [
-                { date: "14 Out, 2023", number: "#458921", client: "Mariana Silveira", value: 840, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "14 Out, 2023", number: "#458921", client: "Mariana Silveira", value: 840, status: "Concluído", statusClass: "app-status--active" },
                 { date: "14 Out, 2023", number: "#458918", client: "Ricardo Alencar", value: 1250, status: "Pendente", statusClass: "sales-status--pending" },
-                { date: "13 Out, 2023", number: "#458902", client: "Ana Beatriz Dias", value: 450, status: "Cancelado", statusClass: "clients-status--cancelled" },
-                { date: "13 Out, 2023", number: "#458884", client: "Lucas Mendes", value: 299, status: "Concluído", statusClass: "clients-status--active" },
-                { date: "12 Out, 2023", number: "#458861", client: "Clara Martins", value: 1100, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "13 Out, 2023", number: "#458902", client: "Ana Beatriz Dias", value: 450, status: "Cancelado", statusClass: "app-status--cancelled" },
+                { date: "13 Out, 2023", number: "#458884", client: "Lucas Mendes", value: 299, status: "Concluído", statusClass: "app-status--active" },
+                { date: "12 Out, 2023", number: "#458861", client: "Clara Martins", value: 1100, status: "Concluído", statusClass: "app-status--active" },
                 { date: "12 Out, 2023", number: "#458844", client: "Hugo Pereira", value: 540, status: "Pendente", statusClass: "sales-status--pending" }
             ],
             footer: "Mostrando 1-20 de 184 resultados"
@@ -3969,12 +3969,12 @@ function setupSalesPage() {
             chartCount: 90,
             chartScale: 104,
             orders: [
-                { date: "26 Abr, 2026", number: "#459770", client: "Camila Costa", value: 960, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "26 Abr, 2026", number: "#459770", client: "Camila Costa", value: 960, status: "Concluído", statusClass: "app-status--active" },
                 { date: "24 Abr, 2026", number: "#459742", client: "Ana Paula Santos", value: 1380, status: "Pendente", statusClass: "sales-status--pending" },
-                { date: "22 Abr, 2026", number: "#459730", client: "Renata Moura", value: 720, status: "Concluído", statusClass: "clients-status--active" },
-                { date: "20 Abr, 2026", number: "#459701", client: "Priscila Nunes", value: 510, status: "Concluído", statusClass: "clients-status--active" },
-                { date: "18 Abr, 2026", number: "#459689", client: "Helena Prado", value: 450, status: "Cancelado", statusClass: "clients-status--cancelled" },
-                { date: "16 Abr, 2026", number: "#459660", client: "Juliana Reis", value: 1150, status: "Concluído", statusClass: "clients-status--active" }
+                { date: "22 Abr, 2026", number: "#459730", client: "Renata Moura", value: 720, status: "Concluído", statusClass: "app-status--active" },
+                { date: "20 Abr, 2026", number: "#459701", client: "Priscila Nunes", value: 510, status: "Concluído", statusClass: "app-status--active" },
+                { date: "18 Abr, 2026", number: "#459689", client: "Helena Prado", value: 450, status: "Cancelado", statusClass: "app-status--cancelled" },
+                { date: "16 Abr, 2026", number: "#459660", client: "Juliana Reis", value: 1150, status: "Concluído", statusClass: "app-status--active" }
             ],
             footer: "Mostrando 1-20 de 463 resultados"
         },
@@ -3987,12 +3987,12 @@ function setupSalesPage() {
             chartCount: 180,
             chartScale: 108,
             orders: [
-                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "clients-status--active" },
-                { date: "22 Abr, 2026", number: "#459730", client: "Renata Moura", value: 720, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "app-status--active" },
+                { date: "22 Abr, 2026", number: "#459730", client: "Renata Moura", value: 720, status: "Concluído", statusClass: "app-status--active" },
                 { date: "14 Mar, 2026", number: "#459180", client: "Clara Martins", value: 1120, status: "Pendente", statusClass: "sales-status--pending" },
-                { date: "26 Fev, 2026", number: "#458902", client: "Ana Beatriz Dias", value: 450, status: "Cancelado", statusClass: "clients-status--cancelled" },
-                { date: "18 Jan, 2026", number: "#458411", client: "Camila Costa", value: 960, status: "Concluído", statusClass: "clients-status--active" },
-                { date: "09 Nov, 2025", number: "#457982", client: "Juliana Reis", value: 1180, status: "Concluído", statusClass: "clients-status--active" }
+                { date: "26 Fev, 2026", number: "#458902", client: "Ana Beatriz Dias", value: 450, status: "Cancelado", statusClass: "app-status--cancelled" },
+                { date: "18 Jan, 2026", number: "#458411", client: "Camila Costa", value: 960, status: "Concluído", statusClass: "app-status--active" },
+                { date: "09 Nov, 2025", number: "#457982", client: "Juliana Reis", value: 1180, status: "Concluído", statusClass: "app-status--active" }
             ],
             footer: "Mostrando 1-20 de 782 resultados"
         },
@@ -4005,12 +4005,12 @@ function setupSalesPage() {
             chartCount: 365,
             chartScale: 110,
             orders: [
-                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "clients-status--active" },
-                { date: "25 Abr, 2026", number: "#459805", client: "Camila Costa", value: 960, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "app-status--active" },
+                { date: "25 Abr, 2026", number: "#459805", client: "Camila Costa", value: 960, status: "Concluído", statusClass: "app-status--active" },
                 { date: "21 Abr, 2026", number: "#459777", client: "Helena Prado", value: 1380, status: "Pendente", statusClass: "sales-status--pending" },
-                { date: "18 Abr, 2026", number: "#459744", client: "Priscila Nunes", value: 690, status: "Concluído", statusClass: "clients-status--active" },
-                { date: "14 Abr, 2026", number: "#459701", client: "Juliana Reis", value: 1520, status: "Concluído", statusClass: "clients-status--active" },
-                { date: "09 Abr, 2026", number: "#459662", client: "Ana Beatriz Dias", value: 480, status: "Cancelado", statusClass: "clients-status--cancelled" }
+                { date: "18 Abr, 2026", number: "#459744", client: "Priscila Nunes", value: 690, status: "Concluído", statusClass: "app-status--active" },
+                { date: "14 Abr, 2026", number: "#459701", client: "Juliana Reis", value: 1520, status: "Concluído", statusClass: "app-status--active" },
+                { date: "09 Abr, 2026", number: "#459662", client: "Ana Beatriz Dias", value: 480, status: "Cancelado", statusClass: "app-status--cancelled" }
             ],
             footer: "Mostrando 1-20 de 1.284 resultados"
         },
@@ -4023,12 +4023,12 @@ function setupSalesPage() {
             chartCount: 900,
             chartScale: 116,
             orders: [
-                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "clients-status--active" },
-                { date: "18 Jan, 2026", number: "#458915", client: "Camila Costa", value: 2210, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "app-status--active" },
+                { date: "18 Jan, 2026", number: "#458915", client: "Camila Costa", value: 2210, status: "Concluído", statusClass: "app-status--active" },
                 { date: "07 Set, 2025", number: "#457802", client: "Lucas Mendes", value: 940, status: "Pendente", statusClass: "sales-status--pending" },
-                { date: "12 Mar, 2025", number: "#456644", client: "Clara Martins", value: 1330, status: "Concluído", statusClass: "clients-status--active" },
-                { date: "24 Nov, 2024", number: "#454281", client: "Juliana Reis", value: 760, status: "Cancelado", statusClass: "clients-status--cancelled" },
-                { date: "14 Fev, 2024", number: "#451930", client: "Ana Paula Santos", value: 1180, status: "Concluído", statusClass: "clients-status--active" }
+                { date: "12 Mar, 2025", number: "#456644", client: "Clara Martins", value: 1330, status: "Concluído", statusClass: "app-status--active" },
+                { date: "24 Nov, 2024", number: "#454281", client: "Juliana Reis", value: 760, status: "Cancelado", statusClass: "app-status--cancelled" },
+                { date: "14 Fev, 2024", number: "#451930", client: "Ana Paula Santos", value: 1180, status: "Concluído", statusClass: "app-status--active" }
             ],
             footer: "Mostrando 1-20 de 8.732 resultados"
         }
@@ -4301,7 +4301,7 @@ function setupSalesPage() {
                 dateValue: parseSalesDate(item.date),
                 quantity: item.quantity || ((index % 4) + 1),
                 deliveryStatus: isPendingDelivery ? "Pendente" : "Realizada",
-                deliveryClass: isPendingDelivery ? "sales-status--pending" : "clients-status--active"
+                deliveryClass: isPendingDelivery ? "sales-status--pending" : "app-status--active"
             };
         });
     }
@@ -4343,8 +4343,8 @@ function setupSalesPage() {
                     </a>
                 </td>
                 <td>R$ ${formatCurrencyPtBr(item.value)}</td>
-                <td><span class="clients-status ${item.statusClass}">${item.status}</span></td>
-                <td><span class="clients-status ${item.deliveryClass}">${item.deliveryStatus}</span></td>
+                <td><span class="app-status ${item.statusClass}">${item.status}</span></td>
+                <td><span class="app-status ${item.deliveryClass}">${item.deliveryStatus}</span></td>
             </tr>
         `).join("");
 
@@ -4589,7 +4589,7 @@ function setupMkOrderSortMenu() {
         sortToggle.setAttribute("aria-expanded", String(shouldOpen));
     });
 
-    sortMenu.querySelectorAll(".client-history-sort-option").forEach((option) => {
+    sortMenu.querySelectorAll(".app-sort-option").forEach((option) => {
         option.addEventListener("click", () => {
             closeSortMenu();
         });
@@ -4629,7 +4629,7 @@ function setupMkOrderActions() {
 
     function closeDeleteModal() {
         deleteModal.hidden = true;
-        if (!document.querySelector(".client-modal:not([hidden])")) {
+        if (!document.querySelector(".app-modal:not([hidden])")) {
             document.body.classList.remove("modal-open");
         }
     }
@@ -5416,7 +5416,7 @@ function setupFinanceGainModal() {
 
     function closeModal(modal) {
         modal.hidden = true;
-        const anyOpen = document.querySelector(".client-modal:not([hidden])");
+        const anyOpen = document.querySelector(".app-modal:not([hidden])");
         document.body.classList.toggle("modal-open", Boolean(anyOpen));
     }
 
@@ -5574,9 +5574,9 @@ function setupFinanceGainModal() {
                 : category;
 
         const statusMap = {
-            pago: { label: "Pago", className: "clients-status clients-status--active" },
-            pendente: { label: "Pendente", className: "clients-status sales-status--pending" },
-            atrasado: { label: "Atrasado", className: "clients-status status-overdue" }
+            pago: { label: "Pago", className: "app-status app-status--active" },
+            pendente: { label: "Pendente", className: "app-status sales-status--pending" },
+            atrasado: { label: "Atrasado", className: "app-status status-overdue" }
         };
 
         const descriptionNode = editingRow.querySelector(".finance-description");
@@ -5782,13 +5782,13 @@ function setupFinanceTableFilters() {
     function getStatusConfig(status) {
         switch (status) {
             case "pago":
-                return { label: "Pago", className: "clients-status clients-status--active" };
+                return { label: "Pago", className: "app-status app-status--active" };
             case "pendente":
-                return { label: "Pendente", className: "clients-status sales-status--pending" };
+                return { label: "Pendente", className: "app-status sales-status--pending" };
             case "atrasado":
-                return { label: "Atrasado", className: "clients-status status-overdue" };
+                return { label: "Atrasado", className: "app-status status-overdue" };
             default:
-                return { label: "Arquivado", className: "clients-status" };
+                return { label: "Arquivado", className: "app-status" };
         }
     }
 

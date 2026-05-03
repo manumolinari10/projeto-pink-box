@@ -1,14 +1,50 @@
+/* ==========================================================================
+   Design Tokens
+   Centralized values for color, typography, radii, shadows and motion.
+   Keep visual changes here whenever possible so page-level rules stay stable.
+   ========================================================================== */
+
 :root {
     --pink: #d80a77;
     --pink-dark: #b10362;
+    --pink-deep: #b10362;
+    --pink-soft: #fde8f3;
+    --pink-soft-strong: #fff2f8;
+    --pink-surface: #fffafd;
     --text: #151515;
     --text-soft: #5e5a63;
+    --text-muted: #897e89;
+    --text-subtle: #998f9a;
+    --surface: #ffffff;
+    --surface-soft: #fcfbfc;
+    --surface-muted: #faf8fb;
     --line: #ece7ed;
+    --line-soft: #f1ebf1;
+    --line-strong: #eadfe8;
+    --success: #15a16f;
+    --success-soft: #e8fbf2;
+    --warning: #d28b1b;
+    --warning-soft: #fff2de;
+    --danger: #d34444;
+    --danger-soft: #fff1f1;
     --shadow: 0 14px 28px rgba(188, 0, 98, 0.075);
     --shadow-soft: 0 12px 28px rgba(26, 15, 32, 0.06);
+    --shadow-popover: 0 20px 40px rgba(35, 19, 32, 0.13);
+    --gradient-primary: linear-gradient(180deg, #e1007a 0%, #c40069 100%);
+    --radius-sm: 10px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
     --radius-xl: 24px;
+    --radius-pill: 999px;
     --font-main: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --transition-fast: 0.18s ease;
+    --transition-base: 0.22s ease;
 }
+
+/* ==========================================================================
+   Reset And Page Foundation
+   Global browser normalization, base typography and the application backdrop.
+   ========================================================================== */
 
 * {
     box-sizing: border-box;
@@ -32,7 +68,7 @@ body {
     letter-spacing: -0.015em;
     background:
         radial-gradient(circle at top right, rgba(224, 5, 122, 0.08), transparent 24%),
-        linear-gradient(180deg, #ffffff 0%, #fcfbfc 52%, #faf8fb 100%);
+        linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 52%, var(--surface-muted) 100%);
     overflow-x: hidden;
 }
 
@@ -50,6 +86,11 @@ button {
     background: none;
     cursor: pointer;
 }
+
+/* ==========================================================================
+   Form Controls And Custom Selects
+   Native fields, styled select replacements and reusable dropdown panels.
+   ========================================================================== */
 
 select {
     appearance: none;
@@ -117,8 +158,8 @@ select[hidden] + .custom-select {
     min-width: 0;
 }
 
-.new-client-card:has(.custom-select.is-open),
-.products-table-card:has(.custom-select.is-open),
+.app-form-card:has(.custom-select.is-open),
+.app-data-card:has(.custom-select.is-open),
 .elevated:has(.custom-select.is-open) {
     position: relative;
     z-index: 80;
@@ -243,7 +284,7 @@ select[hidden] + .custom-select {
     opacity: 0.7;
 }
 
-.clients-filter-field .custom-select-trigger,
+.app-filter-field .custom-select-trigger,
 .client-profile-row .custom-select-trigger,
 .profile-field-editor .custom-select-trigger {
     min-height: 42px;
@@ -269,6 +310,11 @@ svg {
     height: 100%;
     fill: currentColor;
 }
+
+/* ==========================================================================
+   Application Shell
+   Sidebar, topbar, notification menu and account/profile menu.
+   ========================================================================== */
 
 .dashboard-shell {
     display: grid;
@@ -708,7 +754,7 @@ body.sidebar-transition-disabled .menu-toggle span {
 .period-menu,
 .profile-menu,
 .finance-row-menu,
-.client-history-sort-menu,
+.app-sort-menu,
 .manual-product-results {
     border: 1px solid #eadfe8;
     box-shadow: 0 22px 42px rgba(35, 19, 32, 0.14);
@@ -720,7 +766,7 @@ body.sidebar-transition-disabled .menu-toggle span {
 .period-menu,
 .profile-menu,
 .finance-row-menu,
-.client-history-sort-menu {
+.app-sort-menu {
     max-height: min(360px, calc(100vh - 120px));
     overflow-y: auto;
 }
@@ -734,7 +780,7 @@ body.sidebar-transition-disabled .menu-toggle span {
 .period-menu::-webkit-scrollbar,
 .profile-menu::-webkit-scrollbar,
 .finance-row-menu::-webkit-scrollbar,
-.client-history-sort-menu::-webkit-scrollbar,
+.app-sort-menu::-webkit-scrollbar,
 .manual-product-results::-webkit-scrollbar {
     width: 10px;
 }
@@ -743,7 +789,7 @@ body.sidebar-transition-disabled .menu-toggle span {
 .period-menu::-webkit-scrollbar-track,
 .profile-menu::-webkit-scrollbar-track,
 .finance-row-menu::-webkit-scrollbar-track,
-.client-history-sort-menu::-webkit-scrollbar-track,
+.app-sort-menu::-webkit-scrollbar-track,
 .manual-product-results::-webkit-scrollbar-track {
     background: #f8f3f7;
     border-radius: 999px;
@@ -753,7 +799,7 @@ body.sidebar-transition-disabled .menu-toggle span {
 .period-menu::-webkit-scrollbar-thumb,
 .profile-menu::-webkit-scrollbar-thumb,
 .finance-row-menu::-webkit-scrollbar-thumb,
-.client-history-sort-menu::-webkit-scrollbar-thumb,
+.app-sort-menu::-webkit-scrollbar-thumb,
 .manual-product-results::-webkit-scrollbar-thumb {
     background: #a49aa3;
     border: 2px solid #f8f3f7;
@@ -764,7 +810,7 @@ body.sidebar-transition-disabled .menu-toggle span {
 .period-menu::-webkit-scrollbar-thumb:hover,
 .profile-menu::-webkit-scrollbar-thumb:hover,
 .finance-row-menu::-webkit-scrollbar-thumb:hover,
-.client-history-sort-menu::-webkit-scrollbar-thumb:hover,
+.app-sort-menu::-webkit-scrollbar-thumb:hover,
 .manual-product-results::-webkit-scrollbar-thumb:hover {
     background: #847784;
 }
@@ -789,6 +835,11 @@ body.sidebar-transition-disabled .menu-toggle span {
     background: rgba(255, 255, 255, 0.94);
     box-shadow: var(--shadow);
 }
+
+/* ==========================================================================
+   Dashboard Page
+   Home overview cards, sales progress, task widgets and dashboard modals.
+   ========================================================================== */
 
 .overview-card {
     padding: 24px 26px 22px;
@@ -828,6 +879,11 @@ body.sidebar-transition-disabled .menu-toggle span {
     font-size: 2.15rem;
     line-height: 1;
 }
+
+/* ==========================================================================
+   Shared UI Primitives
+   Buttons, breadcrumbs, CTA blocks, badges, pagination and reusable status tags.
+   ========================================================================== */
 
 .sales-value {
     display: inline-block;
@@ -1394,116 +1450,6 @@ body.is-ready .page-footer {
     transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-@media (max-width: 1320px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .side-widgets {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: 1fr;
-    }
-
-    .alert-card--todo {
-        min-height: 220px;
-    }
-
-    .quick-actions {
-        min-height: 220px;
-    }
-}
-
-@media (max-width: 900px) {
-    .alerts-board {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 1120px) {
-    .dashboard-shell {
-        grid-template-columns: 1fr;
-    }
-
-    .sidebar {
-        gap: 24px;
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-    }
-
-    .sidebar-nav {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .overview-main,
-    .metrics-row {
-        grid-template-columns: 1fr;
-    }
-
-    body.sidebar-collapsed .dashboard-shell {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 760px) {
-    .main-panel {
-        padding: 18px;
-    }
-
-    .topbar,
-    .performance-head {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .topbar-right {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .profile-card {
-        flex: 1;
-        justify-content: flex-end;
-    }
-
-    .sidebar-nav,
-    .side-widgets,
-    .alerts-board,
-    .progress-meta {
-        grid-template-columns: 1fr;
-    }
-
-    .person-row {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .overview-card {
-        padding: 24px 20px;
-    }
-
-    .chart-card {
-        min-height: 300px;
-    }
-
-    .metrics-row {
-        gap: 16px;
-    }
-
-    .metric-value,
-    .sales-value {
-        font-size: 2.7rem;
-    }
-}
-
-
-
-
-
-
-
-
-
-
 .avatar-image {
     display: block;
     object-fit: cover;
@@ -1808,8 +1754,7 @@ body.is-ready .page-footer {
 .contact-list,
 .birthday-list,
 .stock-list,
-.dashboard-alert-list,
-.client-modal-dialog {
+.dashboard-alert-list {
     scrollbar-width: thin;
     scrollbar-color: #c9c1c8 #f4eef3;
 }
@@ -1817,16 +1762,14 @@ body.is-ready .page-footer {
 .contact-list::-webkit-scrollbar,
 .birthday-list::-webkit-scrollbar,
 .stock-list::-webkit-scrollbar,
-.dashboard-alert-list::-webkit-scrollbar,
-.client-modal-dialog::-webkit-scrollbar {
+.dashboard-alert-list::-webkit-scrollbar {
     width: 10px;
 }
 
 .contact-list::-webkit-scrollbar-track,
 .birthday-list::-webkit-scrollbar-track,
 .stock-list::-webkit-scrollbar-track,
-.dashboard-alert-list::-webkit-scrollbar-track,
-.client-modal-dialog::-webkit-scrollbar-track {
+.dashboard-alert-list::-webkit-scrollbar-track {
     background: #f4eef3;
     border-radius: 999px;
 }
@@ -1834,8 +1777,7 @@ body.is-ready .page-footer {
 .contact-list::-webkit-scrollbar-thumb,
 .birthday-list::-webkit-scrollbar-thumb,
 .stock-list::-webkit-scrollbar-thumb,
-.dashboard-alert-list::-webkit-scrollbar-thumb,
-.client-modal-dialog::-webkit-scrollbar-thumb {
+.dashboard-alert-list::-webkit-scrollbar-thumb {
     background: #c9c1c8;
     border-radius: 999px;
     border: 2px solid #f4eef3;
@@ -1866,66 +1808,21 @@ body.is-ready .page-footer {
     fill: currentColor;
 }
 
-.clients-topbar {
+.app-topbar {
     gap: 20px;
 }
 
-.clients-topbar-left {
+.app-topbar-left {
     display: flex;
     align-items: center;
     gap: 14px;
     flex: 1;
 }
 
-.clients-search {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex: 1;
-    min-height: 46px;
-    padding: 0 16px;
-    border: 1px solid #ece7ed;
-    border-radius: 999px;
-    background: #fff;
-    box-shadow: 0 8px 18px rgba(26, 15, 32, 0.03);
-}
-
-.clients-search input {
-    width: 100%;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: #51434d;
-}
-
-.clients-search input::placeholder {
-    color: #a39aa2;
-}
-
-.clients-search-icon,
-.clients-filter-button {
-    width: 18px;
-    height: 18px;
-    color: #746775;
-    flex: 0 0 18px;
-}
-
-.clients-filter-button {
-    width: 36px;
-    height: 36px;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    flex: 0 0 36px;
-    background: #fff;
-    box-shadow: 0 8px 18px rgba(26, 15, 32, 0.03);
-}
-
-.clients-hero {
-    margin-top: 20px;
-}
+/* ==========================================================================
+   Clients List Page
+   Client dashboard summary, filters and customer table.
+   ========================================================================== */
 
 .page-intro-wrap {
     margin-top: 20px;
@@ -1936,7 +1833,7 @@ body.is-ready .page-footer {
     gap: 8px;
 }
 
-.products-breadcrumb {
+.app-breadcrumb {
     color: #9d91a0;
     font-size: 0.75rem;
     font-weight: 700;
@@ -1944,21 +1841,21 @@ body.is-ready .page-footer {
     text-transform: uppercase;
 }
 
-.products-breadcrumb a {
+.app-breadcrumb a {
     color: inherit;
     text-decoration: none;
     transition: color 0.18s ease;
 }
 
-.products-breadcrumb a:hover {
+.app-breadcrumb a:hover {
     color: var(--pink-dark);
 }
 
-.products-breadcrumb span[aria-current="page"] {
+.app-breadcrumb span[aria-current="page"] {
     color: #7c707d;
 }
 
-.products-breadcrumb-separator {
+.app-breadcrumb-separator {
     margin: 0 6px;
     color: #c0b6c1;
 }
@@ -1979,7 +1876,7 @@ body.is-ready .page-footer {
     font-weight: 400;
 }
 
-.clients-cta-card {
+.app-cta-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1988,19 +1885,19 @@ body.is-ready .page-footer {
     padding: 28px 32px;
 }
 
-.clients-cta-card h2 {
+.app-cta-card h2 {
     font-size: 1.4rem;
     margin-bottom: 8px;
     font-weight: 600;
 }
 
-.clients-cta-card p {
+.app-cta-card p {
     max-width: 720px;
     color: #726674;
     line-height: 1.55;
 }
 
-.clients-primary-button {
+.app-primary-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -2008,14 +1905,14 @@ body.is-ready .page-footer {
     min-width: 232px;
     min-height: 52px;
     padding: 0 20px;
-    border-radius: 999px;
-    background: linear-gradient(180deg, #e1007a 0%, #c40069 100%);
+    border-radius: var(--radius-pill);
+    background: var(--gradient-primary);
     color: #fff;
     font-weight: 700;
     box-shadow: 0 16px 26px rgba(224, 5, 122, 0.16);
 }
 
-.clients-primary-button svg {
+.app-primary-button svg {
     width: 20px;
     height: 20px;
 }
@@ -2059,7 +1956,7 @@ body.is-ready .page-footer {
     height: 20px;
 }
 
-.clients-stat-pill {
+.app-stat-pill {
     padding: 6px 10px;
     border-radius: 999px;
     background: #f4f0f3;
@@ -2068,7 +1965,7 @@ body.is-ready .page-footer {
     font-weight: 700;
 }
 
-.clients-stat-pill--positive {
+.app-stat-pill--positive {
     background: #e7fbf2;
     color: #0c9c6e;
 }
@@ -2160,7 +2057,7 @@ body.is-ready .page-footer {
 }
 
 .clients-table-header,
-.clients-table-footer {
+.app-table-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2168,7 +2065,7 @@ body.is-ready .page-footer {
     padding: 0 24px;
 }
 
-.clients-table-footer {
+.app-table-footer {
     margin-top: 18px;
 }
 
@@ -2276,12 +2173,12 @@ body.is-ready .page-footer {
 }
 
 .clients-table-person span,
-.clients-table-footer p {
+.app-table-footer p {
     color: #8f8590;
     font-size: 0.82rem;
 }
 
-.clients-status {
+.app-status {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -2292,24 +2189,24 @@ body.is-ready .page-footer {
     text-transform: uppercase;
 }
 
-.clients-status--active {
+.app-status--active {
     background: #e7fbf2;
     color: #17a474;
 }
 
-.clients-status--inactive {
+.app-status--inactive {
     background: #eef1f5;
     color: #7f8793;
 }
 
-.clients-pagination {
+.app-pagination {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.clients-pagination button,
-.clients-pagination span {
+.app-pagination button,
+.app-pagination span {
     min-width: 34px;
     height: 34px;
     display: inline-flex;
@@ -2319,13 +2216,12 @@ body.is-ready .page-footer {
     color: #665a66;
 }
 
-.clients-pagination button.is-active {
+.app-pagination button.is-active {
     background: var(--pink-dark);
     color: #fff;
 }
 
-.clients-main-panel,
-.products-main-panel {
+.app-page-panel {
     display: grid;
     align-content: start;
     gap: 18px;
@@ -2336,6 +2232,11 @@ body.is-ready .page-footer {
     align-content: start;
     gap: 18px;
 }
+
+/* ==========================================================================
+   Finance Page
+   Financial dashboard, movement table, filters and finance-specific modals.
+   ========================================================================== */
 
 .finance-main-panel {
     display: grid;
@@ -2790,7 +2691,7 @@ body.is-ready .page-footer {
     overflow: visible;
 }
 
-.finance-table-card .products-table-wrap {
+.finance-table-card .app-table-wrap {
     overflow: visible;
 }
 
@@ -2812,7 +2713,7 @@ body.is-ready .page-footer {
     min-height: 40px;
 }
 
-.finance-table-head .products-toolbar-actions {
+.finance-table-head .app-toolbar-actions {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -2823,11 +2724,11 @@ body.is-ready .page-footer {
     order: 1;
 }
 
-.finance-table-head .products-toolbar-button:nth-of-type(1) {
+.finance-table-head .app-toolbar-button:nth-of-type(1) {
     order: 2;
 }
 
-.finance-table-head .products-toolbar-button:nth-of-type(2) {
+.finance-table-head .app-toolbar-button:nth-of-type(2) {
     order: 3;
 }
 
@@ -2845,7 +2746,7 @@ body.is-ready .page-footer {
     padding: 0 12px;
 }
 
-.finance-filters-grid .clients-filter-field {
+.finance-filters-grid .app-filter-field {
     max-width: none;
 }
 
@@ -2853,16 +2754,16 @@ body.is-ready .page-footer {
     grid-column: 1 / -1;
 }
 
-.finance-category-field .clients-checkbox-group {
+.finance-category-field .app-checkbox-group {
     grid-template-columns: repeat(7, max-content);
     gap: 12px 16px;
 }
 
-.finance-filters-grid .clients-filter-field--range {
+.finance-filters-grid .app-filter-field--range {
     grid-column: 1 / -1;
 }
 
-.finance-filters-panel .clients-filters-actions {
+.finance-filters-panel .app-filters-actions {
     padding: 0 12px;
 }
 
@@ -3106,7 +3007,7 @@ body.is-ready .page-footer {
     color: #2f2930;
 }
 
-.clients-status.status-overdue {
+.app-status.status-overdue {
     background: #ffe4e4;
     color: #c84242 !important;
 }
@@ -3587,6 +3488,11 @@ body.is-ready .page-footer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* ==========================================================================
+   Help Pages
+   Help grid, article details, FAQ accordions and feedback form.
+   ========================================================================== */
+
 .help-main-panel {
     display: grid;
     align-content: start;
@@ -3670,7 +3576,7 @@ body.is-ready .page-footer {
     text-align: center;
 }
 
-.help-faq-card .products-breadcrumb {
+.help-faq-card .app-breadcrumb {
     color: var(--pink-dark);
 }
 
@@ -3735,7 +3641,7 @@ body.is-ready .page-footer {
     text-align: center;
 }
 
-.help-feedback-card .products-breadcrumb {
+.help-feedback-card .app-breadcrumb {
     color: var(--pink-dark);
 }
 
@@ -4216,6 +4122,11 @@ body.is-ready .page-footer {
 .insights-page .page-footer {
     padding-top: 18px;
 }
+
+/* ==========================================================================
+   Profile Page
+   Consultant profile, editable fields, image cropper and progress summary.
+   ========================================================================== */
 
 .profile-main-panel {
     display: grid;
@@ -4738,6 +4649,11 @@ body.is-ready .page-footer {
     line-height: 1.55;
 }
 
+/* ==========================================================================
+   Settings Page
+   Profile preferences, customer automation, sales options and toggles.
+   ========================================================================== */
+
 .settings-main-panel {
     display: grid;
     align-content: start;
@@ -5098,6 +5014,11 @@ body.is-ready .page-footer {
     background: var(--pink-dark);
 }
 
+/* ==========================================================================
+   Notifications Page
+   Simple inbox list with read/delete actions.
+   ========================================================================== */
+
 .notifications-main-panel {
     display: grid;
     align-content: start;
@@ -5202,8 +5123,8 @@ body.is-ready .page-footer {
 /* Shared list/table normalization: keep repeated data rows and action controls on the same vertical axis. */
 .clients-table th,
 .clients-table td,
-.products-table th,
-.products-table td,
+.app-data-table th,
+.app-data-table td,
 .product-mini-table th,
 .product-mini-table td,
 .client-purchase-history-table th,
@@ -5237,36 +5158,10 @@ body.is-ready .page-footer {
     display: inline-flex;
 }
 
-@media (max-width: 860px) {
-    .settings-number-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .settings-header-actions {
-        width: 100%;
-        justify-content: stretch;
-    }
-
-    .settings-header-actions > * {
-        flex: 1 1 100%;
-    }
-
-    .settings-password-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .settings-stepper {
-        grid-template-columns: 52px minmax(0, 1fr) 52px;
-    }
-
-    .notification-item {
-        grid-template-columns: 1fr;
-    }
-
-    .notification-item-actions {
-        justify-content: flex-start;
-    }
-}
+/* ==========================================================================
+   Calendar Page
+   Monthly calendar grid, event tags, agenda cards and event modals.
+   ========================================================================== */
 
 .calendar-main-panel {
     display: grid;
@@ -5939,7 +5834,7 @@ body.is-ready .page-footer {
     gap: 18px;
 }
 
-.products-header {
+.app-page-header {
     display: grid;
     gap: 8px;
 }
@@ -5961,6 +5856,11 @@ body.is-ready .page-footer {
 .order-header-copy h1 {
     margin-top: 0;
 }
+
+/* ==========================================================================
+   Sales Order Pages
+   Order summary, payment installments, receipt modal and order product tables.
+   ========================================================================== */
 
 .order-page-header {
     margin-top: 26px;
@@ -6553,6 +6453,11 @@ body.is-ready .page-footer {
     justify-content: flex-end;
 }
 
+/* ==========================================================================
+   Sales List Page
+   Sales chart, period summary cards, filters, sorting and sales table.
+   ========================================================================== */
+
 .sales-overview-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.28fr) minmax(240px, 0.72fr);
@@ -6912,11 +6817,11 @@ body.is-ready .page-footer {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.sales-toolbar .products-filters-grid {
+.sales-toolbar .app-filters-grid--inventory {
     grid-template-columns: 1fr;
 }
 
-.sales-toolbar .clients-filter-field {
+.sales-toolbar .app-filter-field {
     grid-column: 1 / -1;
 }
 
@@ -6996,17 +6901,22 @@ body.is-ready .page-footer {
     color: #3f3440;
 }
 
-.products-stats-grid {
+/* ==========================================================================
+   Inventory And MK Order Lists
+   Reusable stock/order statistic cards, inventory filters and product tables.
+   ========================================================================== */
+
+.app-stats-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
 }
 
-.products-stat-card {
+.app-stat-card {
     padding: 22px 20px;
 }
 
-.products-stat-top {
+.app-stat-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -7014,7 +6924,7 @@ body.is-ready .page-footer {
     margin-bottom: 18px;
 }
 
-.products-stat-icon {
+.app-stat-icon {
     width: 42px;
     height: 42px;
     display: inline-flex;
@@ -7025,24 +6935,24 @@ body.is-ready .page-footer {
     color: var(--pink-dark);
 }
 
-.products-stat-icon--soft {
+.app-stat-icon--soft {
     background: #f4eff5;
     color: #7b6e7c;
 }
 
-.products-stat-icon--danger {
+.app-stat-icon--danger {
     background: #fff1ef;
     color: #d64e4e;
 }
 
-.products-stats-grid--inventory .products-stat-icon {
+.app-stats-grid--inventory .app-stat-icon {
     width: 52px;
     height: 52px;
     padding: 13px;
     border-radius: 17px;
 }
 
-.products-stats-grid--mk-order .products-stat-icon {
+.app-stats-grid--mk-order .app-stat-icon {
     width: 52px;
     height: 52px;
     padding: 13px;
@@ -7051,12 +6961,12 @@ body.is-ready .page-footer {
     color: var(--pink-dark);
 }
 
-.products-stat-card p {
+.app-stat-card p {
     color: #7a6e7b;
     font-size: 0.92rem;
 }
 
-.products-stat-card strong {
+.app-stat-card strong {
     display: inline-block;
     margin-top: 8px;
     font-size: clamp(2rem, 2.4vw, 2.8rem);
@@ -7064,29 +6974,29 @@ body.is-ready .page-footer {
     font-weight: 600;
 }
 
-.products-stat-money {
+.app-stat-money {
     font-size: clamp(2rem, 2vw, 2.6rem) !important;
 }
 
-.products-stat-money-inline {
+.app-stat-money-inline {
     display: inline-flex !important;
     align-items: baseline;
     gap: 5px;
 }
 
-.products-stat-money-inline .currency {
+.app-stat-money-inline .currency {
     font-size: 1.45rem;
     line-height: 1;
 }
 
-.products-stat-money-value {
+.app-stat-money-value {
     display: inline-block;
     font-size: clamp(2.2rem, 2.5vw, 3rem);
     line-height: 1;
     font-weight: 600;
 }
 
-.products-stat-note {
+.app-stat-note {
     margin-left: 6px;
     color: #b4aab5;
     font-size: 0.95rem;
@@ -7105,7 +7015,12 @@ body.is-ready .page-footer {
     font-weight: 700;
 }
 
-.products-toolbar {
+/* ==========================================================================
+   Shared Data Controls
+   Search toolbars, filter panels, range fields and reusable data tables.
+   ========================================================================== */
+
+.app-toolbar {
     position: relative;
     z-index: 6;
     display: flex;
@@ -7115,16 +7030,16 @@ body.is-ready .page-footer {
     padding: 14px 16px;
 }
 
-.clients-toolbar {
+.app-filter-toolbar {
     margin-top: 22px;
     flex-wrap: wrap;
 }
 
-.products-toolbar.clients-toolbar {
+.app-toolbar.app-filter-toolbar {
     align-items: flex-start;
 }
 
-.products-toolbar-search {
+.app-toolbar-search {
     order: 1;
     flex: 1 1 auto;
     min-width: 260px;
@@ -7133,19 +7048,19 @@ body.is-ready .page-footer {
     gap: 10px;
     min-height: 44px;
     padding: 0 14px;
-    border: 1px solid #f1ebf1;
-    border-radius: 12px;
-    background: #fff;
-    color: #998f9a;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text-subtle);
 }
 
-.products-toolbar-search span {
+.app-toolbar-search span {
     display: inline-flex;
     width: 16px;
     height: 16px;
 }
 
-.products-toolbar-search input {
+.app-toolbar-search input {
     width: 100%;
     border: 0;
     outline: 0;
@@ -7154,7 +7069,7 @@ body.is-ready .page-footer {
     font: inherit;
 }
 
-.products-toolbar-actions {
+.app-toolbar-actions {
     order: 2;
     display: flex;
     align-items: center;
@@ -7162,7 +7077,7 @@ body.is-ready .page-footer {
     flex-wrap: wrap;
 }
 
-.clients-filters-panel {
+.app-filters-panel {
     width: 100%;
     flex: 0 0 100%;
     order: 3;
@@ -7223,18 +7138,18 @@ body.is-ready .page-footer {
     color: var(--pink-dark);
 }
 
-.clients-filters-grid {
+.app-filters-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 14px;
     align-items: start;
 }
 
-.products-filters-grid {
+.app-filters-grid--inventory {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.clients-filter-field {
+.app-filter-field {
     display: grid;
     gap: 12px;
     padding: 16px 18px;
@@ -7243,12 +7158,12 @@ body.is-ready .page-footer {
     background: #fff;
 }
 
-.clients-filter-field--range {
+.app-filter-field--range {
     grid-column: auto;
     max-width: none;
 }
 
-.clients-filter-field span {
+.app-filter-field span {
     color: #756875;
     font-size: 0.78rem;
     font-weight: 700;
@@ -7256,8 +7171,8 @@ body.is-ready .page-footer {
     text-transform: uppercase;
 }
 
-.clients-filter-field input,
-.clients-filter-field select {
+.app-filter-field input,
+.app-filter-field select {
     min-height: 42px;
     padding: 0 12px;
     border: 1px solid #e9e1e8;
@@ -7267,7 +7182,7 @@ body.is-ready .page-footer {
     font: inherit;
 }
 
-.clients-checkbox-group {
+.app-checkbox-group {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 12px 18px;
@@ -7277,7 +7192,7 @@ body.is-ready .page-footer {
     background: transparent;
 }
 
-.clients-checkbox-group label {
+.app-checkbox-group label {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -7287,14 +7202,14 @@ body.is-ready .page-footer {
     cursor: pointer;
 }
 
-.clients-checkbox-group input {
+.app-checkbox-group input {
     width: 16px;
     height: 16px;
     margin-top: 0;
     accent-color: var(--pink);
 }
 
-.clients-checkbox-group span {
+.app-checkbox-group span {
     color: inherit;
     font-size: inherit;
     font-weight: 500;
@@ -7367,20 +7282,20 @@ body.is-ready .page-footer {
     grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
-.products-filter-apply-button {
+.app-filter-apply-button {
     min-width: 232px;
     min-height: 42px;
     padding: 0 18px;
     box-shadow: 0 14px 24px rgba(224, 5, 122, 0.14);
 }
 
-.clients-filter-range {
+.app-filter-range {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
 }
 
-.clients-filters-actions {
+.app-filters-actions {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -7388,14 +7303,14 @@ body.is-ready .page-footer {
     flex-wrap: wrap;
 }
 
-.clients-filters-counter {
+.app-filters-counter {
     margin-right: auto;
     color: #7f7380;
     font-size: 0.85rem;
     font-weight: 600;
 }
 
-.products-toolbar-button {
+.app-toolbar-button {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -7408,13 +7323,13 @@ body.is-ready .page-footer {
     font-weight: 700;
 }
 
-.products-toolbar-button svg,
-.products-add-button svg {
+.app-toolbar-button svg,
+.app-action-button svg {
     width: 16px;
     height: 16px;
 }
 
-.products-toolbar-button.finance-archive-button svg {
+.app-toolbar-button.finance-archive-button svg {
     display: block;
     width: 24px !important;
     height: 24px !important;
@@ -7422,34 +7337,34 @@ body.is-ready .page-footer {
     flex: 0 0 24px;
 }
 
-.products-add-button {
+.app-action-button {
     min-width: 206px;
     min-height: 44px;
     box-shadow: 0 14px 24px rgba(224, 5, 122, 0.14);
 }
 
-.products-table-card {
+.app-data-card {
     padding: 0 0 16px;
     overflow: hidden;
 }
 
-.products-table-wrap {
+.app-table-wrap {
     overflow-x: auto;
 }
 
-.products-table {
+.app-data-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.products-table th,
-.products-table td {
+.app-data-table th,
+.app-data-table td {
     padding: 16px 20px;
     text-align: left;
     white-space: nowrap;
 }
 
-.products-table thead th {
+.app-data-table thead th {
     color: #9b909b;
     font-size: 0.72rem;
     font-weight: 700;
@@ -7458,16 +7373,16 @@ body.is-ready .page-footer {
     background: #fcfbfc;
 }
 
-.products-table tbody tr {
+.app-data-table tbody tr {
     border-top: 1px solid #f4eef3;
 }
 
-.products-table tbody tr[data-row-href] {
+.app-data-table tbody tr[data-row-href] {
     cursor: pointer;
     transition: background-color 0.18s ease;
 }
 
-.products-table tbody tr[data-row-href]:hover {
+.app-data-table tbody tr[data-row-href]:hover {
     background: #fff8fc;
 }
 
@@ -7499,12 +7414,12 @@ body.is-ready .page-footer {
     background: linear-gradient(180deg, #0d0d0f 0%, #433731 100%);
 }
 
-.products-table-product {
+.app-table-product {
     display: grid;
     gap: 4px;
 }
 
-.products-table-product strong {
+.app-table-product strong {
     font-size: 0.95rem;
 }
 
@@ -7512,16 +7427,16 @@ body.is-ready .page-footer {
     display: inline-flex;
 }
 
-.products-table-product-link {
+.app-table-product-link {
     color: inherit;
     text-decoration: none;
 }
 
-.products-table-product-link:hover strong {
+.app-table-product-link:hover strong {
     color: var(--pink-dark);
 }
 
-.products-table-product span {
+.app-table-product span {
     color: #aaa0ab;
     font-size: 0.82rem;
 }
@@ -7556,6 +7471,11 @@ body.is-ready .page-footer {
     align-content: start;
     gap: 18px;
 }
+
+/* ==========================================================================
+   Product Detail Page
+   Product hero, KPI cards, performance chart and stock adjustment modals.
+   ========================================================================== */
 
 .product-detail-header {
     display: flex;
@@ -8249,8 +8169,8 @@ body.is-ready .page-footer {
     margin-top: 18px;
 }
 
-.product-stock-confirm-actions .products-toolbar-button,
-.product-stock-confirm-actions .clients-primary-button {
+.product-stock-confirm-actions .app-toolbar-button,
+.product-stock-confirm-actions .app-primary-button {
     width: 100%;
     justify-content: center;
 }
@@ -8560,12 +8480,6 @@ body.is-ready .page-footer {
     border-color: transparent;
 }
 
-@media (max-width: 900px) {
-    .manual-product-row {
-        grid-template-columns: minmax(0, 1fr);
-    }
-}
-
 .client-detail-layout {
     display: grid;
     grid-template-columns: minmax(0, 1.8fr) minmax(300px, 360px);
@@ -8688,7 +8602,7 @@ body.is-ready .page-footer {
     flex-wrap: wrap;
 }
 
-.client-hero-actions .clients-primary-button {
+.client-hero-actions .app-primary-button {
     min-width: 0;
     min-height: 46px;
     padding: 0 20px;
@@ -10093,11 +10007,11 @@ body.is-ready .page-footer {
     font-weight: 700;
 }
 
-.client-history-sort {
+.app-sort {
     position: relative;
 }
 
-.client-history-sort-menu {
+.app-sort-menu {
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
@@ -10111,7 +10025,7 @@ body.is-ready .page-footer {
     box-shadow: 0 16px 34px rgba(31, 23, 32, 0.12);
 }
 
-.client-history-sort-option {
+.app-sort-option {
     display: block;
     padding: 10px 12px;
     border: 0;
@@ -10125,7 +10039,7 @@ body.is-ready .page-footer {
     cursor: pointer;
 }
 
-.client-history-sort-option:hover {
+.app-sort-option:hover {
     background: #f8f4f7;
 }
 
@@ -10540,7 +10454,7 @@ body.is-ready .page-footer {
     font-weight: 700;
 }
 
-.clients-status--cancelled {
+.app-status--cancelled {
     background: #ffe7e3;
     color: #ef5b5b;
 }
@@ -10578,11 +10492,17 @@ body.is-ready .page-footer {
     font-weight: 700;
 }
 
-.client-modal[hidden] {
+/* ==========================================================================
+   Shared Modal System
+   Overlay, dialog shell, close button and shared modal typography. Dialogs are
+   intentionally allowed to grow with page scroll instead of internal scrollbars.
+   ========================================================================== */
+
+.app-modal[hidden] {
     display: none;
 }
 
-.client-modal {
+.app-modal {
     position: fixed;
     inset: 0;
     z-index: 60;
@@ -10594,14 +10514,14 @@ body.is-ready .page-footer {
     overscroll-behavior: contain;
 }
 
-.client-modal-backdrop {
+.app-modal-backdrop {
     position: fixed;
     inset: 0;
     background: rgba(19, 11, 18, 0.36);
     backdrop-filter: blur(6px);
 }
 
-.client-modal-dialog {
+.app-modal-dialog {
     position: relative;
     z-index: 1;
     width: min(100%, 460px);
@@ -10610,7 +10530,7 @@ body.is-ready .page-footer {
     overflow: visible;
 }
 
-.client-modal-close {
+.app-modal-close {
     position: absolute;
     top: 14px;
     right: 14px;
@@ -10624,7 +10544,7 @@ body.is-ready .page-footer {
     color: #524654;
 }
 
-.client-modal-close svg {
+.app-modal-close svg {
     width: 16px;
     height: 16px;
     fill: none;
@@ -10634,12 +10554,12 @@ body.is-ready .page-footer {
     stroke-width: 2;
 }
 
-.client-modal-dialog h2 {
+.app-modal-dialog h2 {
     font-size: 1.5rem;
     font-weight: 700;
 }
 
-.client-modal-subtitle {
+.app-modal-subtitle {
     margin-top: 8px;
     color: #7e7280;
     line-height: 1.5;
@@ -10696,19 +10616,24 @@ body.is-ready .page-footer {
     gap: 18px;
 }
 
-.new-client-card {
+/* ==========================================================================
+   Customer And Order Forms
+   New/edit customer forms, manual product search, sale forms and side summaries.
+   ========================================================================== */
+
+.app-form-card {
     padding: 22px 20px;
 }
 
-.new-client-card-head {
+.app-form-card-head {
     margin-bottom: 24px;
 }
 
-.new-client-card-head .finance-eyebrow {
+.app-form-card-head .finance-eyebrow {
     color: var(--pink-dark);
 }
 
-.new-client-card-head h2,
+.app-form-card-head h2,
 .new-client-side-card h2 {
     margin-top: 6px;
     margin-bottom: 14px;
@@ -10868,12 +10793,12 @@ body.is-ready .page-footer {
     z-index: 30;
 }
 
-.new-sale-page .new-client-card,
-.new-sale-page .products-table-card {
+.new-sale-page .app-form-card,
+.new-sale-page .app-data-card {
     overflow: visible;
 }
 
-.new-sale-page .new-sale-content > .new-client-card:first-child {
+.new-sale-page .new-sale-content > .app-form-card:first-child {
     z-index: 8;
 }
 
@@ -11185,61 +11110,61 @@ body.is-ready .page-footer {
     margin-bottom: 0;
 }
 
-.new-sale-content .products-table-wrap {
+.new-sale-content .app-table-wrap {
     overflow-x: visible;
 }
 
-.new-sale-page .products-table-card {
+.new-sale-page .app-data-card {
     overflow: visible;
 }
 
-.new-sale-page .order-products-table {
+.new-sale-page .order-data-table {
     table-layout: fixed;
 }
 
-.new-sale-page .order-products-table th,
-.new-sale-page .order-products-table td {
+.new-sale-page .order-data-table th,
+.new-sale-page .order-data-table td {
     white-space: normal;
     vertical-align: middle;
 }
 
-.new-sale-page .order-products-table th:nth-child(1),
-.new-sale-page .order-products-table td:nth-child(1) {
+.new-sale-page .order-data-table th:nth-child(1),
+.new-sale-page .order-data-table td:nth-child(1) {
     width: 32%;
 }
 
-.new-sale-page .order-products-table th:nth-child(2),
-.new-sale-page .order-products-table td:nth-child(2) {
+.new-sale-page .order-data-table th:nth-child(2),
+.new-sale-page .order-data-table td:nth-child(2) {
     width: 16%;
     white-space: nowrap;
 }
 
-.new-sale-page .order-products-table th:nth-child(3),
-.new-sale-page .order-products-table td:nth-child(3) {
+.new-sale-page .order-data-table th:nth-child(3),
+.new-sale-page .order-data-table td:nth-child(3) {
     width: 16%;
     white-space: nowrap;
 }
 
-.new-sale-page .order-products-table th:nth-child(4),
-.new-sale-page .order-products-table td:nth-child(4) {
+.new-sale-page .order-data-table th:nth-child(4),
+.new-sale-page .order-data-table td:nth-child(4) {
     width: 8%;
 }
 
-.new-sale-page .order-products-table th:nth-child(5),
-.new-sale-page .order-products-table td:nth-child(5) {
+.new-sale-page .order-data-table th:nth-child(5),
+.new-sale-page .order-data-table td:nth-child(5) {
     width: 16%;
     white-space: nowrap;
 }
 
-.new-sale-page .order-products-table th:nth-child(6),
-.new-sale-page .order-products-table td:nth-child(6) {
+.new-sale-page .order-data-table th:nth-child(6),
+.new-sale-page .order-data-table td:nth-child(6) {
     width: 44px;
     padding-left: 4px;
     padding-right: 4px;
     text-align: center;
 }
 
-.new-sale-page .order-products-table td:nth-child(6) .mk-order-row-delete {
+.new-sale-page .order-data-table td:nth-child(6) .mk-order-row-delete {
     margin-inline: auto;
 }
 
@@ -11360,13 +11285,157 @@ body.is-ready .page-footer {
     box-shadow: 0 8px 16px rgba(216, 10, 119, 0.08);
 }
 
+/* ==========================================================================
+   Responsive Adjustments
+   All breakpoint-specific rules are grouped here to keep desktop styles easy
+   to maintain before the dedicated mobile refinement pass.
+   ========================================================================== */
+
+@media (max-width: 1320px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .side-widgets {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: 1fr;
+    }
+
+    .alert-card--todo {
+        min-height: 220px;
+    }
+
+    .quick-actions {
+        min-height: 220px;
+    }
+}
+
+@media (max-width: 900px) {
+    .alerts-board {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1120px) {
+    .dashboard-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        gap: 24px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .sidebar-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .overview-main,
+    .metrics-row {
+        grid-template-columns: 1fr;
+    }
+
+    body.sidebar-collapsed .dashboard-shell {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .main-panel {
+        padding: 18px;
+    }
+
+    .topbar,
+    .performance-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .topbar-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .profile-card {
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .sidebar-nav,
+    .side-widgets,
+    .alerts-board,
+    .progress-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .person-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .overview-card {
+        padding: 24px 20px;
+    }
+
+    .chart-card {
+        min-height: 300px;
+    }
+
+    .metrics-row {
+        gap: 16px;
+    }
+
+    .metric-value,
+    .sales-value {
+        font-size: 2.7rem;
+    }
+}
+
+@media (max-width: 860px) {
+    .settings-number-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-header-actions {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .settings-header-actions > * {
+        flex: 1 1 100%;
+    }
+
+    .settings-password-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-stepper {
+        grid-template-columns: 52px minmax(0, 1fr) 52px;
+    }
+
+    .notification-item {
+        grid-template-columns: 1fr;
+    }
+
+    .notification-item-actions {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 900px) {
+    .manual-product-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
 @media (max-width: 1180px) {
-    .clients-cta-card,
+    .app-cta-card,
     .clients-stats-grid {
         grid-template-columns: 1fr;
     }
 
-    .clients-cta-card {
+    .app-cta-card {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -11395,7 +11464,7 @@ body.is-ready .page-footer {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .products-stats-grid {
+    .app-stats-grid {
         grid-template-columns: 1fr;
     }
 
@@ -11413,24 +11482,24 @@ body.is-ready .page-footer {
         grid-template-columns: 1fr;
     }
 
-    .products-toolbar {
+    .app-toolbar {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .products-toolbar-actions {
+    .app-toolbar-actions {
         justify-content: flex-end;
     }
 
-    .clients-filters-grid {
+    .app-filters-grid {
         grid-template-columns: 1fr;
     }
 
-    .clients-checkbox-group {
+    .app-checkbox-group {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .products-filters-grid,
+    .app-filters-grid--inventory,
     .products-category-grid {
         grid-template-columns: 1fr;
     }
@@ -11500,14 +11569,14 @@ body.is-ready .page-footer {
 }
 
 @media (max-width: 900px) {
-    .clients-topbar {
+    .app-topbar {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .clients-topbar-left,
+    .app-topbar-left,
     .clients-table-header,
-    .clients-table-footer {
+    .app-table-footer {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -11516,17 +11585,17 @@ body.is-ready .page-footer {
         grid-template-columns: 1fr;
     }
 
-    .products-toolbar-actions {
+    .app-toolbar-actions {
         width: 100%;
     }
 
-    .products-toolbar-button,
-    .products-add-button {
+    .app-toolbar-button,
+    .app-action-button {
         width: 100%;
         justify-content: center;
     }
 
-    .clients-filters-grid {
+    .app-filters-grid {
         grid-template-columns: 1fr;
     }
 
@@ -11534,16 +11603,16 @@ body.is-ready .page-footer {
         grid-template-columns: 1fr;
     }
 
-    .clients-filter-field--range {
+    .app-filter-field--range {
         grid-column: auto;
         max-width: none;
     }
 
-    .clients-filter-range {
+    .app-filter-range {
         grid-template-columns: 1fr;
     }
 
-    .clients-checkbox-group {
+    .app-checkbox-group {
         grid-template-columns: 1fr;
         gap: 10px;
     }
@@ -11552,7 +11621,7 @@ body.is-ready .page-footer {
         padding-left: 18px;
     }
 
-    .clients-filters-actions {
+    .app-filters-actions {
         flex-direction: column;
         align-items: stretch;
     }

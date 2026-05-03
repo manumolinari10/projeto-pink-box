@@ -85,9 +85,9 @@
             </div>
         </aside>
 
-        <main class="main-panel products-main-panel" data-mk-new-order-page>
-            <header class="topbar clients-topbar">
-                <div class="clients-topbar-left">
+        <main class="main-panel app-page-panel" data-mk-new-order-page>
+            <header class="topbar app-topbar">
+                <div class="app-topbar-left">
                     <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
                         <span></span><span></span><span></span>
                     </button>
@@ -114,7 +114,7 @@
 
             <section class="product-detail-header page-intro-wrap">
                 <div class="page-intro-copy">
-                    <div class="products-breadcrumb">Dashboard / Estoque / Pedidos MK / Novo Pedido MK</div>
+                    <div class="app-breadcrumb">Dashboard / Estoque / Pedidos MK / Novo Pedido MK</div>
                     <h1>Lançar Pedido MK</h1>
                     <p>Monte manualmente um novo pedido da Mary Kay e acompanhe pontos, quantidades e valor total dos itens selecionados.</p>
                 </div>
@@ -128,12 +128,12 @@
                 </div>
             </section>
 
-            <section class="clients-cta-card elevated">
+            <section class="app-cta-card elevated">
                 <div>
                     <h2>Importar PDF do Em Sintonia</h2>
                     <p>Você tem a opção de enviar o PDF de pedidos gerado no Em Sintonia para adicionar os produtos de forma automática.</p>
                 </div>
-                <button class="products-toolbar-button mk-pdf-button" type="button" data-mk-pdf-trigger>
+                <button class="app-toolbar-button mk-pdf-button" type="button" data-mk-pdf-trigger>
                     <svg viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM152,88V44l44,44Zm-16,64V120a8,8,0,0,0-16,0v32H88a8,8,0,0,0,0,16h32v32a8,8,0,0,0,16,0V168h32a8,8,0,0,0,0-16Z"></path></svg>
                     <span data-mk-pdf-label>Enviar PDF</span>
                 </button>
@@ -150,7 +150,7 @@
                         <div class="manual-product-row">
                             <div class="manual-product-search-shell">
                                 <span>Nome ou Código do Produto</span>
-                                <label class="products-toolbar-search manual-product-search">
+                                <label class="app-toolbar-search manual-product-search">
                                     <span aria-hidden="true">
                                         <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                                     </span>
@@ -173,21 +173,21 @@
                                 </div>
                             </div>
 
-                            <button type="button" class="clients-primary-button manual-product-add-button" data-mk-new-order-add disabled>Adicionar</button>
+                            <button type="button" class="app-primary-button manual-product-add-button" data-mk-new-order-add disabled>Adicionar</button>
                         </div>
 
                         <p class="manual-product-selection" data-mk-new-order-selection>Nenhum produto selecionado.</p>
                     </form>
                 </article>
 
-                <section class="products-table-card elevated manual-product-history-card">
+                <section class="app-data-card elevated manual-product-history-card">
                     <div class="mk-builder-section-head">
                         <div>
                             <span class="finance-eyebrow">Produtos Adicionados</span>
                         </div>
                     </div>
-                    <div class="products-table-wrap">
-                        <table class="products-table">
+                    <div class="app-table-wrap">
+                        <table class="app-data-table">
                             <thead>
                             <tr>
                                 <th>Código do Produto</th>
@@ -242,9 +242,9 @@
                         </tbody>
                     </table>
                     </div>
-                    <div class="clients-table-footer">
+                    <div class="app-table-footer">
                         <p>Mostrando 3 produtos</p>
-                        <div class="clients-pagination">
+                        <div class="app-pagination">
                             <button type="button" aria-label="Página anterior">&lsaquo;</button>
                             <button type="button" class="is-active">1</button>
                             <button type="button">2</button>
@@ -261,56 +261,56 @@
         </main>
     </div>
 
-    <div class="client-modal" id="mk-pdf-replace-modal" hidden>
-        <div class="client-modal-backdrop" data-mk-pdf-close></div>
-        <div class="client-modal-dialog elevated product-stock-modal-dialog">
-            <button class="client-modal-close" type="button" aria-label="Fechar confirmação do PDF" data-mk-pdf-close>
+    <div class="app-modal" id="mk-pdf-replace-modal" hidden>
+        <div class="app-modal-backdrop" data-mk-pdf-close></div>
+        <div class="app-modal-dialog elevated product-stock-modal-dialog">
+            <button class="app-modal-close" type="button" aria-label="Fechar confirmação do PDF" data-mk-pdf-close>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
             </button>
             <h2>Substituir lista atual</h2>
-            <p class="client-modal-subtitle">Já existem produtos adicionados à lista. Este PDF substituirá todos os itens adicionados anteriormente. Deseja continuar? Caso queira salvar a lista adicionada anteriormente, salve o pedido antes de enviar o PDF.</p>
+            <p class="app-modal-subtitle">Já existem produtos adicionados à lista. Este PDF substituirá todos os itens adicionados anteriormente. Deseja continuar? Caso queira salvar a lista adicionada anteriormente, salve o pedido antes de enviar o PDF.</p>
 
             <div class="product-stock-confirm-actions">
-                <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-mk-pdf-use>Usar PDF</button>
-                <button type="button" class="products-toolbar-button" data-mk-pdf-close>Cancelar</button>
+                <button type="button" class="app-primary-button product-stock-confirm-trigger" data-mk-pdf-use>Usar PDF</button>
+                <button type="button" class="app-toolbar-button" data-mk-pdf-close>Cancelar</button>
             </div>
         </div>
     </div>
 
-    <div class="client-modal" id="mk-launch-products-modal" hidden>
-        <div class="client-modal-backdrop" data-mk-launch-close></div>
-        <div class="client-modal-dialog elevated product-stock-modal-dialog">
-            <button class="client-modal-close" type="button" aria-label="Fechar confirmação de lançamento" data-mk-launch-close>
+    <div class="app-modal" id="mk-launch-products-modal" hidden>
+        <div class="app-modal-backdrop" data-mk-launch-close></div>
+        <div class="app-modal-dialog elevated product-stock-modal-dialog">
+            <button class="app-modal-close" type="button" aria-label="Fechar confirmação de lançamento" data-mk-launch-close>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
             </button>
             <h2>Confirmar Lançamento</h2>
-            <p class="client-modal-subtitle">
+            <p class="app-modal-subtitle">
                 Os produtos desta lista serão incluídos em seu estoque e os valores adicionados ao painel financeiro.
             </p>
 
             <div class="product-stock-confirm-actions">
-                <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-mk-launch-confirm>Confirmar</button>
-                <button type="button" class="products-toolbar-button" data-mk-launch-close>Cancelar</button>
+                <button type="button" class="app-primary-button product-stock-confirm-trigger" data-mk-launch-confirm>Confirmar</button>
+                <button type="button" class="app-toolbar-button" data-mk-launch-close>Cancelar</button>
             </div>
         </div>
     </div>
 
-    <div class="client-modal" id="mk-new-order-delete-modal" hidden>
-        <div class="client-modal-backdrop" data-mk-new-order-delete-close></div>
-        <div class="client-modal-dialog elevated product-stock-modal-dialog">
-            <button class="client-modal-close" type="button" aria-label="Fechar confirmação de exclusão" data-mk-new-order-delete-close>
+    <div class="app-modal" id="mk-new-order-delete-modal" hidden>
+        <div class="app-modal-backdrop" data-mk-new-order-delete-close></div>
+        <div class="app-modal-dialog elevated product-stock-modal-dialog">
+            <button class="app-modal-close" type="button" aria-label="Fechar confirmação de exclusão" data-mk-new-order-delete-close>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
             </button>
             <h2>Excluir produto</h2>
-            <p class="client-modal-subtitle">
+            <p class="app-modal-subtitle">
                 Tem certeza que deseja excluir
                 <strong data-mk-new-order-delete-name>este produto</strong>
                 da lista?
             </p>
 
             <div class="product-stock-confirm-actions">
-                <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-mk-new-order-delete-confirm>Confirmar</button>
-                <button type="button" class="products-toolbar-button" data-mk-new-order-delete-close>Cancelar</button>
+                <button type="button" class="app-primary-button product-stock-confirm-trigger" data-mk-new-order-delete-confirm>Confirmar</button>
+                <button type="button" class="app-toolbar-button" data-mk-new-order-delete-close>Cancelar</button>
             </div>
         </div>
     </div>

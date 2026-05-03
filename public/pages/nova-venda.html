@@ -86,8 +86,8 @@
         </aside>
 
         <main class="main-panel new-sale-main-panel" data-new-sale-page>
-            <header class="topbar clients-topbar">
-                <div class="clients-topbar-left">
+            <header class="topbar app-topbar">
+                <div class="app-topbar-left">
                     <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
                         <span></span>
                         <span></span>
@@ -121,7 +121,7 @@
 
             <section class="product-detail-header page-intro-wrap">
                 <div class="page-intro-copy">
-                    <div class="products-breadcrumb">Dashboard / Vendas / Nova Venda</div>
+                    <div class="app-breadcrumb">Dashboard / Vendas / Nova Venda</div>
                     <h1>Nova Venda</h1>
                     <p>Cadastre um novo pedido com cliente, produtos, pagamento e resumo financeiro da operação.</p>
                 </div>
@@ -133,8 +133,8 @@
 
             <section class="new-sale-layout">
                 <div class="new-sale-content">
-                    <article class="new-client-card elevated">
-                        <div class="new-client-card-head">
+                    <article class="app-form-card elevated">
+                        <div class="app-form-card-head">
                             <div>
                                 <span class="finance-eyebrow">Dados da Venda</span>
                             </div>
@@ -162,8 +162,8 @@
                         </div>
                     </article>
 
-                    <section class="products-table-card order-products-card elevated">
-                        <div class="new-client-card-head order-products-head">
+                    <section class="app-data-card order-products-card elevated">
+                        <div class="app-form-card-head order-products-head">
                             <div>
                                 <span class="finance-eyebrow">Produtos do Pedido</span>
                             </div>
@@ -174,7 +174,7 @@
                                 <div class="manual-product-row">
                                     <div class="manual-product-search-shell manual-product-search-shell--sale">
                                         <span>Pesquisar Produto</span>
-                                        <label class="products-toolbar-search manual-product-search">
+                                        <label class="app-toolbar-search manual-product-search">
                                             <span aria-hidden="true">
                                                 <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                                             </span>
@@ -197,12 +197,12 @@
                                         </div>
                                     </div>
 
-                                    <button type="button" class="clients-primary-button manual-product-add-button" data-new-sale-product-add disabled>Adicionar</button>
+                                    <button type="button" class="app-primary-button manual-product-add-button" data-new-sale-product-add disabled>Adicionar</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="products-table-wrap">
-                            <table class="products-table order-products-table">
+                        <div class="app-table-wrap">
+                            <table class="app-data-table order-data-table">
                                 <thead>
                                     <tr>
                                         <th>Produto</th>
@@ -222,8 +222,8 @@
                         </div>
                     </section>
 
-                    <article class="new-client-card elevated">
-                        <div class="new-client-card-head">
+                    <article class="app-form-card elevated">
+                        <div class="app-form-card-head">
                             <div>
                                 <span class="finance-eyebrow">Dados do Pagamento</span>
                             </div>
@@ -429,8 +429,8 @@
                         </div>
                     </article>
 
-                    <article class="new-client-card elevated">
-                        <div class="new-client-card-head">
+                    <article class="app-form-card elevated">
+                        <div class="app-form-card-head">
                             <div>
                                 <span class="finance-eyebrow">Observações</span>
                             </div>
@@ -446,7 +446,7 @@
 
                 <aside class="new-sale-sidebar">
                     <article class="elevated new-sale-summary-card">
-                        <div class="new-client-card-head">
+                        <div class="app-form-card-head">
                             <div>
                                 <span class="finance-eyebrow">Resumo</span>
                                 <h2>Fechamento da venda</h2>
@@ -527,7 +527,7 @@
                     </article>
 
                     <article class="elevated new-sale-summary-card">
-                        <div class="new-client-card-head">
+                        <div class="app-form-card-head">
                             <div>
                                 <span class="finance-eyebrow">Parcelas</span>
                                 <h2>Fluxo previsto</h2>
@@ -545,30 +545,30 @@
         </main>
     </div>
 
-    <div class="client-modal" id="new-sale-delete-modal" hidden>
-        <div class="client-modal-backdrop" data-new-sale-delete-close></div>
-        <div class="client-modal-dialog elevated product-stock-modal-dialog">
-            <button class="client-modal-close" type="button" aria-label="Fechar confirmação de exclusão" data-new-sale-delete-close>
+    <div class="app-modal" id="new-sale-delete-modal" hidden>
+        <div class="app-modal-backdrop" data-new-sale-delete-close></div>
+        <div class="app-modal-dialog elevated product-stock-modal-dialog">
+            <button class="app-modal-close" type="button" aria-label="Fechar confirmação de exclusão" data-new-sale-delete-close>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
             </button>
             <h2>Excluir produto</h2>
-            <p class="client-modal-subtitle">
+            <p class="app-modal-subtitle">
                 Tem certeza que deseja excluir
                 <strong data-new-sale-delete-name>este produto</strong>
                 da lista?
             </p>
 
             <div class="product-stock-confirm-actions">
-                <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-new-sale-delete-confirm>Confirmar</button>
-                <button type="button" class="products-toolbar-button" data-new-sale-delete-close>Cancelar</button>
+                <button type="button" class="app-primary-button product-stock-confirm-trigger" data-new-sale-delete-confirm>Confirmar</button>
+                <button type="button" class="app-toolbar-button" data-new-sale-delete-close>Cancelar</button>
             </div>
         </div>
     </div>
 
-    <div class="client-modal" id="new-sale-confirm-modal" hidden>
-        <div class="client-modal-backdrop" data-new-sale-confirm-close></div>
-        <div class="client-modal-dialog elevated new-sale-confirm-dialog">
-            <button class="client-modal-close" type="button" aria-label="Fechar confirmação da venda" data-new-sale-confirm-close>
+    <div class="app-modal" id="new-sale-confirm-modal" hidden>
+        <div class="app-modal-backdrop" data-new-sale-confirm-close></div>
+        <div class="app-modal-dialog elevated new-sale-confirm-dialog">
+            <button class="app-modal-close" type="button" aria-label="Fechar confirmação da venda" data-new-sale-confirm-close>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
             </button>
             <h2>Confirmar venda</h2>
@@ -629,8 +629,8 @@
             </div>
 
             <div class="product-stock-confirm-actions">
-                <button type="button" class="clients-primary-button product-stock-confirm-trigger" data-new-sale-confirm-apply>Confirmar</button>
-                <button type="button" class="products-toolbar-button" data-new-sale-confirm-close>Cancelar</button>
+                <button type="button" class="app-primary-button product-stock-confirm-trigger" data-new-sale-confirm-apply>Confirmar</button>
+                <button type="button" class="app-toolbar-button" data-new-sale-confirm-close>Cancelar</button>
             </div>
         </div>
     </div>

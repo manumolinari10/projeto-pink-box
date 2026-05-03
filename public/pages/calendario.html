@@ -86,8 +86,8 @@
         </aside>
 
         <main class="main-panel calendar-main-panel">
-            <header class="topbar clients-topbar">
-                <div class="clients-topbar-left">
+            <header class="topbar app-topbar">
+                <div class="app-topbar-left">
                     <button class="menu-toggle" type="button" aria-label="Exibir ou ocultar menu" aria-expanded="true">
                         <span></span>
                         <span></span>
@@ -121,12 +121,12 @@
 
             <section class="product-detail-header page-intro-wrap calendar-page-intro">
                 <div class="page-intro-copy">
-                    <div class="products-breadcrumb">Dashboard / Calendário</div>
+                    <div class="app-breadcrumb">Dashboard / Calendário</div>
                     <h1>Calendário Comercial</h1>
                     <p>Planeje ações, acompanhe datas importantes e visualize oportunidades do mês em um só lugar.</p>
                 </div>
                 <div class="calendar-page-actions">
-                    <button type="button" class="clients-primary-button" data-calendar-open-add>
+                    <button type="button" class="app-primary-button" data-calendar-open-add>
                         <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M136,56v64h64a8,8,0,0,1,0,16H136v64a8,8,0,0,1-16,0V136H56a8,8,0,0,1,0-16h64V56a8,8,0,0,1,16,0Z"></path></svg>
                         <span>Adicionar Evento</span>
                     </button>
@@ -189,15 +189,15 @@
         </main>
     </div>
 
-    <div class="client-modal calendar-modal" id="calendar-event-modal" hidden>
-        <div class="client-modal-backdrop" data-calendar-modal-close></div>
-        <div class="client-modal-dialog elevated calendar-modal-dialog">
-            <button class="client-modal-close" type="button" aria-label="Fechar janela" data-calendar-modal-close>
+    <div class="app-modal calendar-modal" id="calendar-event-modal" hidden>
+        <div class="app-modal-backdrop" data-calendar-modal-close></div>
+        <div class="app-modal-dialog elevated calendar-modal-dialog">
+            <button class="app-modal-close" type="button" aria-label="Fechar janela" data-calendar-modal-close>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
             </button>
             <span class="calendar-modal-pill" data-calendar-modal-type>Evento</span>
             <h2 data-calendar-modal-title>Título do evento</h2>
-            <p class="client-modal-subtitle" data-calendar-modal-date>23 Abril 2026</p>
+            <p class="app-modal-subtitle" data-calendar-modal-date>23 Abril 2026</p>
             <div class="calendar-modal-body">
                 <p data-calendar-modal-description></p>
                 <div class="calendar-modal-note">
@@ -205,25 +205,25 @@
                     <p data-calendar-modal-action></p>
                 </div>
                 <div class="calendar-modal-actions" data-calendar-related-action-wrap hidden>
-                    <a class="products-toolbar-button" href="#" data-calendar-related-action>Ver detalhe</a>
+                    <a class="app-toolbar-button" href="#" data-calendar-related-action>Ver detalhe</a>
                 </div>
                 <div class="calendar-modal-actions" data-calendar-manual-actions hidden>
-                    <button type="button" class="products-toolbar-button" data-calendar-edit-event>Editar</button>
-                    <button type="button" class="clients-primary-button" data-calendar-complete-event>Concluído</button>
+                    <button type="button" class="app-toolbar-button" data-calendar-edit-event>Editar</button>
+                    <button type="button" class="app-primary-button" data-calendar-complete-event>Concluído</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="client-modal calendar-modal" id="calendar-add-modal" hidden>
-        <div class="client-modal-backdrop" data-calendar-modal-close></div>
-        <div class="client-modal-dialog elevated calendar-modal-dialog calendar-form-dialog">
-            <button class="client-modal-close" type="button" aria-label="Fechar janela" data-calendar-modal-close>
+    <div class="app-modal calendar-modal" id="calendar-add-modal" hidden>
+        <div class="app-modal-backdrop" data-calendar-modal-close></div>
+        <div class="app-modal-dialog elevated calendar-modal-dialog calendar-form-dialog">
+            <button class="app-modal-close" type="button" aria-label="Fechar janela" data-calendar-modal-close>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
             </button>
             <span class="calendar-modal-pill calendar-modal-pill--soft">Meus Eventos</span>
             <h2>Adicionar Evento</h2>
-            <p class="client-modal-subtitle">Cadastre um evento manual para acompanhar compromissos pessoais e lembretes do dia.</p>
+            <p class="app-modal-subtitle">Cadastre um evento manual para acompanhar compromissos pessoais e lembretes do dia.</p>
             <form class="calendar-add-form" data-calendar-add-form>
                 <label class="calendar-form-field calendar-form-field--full">
                     <span>Descrição</span>
@@ -246,35 +246,35 @@
                     <textarea name="notes" rows="3" placeholder="Adicione observações importantes sobre este evento"></textarea>
                 </label>
                 <div class="calendar-form-actions">
-                    <button type="submit" class="clients-primary-button">Salvar Evento</button>
-                    <button type="button" class="products-toolbar-button" data-calendar-modal-close>Cancelar</button>
+                    <button type="submit" class="app-primary-button">Salvar Evento</button>
+                    <button type="button" class="app-toolbar-button" data-calendar-modal-close>Cancelar</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <div class="client-modal calendar-modal" id="calendar-summary-modal" hidden>
-        <div class="client-modal-backdrop" data-calendar-modal-close></div>
-        <div class="client-modal-dialog elevated calendar-modal-dialog">
-            <button class="client-modal-close" type="button" aria-label="Fechar janela" data-calendar-modal-close>
+    <div class="app-modal calendar-modal" id="calendar-summary-modal" hidden>
+        <div class="app-modal-backdrop" data-calendar-modal-close></div>
+        <div class="app-modal-dialog elevated calendar-modal-dialog">
+            <button class="app-modal-close" type="button" aria-label="Fechar janela" data-calendar-modal-close>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
             </button>
             <span class="calendar-modal-pill calendar-modal-pill--soft">Resumo do mês</span>
             <h2 data-calendar-summary-title>Ações do bloco selecionado</h2>
-            <p class="client-modal-subtitle" data-calendar-summary-subtitle>Escolha uma ação para visualizar os detalhes.</p>
+            <p class="app-modal-subtitle" data-calendar-summary-subtitle>Escolha uma ação para visualizar os detalhes.</p>
             <div class="calendar-summary-actions" data-calendar-summary-actions></div>
         </div>
     </div>
 
-    <div class="client-modal calendar-modal" id="calendar-day-modal" hidden>
-        <div class="client-modal-backdrop" data-calendar-modal-close></div>
-        <div class="client-modal-dialog elevated calendar-modal-dialog">
-            <button class="client-modal-close" type="button" aria-label="Fechar janela" data-calendar-modal-close>
+    <div class="app-modal calendar-modal" id="calendar-day-modal" hidden>
+        <div class="app-modal-backdrop" data-calendar-modal-close></div>
+        <div class="app-modal-dialog elevated calendar-modal-dialog">
+            <button class="app-modal-close" type="button" aria-label="Fechar janela" data-calendar-modal-close>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
             </button>
             <span class="calendar-modal-pill calendar-modal-pill--soft">Todos do dia</span>
             <h2 data-calendar-day-title>Eventos do dia</h2>
-            <p class="client-modal-subtitle" data-calendar-day-subtitle>Selecione um item para abrir os detalhes.</p>
+            <p class="app-modal-subtitle" data-calendar-day-subtitle>Selecione um item para abrir os detalhes.</p>
             <div class="calendar-day-actions" data-calendar-day-actions></div>
         </div>
     </div>
