@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PinkBox | Nova Cliente</title>
+    <title>PinkBox | Editar Cliente</title>
     <link rel="icon" type="image/png" href="../favicon.ico">
     <link rel="stylesheet" href="../src/css/global.css">
 </head>
@@ -121,9 +121,9 @@
 
             <section class="product-detail-header page-intro-wrap">
                 <div class="page-intro-copy">
-                    <div class="products-breadcrumb">Dashboard / Clientes / Nova Cliente</div>
-                    <h1>Nova Cliente</h1>
-                    <p>Cadastre uma nova cliente com dados pessoais, contatos, endereço e perfil de beleza.</p>
+                    <div class="products-breadcrumb">Dashboard / Clientes / Mariana Silva / Editar Cliente</div>
+                    <h1>Editar Cliente</h1>
+                    <p>Atualize os dados pessoais, contatos, endereço e perfil de beleza da cliente.</p>
                 </div>
             </section>
 
@@ -132,8 +132,8 @@
                     <article class="new-client-card elevated">
                         <div class="new-client-image-upload">
                             <label class="new-client-image-frame" for="new-client-image-input">
-                                <img src="../src/assets/customers/default.webp" alt="Pré-visualização da cliente" class="new-client-image-preview avatar-image" data-new-client-image-preview>
-                                <span>Adicionar imagem</span>
+                                <img src="../src/assets/customers/default.webp" alt="Foto da cliente Mariana Silva" class="new-client-image-preview avatar-image" data-new-client-image-preview>
+                                <span>Alterar imagem</span>
                             </label>
                             <div class="new-client-image-guidelines">
                                 <span class="finance-eyebrow">Orientações da imagem</span>
@@ -155,22 +155,22 @@
                         <div class="new-client-grid">
                             <label class="new-client-field new-client-field--wide">
                                 <span>Nome Completo *</span>
-                                <input type="text" required name="full_name" placeholder="Nome da cliente">
+                                <input type="text" required name="full_name" placeholder="Nome da cliente" value="Mariana Silva">
                             </label>
                             <label class="new-client-field">
                                 <span>CPF *</span>
-                                <input type="text" required name="cpf" placeholder="000.000.000-00" data-new-client-cpf inputmode="numeric" maxlength="14">
+                                <input type="text" required name="cpf" placeholder="000.000.000-00" value="123.456.789-00" data-new-client-cpf inputmode="numeric" maxlength="14">
                             </label>
                             <label class="new-client-field">
                                 <span>Data de Nascimento</span>
-                                <input type="date" name="birth_date">
+                                <input type="date" name="birth_date" value="1992-05-15">
                             </label>
                             <label class="new-client-field">
                                 <span>Sexo</span>
                                 <select name="gender">
                                     <option value="">Selecione</option>
                                     <option value="Masculino">Masculino</option>
-                                    <option value="Feminino">Feminino</option>
+                                    <option value="Feminino" selected>Feminino</option>
                                 </select>
                             </label>
                             <label class="new-client-field">
@@ -178,7 +178,7 @@
                                 <select name="marital_status">
                                     <option value="">Selecione</option>
                                     <option value="Solteiro">Solteiro</option>
-                                    <option value="Casado">Casado</option>
+                                    <option value="Casado" selected>Casado</option>
                                     <option value="União estável">União estável</option>
                                     <option value="Divorciado">Divorciado</option>
                                     <option value="Viúvo">Viúvo</option>
@@ -188,7 +188,7 @@
                                 <span>Filhos?</span>
                                 <select name="children">
                                     <option value="">Selecione</option>
-                                    <option value="Sim">Sim</option>
+                                    <option value="Sim" selected>Sim</option>
                                     <option value="Não">Não</option>
                                 </select>
                             </label>
@@ -200,7 +200,7 @@
                                     <option value="Redes sociais">Redes sociais</option>
                                     <option value="Whatsapp">Whatsapp</option>
                                     <option value="MaryKay">MaryKay</option>
-                                    <option value="Indicação">Indicação</option>
+                                    <option value="Indicação" selected>Indicação</option>
                                     <option value="Outros">Outros</option>
                                 </select>
                             </label>
@@ -216,23 +216,23 @@
                         <div class="new-client-grid">
                             <label class="new-client-field">
                                 <span>Whatsapp *</span>
-                                <input type="text" required name="whatsapp" placeholder="(00) 00000-0000" data-new-client-whatsapp inputmode="numeric" maxlength="15">
+                                <input type="text" required name="whatsapp" placeholder="(00) 00000-0000" value="(11) 99876-5432" data-new-client-whatsapp inputmode="numeric" maxlength="15">
                             </label>
                             <label class="new-client-field">
                                 <span>Telefone</span>
-                                <input type="text" name="phone" placeholder="(00) 0000-0000" data-new-client-phone inputmode="numeric" maxlength="14">
+                                <input type="text" name="phone" placeholder="(00) 0000-0000" value="(11) 3456-7890" data-new-client-phone inputmode="numeric" maxlength="14">
                             </label>
                             <label class="new-client-field new-client-field--wide">
                                 <span>E-mail</span>
-                                <input type="email" name="email" placeholder="cliente@email.com" data-new-client-email>
+                                <input type="email" name="email" placeholder="cliente@email.com" value="mariana.silva@email.com" data-new-client-email>
                             </label>
                             <label class="new-client-field">
                                 <span>Instagram</span>
-                                <input type="text" name="instagram" placeholder="@usuario">
+                                <input type="text" name="instagram" placeholder="@usuario" value="@marianasilva">
                             </label>
                             <label class="new-client-field">
                                 <span>Facebook</span>
-                                <input type="text" name="facebook" placeholder="/perfil">
+                                <input type="text" name="facebook" placeholder="/perfil" value="/mariana.silva">
                             </label>
                         </div>
                     </article>
@@ -246,27 +246,27 @@
                         <div class="new-client-grid">
                             <label class="new-client-field">
                                 <span>CEP</span>
-                                <input type="text" name="cep" placeholder="00000-000" data-new-client-cep inputmode="numeric" maxlength="9">
+                                <input type="text" name="cep" placeholder="00000-000" value="01310-100" data-new-client-cep inputmode="numeric" maxlength="9">
                             </label>
                             <label class="new-client-field new-client-field--wide">
                                 <span>Endereço</span>
-                                <input type="text" name="street" placeholder="Rua, avenida, travessa..." data-new-client-street>
+                                <input type="text" name="street" placeholder="Rua, avenida, travessa..." value="Avenida Paulista" data-new-client-street>
                             </label>
                             <label class="new-client-field">
                                 <span>Número da Casa</span>
-                                <input type="text" name="house_number" placeholder="Número">
+                                <input type="text" name="house_number" placeholder="Número" value="1578">
                             </label>
                             <label class="new-client-field">
                                 <span>Bairro</span>
-                                <input type="text" name="district" placeholder="Bairro" data-new-client-district>
+                                <input type="text" name="district" placeholder="Bairro" value="Bela Vista" data-new-client-district>
                             </label>
                             <label class="new-client-field">
                                 <span>Cidade</span>
-                                <input type="text" name="city" placeholder="Cidade" data-new-client-city>
+                                <input type="text" name="city" placeholder="Cidade" value="São Paulo" data-new-client-city>
                             </label>
                             <label class="new-client-field">
                                 <span>Estado</span>
-                                <input type="text" name="state" placeholder="Estado" data-new-client-state>
+                                <input type="text" name="state" placeholder="Estado" value="São Paulo" data-new-client-state>
                             </label>
                         </div>
                     </article>
@@ -281,8 +281,8 @@
                             <div class="new-client-field">
                                 <span>Cor da Base</span>
                                 <div class="new-client-tag-options">
-                                    <label class="new-client-tag-option"><input type="checkbox" name="foundation_color[]" value="Bege Claro"><span>Bege Claro</span></label>
-                                    <label class="new-client-tag-option"><input type="checkbox" name="foundation_color[]" value="Bege Médio 1"><span>Bege Médio 1</span></label>
+                                    <label class="new-client-tag-option"><input type="checkbox" name="foundation_color[]" value="Bege Claro" checked><span>Bege Claro</span></label>
+                                    <label class="new-client-tag-option"><input type="checkbox" name="foundation_color[]" value="Bege Médio 1" checked><span>Bege Médio 1</span></label>
                                     <label class="new-client-tag-option"><input type="checkbox" name="foundation_color[]" value="Bege Médio 2"><span>Bege Médio 2</span></label>
                                     <label class="new-client-tag-option"><input type="checkbox" name="foundation_color[]" value="Bronze 1"><span>Bronze 1</span></label>
                                 </div>
@@ -291,7 +291,7 @@
                                 <span>Tipo de Pele</span>
                                 <select name="skin_type">
                                     <option value="">Selecione</option>
-                                    <option value="Normal/Seca">Normal/Seca</option>
+                                    <option value="Normal/Seca" selected>Normal/Seca</option>
                                     <option value="Mista/Oleosa">Mista/Oleosa</option>
                                 </select>
                             </label>
@@ -299,17 +299,17 @@
                                 <span>Cor de Batom</span>
                                 <div class="new-client-tag-options">
                                     <label class="new-client-tag-option"><input type="checkbox" name="lipstick_color[]" value="Vermelho Queimado"><span>Vermelho Queimado</span></label>
-                                    <label class="new-client-tag-option"><input type="checkbox" name="lipstick_color[]" value="Rosado Nude"><span>Rosado Nude</span></label>
-                                    <label class="new-client-tag-option"><input type="checkbox" name="lipstick_color[]" value="Marsala"><span>Marsala</span></label>
+                                    <label class="new-client-tag-option"><input type="checkbox" name="lipstick_color[]" value="Rosado Nude" checked><span>Rosado Nude</span></label>
+                                    <label class="new-client-tag-option"><input type="checkbox" name="lipstick_color[]" value="Marsala" checked><span>Marsala</span></label>
                                     <label class="new-client-tag-option"><input type="checkbox" name="lipstick_color[]" value="Coral"><span>Coral</span></label>
                                 </div>
                             </div>
                             <div class="new-client-field">
                                 <span>Perfume</span>
                                 <div class="new-client-tag-options">
-                                    <label class="new-client-tag-option"><input type="checkbox" name="perfume[]" value="Cítrico"><span>Cítrico</span></label>
+                                    <label class="new-client-tag-option"><input type="checkbox" name="perfume[]" value="Cítrico" checked><span>Cítrico</span></label>
                                     <label class="new-client-tag-option"><input type="checkbox" name="perfume[]" value="Amadeirado"><span>Amadeirado</span></label>
-                                    <label class="new-client-tag-option"><input type="checkbox" name="perfume[]" value="Floral"><span>Floral</span></label>
+                                    <label class="new-client-tag-option"><input type="checkbox" name="perfume[]" value="Floral" checked><span>Floral</span></label>
                                     <label class="new-client-tag-option"><input type="checkbox" name="perfume[]" value="Doce"><span>Doce</span></label>
                                     <label class="new-client-tag-option"><input type="checkbox" name="perfume[]" value="Frutado"><span>Frutado</span></label>
                                 </div>
@@ -319,7 +319,7 @@
 
                     <div class="new-client-actions">
                         <a class="client-profile-inline-button new-client-cancel" href="./clientes.html">Cancelar</a>
-                        <button type="submit" class="clients-primary-button">Salvar cliente</button>
+                        <button type="submit" class="clients-primary-button">Salvar alterações</button>
                     </div>
                 </form>
             </section>
@@ -334,7 +334,7 @@
                     <p class="client-modal-subtitle">Arraste a foto para posicionar melhor o rosto da cliente no quadro.</p>
                     <div class="new-client-image-editor">
                         <div class="new-client-image-editor-frame" data-new-client-image-editor>
-                            <img src="../src/assets/customers/default.webp" alt="Ajuste de foto da cliente" class="new-client-image-editor-preview avatar-image" data-new-client-image-editor-preview>
+                            <img src="../src/assets/customers/default.webp" alt="Ajuste de foto da cliente Mariana Silva" class="new-client-image-editor-preview avatar-image" data-new-client-image-editor-preview>
                         </div>
                     </div>
                     <div class="new-client-image-editor-actions">
@@ -346,7 +346,7 @@
             </div>
 
             <div class="new-client-feedback" hidden data-new-client-feedback>
-                Cliente pronta para cadastro. Conectaremos esse formulário ao backend na próxima etapa.
+                Alterações da cliente prontas para salvar. Conectaremos esse formulário ao backend na próxima etapa.
             </div>
 
             <footer class="page-footer">

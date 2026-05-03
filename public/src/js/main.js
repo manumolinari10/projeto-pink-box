@@ -118,50 +118,135 @@ function updateTodayPill() {
     pill.textContent = `${day} ${month} ${year}`;
 }
 
-function setupPeriodMenu() {
-    const filter = document.querySelector(".period-filter");
-    const toggle = document.querySelector(".month-badge-button");
-    const arrowButton = document.querySelector("[data-period-toggle]");
-    const menu = document.querySelector("[data-period-menu]");
-    const label = document.querySelector("[data-current-month]");
+function setupBreadcrumbLinks() {
+    const routeMap = new Map([
+        ["dashboard", "./index.html"],
+        ["home", "./index.html"],
+        ["clientes", "./clientes.html"],
+        ["mariana silva", "./cliente.html"],
+        ["vendas", "./vendas.html"],
+        ["pedido", "./pedido.html"],
+        ["estoque", "./estoque.html"],
+        ["produtos", "./estoque.html"],
+        ["detalhes do produto", "./produto.html"],
+        ["pedidos mk", "./pedidos-mk.html"],
+        ["financeiro", "./financeiro.html"],
+        ["calendario", "./calendario.html"],
+        ["calendário", "./calendario.html"],
+        ["insights", "./insights.html"],
+        ["ajuda", "./ajuda.html"],
+        ["configuracoes", "./configuracoes.html"],
+        ["configurações", "./configuracoes.html"],
+        ["perfil", "./perfil.html"],
+        ["notificacoes", "./notificacoes.html"],
+        ["notificações", "./notificacoes.html"]
+    ]);
 
-    if (!filter || !toggle || !menu || !label) {
+    const normalizeLabel = (value) => value.trim().toLocaleLowerCase("pt-BR");
+
+    document.querySelectorAll(".products-breadcrumb").forEach((breadcrumb) => {
+        if (breadcrumb.querySelector("a")) {
+            return;
+        }
+
+        const parts = breadcrumb.textContent
+            .split("/")
+            .map((part) => part.trim())
+            .filter(Boolean);
+
+        if (parts.length <= 1) {
+            return;
+        }
+
+        breadcrumb.textContent = "";
+
+        parts.forEach((part, index) => {
+            if (index > 0) {
+                const separator = document.createElement("span");
+                separator.className = "products-breadcrumb-separator";
+                separator.textContent = "/";
+                breadcrumb.appendChild(separator);
+            }
+
+            const isCurrentPage = index === parts.length - 1;
+            const href = routeMap.get(normalizeLabel(part));
+
+            if (!isCurrentPage && href) {
+                const link = document.createElement("a");
+                link.href = href;
+                link.textContent = part;
+                breadcrumb.appendChild(link);
+                return;
+            }
+
+            const label = document.createElement("span");
+
+            if (isCurrentPage) {
+                label.setAttribute("aria-current", "page");
+            }
+
+            label.textContent = part;
+            breadcrumb.appendChild(label);
+        });
+    });
+}
+
+function setupPeriodMenu() {
+    const filters = Array.from(document.querySelectorAll(".period-filter"));
+
+    if (!filters.length) {
         return;
     }
 
-    menu.hidden = true;
-    filter.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
+    filters.forEach((filter) => {
+        const toggle = filter.querySelector(".month-badge-button");
+        const arrowButton = filter.querySelector("[data-period-toggle]");
+        const menu = filter.querySelector("[data-period-menu]");
+        const label = filter.querySelector("[data-period-label], [data-current-month]");
 
-    function closeMenu() {
-        filter.classList.remove("is-open");
+        if (!toggle || !menu || !label) {
+            return;
+        }
+
         menu.hidden = true;
-        if (arrowButton) {
-            arrowButton.setAttribute("aria-expanded", "false");
-        }
-    }
+        filter.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
 
-    toggle.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const isOpen = !filter.classList.contains("is-open");
-        filter.classList.toggle("is-open", isOpen);
-        menu.hidden = !isOpen;
-        if (arrowButton) {
-            arrowButton.setAttribute("aria-expanded", String(isOpen));
+        function closeMenu() {
+            filter.classList.remove("is-open");
+            menu.hidden = true;
+            toggle.setAttribute("aria-expanded", "false");
+            if (arrowButton) {
+                arrowButton.setAttribute("aria-expanded", "false");
+            }
         }
-    });
 
-    menu.querySelectorAll("[data-period-option]").forEach((option) => {
-        option.addEventListener("click", () => {
-            label.textContent = option.dataset.periodOption;
-            closeMenu();
+        toggle.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const isOpen = !filter.classList.contains("is-open");
+            filter.classList.toggle("is-open", isOpen);
+            menu.hidden = !isOpen;
+            toggle.setAttribute("aria-expanded", String(isOpen));
+            if (arrowButton) {
+                arrowButton.setAttribute("aria-expanded", String(isOpen));
+            }
         });
-    });
 
-    document.addEventListener("click", (event) => {
-        if (!filter.contains(event.target)) {
-            closeMenu();
-        }
+        menu.querySelectorAll("[data-period-option]").forEach((option) => {
+            option.addEventListener("click", () => {
+                label.textContent = option.dataset.periodOption;
+                menu.querySelectorAll("[data-period-option]").forEach((item) => {
+                    item.classList.toggle("is-selected", item === option);
+                });
+                closeMenu();
+            });
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!filter.contains(event.target)) {
+                closeMenu();
+            }
+        });
     });
 }
 
@@ -473,6 +558,210 @@ function setupProfileDescriptionEditor() {
     });
 }
 
+function setupCustomSelects() {
+    const initializedSelects = new WeakSet();
+    let activeCustomSelect = null;
+
+    function closeCustomSelect(customSelect) {
+        if (!customSelect) {
+            return;
+        }
+
+        const menu = customSelect.querySelector("[data-custom-select-menu]");
+        const trigger = customSelect.querySelector("[data-custom-select-trigger]");
+
+        customSelect.classList.remove("is-open");
+
+        if (menu) {
+            menu.hidden = true;
+        }
+
+        if (trigger) {
+            trigger.setAttribute("aria-expanded", "false");
+        }
+
+        if (activeCustomSelect === customSelect) {
+            activeCustomSelect = null;
+        }
+    }
+
+    function closeAllCustomSelects(exceptSelect = null) {
+        document.querySelectorAll(".custom-select.is-open").forEach((customSelect) => {
+            if (customSelect !== exceptSelect) {
+                closeCustomSelect(customSelect);
+            }
+        });
+    }
+
+    function initializeSelect(select) {
+        if (!select || initializedSelects.has(select) || select.multiple || select.size > 1) {
+            return;
+        }
+
+        initializedSelects.add(select);
+
+        const customSelect = document.createElement("div");
+        const trigger = document.createElement("button");
+        const menu = document.createElement("div");
+        const selectHeight = Math.max(select.getBoundingClientRect().height || 0, 40);
+
+        customSelect.className = "custom-select";
+        customSelect.style.setProperty("--custom-select-height", `${Math.round(selectHeight)}px`);
+
+        trigger.type = "button";
+        trigger.className = "custom-select-trigger";
+        trigger.setAttribute("aria-haspopup", "listbox");
+        trigger.setAttribute("aria-expanded", "false");
+        trigger.setAttribute("data-custom-select-trigger", "");
+
+        menu.className = "custom-select-menu";
+        menu.hidden = true;
+        menu.setAttribute("role", "listbox");
+        menu.setAttribute("data-custom-select-menu", "");
+
+        function getSelectedOption() {
+            return select.options[select.selectedIndex] || select.options[0];
+        }
+
+        function updateTrigger() {
+            const selectedOption = getSelectedOption();
+            trigger.textContent = selectedOption ? selectedOption.textContent : "";
+
+            Array.from(menu.children).forEach((optionButton) => {
+                optionButton.classList.toggle("is-selected", optionButton.dataset.value === select.value);
+                optionButton.setAttribute("aria-selected", optionButton.dataset.value === select.value ? "true" : "false");
+            });
+        }
+
+        function buildOptions() {
+            menu.innerHTML = "";
+
+            Array.from(select.options).forEach((option) => {
+                const optionButton = document.createElement("button");
+                optionButton.type = "button";
+                optionButton.className = "custom-select-option";
+                optionButton.textContent = option.textContent;
+                optionButton.dataset.value = option.value;
+                optionButton.disabled = option.disabled;
+                optionButton.setAttribute("role", "option");
+
+                optionButton.addEventListener("click", () => {
+                    if (option.disabled) {
+                        return;
+                    }
+
+                    select.value = option.value;
+                    select.dispatchEvent(new Event("change", { bubbles: true }));
+                    updateTrigger();
+                    closeCustomSelect(customSelect);
+                    trigger.focus();
+                });
+
+                menu.appendChild(optionButton);
+            });
+
+            updateTrigger();
+        }
+
+        function openCustomSelect() {
+            if (select.disabled) {
+                return;
+            }
+
+            updateTrigger();
+            closeAllCustomSelects(customSelect);
+            customSelect.classList.add("is-open");
+            menu.hidden = false;
+            trigger.setAttribute("aria-expanded", "true");
+            activeCustomSelect = customSelect;
+
+            const selectedButton = menu.querySelector(".custom-select-option.is-selected");
+
+            if (selectedButton) {
+                selectedButton.scrollIntoView({ block: "nearest" });
+            }
+        }
+
+        trigger.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (customSelect.classList.contains("is-open")) {
+                closeCustomSelect(customSelect);
+                return;
+            }
+
+            openCustomSelect();
+        });
+
+        trigger.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeCustomSelect(customSelect);
+                return;
+            }
+
+            if (event.key === "Enter" || event.key === " " || event.key === "ArrowDown") {
+                event.preventDefault();
+                openCustomSelect();
+                const selectedButton = menu.querySelector(".custom-select-option.is-selected") || menu.querySelector(".custom-select-option:not(:disabled)");
+                selectedButton?.focus();
+            }
+        });
+
+        menu.addEventListener("keydown", (event) => {
+            const options = Array.from(menu.querySelectorAll(".custom-select-option:not(:disabled)"));
+            const currentIndex = options.indexOf(document.activeElement);
+
+            if (event.key === "Escape") {
+                closeCustomSelect(customSelect);
+                trigger.focus();
+                return;
+            }
+
+            if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+                event.preventDefault();
+                const direction = event.key === "ArrowDown" ? 1 : -1;
+                const nextIndex = Math.min(Math.max(currentIndex + direction, 0), options.length - 1);
+                options[nextIndex]?.focus();
+            }
+        });
+
+        select.classList.add("native-select-hidden");
+        select.insertAdjacentElement("afterend", customSelect);
+        customSelect.append(trigger, menu);
+        buildOptions();
+
+        select.addEventListener("change", updateTrigger);
+        select.addEventListener("focus", () => trigger.focus());
+    }
+
+    document.querySelectorAll("select").forEach(initializeSelect);
+
+    document.addEventListener("click", (event) => {
+        if (activeCustomSelect && !activeCustomSelect.contains(event.target)) {
+            closeCustomSelect(activeCustomSelect);
+        }
+    });
+
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (!(node instanceof Element)) {
+                    return;
+                }
+
+                if (node.matches("select")) {
+                    initializeSelect(node);
+                }
+
+                node.querySelectorAll?.("select").forEach(initializeSelect);
+            });
+        });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+}
+
 function setupProfileImageUpload() {
     const trigger = document.querySelector("[data-profile-image-trigger]");
     const input = document.querySelector("[data-profile-image-input]");
@@ -609,38 +898,6 @@ function setupProfileImageUpload() {
     });
 }
 
-function setupSidebarFooterLinks() {
-    const helpMarkup = `
-        <span class="nav-icon">
-            <svg viewBox="0 0 256 256"><path d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180Zm84-52A96,96,0,1,1,128,32A96.11,96.11,0,0,1,224,128Zm-56-36c0-24.26-19.06-44-42.49-44C102.6,48,84,65.94,84,88a8,8,0,0,0,16,0c0-13.23,11.65-24,26-24s26.49,12.56,26.49,28c0,17.31-17.79,26.71-18.54,27.1A8,8,0,0,0,128,126v18a8,8,0,0,0,16,0V130.42C152.49,125.3,168,112.95,168,92Z"></path></svg>
-        </span>
-        <span>Ajuda</span>
-    `;
-
-    document.querySelectorAll(".footer-links").forEach((footerLinks) => {
-        const configLink = Array.from(footerLinks.querySelectorAll("a")).find((link) => link.getAttribute("href") === "./configuracoes.html");
-        const logoutLink = Array.from(footerLinks.querySelectorAll("a")).find((link) => link.getAttribute("href") === "./login.html");
-        let helpLink = Array.from(footerLinks.querySelectorAll("a")).find((link) => link.getAttribute("href") === "./ajuda.html");
-
-        if (logoutLink) {
-            logoutLink.remove();
-        }
-
-        if (!helpLink) {
-            helpLink = document.createElement("a");
-            helpLink.className = "nav-link nav-link--subtle";
-            helpLink.href = "./ajuda.html";
-            helpLink.innerHTML = helpMarkup;
-        }
-
-        if (configLink) {
-            footerLinks.insertBefore(helpLink, configLink);
-        } else if (!footerLinks.contains(helpLink)) {
-            footerLinks.append(helpLink);
-        }
-    });
-}
-
 function animateProgressBar() {
     const fill = document.querySelector("[data-progress-target]");
     const icon = document.querySelector(".progress-icon");
@@ -742,64 +999,6 @@ function setupSidebarToggle() {
         const collapsed = document.body.classList.toggle("sidebar-collapsed");
         toggle.setAttribute("aria-expanded", String(!collapsed));
         window.localStorage.setItem(storageKey, String(collapsed));
-    });
-}
-
-function setupSidebarSubmenus() {
-    document.querySelectorAll("[data-sidebar-group]").forEach((group) => {
-        const toggle = group.querySelector("[data-sidebar-submenu-toggle]");
-        const submenu = group.querySelector("[data-sidebar-submenu]");
-
-        if (!toggle || !submenu) {
-            return;
-        }
-
-        const shouldStartOpen = group.classList.contains("is-open");
-        submenu.hidden = !shouldStartOpen;
-        toggle.setAttribute("aria-expanded", String(shouldStartOpen));
-
-        function openSubmenu() {
-            submenu.hidden = false;
-            group.classList.add("is-open");
-            toggle.setAttribute("aria-expanded", "true");
-        }
-
-        function closeSubmenu() {
-            submenu.hidden = true;
-            group.classList.remove("is-open");
-            toggle.setAttribute("aria-expanded", "false");
-        }
-
-        toggle.addEventListener("click", (event) => {
-            if (document.body.classList.contains("sidebar-collapsed")) {
-                event.preventDefault();
-                return;
-            }
-
-            const isOpen = !submenu.hidden;
-            if (isOpen) {
-                closeSubmenu();
-                return;
-            }
-
-            openSubmenu();
-        });
-
-        group.addEventListener("mouseenter", () => {
-            if (!document.body.classList.contains("sidebar-collapsed")) {
-                return;
-            }
-
-            openSubmenu();
-        });
-
-        group.addEventListener("mouseleave", () => {
-            if (!document.body.classList.contains("sidebar-collapsed")) {
-                return;
-            }
-
-            closeSubmenu();
-        });
     });
 }
 
@@ -2699,6 +2898,8 @@ function setupNewSalePage() {
         { code: "PB-ROS-050", name: "Perfume Rose Exclusive 50ml", price: 489.00 },
         { code: "PBX-556677", name: "Base Fluida Matte Skin - Tom 20", price: 75.00 }
     ];
+    const paidInstallmentIconPath = '<path d="M243.31,90.91l-128.4,128.4a16,16,0,0,1-22.62,0l-71.62-72a16,16,0,0,1,0-22.61l20-20a16,16,0,0,1,22.58,0L104,144.22l96.76-95.57a16,16,0,0,1,22.59,0l19.95,19.54A16,16,0,0,1,243.31,90.91Z"></path>';
+    const pendingInstallmentIconPath = '<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm56,112H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48a8,8,0,0,1,0,16Z"></path>';
 
     const clientSearch = page.querySelector("[data-new-sale-client-search]");
     const clientResults = page.querySelector("[data-new-sale-client-results]");
@@ -3011,8 +3212,8 @@ function setupNewSalePage() {
             const receivedClass = status === "Pago" || checked ? " order-installment-item--received" : "";
             const iconClass = status === "Pago" || checked ? "" : " order-installment-icon--warning";
             const iconPath = status === "Pago" || checked
-                ? '<path d="M229.66,90.34l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,201.37,218.34,79a8,8,0,0,1,11.32,11.31Z"></path>'
-                : '<path d="M236.8,188.09,149.35,36.24a24,24,0,0,0-42.7,0L19.2,188.09A24,24,0,0,0,40,224H216a24,24,0,0,0,20.8-35.91ZM128,112a8,8,0,0,1,8,8v32a8,8,0,0,1-16,0V120A8,8,0,0,1,128,112Zm0,72a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path>';
+                ? paidInstallmentIconPath
+                : pendingInstallmentIconPath;
 
             return `
                 <div class="order-installment-item${receivedClass}">
@@ -3210,9 +3411,11 @@ function setupNewSalePage() {
             const checked = row.querySelector("[data-new-sale-installment-paid]")?.checked;
             const isPaid = paymentStatusSelect?.value === "Pago" || checked;
             const iconClass = isPaid ? "" : " order-installment-icon--warning";
-            const iconPath = isPaid
+            let iconPath = isPaid
                 ? '<path d="M229.66,90.34l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,201.37,218.34,79a8,8,0,0,1,11.32,11.31Z"></path>'
                 : '<path d="M236.8,188.09,149.35,36.24a24,24,0,0,0-42.7,0L19.2,188.09A24,24,0,0,0,40,224H216a24,24,0,0,0,20.8-35.91ZM128,112a8,8,0,0,1,8,8v32a8,8,0,0,1-16,0V120A8,8,0,0,1,128,112Zm0,72a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path>';
+
+            iconPath = isPaid ? paidInstallmentIconPath : pendingInstallmentIconPath;
 
             return `
                 <div class="order-installment-item${isPaid ? " order-installment-item--received" : ""}">
@@ -3709,7 +3912,14 @@ function setupSalesPage() {
     const goalTargetElement = page.querySelector("[data-sales-goal-target]");
     const ordersBody = page.querySelector("[data-sales-orders]");
     const footerElement = page.querySelector("[data-sales-footer]");
+    const sortWrap = page.querySelector("[data-sales-sort]");
+    const sortToggle = page.querySelector("[data-sales-sort-toggle]");
+    const sortMenu = page.querySelector("[data-sales-sort-menu]");
+    const pendingDeliveriesButton = page.querySelector("[data-sales-pending-deliveries]");
     const today = new Date();
+    let currentPeriodKey = "30d";
+    let currentSort = "date-desc";
+    let pendingDeliveriesOnly = false;
 
     if (!periodButtons.length || !chart || !totalElement || !revenueElement || !goalPercentElement || !goalFillElement || !goalCurrentElement || !goalTargetElement || !ordersBody || !footerElement) {
         return;
@@ -3768,6 +3978,24 @@ function setupSalesPage() {
             ],
             footer: "Mostrando 1-20 de 463 resultados"
         },
+        "6m": {
+            total: 2384,
+            revenue: 224760,
+            goalPercent: 88,
+            goalCurrent: 197789,
+            goalTarget: 224760,
+            chartCount: 180,
+            chartScale: 108,
+            orders: [
+                { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "22 Abr, 2026", number: "#459730", client: "Renata Moura", value: 720, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "14 Mar, 2026", number: "#459180", client: "Clara Martins", value: 1120, status: "Pendente", statusClass: "sales-status--pending" },
+                { date: "26 Fev, 2026", number: "#458902", client: "Ana Beatriz Dias", value: 450, status: "Cancelado", statusClass: "clients-status--cancelled" },
+                { date: "18 Jan, 2026", number: "#458411", client: "Camila Costa", value: 960, status: "Concluído", statusClass: "clients-status--active" },
+                { date: "09 Nov, 2025", number: "#457982", client: "Juliana Reis", value: 1180, status: "Concluído", statusClass: "clients-status--active" }
+            ],
+            footer: "Mostrando 1-20 de 782 resultados"
+        },
         "1y": {
             total: 4280,
             revenue: 398460,
@@ -3792,7 +4020,7 @@ function setupSalesPage() {
             goalPercent: 94,
             goalCurrent: 764164,
             goalTarget: 812940,
-            chartCount: 365,
+            chartCount: 900,
             chartScale: 116,
             orders: [
                 { date: "28 Abr, 2026", number: "#459821", client: "Mariana Silveira", value: 420, status: "Concluído", statusClass: "clients-status--active" },
@@ -3806,64 +4034,6 @@ function setupSalesPage() {
         }
     };
 
-    function formatSalesLabel(date, periodKey, index, total) {
-        if (periodKey === "7d") {
-            return date.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "").slice(0, 3);
-        }
-
-        if (periodKey === "30d") {
-            return index % 5 === 0 || index === total - 1
-                ? String(date.getDate()).padStart(2, "0")
-                : "";
-        }
-
-        if (periodKey === "90d") {
-            return index % 15 === 0 || index === total - 1
-                ? String(date.getDate()).padStart(2, "0")
-                : "";
-        }
-
-        return date.getDate() === 1 || index === total - 1
-            ? date.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "").slice(0, 3)
-            : "";
-    }
-
-    function buildSalesSeries(count, scale, periodKey, totalRevenue) {
-        const startDate = new Date(today);
-        startDate.setDate(today.getDate() - (count - 1));
-        const rawItems = Array.from({ length: count }, (_, index) => {
-            const date = new Date(startDate);
-            date.setDate(startDate.getDate() + index);
-
-            const base = (Math.sin((index + 1) * 0.68) + 1) / 2;
-            const wave = (Math.cos((index + 1) * 0.21) + 1) / 2;
-            const mixed = (base * 0.58) + (wave * 0.42);
-            const value = Math.max(18, Math.round(16 + (mixed * (scale - 16))));
-
-            return {
-                label: formatSalesLabel(date, periodKey, index, count),
-                value,
-                dateLabel: formatShortDate(date)
-            };
-        });
-
-        const totalWeight = rawItems.reduce((sum, item) => sum + item.value, 0) || 1;
-        let allocatedRevenue = 0;
-
-        return rawItems.map((item, index) => {
-            const amount = index === rawItems.length - 1
-                ? Math.max(0, totalRevenue - allocatedRevenue)
-                : Math.round((item.value / totalWeight) * totalRevenue);
-
-            allocatedRevenue += amount;
-
-            return {
-                ...item,
-                amount
-            };
-        });
-    }
-
     function formatShortDate(date) {
         const day = String(date.getDate()).padStart(2, "0");
         const month = date.toLocaleDateString("pt-BR", { month: "short" })
@@ -3874,6 +4044,175 @@ function setupSalesPage() {
         const year = String(date.getFullYear()).slice(-2);
 
         return `${day} ${month} ${year}`;
+    }
+
+    function formatMonthShort(date) {
+        return date.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "").slice(0, 3);
+    }
+
+    function formatMonthYearShort(date) {
+        return `${formatMonthShort(date)} ${String(date.getFullYear()).slice(-2)}`;
+    }
+
+    function formatRangeLabel(startDate, endDate) {
+        const startDay = String(startDate.getDate()).padStart(2, "0");
+        const endDay = String(endDate.getDate()).padStart(2, "0");
+        return `${startDay} ${formatMonthShort(startDate)} - ${endDay} ${formatMonthShort(endDate)}`;
+    }
+
+    function allocateSalesAmounts(items, totalRevenue) {
+        const totalWeight = items.reduce((sum, item) => sum + item.weight, 0) || 1;
+        let allocatedRevenue = 0;
+
+        return items.map((item, index) => {
+            const amount = index === items.length - 1
+                ? Math.max(0, totalRevenue - allocatedRevenue)
+                : Math.round((item.weight / totalWeight) * totalRevenue);
+
+            allocatedRevenue += amount;
+
+            return {
+                ...item,
+                amount
+            };
+        });
+    }
+
+    function mergeBucketList(buckets, maxLength) {
+        if (buckets.length <= maxLength) {
+            return buckets;
+        }
+
+        const overflowCount = buckets.length - maxLength + 1;
+        const mergedBucket = buckets.slice(0, overflowCount).reduce((merged, bucket) => ({
+            startDate: merged.startDate || bucket.startDate,
+            endDate: bucket.endDate,
+            weight: merged.weight + bucket.weight,
+            label: bucket.label,
+            dateLabel: formatRangeLabel(merged.startDate || bucket.startDate, bucket.endDate)
+        }), { startDate: null, endDate: null, weight: 0, label: "", dateLabel: "" });
+
+        return [mergedBucket, ...buckets.slice(overflowCount)];
+    }
+
+    function buildSalesSeries(count, scale, periodKey, totalRevenue) {
+        const startDate = new Date(today);
+        startDate.setDate(today.getDate() - (count - 1));
+
+        const rawItems = Array.from({ length: count }, (_, index) => {
+            const date = new Date(startDate);
+            date.setDate(startDate.getDate() + index);
+
+            const base = (Math.sin((index + 1) * 0.68) + 1) / 2;
+            const wave = (Math.cos((index + 1) * 0.21) + 1) / 2;
+            const mixed = (base * 0.58) + (wave * 0.42);
+            const weight = Math.max(18, Math.round(16 + (mixed * (scale - 16))));
+
+            return {
+                date,
+                weight,
+                label: "",
+                dateLabel: formatShortDate(date)
+            };
+        });
+
+        let buckets = [];
+
+        if (periodKey === "7d" || periodKey === "30d") {
+            buckets = rawItems.map((item, index) => ({
+                ...item,
+                startDate: item.date,
+                endDate: item.date,
+                label: periodKey === "7d"
+                    ? item.date.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "").slice(0, 3)
+                    : (index % 5 === 0 || index === rawItems.length - 1 ? String(item.date.getDate()).padStart(2, "0") : "")
+            }));
+        } else if (periodKey === "90d") {
+            for (let start = 0; start < rawItems.length; start += 15) {
+                const slice = rawItems.slice(start, start + 15);
+
+                if (!slice.length) {
+                    continue;
+                }
+
+                const firstItem = slice[0];
+                const lastItem = slice[slice.length - 1];
+
+                buckets.push({
+                    startDate: firstItem.date,
+                    endDate: lastItem.date,
+                    label: formatRangeLabel(firstItem.date, lastItem.date),
+                    dateLabel: formatRangeLabel(firstItem.date, lastItem.date),
+                    weight: slice.reduce((sum, item) => sum + item.weight, 0)
+                });
+            }
+        } else {
+            const monthBuckets = [];
+            let currentBucket = null;
+
+            rawItems.forEach((item) => {
+                const monthKey = `${item.date.getFullYear()}-${item.date.getMonth()}`;
+
+                if (!currentBucket || currentBucket.key !== monthKey) {
+                    currentBucket = {
+                        key: monthKey,
+                        startDate: item.date,
+                        endDate: item.date,
+                        label: formatMonthShort(item.date),
+                        dateLabel: formatMonthYearShort(item.date),
+                        weight: 0
+                    };
+                    monthBuckets.push(currentBucket);
+                }
+
+                currentBucket.endDate = item.date;
+                currentBucket.dateLabel = formatMonthYearShort(item.date);
+                currentBucket.weight += item.weight;
+            });
+
+            if (periodKey === "6m") {
+                buckets = mergeBucketList(monthBuckets, 6);
+            } else if (periodKey === "1y") {
+                buckets = monthBuckets;
+            } else {
+                if (monthBuckets.length <= 24) {
+                    buckets = monthBuckets.map((bucket) => ({
+                        ...bucket,
+                        label: formatMonthYearShort(bucket.endDate),
+                        dateLabel: formatMonthYearShort(bucket.endDate)
+                    }));
+                } else {
+                    for (let index = 0; index < monthBuckets.length; index += 2) {
+                        const firstBucket = monthBuckets[index];
+                        const secondBucket = monthBuckets[index + 1];
+
+                        if (!secondBucket) {
+                            buckets.push({
+                                ...firstBucket,
+                                label: formatMonthYearShort(firstBucket.endDate),
+                                dateLabel: formatMonthYearShort(firstBucket.endDate)
+                            });
+                            continue;
+                        }
+
+                        buckets.push({
+                            startDate: firstBucket.startDate,
+                            endDate: secondBucket.endDate,
+                            label: `${formatMonthShort(firstBucket.endDate)} - ${formatMonthShort(secondBucket.endDate)} ${String(secondBucket.endDate.getFullYear()).slice(-2)}`,
+                            dateLabel: `${formatMonthYearShort(firstBucket.endDate)} - ${formatMonthYearShort(secondBucket.endDate)}`,
+                            weight: firstBucket.weight + secondBucket.weight
+                        });
+                    }
+                }
+            }
+        }
+
+        const maxWeight = Math.max(...buckets.map((item) => item.weight), 1);
+
+        return allocateSalesAmounts(buckets, totalRevenue).map((item) => ({
+            ...item,
+            value: Math.max(18, Math.round((item.weight / maxWeight) * scale))
+        }));
     }
 
     function updateChartInfo(amount, dateText) {
@@ -3927,6 +4266,71 @@ function setupSalesPage() {
         }
     }
 
+    function parseSalesDate(value) {
+        const months = {
+            jan: 0,
+            fev: 1,
+            mar: 2,
+            abr: 3,
+            mai: 4,
+            jun: 5,
+            jul: 6,
+            ago: 7,
+            set: 8,
+            out: 9,
+            nov: 10,
+            dez: 11
+        };
+        const match = String(value || "").toLowerCase().match(/(\d{1,2})\s+([a-zç]{3}),?\s+(\d{4})/);
+
+        if (!match) {
+            return 0;
+        }
+
+        return new Date(Number(match[3]), months[match[2]] ?? 0, Number(match[1])).getTime();
+    }
+
+    function enrichOrders(items) {
+        return items.map((item, index) => {
+            const isPendingDelivery = item.deliveryStatus
+                ? item.deliveryStatus === "Pendente"
+                : [1, 3, 5].includes(index);
+
+            return {
+                ...item,
+                dateValue: parseSalesDate(item.date),
+                quantity: item.quantity || ((index % 4) + 1),
+                deliveryStatus: isPendingDelivery ? "Pendente" : "Realizada",
+                deliveryClass: isPendingDelivery ? "sales-status--pending" : "clients-status--active"
+            };
+        });
+    }
+
+    function sortOrders(items) {
+        const sortedItems = [...items];
+        const sorters = {
+            "date-desc": (a, b) => b.dateValue - a.dateValue,
+            "date-asc": (a, b) => a.dateValue - b.dateValue,
+            "quantity-desc": (a, b) => b.quantity - a.quantity,
+            "quantity-asc": (a, b) => a.quantity - b.quantity,
+            "value-desc": (a, b) => b.value - a.value,
+            "value-asc": (a, b) => a.value - b.value
+        };
+
+        sortedItems.sort(sorters[currentSort] || sorters["date-desc"]);
+        return sortedItems;
+    }
+
+    function getCurrentOrders() {
+        const period = periods[currentPeriodKey] || periods["30d"];
+        const enrichedOrders = enrichOrders(period.orders);
+        const filteredOrders = pendingDeliveriesOnly
+            ? enrichedOrders.filter((item) => item.deliveryStatus === "Pendente")
+            : enrichedOrders;
+
+        return sortOrders(filteredOrders);
+    }
+
     function renderOrders(items) {
         ordersBody.innerHTML = items.map((item) => `
             <tr class="sales-table-row" data-row-href="./pedido.html">
@@ -3940,14 +4344,26 @@ function setupSalesPage() {
                 </td>
                 <td>R$ ${formatCurrencyPtBr(item.value)}</td>
                 <td><span class="clients-status ${item.statusClass}">${item.status}</span></td>
+                <td><span class="clients-status ${item.deliveryClass}">${item.deliveryStatus}</span></td>
             </tr>
         `).join("");
 
         setupRowLinks();
     }
 
+    function renderActiveOrders() {
+        const period = periods[currentPeriodKey] || periods["30d"];
+        const orders = getCurrentOrders();
+
+        renderOrders(orders);
+        footerElement.textContent = pendingDeliveriesOnly
+            ? `Mostrando ${orders.length} entrega${orders.length === 1 ? "" : "s"} pendente${orders.length === 1 ? "" : "s"}`
+            : period.footer;
+    }
+
     function applyPeriod(key) {
         const period = periods[key] || periods["30d"];
+        currentPeriodKey = key;
 
         periodButtons.forEach((button) => {
             button.classList.toggle("is-active", button.dataset.salesPeriod === key);
@@ -3960,12 +4376,54 @@ function setupSalesPage() {
         goalCurrentElement.textContent = `R$ ${formatCurrencyPtBr(period.goalCurrent)}`;
         goalTargetElement.textContent = `R$ ${formatCurrencyPtBr(period.goalTarget)}`;
         goalFillElement.style.width = `${period.goalPercent}%`;
-        renderOrders(period.orders);
-        footerElement.textContent = period.footer;
+        renderActiveOrders();
     }
 
     periodButtons.forEach((button) => {
         button.addEventListener("click", () => applyPeriod(button.dataset.salesPeriod));
+    });
+
+    if (sortWrap && sortToggle && sortMenu) {
+        sortMenu.hidden = true;
+        sortToggle.setAttribute("aria-expanded", "false");
+
+        function closeSortMenu() {
+            sortMenu.hidden = true;
+            sortToggle.setAttribute("aria-expanded", "false");
+            sortWrap.classList.remove("is-open");
+        }
+
+        sortToggle.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const shouldOpen = sortMenu.hidden;
+            sortMenu.hidden = !shouldOpen;
+            sortToggle.setAttribute("aria-expanded", String(shouldOpen));
+            sortWrap.classList.toggle("is-open", shouldOpen);
+        });
+
+        sortMenu.querySelectorAll("[data-sales-sort-option]").forEach((option) => {
+            option.addEventListener("click", () => {
+                currentSort = option.dataset.salesSortOption || "date-desc";
+                sortMenu.querySelectorAll("[data-sales-sort-option]").forEach((item) => {
+                    item.classList.toggle("is-selected", item === option);
+                });
+                closeSortMenu();
+                renderActiveOrders();
+            });
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!sortWrap.contains(event.target)) {
+                closeSortMenu();
+            }
+        });
+    }
+
+    pendingDeliveriesButton?.addEventListener("click", () => {
+        pendingDeliveriesOnly = !pendingDeliveriesOnly;
+        pendingDeliveriesButton.classList.toggle("is-active", pendingDeliveriesOnly);
+        pendingDeliveriesButton.setAttribute("aria-pressed", String(pendingDeliveriesOnly));
+        renderActiveOrders();
     });
 
     applyPeriod("30d");
@@ -4456,6 +4914,7 @@ function setupFinancePage() {
 
     const activeSeries = new Set(["gain", "cost"]);
     let currentFinancePeriodKey = "30d";
+    let currentPerformanceTotal = 0;
 
     const periods = {
         "7d": {
@@ -4720,9 +5179,9 @@ function setupFinancePage() {
         }));
     }
 
-    function updatePerformanceHeadline(amount, typeLabel, dateLabel) {
-        performanceValue.textContent = formatCurrencyPtBr(amount);
-        performanceInfo.textContent = `${typeLabel} - ${dateLabel}`;
+    function updatePerformancePointInfo(amount, typeLabel, dateLabel) {
+        performanceValue.textContent = formatCurrencyPtBr(currentPerformanceTotal);
+        performanceInfo.textContent = `${typeLabel} - ${dateLabel} - R$ ${formatCurrencyPtBr(amount)}`;
     }
 
     function syncFinanceLegend() {
@@ -4767,8 +5226,8 @@ function setupFinancePage() {
                 gainDot.style.top = `${(gainY / 200) * 100}%`;
                 gainDot.dataset.value = `R$ ${formatCurrencyPtBr(item.gainAmount)}`;
                 gainDot.setAttribute("aria-label", `Ganhos de R$ ${formatCurrencyPtBr(item.gainAmount)} em ${item.dateLabel}`);
-                gainDot.addEventListener("mouseenter", () => updatePerformanceHeadline(item.gainAmount, "Ganhos", item.dateLabel));
-                gainDot.addEventListener("focus", () => updatePerformanceHeadline(item.gainAmount, "Ganhos", item.dateLabel));
+                gainDot.addEventListener("mouseenter", () => updatePerformancePointInfo(item.gainAmount, "Ganhos", item.dateLabel));
+                gainDot.addEventListener("focus", () => updatePerformancePointInfo(item.gainAmount, "Ganhos", item.dateLabel));
                 plot.appendChild(gainDot);
             }
 
@@ -4782,8 +5241,8 @@ function setupFinancePage() {
                 costDot.style.top = `${(costY / 200) * 100}%`;
                 costDot.dataset.value = `R$ ${formatCurrencyPtBr(item.costAmount)}`;
                 costDot.setAttribute("aria-label", `Custos de R$ ${formatCurrencyPtBr(item.costAmount)} em ${item.dateLabel}`);
-                costDot.addEventListener("mouseenter", () => updatePerformanceHeadline(item.costAmount, "Custos", item.dateLabel));
-                costDot.addEventListener("focus", () => updatePerformanceHeadline(item.costAmount, "Custos", item.dateLabel));
+                costDot.addEventListener("mouseenter", () => updatePerformancePointInfo(item.costAmount, "Custos", item.dateLabel));
+                costDot.addEventListener("focus", () => updatePerformancePointInfo(item.costAmount, "Custos", item.dateLabel));
                 plot.appendChild(costDot);
             }
         });
@@ -4822,9 +5281,9 @@ function setupFinancePage() {
 
         if (lastItem) {
             if (activeSeries.has("gain")) {
-                updatePerformanceHeadline(lastItem.gainAmount, "Ganhos", lastItem.dateLabel);
+                updatePerformancePointInfo(lastItem.gainAmount, "Ganhos", lastItem.dateLabel);
             } else if (activeSeries.has("cost")) {
-                updatePerformanceHeadline(lastItem.costAmount, "Custos", lastItem.dateLabel);
+                updatePerformancePointInfo(lastItem.costAmount, "Custos", lastItem.dateLabel);
             }
         }
     }
@@ -4895,6 +5354,7 @@ function setupFinancePage() {
         });
 
         performanceTitle.textContent = period.title;
+        currentPerformanceTotal = period.gainTotal;
         performanceValue.textContent = formatCurrencyPtBr(period.gainTotal);
         performanceDelta.textContent = period.delta;
         renderPerformanceChart(performanceSeries);
@@ -7256,12 +7716,12 @@ window.addEventListener("load", () => {
     updateCurrentMonth();
     updateCurrentYear();
     updateTodayPill();
+    setupBreadcrumbLinks();
     setupSidebarToggle();
-    setupSidebarSubmenus();
-    setupSidebarFooterLinks();
     setupPeriodMenu();
     setupNotificationMenu();
     setupProfileMenu();
+    setupCustomSelects();
     setupProfileImageUpload();
     setupProfileDescriptionEditor();
     setupProfileSectionEditors();
